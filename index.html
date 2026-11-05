@@ -1,35 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+html
 
-  <title>Economia — SNDLimp</title>
-  <meta name="description" content="Simule a economia estimada com a limpeza técnica de placas solares e entenda o impacto da sujeira na geração de energia.">
-
-  <meta name="robots" content="index, follow, noimageindex">
-
-  <meta name="theme-color" content="#0d0d0d">
-
-  <link rel="canonical" href="https://sndlimp.github.io/economia.html">
-
-  <meta property="og:title" content="Economia — SNDLimp">
-  <meta property="og:description" content="Simule a economia estimada com a limpeza técnica de placas solares e entenda o impacto da sujeira na geração de energia.">
-  <meta property="og:url" content="https://sndlimp.github.io/economia.html">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Economia — SNDLimp">
-  <meta name="twitter:description" content="Simule a economia estimada com a limpeza técnica de placas solares e entenda o impacto da sujeira na geração de energia.">
-
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-
-  <link rel="preload" href="assets/fonts/Inter-VariableFont_opsz,wght.ttf" as="font" type="font/ttf" crossorigin>
-
-    <!-- ═══════════ PROTEÇÃO CONTRA CÓPIA ═══════════ -->
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,11 +39,228 @@
   <meta name="twitter:image" content="https://sndlimp.github.io/img/og-escova.jpg">
 
   <link rel="icon" href="img/logosnd.ico" type="image/x-icon">
+</head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+html
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Calculadora de Perdas Solares — SNDLimp</title>
+  <meta name="description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta name="keywords" content="limpeza de placas solares, calculadora de perdas, eficiência fotovoltaica, Vale do Sinos, Vale do Taquari, manutenção solar, SNDLimp">
+  <meta name="author" content="edusidegum W">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="googlebot" content="index, follow, max-image-preview:large">
+  <meta name="bingbot" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0d0d0d">
+
+  <link rel="canonical" href="https://sndlimp.github.io/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadora de Perdas Solares — SNDLimp">
+  <meta property="og:description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta property="og:url" content="https://sndlimp.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SNDLimp">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://sndlimp.github.io/img/og-escova.jpg">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1000">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Escova de limpeza de placas solares SNDLimp">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Calculadora de Perdas Solares — SNDLimp">
+  <meta name="twitter:description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta name="twitter:image" content="https://sndlimp.github.io/img/og-escova.jpg">
+
+  <link rel="icon" href="img/logosnd.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&family=Inter:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            --sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;
+            --noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;
+            --cinza:#999;--texto:#F0F0F0;--texto2:#AAAAAA;--verde-ok:#4CAF50;--radius:10px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        body{background:var(--noite);color:var(--texto);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+        /* ═══════════ TOPBAR ═══════════ */
+        .sticky-header {
+            position:fixed;top:0;left:0;width:100%;z-index:10000;
+            background:rgba(26,26,26,0.96);
+            backdrop-filter:blur(8px);
+            -webkit-backdrop-filter:blur(8px);
+            border-bottom:1px solid rgba(245,166,35,0.25);
+            padding:5px 5%;
+            display:grid;
+            grid-template-columns:1fr auto 1fr;
+            align-items:center;gap:8px;min-height:40px;
+        }
+        .sticky-header .topbar-brand {
+            display:flex;align-items:center;gap:8px;
+            text-decoration:none;justify-self:start;
+        }
+        .sticky-header .topbar-logo-text {
+            font-family:'Inter',sans-serif;
+            font-weight:800;font-size:1.1rem;
+            color:#F5A623;letter-spacing:1px;white-space:nowrap;
+        }
+        .sticky-header .topbar-logo-sub {
+            font-size:0.65rem;color:#aaa;display:block;
+            letter-spacing:0;text-transform:none;font-weight:400;
+        }
+        .menu-dropdown{position:relative;justify-self:center;}
+        .menu-toggle {
+            background:none;border:none;color:#fff;
+            font-family:'Inter',sans-serif;
+            font-size:1rem;font-weight:700;text-transform:uppercase;
+            letter-spacing:1px;cursor:pointer;padding:10px 14px;
+            transition:color 0.3s ease;
+        }
+        .menu-toggle:hover{color:#F5A623;}
+        .menu-lista {
+            display:none;position:absolute;top:100%;left:50%;
+            transform:translateX(-50%);margin-top:6px;
+            background:#1e1e1e;
+            border:1px solid rgba(245,166,35,0.3);
+            border-radius:8px;list-style:none;min-width:190px;
+            z-index:10001;overflow:hidden;
+            box-shadow:0 8px 24px rgba(0,0,0,0.6);padding:0;
+        }
+        .menu-lista li{border-bottom:1px solid rgba(255,255,255,0.05);}
+        .menu-lista li:last-child{border-bottom:none;}
+        .menu-lista a {
+            display:block;padding:11px 16px;color:#d6d6d6;
+            text-decoration:none;font-size:0.85rem;text-align:center;
+            transition:background 0.2s,color 0.2s;
+        }
+        .menu-lista a:hover{background:rgba(245,166,35,0.12);color:#F5A623;}
+        .menu-dropdown:focus-within .menu-lista,
+        .menu-dropdown:hover .menu-lista{display:block;}
+        .sticky-header .btn-cta {
+            background:#25D366;color:#fff;text-decoration:none;
+            font-family:'Inter',sans-serif;
+            font-size:0.8rem;font-weight:700;padding:8px 18px;
+            border-radius:50px;white-space:nowrap;
+            box-shadow:0 2px 10px rgba(37,211,102,0.4);
+            justify-self:end;flex-shrink:0;transition:all 0.3s ease;
+        }
+        .sticky-header .btn-cta:hover{background:#1fb950;}
+        .header-spacer{min-height:40px;}
+
+        /* ═══════════ HERO ═══════════ */
+        .hero{background:linear-gradient(135deg,#1a1000 0%,#0D0D0D 60%);border-bottom:2px solid var(--sol);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(245,166,35,0.12) 0%,transparent 70%);pointer-events:none;}
+        .hero-eyebrow{font-family:'Inter Condensed',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sol);margin-bottom:10px;}
+        .hero h1{font-family:'Inter Condensed',sans-serif;font-size:clamp(26px,5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:1px;line-height:1.1;color:#fff;}
+        .hero h1 span{color:var(--sol);}
+        .hero-sub{margin-top:8px;font-size:13px;color:var(--texto2);max-width:520px;margin-inline:auto;line-height:1.5;}
+
+        /* ═══════════ LAYOUT ═══════════ */
+        .container{max-width:780px;margin:0 auto;padding:28px 20px 40px;}
+
+        /* ═══════════ CARDS ═══════════ */
+        .card{background:var(--carbon);border:1px solid var(--carbon3);border-radius:var(--radius);padding:24px 22px;margin-bottom:18px;}
+        .card-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sol);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+      .card-label-line{flex:1;height:1px;background:var(--carbon3);}
+  
+      /* ═══════════ Substituida pela linha acima
+      .card-label::after{content:'';flex:1;height:1px;background:var(--carbon3);}
+ ═══════════ */
+        /* ═══════════ INPUTS ═══════════ */
+        label.field-label{display:block;font-size:13px;color:var(--texto2);margin-bottom:6px;font-weight:500;}
+        input[type="text"],input[type="number"]{width:100%;background:var(--carbon2);border:1px solid var(--carbon3);border-radius:7px;color:var(--texto);font-family:'Inter',sans-serif;font-size:15px;padding:11px 14px;outline:none;transition:border-color .2s;}
+        input[type="text"]:focus,input[type="number"]:focus{border-color:var(--sol);}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        @media(max-width:520px){.input-row{grid-template-columns:1fr;}}
+
+        /* ═══════════ BOTÕES MESES ═══════════ */
+        .meses-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:4px;}
+        @media(max-width:480px){.meses-grid{grid-template-columns:repeat(4,1fr);}}
+        .mes-btn{background:var(--carbon2);border:1px solid var(--carbon3);border-radius:7px;color:var(--texto2);font-family:'Inter Condensed',sans-serif;font-size:18px;font-weight:700;padding:10px 4px;cursor:pointer;transition:all .15s;text-align:center;}
+        .mes-btn:hover{border-color:var(--sol);color:var(--sol);}
+        .mes-btn.ativo{background:var(--sol);border-color:var(--sol);color:var(--noite);}
+        .meses-hint{margin-top:8px;font-size:11px;color:var(--cinza);}
+
+        /* ═══════════ DISCLAIMER ═══════════ */
+        .disclaimer{background:rgba(245,166,35,0.06);border-left:3px solid var(--sol);border-radius:0 7px 7px 0;padding:12px 14px;font-size:12px;color:var(--texto2);line-height:1.6;margin-top:14px;}
+        .disclaimer strong{color:var(--sol);}
+
+        /* ═══════════ RESULTADOS ═══════════ */
+        .resultado-box{background:var(--carbon2);border:1px solid var(--carbon3);border-radius:var(--radius);padding:20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+        @media(max-width:480px){.resultado-box{grid-template-columns:1fr;}}
+        .res-item-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto2);margin-bottom:4px;}
+        .res-item-valor{font-family:'Inter Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--brasa);line-height:1;}
+        .res-perda-placa{font-size:12px;color:var(--texto2);margin-top:4px;}
+
+        /* ═══════════ GRÁFICO ═══════════ */
+        .grafico-wrap{position:relative;height:260px;margin-top:4px;}
+
+        /* ═══════════ DIAGNÓSTICO ═══════════ */
+        .diagnostico-box{background:var(--carbon2);border-radius:var(--radius);border:1px solid var(--carbon3);padding:20px 18px;margin-top:4px;position:relative;overflow:hidden;}
+        .diagnostico-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sol-vivo),var(--brasa));}
+        .diag-texto{font-size:14px;line-height:1.75;color:var(--texto);}
+        .diag-texto .nome{color:var(--sol);font-weight:600;}
+        .diag-vazio{font-size:13px;color:var(--cinza);font-style:italic;}
+
+        /* ═══════════ BADGES ═══════════ */
+        .urgencia-badge{display:inline-block;font-family:'Inter Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:700;}
+        .badge-atencao{background:rgba(76,175,80,0.15);color:#4CAF50;border:1px solid #4CAF50;}
+        .badge-problema{background:rgba(245,166,35,0.15);color:var(--sol);border:1px solid var(--sol);}
+        .badge-grave{background:rgba(255,140,0,0.15);color:var(--sol-vivo);border:1px solid var(--sol-vivo);}
+        .badge-critico{background:rgba(232,76,14,0.2);color:var(--brasa);border:1px solid var(--brasa);}
+        .badge-urgente{background:rgba(232,76,14,0.3);color:#ff4444;border:1px solid #ff4444;}
+
+        /* ═══════════ WHATSAPP ═══════════ */
+        .btn-wpp{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-family:'Inter Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:18px 24px;border:none;border-radius:var(--radius);cursor:pointer;text-decoration:none;transition:filter .2s,transform .15s;margin-top:6px;}
+        .btn-wpp:hover{filter:brightness(1.1);transform:translateY(-1px);}
+
+        /* ═══════════ FONTES DE PESQUISA ═══════════ */
+        .fonte-item{padding:13px 0;border-bottom:1px solid var(--carbon3);}
+        .fonte-item:last-child{border-bottom:none;padding-bottom:2px;}
+        .fonte-num{font-family:'Inter Condensed',sans-serif;font-size:10px;letter-spacing:2px;color:var(--sol);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
+        .fonte-titulo{font-size:12px;font-weight:600;color:var(--texto);margin-bottom:4px;line-height:1.4;}
+        .fonte-desc{font-size:11px;color:var(--texto2);line-height:1.6;margin-bottom:6px;}
+        .fonte-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--sol);text-decoration:none;opacity:.85;transition:opacity .15s;}
+        .fonte-link:hover{opacity:1;text-decoration:underline;}
+
+        /* ═══════════ FOOTER SNDLIMP ═══════════ */
+        .site-footer{background:#0a0a0a;border-top:1px solid rgba(245,166,35,0.2);padding:40px 20px;text-align:center;margin-top:40px;}
+        .site-footer h3{color:#F5A623;margin-bottom:10px;font-size:1.2rem;}
+        .site-footer p{color:#888;font-size:0.85rem;margin-bottom:6px;}
+        .site-footer .footer-whats{display:inline-block;margin-top:16px;}
+        .site-footer .copyright{margin-top:20px;font-size:0.7rem;color:#555;}
+        .btn-cta-hero{display:inline-block;background:#25D366;color:#fff;font-family:'Inter',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;text-decoration:none;padding:14px 32px;border-radius:50px;letter-spacing:0.5px;box-shadow:0 6px 20px rgba(37,211,102,0.3);transition:all 0.3s ease;}
+        .btn-cta-hero:hover{background:#1fb950;transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.45);}
+
+        /* ═══════════ ANIMAÇÃO ═══════════ */
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+        .fade-in{animation:fadeIn .35s ease forwards;}
+
+        /* ═══════════ RESPONSIVO ═══════════ */
+        @media(max-width:600px){
+            .sticky-header{padding:6px 3%;min-height:auto;grid-template-columns:auto 1fr auto;gap:6px;}
+            .sticky-header .topbar-logo-text{font-size:0.9rem;}
+            .sticky-header .topbar-logo-sub{display:none;}
+            .menu-toggle{font-size:0.82rem;padding:6px 10px;}
+            .sticky-header .btn-cta{font-size:0.68rem;padding:6px 12px;}
+            .header-spacer{min-height:50px;}
+            .hero{padding:28px 16px 20px;}
+        }
+    </style>
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script src="https://sndlimp.github.io/scripts/bloco-includes.js" defer></script>
@@ -167,7 +358,9 @@
     ]
   }
   </script>
-</head>    
+</head> 
+</head>
+    
 <!-- ═══════════ <body> alterado para abaixo  ═══════════ -->
     
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
@@ -547,6 +740,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 </script>
-    <script src="https://sndlimp.github.io/scripts/bloco-includes.js" defer></script>    
+   
 </body>
 </html>
