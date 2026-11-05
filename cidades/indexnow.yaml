@@ -1,0 +1,18 @@
+name: IndexNow — Notificar Bing
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'sitemap.xml'
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Submeter sitemap ao IndexNow
+        run: |
+          curl -s "https://www.bing.com/indexnow?url=https://edusidegum.github.io/sndlimp/sitemap.xml&key=edusidegum.github.io"

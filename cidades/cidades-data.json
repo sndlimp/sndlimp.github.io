@@ -1,0 +1,231 @@
+{
+  "patterns": {
+    "A": ["prejuizo","problema","solucao","processo","diferenciais","depoimento","cta"],
+    "B": ["problema","prejuizo","processo","solucao","diferenciais","depoimento","cta"],
+    "C": ["solucao","problema","prejuizo","diferenciais","processo","depoimento","cta"],
+    "D": ["depoimento","problema","solucao","prejuizo","processo","diferenciais","cta"]
+  },
+  "h1_patterns": {
+    "A": "Você instalou placas fotovoltaicas em **{cidade}** para economizar… certo?",
+    "B": "Em **{cidade}**, placa solar limpa é mais dinheiro no fim do mês",
+    "C": "A geração de energia em **{cidade}** caiu? O problema pode estar na sujeira",
+    "D": "Economia real em **{cidade}**: sua placa solar pode render muito mais"
+  },
+  "eyebrow_patterns": [
+    "☀ Limpeza Técnica de Placas Solares",
+    "⚡ Manutenção de Painéis Fotovoltaicos",
+    "🔆 Recupere a Eficiência Energética",
+    "☀️ Seu Sistema Solar no Máximo"
+  ],
+  "cities": [
+    {
+      "slug": "novo-hamburgo",
+      "name": "Novo Hamburgo",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza profissional de placas solares em Novo Hamburgo/RS. Recupere até 25% de eficiência dos seus painéis com equipamentos adequados e produtos biodegradáveis. Agende uma vistoria!",
+      "title": "Limpeza de Placas Solares em Novo Hamburgo | SNDLimp",
+      "context": "Novo Hamburgo, capital nacional do calçado, concentra um dos maiores parques industriais do RS. A fuligem industrial combinada à poluição urbana acelera a perda de eficiência dos painéis solares na região.",
+      "bairros": "Rio Branco, Centro, Hamburgo Velho, Canudos, Ouro Branco, Pátria Nova, Rondônia, Boa Saúde, São Jorge, Operário, Liberdade, Santo Afonso, Ideal, Guarani, Roselândia"
+    },
+    {
+      "slug": "sao-leopoldo",
+      "name": "São Leopoldo",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza especializada de placas solares em São Leopoldo/RS. Recupere a geração dos seus painéis com serviço técnico profissional. Produtos biodegradáveis, sem danos ao vidro antirreflexo.",
+      "title": "Limpeza de Placas Solares em São Leopoldo | SNDLimp",
+      "context": "São Leopoldo, berço da colonização alemã no RS, combina centros universitários com um polo metalmecânico expressivo. A poluição atmosférica local reduz visivelmente a captação solar — limpeza periódica é essencial.",
+      "bairros": "Centro, Scharlau, Vicentina, Campina, Arroio da Muralha, Feitoria, Rio dos Sinos, Morro do Gaia, São Miguel, Cristo Rei, Santa Teresa, Jardim América"
+    },
+    {
+      "slug": "canoas",
+      "name": "Canoas",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza profissional de painéis solares em Canoas/RS. Maior cidade da região metropolitana, maior acúmulo de poluição. Equipamento adequado, sem riscos ao seu sistema fotovoltaico.",
+      "title": "Limpeza de Placas Solares em Canoas | SNDLimp",
+      "context": "Canoas, segunda maior cidade do RS, tem intensa atividade industrial e refinaria de petróleo. A poluição atmosférica elevada exige limpeza mais frequente dos painéis solares para manter a geração no máximo.",
+      "bairros": "Centro, Marechal Rondon, Niterói, São Luís, Igara, Olaria, Mato Grande, Fátima, Harmonia, Mathias Velho, Rio Branco, Guajuviras"
+    },
+    {
+      "slug": "campo-bom",
+      "name": "Campo Bom",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Campo Bom/RS. Polo calçadista e moveleiro, sua placa precisa de atenção especial. Agende uma limpeza profissional e recupere a geração perdida.",
+      "title": "Limpeza de Placas Solares em Campo Bom | SNDLimp",
+      "context": "Campo Bom, conhecida como Cidade Jardim, tem parque industrial diversificado nos setores calçadista e moveleiro. A proximidade com rodovias movimentadas aumenta a deposição de fuligem sobre os painéis.",
+      "bairros": "Centro, Aurora, Operária, Celeste, Itapema, 4 Colônias, Vila Rica, Floresta, Santa Lúcia, Santo Antônio, Paulista"
+    },
+    {
+      "slug": "sapiranga",
+      "name": "Sapiranga",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza especializada de painéis solares em Sapiranga/RS. Polo calçadista com acúmulo de poluição industrial. Serviço profissional com escovas específicas e água deionizada.",
+      "title": "Limpeza de Placas Solares em Sapiranga | SNDLimp",
+      "context": "Sapiranga, importante polo calçadista do Vale do Sinos, tem atividade industrial concentrada. A poluição das indústrias de calçados e o tráfego pesado na RS-239 afetam diretamente a eficiência dos painéis solares.",
+      "bairros": "Centro, São Jacó, Duas Águas, Amaral, Madre Tereza, Integração, União, Quatro Colônias, Nordeste, Lambança"
+    },
+    {
+      "slug": "esteio",
+      "name": "Esteio",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza profissional de placas solares em Esteio/RS. Cidade-sede da Expointer, com alto tráfego sazonal. Seu painel solar merece manutenção técnica de qualidade.",
+      "title": "Limpeza de Placas Solares em Esteio | SNDLimp",
+      "context": "Esteio abriga o Parque de Exposições Assis Brasil, palco da Expointer. A intensa circulação de veículos pesados durante o ano gera deposição elevada de material particulado sobre as placas solares da região.",
+      "bairros": "Centro, Triângulo, Três Marias, São Sebastião, São José, Olaria, Pedreira, Vila Pedreira, Santo Inácio"
+    },
+    {
+      "slug": "estancia-velha",
+      "name": "Estância Velha",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza técnica de painéis solares em Estância Velha/RS. Polo coureiro-calçadista com alta emissão de particulados. Recupere a geração perdida com limpeza profissional.",
+      "title": "Limpeza de Placas Solares em Estância Velha | SNDLimp",
+      "context": "Estância Velha se destaca no setor coureiro-calçadista. O processamento de couro gera emissões específicas que se acumulam sobre os painéis solares, formando crostas que a chuva não remove completamente.",
+      "bairros": "Centro, Encosta do Sol, Loteamento Müller, Campestre, Morada do Sol, Industrial, Figueiras, Rincão da Ilha"
+    },
+    {
+      "slug": "dois-irmaos",
+      "name": "Dois Irmãos",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza especializada de placas solares em Dois Irmãos/RS. Polo de malharia com colonização alemã. Mantenha seus painéis no máximo com limpeza técnica profissional.",
+      "title": "Limpeza de Placas Solares em Dois Irmãos | SNDLimp",
+      "context": "Dois Irmãos, de colonização alemã, é referência no polo de malharia do Vale do Sinos. A combinação de umidade típica do vale com resíduos têxteis acelera a sujidade nos painéis solares.",
+      "bairros": "Centro, São João, Portal da Serra, Primavera, Industrial, Bela Vista, Travessão"
+    },
+    {
+      "slug": "ivoti",
+      "name": "Ivoti",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza profissional de painéis solares em Ivoti/RS. Cidade-jardim do Vale do Sinos. Preserve seu investimento com limpeza técnica de placas solares. Equipamentos adequados.",
+      "title": "Limpeza de Placas Solares em Ivoti | SNDLimp",
+      "context": "Ivoti, conhecida como Cidade-Jardim, tem forte colonização alemã e paisagens preservadas. A vegetação abundante e a umidade elevada contribuem para acúmulo de pólen, musgo e resíduos orgânicos nos painéis.",
+      "bairros": "Centro, Harmonia, 25 de Julho, Bom Jesus, Imigrante, Jardim do Alto, Morro do Leão"
+    },
+    {
+      "slug": "sapucaia-do-sul",
+      "name": "Sapucaia do Sul",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Sapucaia do Sul/RS. Cidade industrial com alta demanda por manutenção de painéis. Recupere eficiência com limpeza profissional sem riscos.",
+      "title": "Limpeza de Placas Solares em Sapucaia do Sul | SNDLimp",
+      "context": "Sapucaia do Sul tem parque industrial diversificado com destaque para o setor metalmecânico. A emissão de particulados finos exige limpeza mais frequente dos módulos fotovoltaicos para manter a geração ideal.",
+      "bairros": "Centro, Colina Verde, São Cristóvão, Imigrante, Forte, Vargas, Jardim São Paulo, Novo Horizonte"
+    },
+    {
+      "slug": "nova-hartz",
+      "name": "Nova Hartz",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza especializada de placas solares em Nova Hartz/RS. Cidade em crescimento no Vale do Sinos. Serviço profissional com água deionizada e produtos biodegradáveis. Agende!",
+      "title": "Limpeza de Placas Solares em Nova Hartz | SNDLimp",
+      "context": "Nova Hartz é uma cidade em expansão no Vale do Sinos, com crescimento residencial acelerado. A proximidade com áreas industriais vizinhas e estradas não pavimentadas aumenta a deposição de poeira sobre os painéis.",
+      "bairros": "Centro, Araricá, Esmeralda, Industrial, Bela Vista, Santa Maria"
+    },
+    {
+      "slug": "nova-santa-rita",
+      "name": "Nova Santa Rita",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza profissional de painéis solares em Nova Santa Rita/RS. Cidade metropolitana em expansão. Placa suja perde eficiência — recupere sua geração com limpeza técnica.",
+      "title": "Limpeza de Placas Solares em Nova Santa Rita | SNDLimp",
+      "context": "Nova Santa Rita integra a região metropolitana de Porto Alegre com forte crescimento imobiliário. A atividade agrícola nas zonas limítrofes e o vento predominante carregam partículas de solo para os telhados.",
+      "bairros": "Centro, Lago Azul, Universitário, Santa Rita, Passo da Balsa, Esplanada"
+    },
+    {
+      "slug": "portao",
+      "name": "Portão",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Portão/RS. Colonização alemã, cidade tranquila. Seu sistema fotovoltaico merece manutenção profissional com equipamentos adequados. Sem riscos ao vidro.",
+      "title": "Limpeza de Placas Solares em Portão | SNDLimp",
+      "context": "Portão, de colonização alemã, preserva o ritmo interiorano. A proximidade com Novo Hamburgo e o tráfego na BR-116 trazem poluição que se acumula nos painéis solares residenciais da cidade.",
+      "bairros": "Centro, Jardim do Cedro, Santa Rita, Sulbrasileiro, Rincão do Cascalho"
+    },
+    {
+      "slug": "ararica",
+      "name": "Araricá",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza especializada de placas solares em Araricá/RS. A menor cidade do Vale do Sinos merece o melhor serviço. Equipamentos profissionais e produtos biodegradáveis.",
+      "title": "Limpeza de Placas Solares em Araricá | SNDLimp",
+      "context": "Araricá é a menor cidade do Vale do Sinos, cercada por áreas verdes e estradas de chão. A poeira de vias não pavimentadas é o principal agente de sujidade dos painéis solares na região.",
+      "bairros": "Centro, Bairro Alto, Industrial, Novo Horizonte, Vila Nova"
+    },
+    {
+      "slug": "teutonia",
+      "name": "Teutônia",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza profissional de placas solares em Teutônia/RS. Polo industrial do Vale do Taquari. Recupere a eficiência dos seus painéis com serviço técnico especializado.",
+      "title": "Limpeza de Placas Solares em Teutônia | SNDLimp",
+      "context": "Teutônia, colonização alemã, é um dos polos industriais mais dinâmicos do Vale do Taquari. A combinação de indústria metalmecânica e agropecuária gera deposição mista de particulados sobre os módulos solares.",
+      "bairros": "Centro, Languirú, Canabarro, Alesgut, Fey, Boa Vista, Teutônia Sul"
+    },
+    {
+      "slug": "colinas",
+      "name": "Colinas",
+      "pattern": "D",
+      "h1_variant": "D",
+      "eyebrow": 3,
+      "meta_desc": "SNDLimp — limpeza especializada de painéis solares em Colinas/RS. Pequena cidade do Vale do Taquari. Serviço profissional com produtos biodegradáveis e escovas específicas.",
+      "title": "Limpeza de Placas Solares em Colinas | SNDLimp",
+      "context": "Colinas é um município de colonização alemã no Vale do Taquari, com economia baseada na agropecuária. A poeira agrícola e o pólen das lavouras vizinhas são os principais fatores de perda de eficiência solar.",
+      "bairros": "Centro, Alto Colinas, Linha São Paulo, Linha Sander, Linha Francesa"
+    },
+    {
+      "slug": "imigrante",
+      "name": "Imigrante",
+      "pattern": "D",
+      "h1_variant": "D",
+      "eyebrow": 3,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Imigrante/RS. Colonização italiana no Vale do Taquari. Mantenha seus painéis gerando no máximo com limpeza profissional.",
+      "title": "Limpeza de Placas Solares em Imigrante | SNDLimp",
+      "context": "Imigrante, de colonização italiana, preserva paisagens rurais e tradição agrícola. A atividade de fruticultura e cultivo de tabaco na região gera resíduos orgânicos que se acumulam nos painéis solares.",
+      "bairros": "Centro, Linha Tigra, Linha 48, Linha Bonita, Linha Brasil"
+    },
+    {
+      "slug": "westfalia",
+      "name": "Westfália",
+      "pattern": "D",
+      "h1_variant": "D",
+      "eyebrow": 3,
+      "meta_desc": "SNDLimp — limpeza profissional de placas solares em Westfália/RS. Tradição alemã no Vale do Taquari. Limpeza especializada com equipamentos adequados e água deionizada. Agende já!",
+      "title": "Limpeza de Placas Solares em Westfália | SNDLimp",
+      "context": "Westfália, município de colonização alemã, tem economia baseada na agropecuária e pequenas indústrias. O vento predominante carrega poeira do solo agrícola, exigindo limpeza periódica dos painéis solares.",
+      "bairros": "Centro, Bairro Industrial, Linha Berghofer, Linha Bender, Linha Schmidt"
+    },
+    {
+      "slug": "marata",
+      "name": "Maratá",
+      "pattern": "D",
+      "h1_variant": "D",
+      "eyebrow": 3,
+      "meta_desc": "SNDLimp — limpeza especializada de painéis solares em Maratá/RS. Pequena cidade do Vale do Taquari. Seu sistema solar merece cuidado profissional com produtos que não agridem o vidro.",
+      "title": "Limpeza de Placas Solares em Maratá | SNDLimp",
+      "context": "Maratá encanta pelo turismo rural e pela colonização alemã preservada. A umidade típica do vale e a proximidade com o rio Caí aceleram a formação de algas e musgos nos painéis solares.",
+      "bairros": "Centro, Linha Maratá, Linha São Jacó, Linha Temerária, Rincão dos Amados"
+    }
+  ]
+}

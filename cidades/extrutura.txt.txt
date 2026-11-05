@@ -1,0 +1,12 @@
+sndlimp/
+├── cidades/
+│   ├── index.html                          ← Hub
+│   ├── novo-hamburgo.html                  ← 19 páginas geradas
+│   ├── sao-leopoldo.html
+│   └── ...
+├── scripts/
+│   ├── cidades-data.json                   ← Dados fonte
+│   └── gerar-cidades.ps1                   ← Gerador
+├── template_cidade.html                    ← Template base  
+├── index.html
+└── assets/css/style.css

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNDLimp — Limpeza de Placas Solares em {{CIDADE_NOME}}/RS</title>
+  <meta name="description" content="Limpeza técnica de placas solares em {{CIDADE_NOME}}/RS. Atendimento profissional com equipamentos adequados. Restaure a eficiência do seu sistema fotovoltaico.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://edusidegum.github.io/sndlimp/cidades/{{CIDADE_SLUG}}.html">
+  <meta property="og:title" content="SNDLimp — Limpeza de Placas Solares em {{CIDADE_NOME}}/RS">
+  <meta property="og:description" content="Limpeza técnica de placas solares em {{CIDADE_NOME}}/RS. Atendimento profissional com equipamentos adequados.">
+  <meta property="og:url" content="https://edusidegum.github.io/sndlimp/cidades/{{CIDADE_SLUG}}.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/fonts.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SNDLimp — Limpeza de Placas Solares",
+    "description": "Limpeza técnica de placas solares em {{CIDADE_NOME}}/RS",
+    "areaServed": "{{CIDADE_NOME}}, {{REGIAO}}, RS",
+    "url": "https://edusidegum.github.io/sndlimp/cidades/{{CIDADE_SLUG}}.html",
+    "telephone": "+555196033200"
+  }
+  </script>
+</head>
+<body>
+
+<!-- ═══════════ TOPBAR FIXA ═══════════ -->
+<header class="sticky-header">
+  <a href="../index.html" class="topbar-brand" aria-label="SNDLimp — Início">
+    <span class="topbar-logo-text">☀ SNDLimp<span class="topbar-logo-sub">Limpeza Técnica de Placas Solares</span></span>
+  </a>
+
+  <nav class="menu-dropdown" aria-label="Menu principal">
+    <button class="menu-toggle" aria-haspopup="true" aria-expanded="false">☰ MENU</button>
+    <ul class="menu-lista">
+      <li><a href="../economia.html">📊 Simulador</a></li>
+      <li><a href="../galeria.html">📸 Galeria</a></li>
+      <li><a href="../folder_comercial.html">📁 Folder Comercial</a></li>
+      <li><a href="../faq.html">❓ FAQ</a></li>
+    </ul>
+  </nav>
+
+  <a href="https://wa.me/555196033200?text={{WHATSAPP_MSG}}" class="btn-cta" target="_blank" rel="noopener">📱 WhatsApp</a>
+</header>
+<div class="header-spacer"></div>
+
+<!-- ═══════════ CONTEÚDO VARIÁVEL (injetado pelo JS) ═══════════ -->
+<div id="conteudo-principal"></div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <h3>☀ SNDLimp</h3>
+  <p>Limpeza Técnica de Placas Solares</p>
+  <p>{{CIDADE_NOME}}/RS — {{REGIAO}}</p>
+  <a href="https://wa.me/555196033200?text={{WHATSAPP_MSG}}" class="btn-cta footer-whats" target="_blank" rel="noopener">📱 Chamar no WhatsApp</a>
+  <p class="copyright">© 2026 SNDLimp — Todos os direitos reservados.</p>
+</footer>
+
+<!-- ═══════════ COOKIE / POLÍTICA ═══════════ -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;width:100%;background:#1a1a1a;border-top:1px solid rgba(245,166,35,0.3);padding:14px 20px;z-index:9999;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;font-size:0.82rem;color:#bbb;">
+  <span>Este site usa cookies para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="../politica.html" style="color:#F5A623;">Política de Privacidade</a>.</span>
+  <button id="cookie-accept" style="background:#F5A623;color:#000;border:none;padding:8px 20px;border-radius:50px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">OK</button>
+</div>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+// ── Cookie Banner ──
+(function(){
+  var banner = document.getElementById('cookie-banner');
+  var btn = document.getElementById('cookie-accept');
+  if (!localStorage.getItem('sndlimp_cookie')) {
+    banner.style.display = 'flex';
+  }
+  btn.addEventListener('click', function(){
+    localStorage.setItem('sndlimp_cookie', '1');
+    banner.style.display = 'none';
+  });
+})();
+</script>
+
+<!-- INJECT-CIDADE-DATA -->
+<script src="../assets/js/injector.js"></script>
+
+</body>
+</html>

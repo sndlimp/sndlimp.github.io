@@ -1,0 +1,162 @@
+[
+  {
+    "slug": "ararica",
+    "nome": "Araricá",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Araricá/RS.",
+    "profile": 0,
+    "ordem": [0, 1, 2]
+  },
+  {
+    "slug": "campo-bom",
+    "nome": "Campo Bom",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Campo Bom/RS.",
+    "profile": 1,
+    "ordem": [2, 0, 1]
+  },
+  {
+    "slug": "canoas",
+    "nome": "Canoas",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Canoas/RS.",
+    "profile": 2,
+    "ordem": [1, 2, 0]
+  },
+  {
+    "slug": "dois-irmaos",
+    "nome": "Dois Irmãos",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Dois Irmãos/RS.",
+    "profile": 3,
+    "ordem": [0, 2, 1]
+  },
+  {
+    "slug": "estancia-velha",
+    "nome": "Estância Velha",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Estância Velha/RS.",
+    "profile": 4,
+    "ordem": [2, 1, 0]
+  },
+  {
+    "slug": "esteio",
+    "nome": "Esteio",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Esteio/RS.",
+    "profile": 5,
+    "ordem": [1, 0, 2]
+  },
+  {
+    "slug": "ivoti",
+    "nome": "Ivoti",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Ivoti/RS.",
+    "profile": 6,
+    "ordem": [0, 1, 2]
+  },
+  {
+    "slug": "nova-hartz",
+    "nome": "Nova Hartz",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Nova Hartz/RS.",
+    "profile": 0,
+    "ordem": [2, 0, 1]
+  },
+  {
+    "slug": "nova-santa-rita",
+    "nome": "Nova Santa Rita",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Nova Santa Rita/RS.",
+    "profile": 1,
+    "ordem": [1, 2, 0]
+  },
+  {
+    "slug": "novo-hamburgo",
+    "nome": "Novo Hamburgo",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Novo Hamburgo/RS.",
+    "profile": 2,
+    "ordem": [0, 2, 1]
+  },
+  {
+    "slug": "portao",
+    "nome": "Portão",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Portão/RS.",
+    "profile": 3,
+    "ordem": [2, 1, 0]
+  },
+  {
+    "slug": "sao-leopoldo",
+    "nome": "São Leopoldo",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em São Leopoldo/RS.",
+    "profile": 4,
+    "ordem": [1, 0, 2]
+  },
+  {
+    "slug": "sapiranga",
+    "nome": "Sapiranga",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Sapiranga/RS.",
+    "profile": 5,
+    "ordem": [0, 1, 2]
+  },
+  {
+    "slug": "sapucaia-do-sul",
+    "nome": "Sapucaia do Sul",
+    "regiao": "Vale do Sinos",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Sapucaia do Sul/RS.",
+    "profile": 6,
+    "ordem": [2, 0, 1]
+  },
+  {
+    "slug": "colinas",
+    "nome": "Colinas",
+    "regiao": "Vale do Taquari",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Colinas/RS.",
+    "profile": 0,
+    "ordem": [1, 2, 0]
+  },
+  {
+    "slug": "imigrante",
+    "nome": "Imigrante",
+    "regiao": "Vale do Taquari",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Imigrante/RS.",
+    "profile": 1,
+    "ordem": [0, 2, 1]
+  },
+  {
+    "slug": "westfalia",
+    "nome": "Westfália",
+    "regiao": "Vale do Taquari",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Westfália/RS.",
+    "profile": 2,
+    "ordem": [2, 1, 0]
+  },
+  {
+    "slug": "teutonia",
+    "nome": "Teutônia",
+    "regiao": "Vale do Taquari",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Teutônia/RS.",
+    "profile": 3,
+    "ordem": [1, 0, 2]
+  },
+  {
+    "slug": "marata",
+    "nome": "Maratá",
+    "regiao": "Vale do Caí",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Maratá/RS.",
+    "profile": 4,
+    "ordem": [0, 1, 2]
+  },
+  {
+    "slug": "lajeado",
+    "nome": "Lajeado",
+    "regiao": "Vale do Taquari",
+    "whatsapp_msg": "Olá! Gostaria de agendar uma limpeza de placas solares em Lajeado/RS.",
+    "profile": 5,
+    "ordem": [2, 0, 1]
+  }
+]
