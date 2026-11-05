@@ -15,4 +15,4 @@ jobs:
 
       - name: Submeter sitemap ao IndexNow
         run: |
-          curl -s "https://www.bing.com/indexnow?url=https://edusidegum.github.io/sndlimp/sitemap.xml&key=edusidegum.github.io"
+          curl -s "https://www.bing.com/indexnow?url=https://sndlimp.github.io/sndlimp/sitemap.xml&key=sndlimp.github.io"
