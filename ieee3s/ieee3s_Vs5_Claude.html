@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de Perdas — SNDLimp</title>
+<meta name="description" content="SNDLimp — Diagnóstico de perdas em usinas solares.">
+<link rel="canonical" href="https://edusidegum.github.io/sndlimp/economia.html">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--sol:#F5A623;--brasa:#E84C0E;--noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;--texto:#F0F0F0;--texto2:#AAAAAA;--cinza:#999;--radius:10px;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--noite);color:var(--texto);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;min-height:100vh}
+.header-spacer{height:56px}
+.sticky-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(26,26,26,0.96);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;padding:8px 5%;border-bottom:1px solid rgba(245,166,35,0.18)}
+.topbar-logo-text{font-family:Montserrat,system-ui;font-weight:800;color:var(--sol)}
+.menu-toggle{background:none;border:none;color:#fff;font-weight:700;cursor:pointer}
+.container{max-width:880px;margin:28px auto;padding:20px}
+.hero{padding:28px 12px 18px;text-align:center;background:linear-gradient(135deg,#1a1000 0%,#0D0D0D 60%);border-bottom:2px solid var(--sol)}
+.hero h1{font-family:Barlow Condensed,system-ui;font-size:28px;color:#fff}
+.card{background:var(--carbon);border:1px solid var(--carbon3);border-radius:10px;padding:18px;margin-top:16px}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.input-row{grid-template-columns:1fr}}
+label{display:block;font-size:13px;color:var(--texto2);margin-bottom:6px}
+input[type=text],input[type=number],select{width:100%;padding:10px;border-radius:8px;border:1px solid var(--carbon3);background:var(--carbon2);color:var(--texto)}
+.meses-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:8px}
+.mes-btn{background:var(--carbon2);border:1px solid var(--carbon3);padding:10px;border-radius:8px;color:var(--texto2);cursor:pointer;font-weight:800}
+.mes-btn.ativo{background:var(--sol);color:var(--noite)}
+.resultado-box{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:12px;border-radius:8px;background:var(--carbon2);border:1px solid var(--carbon3);margin-top:8px}
+.res-item-label{font-size:11px;color:var(--texto2);text-transform:uppercase;letter-spacing:1.4px}
+.res-item-valor{font-family:Barlow Condensed,system-ui;font-size:28px;color:var(--brasa);font-weight:900}
+.grafico-wrap{height:260px;margin-top:8px}
+.diagnostico-box{background:var(--carbon2);border:1px solid var(--carbon3);padding:14px;border-radius:8px;margin-top:8px}
+.btn-wpp{display:inline-block;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:800;margin-top:10px}
+.fonte-link{color:var(--sol);text-decoration:none}
+.small{font-size:12px;color:var(--texto2)}
+</style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+
+<header class="sticky-header" role="banner">
+  <div class="topbar-brand"><span class="topbar-logo-text">☀ SNDLimp</span></div>
+  <button class="menu-toggle" aria-label="menu">☰ Menu</button>
+  <a class="btn-wpp" href="https://wa.me/555196033200" target="_blank" rel="noopener">💬 Orçamento</a>
+</header>
+<div class="header-spacer"></div>
+
+<main class="container" role="main">
+  <section class="hero">
+    <h1>Calculadora de Perdas Solares — SNDLimp</h1>
+    <p class="small">Estimativa baseada em modelo regionalizado por UF. Use o campo UF para regionalizar a taxa de acúmulo.</p>
+  </section>
+
+  <section class="card" aria-labelledby="identificacao">
+    <div id="identificacao" class="card-label small" style="color:var(--sol);margin-bottom:10px">Identificação</div>
+    <div class="input-row">
+      <div>
+        <label for="nome">Qual seu nome?</label>
+        <input id="nome" type="text" value="Samuel" maxlength="25" oninput="calcularAsync()">
+      </div>
+      <div>
+        <label for="uf">Qual seu Estado / Unidade da Federação (UF)?</label>
+        <input id="uf" type="text" value="RS" maxlength="2" oninput="calcularAsync()">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Dados da Usina</div>
+    <div class="input-row">
+      <div>
+        <label for="placas">Número de placas instaladas</label>
+        <input id="placas" type="number" value="80" min="1" oninput="calcularAsync()">
+      </div>
+      <div>
+        <label for="kwh">Valor do kWh (R$)</label>
+        <input id="kwh" type="number" value="1.1092" step="0.0001" min="0" oninput="calcularAsync()">
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Qual a última limpeza (meses atrás)?</div>
+    <div id="mesesGrid" class="meses-grid" aria-hidden="false"></div>
+    <p class="small" style="margin-top:8px">Estimativa usa fator regional por UF (fator_regional) para ajustar a perda base.</p>
+    <div style="margin-top:8px" class="small">Metodologia: perda%_base (acumulação por sujeira) × fator_regional → fração de geração perdida; fórmula usada:
+      <br><strong>Perda_Financeira_Mensal = kWp_total × GHI_médio × (perda%_base × fator_regional / 100) × tarifa_kWh</strong>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Resultados</div>
+    <div class="resultado-box" role="region" aria-live="polite">
+      <div>
+        <div class="res-item-label">Perda Mensal Estimada</div>
+        <div class="res-item-valor" id="perdaMensal">R$ –</div>
+        <div class="small" id="perdaPorPlaca"></div>
+      </div>
+      <div>
+        <div class="res-item-label">Projeção Anual (12 meses)</div>
+        <div class="res-item-valor" id="perdaAnual">R$ –</div>
+        <div style="height:8px"></div>
+        <div class="res-item-label">Perda de Captação Atual</div>
+        <div class="res-item-valor" id="perdaPct" style="font-size:20px;color:var(--sol)">– %</div>
+        <div class="small" id="perdaKwh">– kWh</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="cardAcumulado" style="display:none">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Perda Acumulada desde a última limpeza</div>
+    <div style="background:var(--carbon2);padding:12px;border-radius:8px;border:1px solid var(--carbon3)">
+      <div id="perdaAcumulada" style="font-family:Barlow Condensed;font-size:40px;color:var(--brasa)">R$ –</div>
+      <div class="small" id="perdaAcumuladaSub"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Curva de Degradação (Perda Financeira por mês)</div>
+    <div class="grafico-wrap"><canvas id="graficoPerda"></canvas></div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Diagnóstico</div>
+    <div id="diagnosticoBox" class="diagnostico-box"><p class="small">Selecione meses para gerar diagnóstico.</p></div>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Ação</div>
+    <a id="btnWpp" class="btn-wpp" href="https://wa.me/555196033200" target="_blank" rel="noopener">Quero orçamento</a>
+  </section>
+
+  <section class="card">
+    <div class="card-label small" style="color:var(--sol);margin-bottom:10px">Fontes</div>
+    <div class="small">Tabela de fatores regionais: <a class="fonte-link" href="https://edusidegum.github.io/sndlimp/ieee3s/tabelainmetieee3s.html" target="_blank" rel="noopener">tabelainmetieee3s.html</a></div>
+  </section>
+</main>
+
+<footer style="text-align:center;padding:18px 12px;color:#777;background:#070707;border-top:1px solid rgba(245,166,35,0.08)">
+  <div class="small">© 2026 SNDLimp — Todos os direitos reservados.</div>
+</footer>
+
+<script>
+/* Constantes do modelo */
+const WP_PLACA = 550; // Wp por placa
+const HORAS_PICO = 4.5; // h/dia (GHI médio em h-pico)
+const DIAS_MES = 30;
+
+/* Parâmetros do modelo de sujeira (valores base já definidos) */
+const R0 = 0.035;
+const P_REF = 600;
+const GAMMA = 1.5;
+const P_MAX = 30; // % teto da perda de captação
+/* NOTA: o fator_regional é aplicado conforme tabela sintetizada */
+
+/* Versão C: hardcoded (fallback) + tentativa de atualizar por fetch (background)
+   Mapeamento inicial UF => fator_regional (valores exemplares, ajustar conforme tabela oficial)
+   O vetor abaixo deve ser editado quando a tabela oficial mudar.
+*/
+let fatorByUF = {
+  "AC": 0.55, "AL": 0.40, "AP": 0.60, "AM": 0.50, "BA": 0.45, "CE": 0.38, "DF": 0.48, "ES": 0.36,
+  "GO": 0.44, "MA": 0.47, "MT": 0.50, "MS": 0.52, "MG": 0.39, "PA": 0.58, "PB": 0.41, "PR": 0.33,
+  "PE": 0.42, "PI": 0.46, "RJ": 0.31, "RN": 0.40, "RS": 0.30, "RO": 0.53, "RR": 0.57, "SC": 0.32,
+  "SP": 0.29, "SE": 0.43, "TO": 0.54
+};
+
+/* URL da página que contém a tabela sintetizada (mesmo diretório do projeto) */
+const TABELA_URL = 'https://edusidegum.github.io/sndlimp/ieee3s/tabelainmetieee3s.html';
+
+/* Estado */
+let tabelaAtualizada = false;
+let grafico = null;
+let mesSelecionado = 0;
+
+/* Monta botões de 1..12 meses */
+function montarBotoesMeses(){
+  const g = document.getElementById('mesesGrid');
+  g.innerHTML = '';
+  for(let i=1;i<=12;i++){
+    const b = document.createElement('button');
+    b.className = 'mes-btn';
+    b.textContent = i;
+    b.type = 'button';
+    b.addEventListener('click', ()=>selecionarMes(i));
+    g.appendChild(b);
+  }
+}
+
+/* Seleciona mês e recalcula */
+function selecionarMes(m){
+  mesSelecionado = m;
+  document.querySelectorAll('.mes-btn').forEach((btn,idx)=>btn.classList.toggle('ativo', idx+1 === m));
+  calcularAsync();
+}
+
+/* Tenta fazer fetch da tabela sintetizada e atualizar fatorByUF em background.
+   O parsing tenta localizar uma tabela com colunas contendo 'UF' e 'FATOR' (ou 'FATOR_REGIONAL' ou 'MEDIANA' convertida).
+   Se falhar, mantém o mapa hardcoded.
+*/
+async function atualizarFatoresPorFetch(){
+  try{
+    const res = await fetch(TABELA_URL, {cache:'no-store'});
+    if(!res.ok) return;
+    const txt = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(txt, 'text/html');
+    const tables = Array.from(doc.querySelectorAll('table'));
+    if(tables.length === 0) return;
+    let target = null;
+    for(const t of tables){
+      if(/UF|ESTADO/i.test(t.textContent) && /(FATOR|FATOR_REGIONAL|MEDIANA)/i.test(t.textContent)){
+        target = t;
+        break;
+      }
+    }
+    if(!target) target = tables[0];
+    const headers = Array.from(target.querySelectorAll('thead th')).map(h=>h.textContent.trim().toUpperCase());
+    let idxUF = -1, idxF = -1;
+    headers.forEach((h,i)=>{
+      if(/UF|ESTADO|UNIDADE/.test(h)) idxUF = i;
+      if(/FATOR|FATOR_REGIONAL/.test(h) || /MEDIANA/.test(h)) idxF = i;
+    });
+    const rows = Array.from(target.querySelectorAll('tbody tr')).length ? Array.from(target.querySelectorAll('tbody tr')) : Array.from(target.querySelectorAll('tr'));
+    if(idxUF === -1 || idxF === -1){
+      // heurística: tente identificar por conteúdo das células
+      for(const r of rows){
+        const cells = Array.from(r.querySelectorAll('td,th')).map(c=>c.textContent.trim());
+        if(cells.length < 2) continue;
+        for(let i=0;i<cells.length;i++){
+          const t = cells[i].toUpperCase();
+          if(/^(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)$/.test(t)){
+            idxUF = i;
+            for(let j=0;j<cells.length;j++){
+              if(j!==i && /[\d]+[.,]?\d*/.test(cells[j])) { idxF = j; break; }
+            }
+            if(idxF !== -1) break;
+          }
+        }
+        if(idxUF !== -1 && idxF !== -1) break;
+      }
+    }
+    if(idxUF === -1 || idxF === -1) return;
+    const novoMapa = {};
+    for(const r of rows){
+      const cells = Array.from(r.querySelectorAll('td,th')).map(c=>c.textContent.trim());
+      if(cells.length <= Math.max(idxUF, idxF)) continue;
+      let uf = cells[idxUF].toUpperCase().slice(0,2).replace(/[^A-Z]/g,'');
+      if(!/^[A-Z]{2}$/.test(uf)) continue;
+      let fatorTxt = cells[idxF].replace(/\./g,'').replace(',', '.').match(/[\d.]+/);
+      if(!fatorTxt) continue;
+      let num = parseFloat(fatorTxt[0]);
+      if(isNaN(num)) continue;
+      // Se a tabela oferece MEDIANA (mm/ano) em vez de fator, tentar converter: assumimos que valores típicos de fator < 5 seriam já fatores,
+      // e valores acima (ex: >10) são mm/ano — para esses convertamos conforme a função racional r = R0/(1+GAMMA*(P/P_REF)) e depois mapear para escala desejada.
+      if(num > 10){ // supõe mediana em mm
+        const r = R0 / (1 + GAMMA * (num / P_REF));
+        // normalizar r para um fator_regional comparável ao mapa existente.
+        // escala: queremos fator_regional aproximadamente entre 0.25 e 0.60 (exemplo). Aqui usamos escala linear com base em R0.
+        const fator = Math.max(0.18, Math.min(0.75, r / R0 * 0.30));
+        novoMapa[uf] = parseFloat(fator.toFixed(3));
+      } else {
+        // já é fator (0.x ou percentagem). Detectar se está em % (>1) ou fracionário.
+        if(num > 1){
+          // supõe que é porcentagem (ex: 30 -> 30%), convertendo para fração (0.30)
+          novoMapa[uf] = parseFloat((num/100).toFixed(3));
+        } else {
+          novoMapa[uf] = parseFloat(num.toFixed(3));
+        }
+      }
+    }
+    // Se conseguimos ler pelo menos 10 UFs, aceitar atualização
+    if(Object.keys(novoMapa).length >= 10){
+      fatorByUF = Object.assign({}, fatorByUF, novoMapa);
+      tabelaAtualizada = true;
+      // recalcula resultados visíveis
+      calcularAsync();
+    }
+  }catch(e){
+    // falha silenciosa: mantemos o mapa embutido
+  }
+}
+
+/* Recupera fator_regional por UF com fallback para RS */
+function obterFatorRegional(uf){
+  if(!uf || typeof uf !== 'string') uf = 'RS';
+  const u = uf.trim().toUpperCase();
+  if(/^[A-Z]{2}$/.test(u) && fatorByUF[u]) return fatorByUF[u];
+  if(fatorByUF['RS']) return fatorByUF['RS'];
+  // default conservador
+  return 0.33;
+}
+
+/* Função auxiliar de formatação */
+function fmtnum(v){
+  return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function fmtMoney(v){ return 'R$ '+fmtnum(v); }
+
+/* Atualiza gráfico com a série mensal (12 meses) */
+function atualizarGrafico(placas,kwh,pctBase,fatorRegional){
+  const labels = Array.from({length:12},(_,i)=>`${i+1}m`);
+  const potKwp = (placas * WP_PLACA) / 1000;
+  const dados = labels.map((_,i)=>{
+    const m = i+1;
+    const pctPerda = Math.min(P_MAX, Math.max(0, pctBase * m));
+    const perdaFrac = (pctPerda/100) * fatorRegional;
+    const perdaKwh = potKwp * HORAS_PICO * DIAS_MES * perdaFrac;
+    const perdaR$ = perdaKwh * kwh;
+    return Number(perdaR$.toFixed(2));
+  });
+
+  const ctx = document.getElementById('graficoPerda').getContext('2d');
+  if(grafico) grafico.destroy();
+  const grad = ctx.createLinearGradient(0,0,0,260);
+  grad.addColorStop(0,'rgba(232,76,14,0.45)');
+  grad.addColorStop(1,'rgba(245,166,35,0.06)');
+  grafico = new Chart(ctx,{
+    type:'line',
+    data:{labels,datasets:[{label:'Perda Mensal (R$)',data:dados,backgroundColor:grad,borderColor:'#E84C0E',tension:0.35,pointRadius:4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` R$ ${ctx.formattedValue}`}}},scales:{y:{ticks:{callback:v=>'R$ '+Number(v).toLocaleString('pt-BR')}}}}
+  });
+}
+
+/* Atualiza diagnósticos e elementos UI */
+function atualizarUI(nome,placas,kwh,pctPerda,fatorRegional,perdaKwh,perdaMensal,perdaAnual,perdaPorPlaca){
+  document.getElementById('perdaMensal').textContent = fmtMoney(perdaMensal);
+  document.getElementById('perdaAnual').textContent = fmtMoney(perdaAnual);
+  document.getElementById('perdaPct').textContent = pctPerda.toFixed(2) + '%';
+  document.getElementById('perdaKwh').textContent = Math.round(perdaKwh) + ' kWh';
+  document.getElementById('perdaPorPlaca').textContent = '≈ ' + fmtMoney(perdaPorPlaca) + ' / placa';
+  document.getElementById('perdaAcumulada').textContent = 'R$ –';
+  document.getElementById('perdaAcumuladaSub').textContent = '';
+  document.getElementById('cardAcumulado').style.display = 'none';
+
+  // montar diagnóstico simplificado
+  const box = document.getElementById('diagnosticoBox');
+  const shortName = (nome||'Cliente').split(' ')[0];
+  let texto = `${shortName}, perda estimada este mês: ${fmtMoney(perdaMensal)} (≈ ${Math.round(perdaKwh)} kWh).`;
+  if(perdaPorPlaca >= 25) texto = `${shortName}, perda crítica: ${fmtMoney(perdaPorPlaca)} por placa. Recomendamos limpeza imediata.`;
+  else if(perdaPorPlaca >= 15) texto = `${shortName}, perda significativa: ${fmtMoney(perdaPorPlaca)} por placa. Agende limpeza em curto prazo.`;
+  else texto = `${shortName}, perda moderada: ${fmtMoney(perdaPorPlaca)} por placa. Planeje manutenção preventiva.`;
+  box.innerHTML = `<div class="small">${texto}</div>`;
+
+  // atualizar link WhatsApp
+  const msg = encodeURIComponent(`Olá! Sou ${nome || 'Cliente'}. Tenho ${placas} placas e faz ${mesSelecionado} meses desde a última limpeza. Estimo perda mensal de ${fmtMoney(perdaMensal)}. Gostaria de orçamento.`);
+  document.getElementById('btnWpp').href = `https://wa.me/555196033200?text=${msg}`;
+}
+
+/* Calcula perdas e atualiza UI — usa o modelo final:
+   Perda_Financeira_Mensal = kWp_total × GHI_médio × (perda%_base × fator_regional / 100) × tarifa_kWh
+   onde perda%_base será calculada por r (função da mediana) e um coeficiente base R0 convertendo para %/m.
+*/
+function calcular(){
+  const nome = (document.getElementById('nome').value || '').trim() || 'Cliente';
+  const placas = Number(document.getElementById('placas').value) || 0;
+  const kwh = Number(document.getElementById('kwh').value) || 0;
+  let uf = (document.getElementById('uf').value || 'RS').toUpperCase();
+  if(!/^[A-Z]{2}$/.test(uf)) uf = 'RS';
+  if(!mesSelecionado || placas <= 0 || kwh <= 0) {
+    // limpa resultados
+    document.getElementById('perdaMensal').textContent = 'R$ –';
+    document.getElementById('perdaAnual').textContent = 'R$ –';
+    document.getElementById('perdaPct').textContent = '– %';
+    document.getElementById('perdaKwh').textContent = '– kWh';
+    document.getElementById('perdaPorPlaca').textContent = '';
+    document.getElementById('diagnosticoBox').innerHTML = '<p class="small">Selecione meses para gerar diagnóstico.</p>';
+    if(grafico){ grafico.destroy(); grafico = null; }
+    return;
+  }
+
+  // Obter fator regional (do mapa embarcado ou, se disponível, atualizado por fetch)
+  const fatorRegional = obterFatorRegional(uf);
+
+  // perda%_base por mês (em %/m) — usamos r convertido a partir de parâmetros R0,GAMMA,P_REF
+  // r é fração de radiação perdida por mês; convém transformar em % base por mês:
+  // r = R0 / (1 + GAMMA * (P_ano / P_REF))  — mas aqui como não usamos P_ano diretamente (já sintetizado em fatorRegional),
+  // mantemos perda%_base simplificado: assumimos perda%_base mensurável como R0*100 (3.5%/m) escala base,
+  // e limitamos por P_MAX ao acumular por meses.
+  const perdaPctBasePorMes = R0 * 100; // 3.5 (% por mês) como taxa base (ajustável)
+  const pctPerdaAtual = Math.min(P_MAX, perdaPctBasePorMes * mesSelecionado);
+
+  // aplicação da fórmula final
+  const kWp_total = (placas * WP_PLACA) / 1000;
+  const GHI_medio_mes = HORAS_PICO * DIAS_MES; // kWh/kWp por mês aproximado
+  const perda_frac = (pctPerdaAtual * fatorRegional) / 100; // fração da geração perdida
+  const perdaKwh = kWp_total * GHI_medio_mes * perda_frac;
+  const perdaMensal = perdaKwh * kwh;
+  const perdaAnual = perdaMensal * 12;
+  const perdaPorPlaca = perdaMensal / placas;
+
+  // atualizar UI e gráfico
+  atualizarUI(nome,placas,kwh,pctPerdaAtual,fatorRegional,perdaKwh,perdaMensal,perdaAnual,perdaPorPlaca);
+  atualizarGrafico(placas,kwh,perdaPctBasePorMes,fatorRegional);
+  atualizarAcumulado(placas,kwh,perdaPctBasePorMes,fatorRegional);
+}
+
+/* Versão assíncrona que garante tentativa de atualização da tabela antes do cálculo inicial */
+async function calcularAsync(){
+  // se tabela ainda não atualizada, dispare fetch em background (não bloqueante)
+  if(!tabelaAtualizada){
+    atualizarFatoresPorFetch(); // fire-and-forget; quando completar chamará calcularAsync via alterar tabela?
+  }
+  calcular();
+}
+
+/* Calcula perda acumulada mês a mês e exibe */
+function atualizarAcumulado(placas,kwh,perdaPctBasePorMes,fatorRegional){
+  if(!mesSelecionado || placas <= 0) { document.getElementById('cardAcumulado').style.display='none'; return; }
+  let acumulado = 0;
+  const kWp_total = (placas * WP_PLACA) / 1000;
+  const GHI_medio_mes = HORAS_PICO * DIAS_MES;
+  for(let m=1;m<=mesSelecionado;m++){
+    const pct = Math.min(P_MAX, perdaPctBasePorMes * m);
+    const perda_frac = (pct * fatorRegional) / 100;
+    const perdaKwh = kWp_total * GHI_medio_mes * perda_frac;
+    acumulado += perdaKwh * Number(document.getElementById('kwh').value || 0);
+  }
+  document.getElementById('perdaAcumulada').textContent = fmtMoney(acumulado);
+  document.getElementById('perdaAcumuladaSub').textContent = `Soma das perdas ao longo de ${mesSelecionado} ${mesSelecionado===1?'mês':'meses'}`;
+  document.getElementById('cardAcumulado').style.display = 'block';
+}
+
+/* Inicialização */
+montarBotoesMeses();
+atualizarFatoresPorFetch(); // tenta atualizar mapa em background
+
+/* bloqueio de teclas dev (mantido conforme página original) */
+document.addEventListener('keydown', function(e){
+  if(e.key==='F12' || (e.ctrlKey && e.shiftKey && (e.key==='I' || e.key==='J')) || (e.ctrlKey && (e.key==='U' || e.key==='S'))){
+    e.preventDefault(); return false;
+  }
+});
+
+/* recalcula ao carregar (situação inicial sem mês selecionado) */
+window.addEventListener('load', ()=>{ /* nada extra */ });
+</script>
+</body>
+</html>

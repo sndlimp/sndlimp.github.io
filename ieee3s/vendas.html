@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SNDLimp — Diagnóstico de eficiência fotovoltaica. Calcule quanto dinheiro a sujeira está tirando da sua usina solar. Atendemos Vale do Sinos, Vale do Taquari e região.">
+  <meta name="keywords" content="limpeza de placas solares, cálculo perda solar, eficiência fotovoltaica, diagnóstico usina solar, Vale do Sinos, Vale do Taquari, Poço das Antas, RS">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="geo.region" content="BR-RS">
+  <meta name="geo.placename" content="Vale do Sinos • Vale do Taquari • Rio Grande do Sul • Brasil">
+  <meta name="geo.position" content="-29.4333;-51.4167">
+  <meta name="ICBM" content="-29.4333, -51.4167">
+  <meta name="DC.coverage" content="Vale do Sinos, Vale do Taquari, Rio Grande do Sul, Brasil">
+  <meta name="DC.description" content="SNDLimp — Diagnóstico de perdas de produção em usinas solares.">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>Menu do Consultor — SNDLimp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #0d0d0d;
+      color: #e5e5e5;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      text-align: center;
+      padding: 48px 20px 32px;
+      background: linear-gradient(135deg, #111 0%, #1a1206 100%);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: #f59e0b;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .logo i { font-size: 2rem; }
+    h1 { font-size: 2rem; color: #f5f5f5; margin-bottom: 8px; }
+    .subtitle { font-size: 1.1rem; color: #a3a3a3; font-weight: 400; }
+    main { flex: 1; max-width: 1200px; width: 100%; margin: 0 auto; padding: 40px 20px; }
+    .section-title {
+      font-size: 1.25rem;
+      color: #f59e0b;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background-color: #141414;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 12px;
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 12px 32px rgba(245, 158, 11, 0.12);
+    }
+    .card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: #f59e0b;
+      font-size: 1.5rem;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      color: #f5f5f5;
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-size: 0.95rem;
+      color: #a3a3a3;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .card-url {
+      font-size: 0.8rem;
+      color: #737373;
+      word-break: break-all;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-url i { color: #f59e0b; font-size: 0.75rem; }
+    .flow-section { margin-bottom: 24px; }
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .flow-step {
+      background-color: #141414;
+      border: 1px solid rgba(245, 158, 11, 0.15);
+      border-radius: 10px;
+      padding: 22px;
+      position: relative;
+      transition: border-color 0.25s ease;
+    }
+    .flow-step:hover { border-color: rgba(245, 158, 11, 0.35); }
+    .flow-step::after {
+      content: '\2192';
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #f59e0b;
+      font-size: 1.25rem;
+      opacity: 0.6;
+    }
+    .flow-step:last-child::after { display: none; }
+    .flow-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .flow-title { font-size: 1rem; color: #f5f5f5; margin-bottom: 6px; }
+    .flow-desc { font-size: 0.9rem; color: #a3a3a3; }
+    footer {
+      text-align: center;
+      padding: 28px 20px;
+      background-color: #111;
+      border-top: 1px solid rgba(245, 158, 11, 0.1);
+      color: #737373;
+      font-size: 0.9rem;
+    }
+    footer strong { color: #f59e0b; font-weight: 500; }
+    @media (max-width: 768px) {
+      header { padding: 36px 20px 24px; }
+      h1 { font-size: 1.6rem; }
+      .subtitle { font-size: 1rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .flow-step::after { display: none; }
+      .flow-step { margin-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><i class="fas fa-solar-panel"></i> SNDLimp</div>
+    <h1>Menu do Consultor</h1>
+    <p class="subtitle">Estruturas de Vendas e Argumentação</p>
+  </header>
+
+  <main>
+    <h2 class="section-title"><i class="fas fa-briefcase"></i> Ferramentas de Vendas</h2>
+    <div class="cards-grid">
+      <a href="https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina1.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon"><i class="fas fa-book"></i></div>
+        <h3 class="card-title">Fontes Bibliográficas Detalhadas</h3>
+        <p class="card-desc">Base acadêmica e científica completa que fundamenta todos os argumentos técnicos utilizados nas abordagens comerciais.</p>
+        <span class="card-url"><i class="fas fa-external-link-alt"></i> https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina1.html</span>
+      </a>
+
+      <a href="https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina2.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+        <h3 class="card-title">Argumento Frio de Vendas</h3>
+        <p class="card-desc">Script e estrutura de argumentação para contato inicial com prospects, baseado em dados científicos de perda de eficiência por sujidade.</p>
+        <span class="card-url"><i class="fas fa-external-link-alt"></i> https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina2.html</span>
+      </a>
+
+      <a href="https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina3.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon"><i class="fas fa-calculator"></i></div>
+        <h3 class="card-title">Metodologia de Cálculo</h3>
+        <p class="card-desc">Método detalhado para cálculo de perdas de produção e projeção financeira, incluindo fórmulas e variáveis aplicadas.</p>
+        <span class="card-url"><i class="fas fa-external-link-alt"></i> https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina3.html</span>
+      </a>
+
+      <a href="https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina4.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon"><i class="fas fa-table"></i></div>
+        <h3 class="card-title">Tabelas de Referência INMET & Classe</h3>
+        <p class="card-desc">Dados de precipitação do INMET, classificação de sujidade e tabelas de referência para parametrização dos cálculos.</p>
+        <span class="card-url"><i class="fas fa-external-link-alt"></i> https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_Pagina4.html</span>
+      </a>
+
+      <a href="https://edusidegum.github.io/sndlimp/ieee3s/metodoieee3s.html" class="card" target="_blank" rel="noopener noreferrer">
+        <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h3 class="card-title">Fontes Região Metropolitana de Porto Alegre</h3>
+        <p class="card-desc">Estudos e referências específicas sobre impacto de sujidade em usinas solares na região metropolitana de Porto Alegre e Vale do Taquari.</p>
+        <span class="card-url"><i class="fas fa-external-link-alt"></i> https://edusidegum.github.io/sndlimp/ieee3s/metodoieee3s.html</span>
+      </a>
+    </div>
+
+    <section class="flow-section">
+      <h2 class="section-title"><i class="fas fa-route"></i> Fluxo de Abordagem</h2>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-number">1</div>
+          <h3 class="flow-title">📋 Analisar</h3>
+          <p class="flow-desc">Consultar Fontes Bibliográficas (Item 1) para embasar a conversa com dados técnicos.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">2</div>
+          <h3 class="flow-title">🗣️ Argumentar</h3>
+          <p class="flow-desc">Usar o Argumento Frio de Vendas (Item 2) no contato inicial com o prospect.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">3</div>
+          <h3 class="flow-title">📊 Comprovar</h3>
+          <p class="flow-desc">Aplicar a Metodologia de Cálculo (Item 3) para quantificar perdas e retorno.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-number">4</div>
+          <h3 class="flow-title">🗺️ Contextualizar</h3>
+          <p class="flow-desc">Reforçar com Referências Regionais (Item 5) da RMS e Vale do Taquari.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>SNDLimp</strong> © 2026 — Material interno do Consultor</p>
+  </footer>
+</body>
+</html>

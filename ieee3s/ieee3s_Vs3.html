@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="SNDLimp — Diagnóstico de eficiência fotovoltaica. Calcule quanto dinheiro a sujeira está tirando da sua usina solar. Atendemos Vale do Sinos, Vale do Taquari e região.">
+    <meta name="keywords" content="limpeza de placas solares, cálculo perda solar, eficiência fotovoltaica, diagnóstico usina solar, Vale do Sinos, Vale do Taquari, Poço das Antas, RS">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d0d0d">
+
+    <meta name="geo.region" content="BR-RS">
+    <meta name="geo.placename" content="Vale do Sinos • Vale do Taquari • Rio Grande do Sul • Brasil">
+    <meta name="geo.position" content="-29.4333;-51.4167">
+    <meta name="ICBM" content="-29.4333, -51.4167">
+
+    <meta name="DC.coverage" content="Vale do Sinos, Vale do Taquari, Rio Grande do Sul, Brasil">
+    <meta name="DC.description" content="SNDLimp — Diagnóstico de perdas de produção em usinas solares.">
+
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<style>
+    body {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+
+    <meta property="og:title" content="SNDLimp — Calculadora de Perdas Solares">
+    <meta property="og:description" content="Descubra em segundos quanto dinheiro a sujeira acumulada está retirando da sua geração.">
+    <meta property="og:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://edusidegum.github.io/sndlimp/economia.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <title>Calculadora de Perdas — SNDLimp</title>
+
+    <link rel="canonical" href="https://edusidegum.github.io/sndlimp/economia.html">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://edusidegum.github.io/menu/bloco-includes.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;
+            --noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;
+            --cinza:#999;--texto:#F0F0F0;--texto2:#AAAAAA;--verde-ok:#4CAF50;--radius:10px;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+        body{background:var(--noite);color:var(--texto);font-family:'Inter',sans-serif;min-height:100vh;overflow-x:hidden;}
+
+        .sticky-header {
+            position:fixed;top:0;left:0;width:100%;z-index:10000;
+            background:rgba(26,26,26,0.96);
+            backdrop-filter:blur(8px);
+            -webkit-backdrop-filter:blur(8px);
+            border-bottom:1px solid rgba(245,166,35,0.25);
+            padding:5px 5%;
+            display:grid;
+            grid-template-columns:1fr auto 1fr;
+            align-items:center;gap:8px;min-height:40px;
+        }
+        .sticky-header .topbar-brand {
+            display:flex;align-items:center;gap:8px;
+            text-decoration:none;justify-self:start;
+        }
+        .sticky-header .topbar-logo-text {
+            font-family:'Montserrat',sans-serif;
+            font-weight:800;font-size:1.1rem;
+            color:#F5A623;letter-spacing:1px;white-space:nowrap;
+        }
+        .sticky-header .topbar-logo-sub {
+            font-size:0.65rem;color:#aaa;display:block;
+            letter-spacing:0;text-transform:none;font-weight:400;
+        }
+        .menu-dropdown{position:relative;justify-self:center;}
+        .menu-toggle {
+            background:none;border:none;color:#fff;
+            font-family:'Montserrat',sans-serif;
+            font-size:1rem;font-weight:700;text-transform:uppercase;
+            letter-spacing:1px;cursor:pointer;padding:10px 14px;
+            transition:color 0.3s ease;
+        }
+        .menu-toggle:hover{color:#F5A623;}
+        .menu-lista {
+            display:none;position:absolute;top:100%;left:50%;
+            transform:translateX(-50%);margin-top:6px;
+            background:#1e1e1e;
+            border:1px solid rgba(245,166,35,0.3);
+            border-radius:8px;list-style:none;min-width:190px;
+            z-index:10001;overflow:hidden;
+            box-shadow:0 8px 24px rgba(0,0,0,0.6);padding:0;
+        }
+        .menu-lista li{border-bottom:1px solid rgba(255,255,255,0.05);}
+        .menu-lista li:last-child{border-bottom:none;}
+        .menu-lista a {
+            display:block;padding:11px 16px;color:#d6d6d6;
+            text-decoration:none;font-size:0.85rem;text-align:center;
+            transition:background 0.2s,color 0.2s;
+        }
+        .menu-lista a:hover{background:rgba(245,166,35,0.12);color:#F5A623;}
+        .menu-dropdown:focus-within .menu-lista,
+        .menu-dropdown:hover .menu-lista{display:block;}
+        .sticky-header .btn-cta {
+            background:#25D366;color:#fff;text-decoration:none;
+            font-family:'Montserrat',sans-serif;
+            font-size:0.8rem;font-weight:700;padding:8px 18px;
+            border-radius:50px;white-space:nowrap;
+            box-shadow:0 2px 10px rgba(37,211,102,0.4);
+            justify-self:end;flex-shrink:0;transition:all 0.3s ease;
+        }
+        .sticky-header .btn-cta:hover{background:#1fb950;}
+        .header-spacer{min-height:40px;}
+
+        .hero{background:linear-gradient(135deg,#1a1000 0%,#0D0D0D 60%);border-bottom:2px solid var(--sol);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden;}
+        .hero::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(245,166,35,0.12) 0%,transparent 70%);pointer-events:none;}
+        .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sol);margin-bottom:10px;}
+        .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(26px,5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:1px;line-height:1.1;color:#fff;}
+        .hero h1 span{color:var(--sol);}
+        .hero-sub{margin-top:8px;font-size:13px;color:var(--texto2);max-width:520px;margin-inline:auto;line-height:1.5;}
+
+        .container{max-width:780px;margin:0 auto;padding:28px 20px 40px;}
+
+        .card{background:var(--carbon);border:1px solid var(--carbon3);border-radius:var(--radius);padding:24px 22px;margin-bottom:18px;}
+        .card-label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sol);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+      .card-label-line{flex:1;height:1px;background:var(--carbon3);}
+
+        label.field-label{display:block;font-size:13px;color:var(--texto2);margin-bottom:6px;font-weight:500;}
+        input[type="text"],input[type="number"]{width:100%;background:var(--carbon2);border:1px solid var(--carbon3);border-radius:7px;color:var(--texto);font-family:'Inter',sans-serif;font-size:15px;padding:11px 14px;outline:none;transition:border-color .2s;}
+        input[type="text"]:focus,input[type="number"]:focus{border-color:var(--sol);}
+        .input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        @media(max-width:520px){.input-row{grid-template-columns:1fr;}}
+
+        .meses-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:4px;}
+        @media(max-width:480px){.meses-grid{grid-template-columns:repeat(4,1fr);}}
+        .mes-btn{background:var(--carbon2);border:1px solid var(--carbon3);border-radius:7px;color:var(--texto2);font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;padding:10px 4px;cursor:pointer;transition:all .15s;text-align:center;}
+        .mes-btn:hover{border-color:var(--sol);color:var(--sol);}
+        .mes-btn.ativo{background:var(--sol);border-color:var(--sol);color:var(--noite);}
+        .meses-hint{margin-top:8px;font-size:11px;color:var(--cinza);}
+
+        .disclaimer{background:rgba(245,166,35,0.06);border-left:3px solid var(--sol);border-radius:0 7px 7px 0;padding:12px 14px;font-size:12px;color:var(--texto2);line-height:1.6;margin-top:14px;}
+        .disclaimer strong{color:var(--sol);}
+
+        .resultado-box{background:var(--carbon2);border:1px solid var(--carbon3);border-radius:var(--radius);padding:20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px;}
+        @media(max-width:480px){.resultado-box{grid-template-columns:1fr;}}
+        .res-item-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto2);margin-bottom:4px;}
+        .res-item-valor{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:900;color:var(--brasa);line-height:1;}
+        .res-perda-placa{font-size:12px;color:var(--texto2);margin-top:4px;}
+
+        .grafico-wrap{position:relative;height:260px;margin-top:4px;}
+
+        .diagnostico-box{background:var(--carbon2);border-radius:var(--radius);border:1px solid var(--carbon3);padding:20px 18px;margin-top:4px;position:relative;overflow:hidden;}
+        .diagnostico-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sol-vivo),var(--brasa));}
+        .diag-texto{font-size:14px;line-height:1.75;color:var(--texto);}
+        .diag-texto .nome{color:var(--sol);font-weight:600;}
+        .diag-vazio{font-size:13px;color:var(--cinza);font-style:italic;}
+
+        .urgencia-badge{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;font-weight:700;}
+        .badge-atencao{background:rgba(76,175,80,0.15);color:#4CAF50;border:1px solid #4CAF50;}
+        .badge-problema{background:rgba(245,166,35,0.15);color:var(--sol);border:1px solid var(--sol);}
+        .badge-grave{background:rgba(255,140,0,0.15);color:var(--sol-vivo);border:1px solid var(--sol-vivo);}
+        .badge-critico{background:rgba(232,76,14,0.2);color:var(--brasa);border:1px solid var(--brasa);}
+        .badge-urgente{background:rgba(232,76,14,0.3);color:#ff4444;border:1px solid #ff4444;}
+
+        .btn-wpp{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:linear-gradient(135deg,#25D366,#128C7E);Color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:19px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:18px 24px;border:none;border-radius:var(--radius);cursor:pointer;text-decoration:none;transition:filter .2s,transform .15s;margin-top:6px;}
+        .btn-wpp:hover{filter:brightness(1.1);transform:translateY(-1px);}
+
+        .fonte-item{padding:13px 0;border-bottom:1px solid var(--carbon3);}
+        .fonte-item:last-child{border-bottom:none;padding-bottom:2px;}
+        .fonte-num{font-family:'Barlow Condensed',sans-serif;font-size:10px;letter-spacing:2px;color:var(--sol);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
+        .fonte-titulo{font-size:12px;font-weight:600;color:var(--texto);margin-bottom:4px;line-height:1.4;}
+        .fonte-desc{font-size:11px;color:var(--texto2);line-height:1.6;margin-bottom:6px;}
+        .fonte-link{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--sol);text-decoration:none;opacity:.85;transition:opacity .15s;}
+        .fonte-link:hover{opacity:1;text-decoration:underline;}
+
+        .site-footer{background:#0a0a0a;border-top:1px solid rgba(245,166,35,0.2);padding:40px 20px;text-align:center;margin-top:40px;}
+        .site-footer h3{color:#F5A623;margin-bottom:10px;font-size:1.2rem;}
+        .site-footer p{color:#888;font-size:0.85rem;margin-bottom:6px;}
+        .site-footer .footer-whats{display:inline-block;margin-top:16px;}
+        .site-footer .copyright{margin-top:20px;font-size:0.7rem;color:#555;}
+        .btn-cta-hero{display:inline-block;background:#25D366;color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;text-transform:uppercase;text-decoration:none;padding:14px 32px;border-radius:50px;letter-spacing:0.5px;box-shadow:0 6px 20px rgba(37,211,102,0.3);transition:all 0.3s ease;}
+        .btn-cta-hero:hover{background:#1fb950;transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,0.45);}
+
+        @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+        .fade-in{animation:fadeIn .35s ease forwards;}
+
+        @media(max-width:600px){
+            .sticky-header{padding:6px 3%;min-height:auto;grid-template-columns:auto 1fr auto;gap:6px;}
+            .sticky-header .topbar-logo-text{font-size:0.9rem;}
+            .sticky-header .topbar-logo-sub{display:none;}
+            .menu-toggle{font-size:0.82rem;padding:6px 10px;}
+            .sticky-header .btn-cta{font-size:0.68rem;padding:6px 12px;}
+            .header-spacer{min-height:50px;}
+            .hero{padding:28px 16px 20px;}
+        }
+    </style>
+</head>
+    
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+
+<header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+    <a href="https://edusidegum.github.io/sndlimp/" aria-label="Página inicial SNDLimp" class="topbar-brand">
+        <span class="topbar-logo-text">☀ SNDLimp<span class="topbar-logo-sub">Limpeza Técnica de Placas Solares</span></span>
+    </a>
+
+    <nav class="menu-dropdown" aria-label="Menu de navegação">
+        <button class="menu-toggle" aria-label="Abrir menu">☰ Menu</button>
+        <ul class="menu-lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="folder_comercial.html">Nossa Proposta</a></li>
+            <li><a href="galeria.html">Galeria de Fotos</a></li>
+            <li><a href="economia.html">Simulador</a></li>
+
+        </ul>
+    </nav>
+
+    <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta" target="_blank" rel="noopener" aria-label="Solicitar orçamento no WhatsApp">
+        💬 Solicite Orçamento
+    </a>
+</header>
+
+<div class="header-spacer"></div>
+
+<div class="hero">
+    <div class="hero-eyebrow">☀ Diagnóstico de Eficiência Fotovoltaica</div>
+    <h1>Análise de Perdas de<br><span>Produção em Usinas Solares</span></h1>
+    <p class="hero-sub">Descubra em segundos quanto dinheiro a sujeira acumulada está retirando da sua geração — e do seu bolso.</p>
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-label">Identificação</div>
+        <div class="input-row">
+            <div>
+                <label class="field-label" for="nome">Qual Seu nome?</label>
+                <input type="text" id="nome" maxlength="25" value="Samuel" placeholder="Até 25 caracteres" oninput="calcular()">
+            </div>
+            <div>
+                <label class="field-label" for="uf">Qual seu Estado / Unidade da Federação (UF)?</label>
+                <input type="text" id="uf" maxlength="2" value="RS" placeholder="Ex: RS" oninput="calcular()">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Dados da Usina</div>
+        <div class="input-row">
+            <div>
+                <label class="field-label" for="placas">Qual o Número de placas instaladas?</label>
+                <input type="number" id="placas" value="80" min="1" max="9999" oninput="calcular()">
+            </div>
+            <div>
+                <label class="field-label" for="kwh">Valor do kWh (R$)</label>
+                <input type="number" id="kwh" value="1.1092" step="0.0001" min="0" oninput="calcular()">
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Qual a Última Limpeza (meses atrás)?</div>
+        <div class="meses-grid" id="mesesGrid"></div>
+        <p class="meses-hint">⚠ Estimativa baseada na normal pluviométrica anual (MEDIANA INMET) por Unidade da Federação usada para regionalizar a taxa de acúmulo de sujeira.</p>
+        <div class="disclaimer">
+            <strong>Nota metodológica:</strong> Este modelo usa a mediana anual de precipitação por UF (coluna "MEDIANA" da tabela oficial) para estimar a taxa mensal de acúmulo de sujeira; a partir dessa taxa calculamos a perda percentual acumulada mês a mês. Os valores exibidos são estimativas para diagnóstico.
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Estimativa de Perda Financeira</div>
+        <div class="resultado-box">
+            <div class="res-item">
+                <div class="res-item-label">Perda Mensal Estimada</div>
+                <div class="res-item-valor" id="perdaMensal">R$ –</div>
+                <div class="res-perda-placa" id="perdaPorPlaca"></div>
+            </div>
+            <div class="res-item">
+                <div class="res-item-label">Projeção Anual (12 meses)</div>
+                <div class="res-item-valor" id="perdaAnual">R$ –</div>
+            </div>
+            <div class="res-item">
+                <div class="res-item-label">Perda de Captação Atual</div>
+                <div class="res-item-valor" id="perdaPct" style="color:var(--sol)">– %</div>
+            </div>
+            <div class="res-item">
+                <div class="res-item-label">Geração Perdida / Mês</div>
+                <div class="res-item-valor" id="perdaKwh" style="color:var(--texto2);font-size:24px">– kWh</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="cardAcumulado" style="display:none;">
+        <div class="card-label">O que já foi embora desde a última limpeza</div>
+        <div style="background:var(--carbon2);border:1px solid var(--carbon3);border-radius:var(--radius);padding:20px 18px;">
+            <p style="font-size:13px;color:var(--texto2);line-height:1.65;margin-bottom:16px;">
+                Desde a sua última manutenção, considerando a degradação progressiva mês a mês, <strong style="color:var(--texto);">você provavelmente já perdeu:</strong>
+            </p>
+            <div style="text-align:center;padding:14px 0 10px;">
+                <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--texto2);margin-bottom:6px;">Perda Acumulada Estimada</div>
+                <div id="perdaAcumulada" style="font-family:'Barlow Condensed',sans-serif;font-size:52px;font-weight:900;color:var(--brasa);line-height:1;">R$ –</div>
+                <div id="perdaAcumuladaSub" style="font-size:12px;color:var(--texto2);margin-top:6px;"></div>
+            </div>
+            <p style="font-size:12px;color:var(--cinza);line-height:1.6;margin-top:14px;border-top:1px solid var(--carbon3);padding-top:12px;">
+                💡 <em>Este valor representa a soma das perdas mensais crescentes desde o mês 1 até o mês selecionado. Cada mês sem limpeza a perda é maior que o anterior — e o acumulado cresce rapidamente.</em>
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Curva de Degradação — Perda Financeira por Mês sem Limpeza</div>
+        <div class="grafico-wrap"><canvas id="graficoPerda"></canvas></div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Diagnóstico Personalizado</div>
+ <div class="diagnostico-box" id="diagnosticoBox">
+            <p class="diag-vazio">Selecione o número de meses acima para ver o diagnóstico.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-label">Próximo Passo</div>
+        <a id="btnWpp" class="btn-wpp" href="https://wa.me/555196033200" target="_blank" rel="noopener">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198
+.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Preciso de orçamento para limpar minhas placas solares
+        </a>
+    </div>
+
+    <div class="card"> 
+<div class="card-label">
+    Fontes de Pesquisa
+    <span class="card-label-line"></span>
+    <a href="https://edusidegum.github.io/sndlimp/ieee3s/fontesieee3s_pagina1.html" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sol);font-weight:600;text-decoration:none;">Mais</a>
+</div>
+        <div class="fonte-item">
+            <div class="fonte-num">Fonte 01</div>
+            <div class="fonte-titulo">IEA-PVPS T13-21:2022 — Soiling Losses: Impact on the Performance of Photovoltaic Power Plants</div>
+            <div class="fonte-desc">Agência Internacional de Energia (IEA) — Programa de Sistemas de Energia Fotovoltaica. Relatório técnico internacional que classifica a sujidade como o principal fator de perda de rendimento após a irradiância, com impacto estimado de 3 a 5% na produção anual global, podendo ser significativamente maior em regiões com baixa pluviosidade ou alta poluição urbana.</div>
+            <a class="fonte-link" href="https://iea-pvps.org/key-topics/soiling-losses-impact-on-the-performance-of-photovoltaic-power-plants/" target="_blank" rel="noopener">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                iea-pvps.org — Relatório completo
+            </a>
+        </div>
+
+        <div class="fonte-item">
+            <div class="fonte-num">Fonte 02</div>
+            <div class="fonte-titulo">CBENS 2018 — Influência da Sujeira na Geração Fotovoltaica</div>
+            <div class="fonte-desc">VII Congresso Brasileiro de Energia Solar, Gramado/RS. Estudo de caso conduzido no Centro Universitário de Patos de Minas (UNIPAM/MG), medindo comparativamente strings com e sem limpeza. Concluiu que a ausência de manutenção influencia diretamente a geração, com ganho de eficiência de 10,26% após limpeza em condições reais de operação urbana no Brasil.</div>
+            <a class="fonte-link" href="https://anaiscbens.emnuvens.com.br/cbens/article/download/655/655/" target="_blank" rel="noopener">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                anaiscbens.emnuvens.com.br — Artigo completo (PDF)
+            </a>
+        </div>
+
+        <div class="fonte-item">
+            <div class="fonte-num">Fonte 03</div>
+            <div class="fonte-titulo">UFSC / Canal Solar (2023) — Impacto da Sujeira e Poluição em Sistemas Solares Urbanos</div>
+            <div class="fonte-desc">Pesquisa conduzida pela Universidade Federal de Santa Catarina analisando sistemas fotovoltaicos em operação no Brasil. Os resultados demonstraram aumento de até 25% na potência registrada pelos inversores imediatamente após limpeza profissional, evidenciando o impacto direto da manutenção periódica na receita do produtor.</div>
+            <a class="fonte-link" href="https://canalsolar.com.br/sujidade-em-modulos-calculo-prevencao-futuro/" target="_blank" rel="noopener">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                canalsolar.com.br — Artigo completo
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<footer class="site-footer">
+    <div class="container" style="text-align:center;">
+        <h3>
+            <a href="https://www.instagram.com/sndlimp/" target="_blank" rel="noopener" aria-label="Instagram SNDLimp" style="color:#F5A623;text-decoration:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                ☀ SNDLimp
+            </a>
+        </h3>
+        <p><strong>Limpeza Especializada em Placas Solares</strong></p>
+        <p>📞 Samuel Sidegum: (51) 99603-3200</p>
+        <p>📞 Eduardo Sidegum: (51) 99966-3200</p>
+        <p>📍 Atendimento em Poço das Antas e região</p>
+
+        <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta-hero footer-whats" target="_blank" rel="noopener">
+            💬 Solicite Orçamento
+        </a>
+
+        <p class="copyright">&copy; 2026 SNDLimp — Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script>
+let mesSelecionado=0,grafico=null;
+const WP_PLACA=550,HORAS_PICO=4.5,DIAS_MES=30;
+
+const R0 = 0.035;
+const P_REF = 600;
+const GAMMA = 1.5;
+const P_MAX = 30;
+const MAP_MAX = 0.40;
+
+let medianaByUF = {};
+let tabelaCarregada = false;
+
+const TABELA_URL = 'https://edusidegum.github.io/sndlimp/ieee3s/tabelainmetieee3s_Vs5.html';
+
+async function carregarTabelaMedianas(){
+  try{
+    const res = await fetch(TABELA_URL, {cache:'no-store'});
+    if(!res.ok) throw new Error('Não foi possível carregar tabela');
+    const txt = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(txt,'text/html');
+    const tables = Array.from(doc.querySelectorAll('table'));
+    let targetTable = null;
+    for(const t of tables){
+      if(/MEDIANA/i.test(t.textContent)){
+        targetTable = t;
+        break;
+      }
+    }
+    if(!targetTable){
+      const el = doc.evaluate("//*[contains(translate(text(),'abcdefghijklmnopqrstuvwxyz','ABCDEFGHIJKLMNOPQRSTUVWXYZ'),'MEDIANA')]", doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+      if(el){
+        const tbl = el.closest('table') || el.querySelector('table') || (el.parentElement && el.parentElement.querySelector('table'));
+        if(tbl) targetTable = tbl;
+      }
+    }
+    if(!targetTable){
+      tabelaCarregada = false;
+      return;
+    }
+    const headers = Array.from(targetTable.querySelectorAll('thead th')).map(h=>h.textContent.trim().toUpperCase());
+    let idxUF = -1, idxMed = -1;
+    if(headers.length){
+      headers.forEach((h,i)=>{
+        if(/UF|ESTADO|UNIDADE/i.test(h)) idxUF = i;
+        if(/MEDIANA/i.test(h)) idxMed = i;
+      });
+    } else {
+      const firstRowCells = targetTable.querySelectorAll('tr');
+      if(firstRowCells.length){
+        const firstTexts = Array.from(firstRowCells[0].querySelectorAll('th,td')).map(x=>x.textContent.trim().toUpperCase());
+        firstTexts.forEach((h,i)=>{
+          if(/UF|ESTADO|UNIDADE/i.test(h)) idxUF = i;
+          if(/MEDIANA/i.test(h)) idxMed = i;
+        });
+      }
+    }
+    const rows = Array.from(targetTable.querySelectorAll('tbody tr, tr'));
+    if(idxUF===-1 || idxMed===-1){
+      for(const r of rows){
+        const cells = Array.from(r.querySelectorAll('td,th')).map(c=>c.textContent.trim());
+        for(let i=0;i<cells.length;i++){
+          const t = cells[i].toUpperCase();
+          if(/^\b(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO)\b$/.test(t)){
+            if(idxUF===-1) idxUF = i;
+          }
+          if(/^\d+([.,]\d+)?$/.test(cells[i]) && cells[i].length<8){
+            if(idxMed===-1) idxMed = i;
+          }
+        }
+        if(idxUF!==-1 && idxMed!==-1) break;
+      }
+    }
+    medianaByUF = {};
+    for(const r of rows){
+      const cells = Array.from(r.querySelectorAll('td,th')).map(c=>c.textContent.trim());
+      if(cells.length===0) continue;
+      let ufVal = null, medVal = null;
+      if(idxUF>=0 && idxUF<cells.length) ufVal = cells[idxUF].toUpperCase();
+      if(idxMed>=0 && idxMed<cells.length) medVal = cells[idxMed];
+      if(ufVal && medVal){
+        const m = medVal.replace(/\./g,'').replace(',', '.').match(/[\d.]+/);
+        if(m){
+          const num = parseFloat(m[0]);
+          if(!isNaN(num)){
+            const ufNorm = ufVal.match(/[A-Z]{2}/) ? ufVal.match(/[A-Z]{2}/)[0] : ufVal.slice(0,2).toUpperCase();
+            medianaByUF[ufNorm] = num;
+          }
+        }
+      }
+    }
+    tabelaCarregada = Object.keys(medianaByUF).length > 0;
+  }catch(err){
+    tabelaCarregada = false;
+  }
+}
+
+function obterMedianaPorUF(uf){
+  if(!uf || typeof uf !== 'string') uf='RS';
+  const u = uf.trim().toUpperCase();
+  if(tabelaCarregada && medianaByUF[u]) return medianaByUF[u];
+  if(tabelaCarregada && medianaByUF['RS']) return medianaByUF['RS'];
+  return 600;
+}
+
+function montarBotoesMeses(){
+  const g=document.getElementById('mesesGrid');
+  g.innerHTML='';
+  for(let i=1;i<=12;i++){
+    const b=document.createElement('button');
+    b.className='mes-btn';
+    b.textContent=i;
+    b.onclick=()=>selecionarMes(i);
+    g.appendChild(b);
+  }
+}
+
+function selecionarMes(mes){
+  mesSelecionado=mes;
+  document.querySelectorAll('.mes-btn').forEach((b,i)=>b.classList.toggle('ativo',i+1===mes));
+  calcular();
+}
+
+function calcular(){
+  const nome=document.getElementById('nome').value.trim()||'Cliente';
+  const placas=parseFloat(document.getElementById('placas').value)||0;
+  const kwh=parseFloat(document.getElementById('kwh').value)||1;
+  let uf = (document.getElementById('uf') && document.getElementById('uf').value) ? document.getElementById('uf').value.trim().toUpperCase() : 'RS';
+  if(!/^[A-Za-z]{2}$/.test(uf)) uf='RS';
+  if(!mesSelecionado||placas<=0){limparResultados();return;}
+
+  const P_ano = obterMedianaPorUF(uf);
+
+  const r = R0 / (1 + GAMMA * (P_ano / P_REF));
+  if(!isFinite(r) || r<0){limparResultados();return;}
+
+  const pctPerda = Math.min(P_MAX, Math.max(0, 100 * r * mesSelecionado));
+  const fatorQueda = (pctPerda / 30) * MAP_MAX;
+  const potKwp = (placas * WP_PLACA) / 1000;
+  const geracaoNominal = potKwp * HORAS_PICO * DIAS_MES;
+
+  const perdaKwh = geracaoNominal * fatorQueda;
+  const perdaMensal = perdaKwh * kwh;
+  const perdaAnual = perdaMensal * 12;
+  const perdaPorPlaca = (placas > 0) ? (perdaMensal / placas) : 0;
+
+  document.getElementById('perdaMensal').textContent=fmt(perdaMensal);
+  document.getElementById('perdaAnual').textContent=fmt(perdaAnual);
+  document.getElementById('perdaPct').textContent=pctPerda.toFixed(2)+'%';
+  document.getElementById('perdaKwh').textContent=Math.round(perdaKwh)+' kWh';
+  document.getElementById('perdaPorPlaca').textContent='≈ '+fmt(perdaPorPlaca)+' / placa';
+
+  atualizarGrafico(placas,kwh,r,uf);
+  atualizarAcumulado(placas,kwh,r,uf);
+  atualizarDiagnostico(nome,perdaMensal,perdaPorPlaca,placas);
+  atualizarWpp(nome,perdaMensal,placas,mesSelecionado);
+}
+
+function limparResultados(){
+  ['perdaMensal','perdaAnual'].forEach(id=>document.getElementById(id).textContent='R$ –');
+  document.getElementById('perdaPct').textContent='– %';
+  document.getElementById('perdaKwh').textContent='– kWh';
+  document.getElementById('perdaPorPlaca').textContent='';
+  document.getElementById('diagnosticoBox').innerHTML='<p class="diag-vazio">Selecione o número de meses acima para ver o diagnóstico.</p>';
+  document.getElementById('cardAcumulado').style.display='none';
+  if(grafico){grafico.destroy();grafico=null;}
+}
+
+function atualizarAcumulado(placas,kwh,r,uf){
+  let total=0;
+  const potKwp=(placas*WP_PLACA)/1000;
+  for(let m=1;m<=mesSelecionado;m++){
+    const pct = Math.min(P_MAX, 100 * r * m);
+    const fq = (pct/30)*MAP_MAX;
+    total += potKwp*HORAS_PICO*DIAS_MES*fq*kwh;
+  }
+  document.getElementById('perdaAcumulada').textContent=fmt(total);
+  document.getElementById('perdaAcumuladaSub').textContent=
+    `soma das perdas ao longo de ${mesSelecionado} ${mesSelecionado===1?'mês':'meses'} sem limpeza (UF: ${uf})`;
+  document.getElementById('cardAcumulado').style.display='block';
+}
+
+function atualizarGrafico(placas,kwh,r,uf){
+  const labels=Array.from({length:12},(_,i)=>`${i+1}m`);
+  const dados=Array.from({length:12},(_,i)=>{
+    const m=i+1;
+    const pct = Math.min(P_MAX, 100 * r * m);
+    const fq=(pct/30)*MAP_MAX;
+    const potKwp=(placas*WP_PLACA)/1000;
+    return +(potKwp*HORAS_PICO*DIAS_MES*fq*kwh).toFixed(2);
+  });
+
+  const ctx=document.getElementById('graficoPerda').getContext('2d');
+  if(grafico)grafico.destroy();
+
+  const gf=ctx.createLinearGradient(0,0,0,260);
+  gf.addColorStop(0,'rgba(232,76,14,0.45)');
+  gf.addColorStop(0.5,'rgba(245,166,35,0.2)');
+  gf.addColorStop(1,'rgba(245,166,35,0.02)');
+
+  grafico=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels,
+      datasets:[{
+        label:'Perda Financeira Mensal (R$)',
+        data:dados,
+        fill:true,
+        backgroundColor:gf,
+        borderColor:'#E84C0E',
+        borderWidth:2.5,
+        pointBackgroundColor:dados.map((_,i)=>i+1===mesSelecionado?'#F5A623':'#E84C0E'),
+        pointRadius:dados.map((_,i)=>i+1===mesSelecionado?8:4),
+        pointBorderColor:dados.map((_,i)=>i+1===mesSelecionado?'#fff':'#E84C0E'),
+        pointBorderWidth:dados.map((_,i)=>i+1===mesSelecionado?2:1),
+        tension:0.4,
+      }]
+    },
+    options:{
+      responsive:true,
+      maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#1A1A1A',titleColor:'#F5A623',bodyColor:'#F0F0F0',borderColor:'#303030',borderWidth:1,
+          callbacks:{label:c=>` Perda: R$ ${c.parsed.y.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})}`}
+        }
+      },
+      scales:{
+        x:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#888',font:{family:'Inter',size:11}}},
+        y:{grid:{color:'rgba(255,255,255,0.05)'},ticks:{color:'#888',font:{family:'Inter',size:11},callback:v=>'R$ '+v.toLocaleString('pt-BR')}}
+      }
+    }
+  });
+}
+
+function atualizarDiagnostico(nome,perdaMensal,perdaPorPlaca,placas){
+  const box=document.getElementById('diagnosticoBox');
+  const n=nome.split(' ')[0];
+  let badge='',classe='',texto='';
+
+  if(perdaPorPlaca<15){
+    texto=`<span class="nome">${n}</span>, sua usina ainda opera dentro de uma faixa controlável. Mesmo assim, cada mês sem limpeza aumenta a inibição — e o prejuízo cresce. Vale programar uma manutenção preventiva antes que a curva se acelere.`;
+  } else if(perdaPorPlaca<=19){
+    badge='ATENÇÃO'; classe='badge-atencao';
+    texto=`Oi, <span class="nome">${n}</span>! Analisando o desempenho da sua usina, identificamos uma perda estimada de <strong>${fmt(perdaPorPlaca)} por placa</strong> este mês devido ao acúmulo de sujeira. Parece pouco por placa — mas no total da sua usina de <strong>${placas} placas</strong> isso já representa <strong>${fmt(perdaMensal)}</strong> que deveriam estar no seu bolso e ficaram no telhado. Como está a sua produção esta semana? Notou alguma oscilação de rendimento?`;
+  } else if(perdaPorPlaca<=29){
+    badge='PROBLEMA IDENTIFICADO'; classe='badge-problema';
+    texto=`Olá, <span class="nome">${n}</span>. Um alerta importante: a falta de manutenção está gerando uma perda de até <strong>${fmt(perdaPorPlaca)} por placa</strong> neste mês — totalizando <strong>${fmt(perdaMensal)}</strong>. Na prática, você está pagando por uma energia que o sol está gerando, mas a sujeira não está deixando entrar. Você prefere continuar deixando esse valor com a concessionária ou quer agendar uma limpeza para recuperar essa eficiência?`;
+  } else if(perdaPorPlaca<=39){
+    badge='IMPLICAÇÃO GRAVE'; classe='badge-grave';
+    texto=`Oi, <span class="nome">${n}</span>, tudo bem? O cenário da sua usina entrou em zona crítica. A perda já passa de <strong>${fmt(perdaPorPlaca)} por placa</strong> — representando <strong>${fmt(perdaMensal)} por mês</strong> nas suas <strong>${placas} placas</strong>. Esse prejuízo, em poucos meses, já pagaria várias limpezas profissionais e ainda sobraria lucro. Vale a pena continuar adiando e aceitando esse prejuízo todo mês?`;
+  } else if(perdaPorPlaca<=45){
+    badge='CUSTO DO ATRASO — URGENTE'; classe='badge-critico';
+    texto=`<span class="nome">${n}</span>, precisamos falar seriamente sobre a sua geração solar. A perda estimada chegou a <strong>${fmt(perdaPorPlaca)} por placa</strong> — total de <strong>${fmt(perdaMensal)} este mês</strong>. Isso não é oscilação comum: sua usina está operando muito abaixo da capacidade. Cada semana sem limpeza é uma quantia expressiva que some direto do seu caixa. Temos equipe disponível. Vamos estancar esse prejuízo hoje?`;
+  } else {
+    badge='PERDA CRÍTICA — AÇÃO IMEDIATA'; classe='badge-urgente';
+    texto=`<span class="nome">${n}</span>, a menos que você esteja com tanto dinheiro sobrando que não se importe em perder quase <strong>${fmt(perdaPorPlaca)} por placa todo mês</strong>, a sua usina precisa de limpeza urgente. Deixar de gerar <strong>${fmt(perdaMensal)}/mês</strong> significa que o seu investimento em energia solar está trabalhando <em>contra</em> você neste momento. O prejuízo já engoliu o valor do serviço de manutenção faz tempo. Vamos agendar para resolver isso de uma vez?`;
+  }
+
+  box.innerHTML=`<div class="fade-in">${badge?`<span class="urgencia-badge ${classe}">${badge}</span><br>`:''}<p class="diag-texto">${texto}</p></div>`;
+}
+
+function atualizarWpp(nome,perdaMensal,placas,meses){
+  const msg=encodeURIComponent(`Olá! Sou ${nome} e preciso de orçamento para limpar minhas ${placas} placas solares. Faz ${meses} ${meses===1?'mês':'meses'} desde a última limpeza e minha estimativa de perda mensal é de ${fmt(perdaMensal)}. Gostaria de agendar uma visita.`);
+  document.getElementById('btnWpp').href=`https://wa.me/555196033200?text=${msg}`;
+}
+
+function fmt(v){
+  return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+montarBotoesMeses();
+carregarTabelaMedianas();
+
+</script>
+<script>
+document.addEventListener('keydown', function(e) {
+    if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'S' || e.key === 'u' || e.key === 's'))
+    ) {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
+
+</body>
+</html>

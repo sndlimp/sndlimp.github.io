@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Metodologia de Cálculo — Perda por Sujidade | IEEE3S | SNDLimp</title>
+<meta name="description" content="Metodologia de cálculo da perda financeira por sujidade em módulos fotovoltaicos do modelo IEEE3S SNDLimp. Baseado em dados INMET, INPE/SWERA e IEA-PVPS.">
+<link rel="canonical" href="https://sndlimp.com.br/fontesieee3s_Pagina3.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metodologia de Cálculo — Perda por Sujidade | IEEE3S | SNDLimp">
+<meta property="og:description" content="Entenda como o modelo IEEE3S estima o impacto financeiro da sujidade em usinas fotovoltaicas.">
+<meta property="og:url" content="https://sndlimp.com.br/fontesieee3s_Pagina3.html">
+<meta property="og:site_name" content="SNDLimp">
+<meta property="og:locale" content="pt_BR"> 
+
+ <!-- ═══════════ SEO ON-PAGE ═══════════ -->
+    <meta name="description" content="SNDLimp — Diagnóstico de eficiência fotovoltaica. Calcule quanto dinheiro a sujeira está tirando da sua usina solar. Atendemos Vale do Sinos, Vale do Taquari e região.">
+    <meta name="keywords" content="limpeza de placas solares, cálculo perda solar, eficiência fotovoltaica, diagnóstico usina solar, Vale do Sinos, Vale do Taquari, Poço das Antas, RS">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0d0d0d">
+
+    <meta name="geo.region" content="BR-RS">
+    <meta name="geo.placename" content="Vale do Sinos • Vale do Taquari • Rio Grande do Sul • Brasil">
+    <meta name="geo.position" content="-29.4333;-51.4167">
+    <meta name="ICBM" content="-29.4333, -51.4167">
+
+    <meta name="DC.coverage" content="Vale do Sinos, Vale do Taquari, Rio Grande do Sul, Brasil">
+    <meta name="DC.description" content="SNDLimp — Diagnóstico de perdas de produção em usinas solares.">
+Sempre usar <!-- ═══════════ PROTEÇÃO CONTRA CÓPIA ═══════════ -->
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+
+
+  
+<style>
+:root {
+--bg: #0a0a0a;
+--topbar: #0d0d0d;
+--card: #1a1a1a;
+--border: #2a2a2a;
+--accent: #d4a853;
+--accentHover: #b8923d;
+--text: #f0f0f0;
+--muted: #a0a0a0;
+--success: #25d366;
+--danger: #e74c3c;
+--font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+--radius: 12px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: var(--font);
+line-height: 1.6;
+}
+a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--accentHover); text-decoration: underline; }
+.topbar {
+background: var(--topbar);
+border-bottom: 1px solid var(--border);
+padding: 14px 24px;
+position: sticky;
+top: 0;
+z-index: 1000;
+display: flex;
+align-items: center;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 12px;
+}
+.topbar .brand {
+font-weight: 700;
+font-size: 1.1rem;
+color: var(--accent);
+letter-spacing: 0.5px;
+}
+.topbar .nav {
+display: flex;
+gap: 18px;
+flex-wrap: wrap;
+}
+.topbar .nav a {
+color: var(--text);
+font-size: 0.9rem;
+}
+.topbar .nav a:hover { color: var(--accent); }
+.container {
+max-width: 960px;
+margin: 0 auto;
+padding: 32px 24px;
+}
+header.page-header {
+text-align: center;
+padding: 40px 0 32px;
+}
+header.page-header h1 {
+font-size: 1.8rem;
+color: var(--accent);
+margin-bottom: 12px;
+}
+header.page-header p.subtitle {
+color: var(--muted);
+font-size: 1.05rem;
+max-width: 720px;
+margin: 0 auto;
+}
+.card {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: var(--radius);
+padding: 28px;
+margin-bottom: 28px;
+}
+.card h2 {
+color: var(--accent);
+font-size: 1.25rem;
+margin-bottom: 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.card h2 .icon { font-size: 1.4rem; }
+.card p { margin-bottom: 14px; color: var(--text); }
+.card ul, .card ol { margin: 0 0 14px 22px; color: var(--text); }
+.card li { margin-bottom: 8px; }
+.formula-box {
+background: #111;
+border: 1px solid var(--accent);
+border-radius: var(--radius);
+padding: 22px;
+text-align: center;
+font-family: 'Courier New', Courier, monospace;
+font-size: 1.15rem;
+color: var(--accent);
+margin: 18px 0;
+overflow-x: auto;
+}
+.formula-box code { white-space: nowrap; }
+.var-list { margin: 16px 0 0 22px; color: var(--text); }
+.var-list li { margin-bottom: 10px; }
+.var-list strong { color: var(--accent); }
+table {
+width: 100%;
+border-collapse: collapse;
+margin: 20px 0;
+font-size: 0.95rem;
+}
+th, td {
+border: 1px solid var(--border);
+padding: 12px;
+text-align: left;
+}
+th { background: #141414; color: var(--accent); font-weight: 600; }
+tr:nth-child(even) { background: #151515; }
+.note {
+background: #141414;
+border-left: 4px solid var(--accent);
+padding: 16px;
+margin: 18px 0;
+border-radius: 0 8px 8px 0;
+color: var(--muted);
+font-size: 0.95rem;
+}
+.nav-links {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 36px 0 20px;
+flex-wrap: wrap;
+gap: 12px;
+}
+.nav-links a {
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: var(--radius);
+padding: 12px 20px;
+color: var(--text);
+font-weight: 500;
+}
+.nav-links a:hover {
+background: var(--accent);
+color: #0a0a0a;
+text-decoration: none;
+}
+footer {
+background: var(--topbar);
+border-top: 1px solid var(--border);
+padding: 28px 24px;
+text-align: center;
+color: var(--muted);
+font-size: 0.9rem;
+}
+footer p { margin-bottom: 8px; }
+.whatsapp-float {
+position: fixed;
+bottom: 22px;
+right: 22px;
+background: var(--success);
+color: #fff;
+border-radius: 50%;
+width: 56px;
+height: 56px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.6rem;
+box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+z-index: 1100;
+transform: transform 0.2s;
+}
+.whatsapp-float:hover { transform: scale(1.08); color: #fff; }
+@media (max-width: 640px) {
+.topbar { flex-direction: column; align-items: flex-start; }
+.topbar .nav { gap: 12px; }
+header.page-header h1 { font-size: 1.5rem; }
+.card { padding: 20px; }
+.formula-box { font-size: 0.95rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+<div class="brand">SNDLimp — IEEE3S</div>
+<<nav class="nav">
+<a href="index.html">Início</a>
+<a href="fontesieee3s.html">Calculadora</a>
+<a href="fontesieee3s_Pagina2.html">Argumento de Vendas</a>
+<a href="fontesieee3s_Pagina3.html">Metodologia</a>
+</nav>
+</div>
+
+<div class="container">
+<<header class="page-header">
+<h1>📐 Metodologia de Cálculo — Perda por Sujidade IEEE3S</h1>
+<p class="subtitle">Entenda como o modelo estima o impacto financeiro da sujidade nos módulos fotovoltaicos.</p>
+</header>
+
+<section class="card" id="problema">
+<h2><span class="icon">⚠️</span> O Problema</h2>
+<p>A sujidade acumulada sobre os módulos fotovoltaicos reduz a irradiância transmitida às células, diminuindo a geração de energia. Estudos da IEA-PVPS (T13-21:2022) indicam perda média global de 3-5% ao ano, podendo chegar a 30% em regiões áridas ou com alta poluição urbana.</p>
+</section>
+
+<section class="card" id="formula">
+<h2><span class="icon">🧮</span> Fórmula Mestra</h2>
+<p>A estimativa de perda financeira mensal segue a equação:</p>
+<div class="formula-box">
+<code>Perda_Financeira_Mensal (R$) = kWp_total × GHI_médio × (perda%_base × fator_regional / 100) × tarifa_kWh</code>
+</div>
+<ul class="var-list">
+<li><strong>kWp_total</strong> = Nº de placas × 0,55 kW (potência padrão de placa comercial)</li>
+<li><strong>GHI_médio</strong> = 4,5 kWh/kWp/dia — média brasileira simplificada, base INPE/SWERA (~135 kWh/kWp/mês)</li>
+<li><strong>perda%_base</strong> = Meses sem limpeza × 2,5% (cap máximo: 30%)</li>
+<li><strong>fator_regional</strong> = Ajuste conforme precipitação da UF (0,7x a 1,3x)</li>
+<li><strong>tarifa_kWh</strong> = Valor pago pelo cliente por kWh (R$)</li>
+</ul>
+</section>
+
+<section class="card" id="degradacao">
+<h2><span class="icon">📉</span> Degradação Linear (2,5% / mês)</h2>
+<p>O modelo adota degradação linear de 2,5% ao mês como base conservadora. Isso significa que a cada 30 dias sem limpeza, a captação de energia reduz-se em 2,5 ponto percentual, até o teto de 30% — equivalente a 12 meses sem limpeza. Este teto é consistente com a literatura (IEA-PVPS T13-21:2022) que aponta perdas máximas observadas de 30-40% em condições severas.</p>
+<table>
+<<thead>
+<tr><th>Meses sem limpeza</th><th>Perda base (%)</th><th>Perda ajustada (fator 1,0x)</th></tr>
+</thead>
+<tbody>
+<tr><td>3</td><td>7,5%</td><td>7,5%</td></tr>
+<tr><td>6</td><td>15,0%</td><td>15,0%</td></tr>
+<tr><td>9</td><td>22,5%</td><td>22,5%</td></tr>
+<tr><td>12</td><td>30,0%</td><td>30,0% (cap)</td></tr>
+<tr><td>18</td><td>30,0%</td><td>30,0% (cap)</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="card" id="fator-regional">
+<h2><span class="icon">🌧️</span> Fator Regional (INMET 1991-2020)</h2>
+<p>O Brasil possui grande variação climática. O fator regional ajusta a taxa de perda conforme a precipitação média da UF onde a usina está instalada:</p>
+<table>
+<<thead>
+<tr><th>Classe</th><th>Fator</th><th>Descrição</th><th>Exemplo de UFs</th></tr>
+</thead>
+<tbody>
+<tr><td>Baixa</td><td>0,7x</td><td>Precipitação alta — chuva remove sujidade naturalmente</td><td>AC, AL, AP, AM, BA, CE, MA, PA, PE, RO</td></tr>
+<tr><td>Média</td><td>1,0x</td><td>Precipitação moderada — fator neutro</td><td>DF, ES, GO, MT, MS, MG, PB, PR, PI, RJ, RN, RS, RR, SC, SP, SE, TO</td></tr>
+<tr><td>Alta</td><td>1,3x</td><td>Precipitação baixa — sujidade acumula mais</td><td>(reservado para regiões semiáridas severas)</td></tr>
+</tbody>
+</table>
+<p>O fator é multiplicado diretamente na perda base. Exemplo: 6 meses em Porto Alegre (RS, fator 1,0x) → perda = 15%. 6 meses em Fortaleza (CE, fator 0,7x) → perda = 10,5%.</p>
+</section>
+
+<section class="card" id="exemplo">
+<h2><span class="icon">💡</span> Exemplo Prático</h2>
+<p>Simulação para Porto Alegre (RS), sistema com 18 placas de 550 W, 6 meses sem limpeza e tarifa de R$ 0,89/kWh:</p>
+<ul class="var-list">
+<li><strong>kWp total:</strong> 18 × 0,55 = 9,9 kWp</li>
+<li><strong>GHI médio:</strong> 4,5 HSP (kWh/kWp/dia) → ~135 kWh/kWp/mês</li>
+<li><strong>Geração mensal estimada:</strong> 9,9 × 135 = 1.337 kWh/mês</li>
+<li><strong>Perda base:</strong> 6 × 2,5% = 15%</li>
+<li><strong>Fator regional RS:</strong> 1,0x (precipitação moderada)</li>
+<li><strong>Perda ajustada:</strong> 15% × 1,0 = 15%</li>
+<li><strong>Perda em kWh:</strong> 1.337 × 15% = 200 kWh/mês</li>
+<li><strong>Perda financeira:</strong> 200 × 0,89 = <strong>R$ 178/mês</strong></li>
+<li><strong>Perda anual estimada:</strong> R$ 178 × 12 = <strong>R$ 2.136/ano</strong></li>
+</ul>
+<div class="note">
+<strong>Nota:</strong> O valor de GHI = 4,5 kWh/kWp/dia representa a média brasileira de Horas de Sol Pleno (HSP). Na calculadora IEEE3S, o parâmetro é utilizado de forma simplificada para cálculo direto mensal.
+</div>
+</section>
+
+<section class="card" id="limitacoes">
+<h2><span class="icon">🛡️</span> Limitações do Modelo</h2>
+<ul>
+<li>A taxa real de sujidade é sazonal e não puramente linear.</li>
+<li>Não considera inclinação dos módulos, orientação solar ou sombreamento local.</li>
+<li>Não considera efeito "clipping" do inversor em sistemas de alta potência.</li>
+<li>Não considera chuva de barro ou poeira cimentada, comuns em regiões semiáridas.</li>
+<li>Os valores são estimativas conservadoras para fins de diagnóstico e prospecção.</li>
+</ul>
+</section>
+
+<div class="nav-links">
+<a href="fontesieee3s_Pagina2.html">← Voltar para Argumento de Vendas</a>
+<a href="fontesieee3s_Pagina4.html">Ver Tabela INMET Completa →</a>
+</div>
+</div>
+
+<a href="https://wa.me/5551996033200" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp SNDLimp">💬</a>
+
+<<footer>
+<p><strong>SNDLimp</strong> — Limpeza de Energia Solar</p>
+<p>Samuel: (51) 99603-3200 &nbsp;|&nbsp; Eduardo: (51) 99966-3200</p>
+<p>Atendimento: Poço das Antas e região</p>
+<p style="font-size: 0.8rem; margin-top: 12px;">© 2025 SNDLimp. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

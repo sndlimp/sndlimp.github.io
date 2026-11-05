@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO On-Page -->
+    <meta name="description" content="SNDLimp — Limpeza especializada em placas solares. Recupere até 25% de eficiência. Calcule sua perda financeira.">
+    <meta name="author" content="SNDLimp — Samuel & Eduardo Sidegum">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d0d0d">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Calculadora de Perdas — SNDLimp">
+    <meta property="og:description" content="Descubra quanto a sujeira está custando para sua usina solar.">
+    <meta property="og:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://edusidegum.github.io/sndlimp/economia.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <title>Calculadora de Perdas — SNDLimp</title>
+    <link rel="canonical" href="https://edusidegum.github.io/sndlimp/economia.html">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* IDENTIFICAÇÃO EM GRID — DOIS CAMPOS LADO A LADO */
+        .id-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+        @media (max-width: 600px) { .id-grid { grid-template-columns: 1fr; } }
+        .section .id-grid .form-group { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <!-- ═══════════ TOPBAR ═══════════ -->
+    <header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+        <a href="https://edusidegum.github.io/sndlimp/" aria-label="Página inicial SNDLimp" class="topbar-brand">
+            <span class="topbar-logo-text">☀ SNDLimp<span class="topbar-logo-sub">Limpeza Técnica de Placas Solares</span></span>
+        </a>
+        <nav class="menu-dropdown" aria-label="Menu de navegação">
+            <button class="menu-toggle" aria-label="Abrir menu">☰ Menu</button>
+            <ul class="menu-lista">
+                <li><a href="https://edusidegum.github.io/sndlimp/">Início</a></li>
+                <li><a href="https://edusidegum.github.io/sndlimp/#proposta">Nossa Proposta</a></li>
+                <li><a href="https://edusidegum.github.io/sndlimp/#galeria">Galeria de Fotos</a></li>
+                <li><a href="https://edusidegum.github.io/sndlimp/economia.html">Simulador</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta" target="_blank" rel="noopener" aria-label="Solicitar orçamento no WhatsApp">
+            💬 Solicite Orçamento
+        </a>
+    </header>
+    <div class="header-spacer"></div>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero" style="padding:40px 0;">
+        <div class="container">
+            <h1>☀ Diagnóstico de Eficiência Fotovoltaica</h1>
+            <p class="hero-sub">Descubra em segundos quanto a sujeira está custando para você.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════ SIMULADOR ═══════════ -->
+    <section class="section" id="simulador">
+        <div class="container">
+            <h2>🔍 Análise de Perdas de Produção em Usinas Solares</h2>
+            <p style="margin-bottom:20px; color:var(--text); line-height:1.7;">
+                Descubra em segundos quanto dinheiro a sujeira acumulada está retirando da sua geração — e do seu bolso.
+            </p>
+
+            <!-- Identificação — DOIS CAMPOS LADO A LADO (mesmo estilo Dados da Usina) -->
+            <div class="id-grid">
+                <div class="form-group">
+                    <label for="nome">Identificação</label>
+                    <input type="text" id="nome" value="Samuel" placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="uf">Qual seu Estado / Unidade da Federação</label>
+                    <input type="text" id="uf" value="RS" maxlength="2" placeholder="Ex: RS" style="text-transform:uppercase;">
+                </div>
+            </div>
+
+            <!-- Dados da Usina -->
+            <div class="form-group">
+                <label for="placas">Qual o Número de placas instaladas?</label>
+                <input type="number" id="placas" min="1" placeholder="Ex: 20">
+            </div>
+            <div class="form-group">
+                <label for="kwh">Valor do kWh (R$)</label>
+                <input type="number" id="kwh" value="1.1092" step="0.0001" placeholder="1,1092">
+            </div>
+            <div class="form-group">
+                <label for="meses">Qual a Última Limpeza (meses atrás)?</label>
+                <input type="range" id="meses" min="1" max="12" value="1" step="1">
+                <p style="margin-top:4px; font-size:0.9rem; color:var(--primary); font-weight:600;">
+                    <span id="mesesDisplay">1</span> mês(es) sem limpeza
+                </p>
+            </div>
+
+            <p class="aviso" style="font-size:0.85rem; color:#e67e22; margin:12px 0;">
+                ⚠ Estimativa com fator regional INMET: cada mês sem limpeza representa aprox. 2,5% de perda adicional na captação, ajustado pelo índice pluviométrico do estado.
+            </p>
+
+            <br>
+            <button class="btn-cta" onclick="calcular()" style="font-size:1.1rem; padding:14px 28px;">📊 CALCULAR PERDA</button>
+        </div>
+    </section>
+
+    <!-- ═══════════ RESULTADOS ═══════════ -->
+    <section class="section section-dark" id="resultados" style="display:none;">
+        <div class="container">
+            <h2>📈 Estimativa de Perda Financeira</h2>
+
+            <div class="grid-4" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin:20px 0;">
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">Perda Mensal Estimada</span>
+                    <span id="resPerdaMensal" style="display:block; font-size:1.5rem; font-weight:700; color:#d4a853;">R$ –</span>
+                </div>
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">Projeção Anual (12 meses)</span>
+                    <span id="resPerdaAnual" style="display:block; font-size:1.5rem; font-weight:700; color:#d4a853;">R$ –</span>
+                </div>
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">Perda de Captação Atual</span>
+                    <span id="resPerdaPerc" style="display:block; font-size:1.5rem; font-weight:700; color:#d4a853;">– %</span>
+                </div>
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">Geração Perdida / Mês</span>
+                    <span id="resPerdaKwh" style="display:block; font-size:1.5rem; font-weight:700; color:#d4a853;">– kWh</span>
+                </div>
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">Fator Regional (UF: <span id="resUF"></span>)</span>
+                    <span id="resFator" style="display:block; font-size:1.2rem; font-weight:700; color:#d4a853;">–</span>
+                </div>
+                <div class="card-result" style="background:rgba(212,168,83,0.08); border:1px solid rgba(212,168,83,0.2); border-radius:12px; padding:20px; text-align:center;">
+                    <span style="display:block; font-size:0.85rem; color:#999; margin-bottom:4px;">O que já foi perdido desde a última limpeza</span>
+                    <span id="resAcumulado" style="display:block; font-size:1.5rem; font-weight:700; color:#d4a853;">R$ –</span>
+                </div>
+            </div>
+
+            <p style="font-size:0.85rem; color:#999; margin-bottom:20px;">
+                💡 <em>Este valor representa a soma das perdas mensais crescentes desde o mês 1 até o mês selecionado. Cada mês sem limpeza a perda é maior que o anterior — e o acumulado cresce rapidamente.</em>
+            </p>
+
+            <h3 style="color:#d4a853; margin-bottom:16px;">Curva de Degradação — Perda Financeira por Mês sem Limpeza</h3>
+            <div style="background:#151515; border-radius:12px; padding:16px; height:300px; margin-bottom:20px;">
+                <canvas id="graficoPerda"></canvas>
+            </div>
+
+            <div id="diagnostico" style="background:#1a1a1a; border-left:4px solid #d4a853; border-radius:8px; padding:20px; margin:20px 0;">
+                <p style="color:#e0e0e0; margin:0;">Selecione o número de meses acima para ver o diagnóstico.</p>
+            </div>
+
+            <p style="margin-top:24px; font-size:0.9rem; color:#999; line-height:1.7;">
+                <strong>Nota metodológica:</strong> Este modelo adota degradação linear de 2,5% ao mês como base de cálculo, ajustada pelo fator regional de precipitação INMET 1991-2020, totalizando até 30% de inibição de captação em 12 meses — condição que, segundo a literatura fotovoltaica internacional, resulta em queda de <strong>até 40% na produção em zonas urbanas</strong> (regiões áridas podem ultrapassar esse valor). Na prática, a taxa real é sazonal e varia conforme o índice pluviométrico, proximidade de vias pavimentadas, atividade agrícola e poluição atmosférica local. Os valores exibidos são <em>estimativas conservadoras</em> para fins diagnósticos.
+            </p>
+
+            <div style="text-align:center; margin-top:30px;">
+                <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Vi%20o%20diagn%C3%B3stico%20no%20site%20e%20quero%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20das%20minhas%20placas." class="btn-cta" style="font-size:1.1rem; padding:16px 32px;" target="_blank" rel="noopener">
+                    💬 Preciso de orçamento para limpar minhas placas solares
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FONTES ═══════════ -->
+    <section class="section">
+        <div class="container">
+            <h2>📚 Fontes de Pesquisa</h2>
+            <div style="text-align:right; margin-bottom:16px;">
+                <a href="fontesieee3s_pagina1.html" style="color:#d4a853; font-weight:600; text-decoration:none;">Mais →</a>
+            </div>
+
+            <div style="margin-bottom:24px;">
+                <h3 style="color:#d4a853; margin-bottom:8px;">Fonte 01</h3>
+                <p style="color:#999; line-height:1.6;">
+                    <strong>IEA-PVPS T13-21:2022 — Soiling Losses: Impact on the Performance of Photovoltaic Power Plants</strong><br>
+                    Agência Internacional de Energia (IEA) — Programa de Sistemas de Energia Fotovoltaica. Relatório técnico internacional que classifica a sujidade como o principal fator de perda de rendimento após a irradiância, com impacto estimado de 3 a 5% na produção anual global, podendo ser significativamente maior em regiões com baixa pluviosidade ou alta poluição urbana.<br>
+                    <a href="https://iea-pvps.org/key-topics/soiling-losses-impact-on-the-performance-of-photovoltaic-power-plants/" target="_blank" rel="noopener" style="color:#d4a853;">iea-pvps.org — Relatório completo</a>
+                </p>
+            </div>
+
+            <div style="margin-bottom:24px;">
+                <h3 style="color:#d4a853; margin-bottom:8px;">Fonte 02</h3>
+                <p style="color:#999; line-height:1.6;">
+                    <strong>CBENS 2018 — Influência da Sujeira na Geração Fotovoltaica</strong><br>
+                    VII Congresso Brasileiro de Energia Solar, Gramado/RS. Estudo de caso conduzido no Centro Universitário de Patos de Minas (UNIPAM/MG), medindo comparativamente strings com e sem limpeza. Concluiu que a ausência de manutenção influencia diretamente a geração, com ganho de eficiência de 10,26% após limpeza em condições reais de operação urbana no Brasil.<br>
+                    <a href="https://anaiscbens.emnuvens.com.br/cbens/article/download/655/655/" target="_blank" rel="noopener" style="color:#d4a853;">anaiscbens.emnuvens.com.br — Artigo completo (PDF)</a>
+                </p>
+            </div>
+
+            <div style="margin-bottom:24px;">
+                <h3 style="color:#d4a853; margin-bottom:8px;">Fonte 03</h3>
+                <p style="color:#999; line-height:1.6;">
+                    <strong>UFSC / Canal Solar (2023) — Impacto da Sujeira e Poluição em Sistemas Solares Urbanos</strong><br>
+                    Pesquisa conduzida pela Universidade Federal de Santa Catarina analisando sistemas fotovoltaicos em operação no Brasil. Os resultados demonstraram aumento de até 25% na potência registrada pelos inversores imediatamente após limpeza profissional, evidenciando o impacto direto da manutenção periódica na receita do produtor.<br>
+                    <a href="https://canalsolar.com.br/sujidade-em-modulos-calculo-prevencao-futuro/" target="_blank" rel="noopener" style="color:#d4a853;">canalsolar.com.br — Artigo completo</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        <div class="container">
+            <h3><a href="https://www.instagram.com/sndlimp/" target="_blank" rel="noopener" aria-label="Instagram SNDLimp" style="color:#F5A623; text-decoration:none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                ☀ SNDLimp
+            </a></h3>
+            <p><strong>Limpeza Especializada em Placas Solares</strong></p>
+            <p>📞 Samuel Sidegum: (51) 99603-3200</p>
+            <p>📞 Eduardo Sidegum: (51) 99966-3200</p>
+            <p>📍 Atendimento em Poço das Antas e região</p>
+            <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta-hero footer-whats" target="_blank" rel="noopener">
+                💬 Solicite Orçamento
+            </a>
+            <p class="copyright">© 2026 SNDLimp — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════ WHATSAPP FLOAT ═══════════ -->
+    <a href="https://wa.me/555196033200" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.486-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+        </svg>
+    </a>
+
+    <!-- ═══════════ CDN ═══════════ -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    // =============================================================
+    // BASE DE DADOS INMET — 27 UFs (mediana usada no fator regional)
+    // =============================================================
+    const dadosINMET = {
+        AC:{mediana:190,classe:'Baixa',fator:0.7,capital:'Rio Branco',regiao:'Norte'},
+        AL:{mediana:140,classe:'Baixa',fator:0.7,capital:'Maceió',regiao:'Nordeste'},
+        AP:{mediana:225,classe:'Baixa',fator:0.7,capital:'Macapá',regiao:'Norte'},
+        AM:{mediana:200,classe:'Baixa',fator:0.7,capital:'Manaus',regiao:'Norte'},
+        BA:{mediana:145,classe:'Baixa',fator:0.7,capital:'Salvador',regiao:'Nordeste'},
+        CE:{mediana:130,classe:'Baixa',fator:0.7,capital:'Fortaleza',regiao:'Nordeste'},
+        DF:{mediana:115,classe:'Média',fator:1.0,capital:'Brasília',regiao:'Centro-Oeste'},
+        ES:{mediana:110,classe:'Média',fator:1.0,capital:'Vitória',regiao:'Sudeste'},
+        GO:{mediana:125,classe:'Média',fator:1.0,capital:'Goiânia',regiao:'Centro-Oeste'},
+        MA:{mediana:175,classe:'Baixa',fator:0.7,capital:'São Luís',regiao:'Nordeste'},
+        MT:{mediana:125,classe:'Média',fator:1.0,capital:'Cuiabá',regiao:'Centro-Oeste'},
+        MS:{mediana:115,classe:'Média',fator:1.0,capital:'Campo Grande',regiao:'Centro-Oeste'},
+        MG:{mediana:125,classe:'Média',fator:1.0,capital:'Belo Horizonte',regiao:'Sudeste'},
+        PA:{mediana:175,classe:'Baixa',fator:0.7,capital:'Belém',regiao:'Norte'},
+        PB:{mediana:120,classe:'Média',fator:1.0,capital:'João Pessoa',regiao:'Nordeste'},
+        PR:{mediana:125,classe:'Média',fator:1.0,capital:'Curitiba',regiao:'Sul'},
+        PE:{mediana:140,classe:'Baixa',fator:0.7,capital:'Recife',regiao:'Nordeste'},
+        PI:{mediana:125,classe:'Média',fator:1.0,capital:'Teresina',regiao:'Nordeste'},
+        RJ:{mediana:110,classe:'Média',fator:1.0,capital:'Rio de Janeiro',regiao:'Sudeste'},
+        RN:{mediana:100,classe:'Média',fator:1.0,capital:'Natal',regiao:'Nordeste'},
+        RS:{mediana:125,classe:'Média',fator:1.0,capital:'Porto Alegre',regiao:'Sul'},
+        RO:{mediana:195,classe:'Baixa',fator:0.7,capital:'Porto Velho',regiao:'Norte'},
+        RR:{mediana:100,classe:'Média',fator:1.0,capital:'Boa Vista',regiao:'Norte'},
+        SC:{mediana:125,classe:'Média',fator:1.0,capital:'Florianópolis',regiao:'Sul'},
+        SP:{mediana:110,classe:'Média',fator:1.0,capital:'São Paulo',regiao:'Sudeste'},
+        SE:{mediana:90,classe:'Média',fator:1.0,capital:'Aracaju',regiao:'Nordeste'},
+        TO:{mediana:125,classe:'Média',fator:1.0,capital:'Palmas',regiao:'Norte'}
+    };
+
+    function getFatorRegional(uf) {
+        const chave = uf.toUpperCase().trim();
+        const estado = dadosINMET[chave] || dadosINMET['RS'];
+        return { fator: estado.fator, classe: estado.classe, mediana: estado.mediana, capital: estado.capital };
+    }
+
+    // =============================================================
+    // SLIDER MONTHS
+    // =============================================================
+    const sliderMeses = document.getElementById('meses');
+    const displayMeses = document.getElementById('mesesDisplay');
+    sliderMeses.addEventListener('input', function() {
+        displayMeses.textContent = this.value;
+    });
+    displayMeses.textContent = sliderMeses.value;
+
+    // =============================================================
+    // MASCARA UF: só 2 letras, uppercase
+    // =============================================================
+    document.getElementById('uf').addEventListener('input', function() {
+        this.value = this.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2);
+    });
+
+    // =============================================================
+    // FORMATACAO
+    // =============================================================
+    function fmtMoeda(v) {
+        return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    // =============================================================
+    // CALCULAR
+    // =============================================================
+    let chart = null;
+
+    function calcular() {
+        const nome = document.getElementById('nome').value.trim() || 'Samuel';
+        const uf = document.getElementById('uf').value.trim().toUpperCase() || 'RS';
+        const placas = parseFloat(document.getElementById('placas').value) || 0;
+        const kwh = parseFloat(document.getElementById('kwh').value) || 1.1092;
+        const meses = parseInt(sliderMeses.value) || 1;
+
+        if (!placas || placas <= 0) { alert('Informe o número de placas instaladas.'); return; }
+
+        const reg = getFatorRegional(uf);
+        const kWpTotal = placas * 0.55;
+        const ghiMedio = 4.5;
+        const geracaoMensal = kWpTotal * ghiMedio * 30 * 4.5; // Simplificação: 4.5 HSP/dia * 30 dias
+        // Wait, that's wrong. GHI médio de 4.5 kWh/kWp/dia * 30 = 135 kWh/kWp/mês
+        // geracaoMensal = kWpTotal * 135;
+        
+        // CORREÇÃO: geração mensal realista
+        const geracaoMensalKwh = kWpTotal * 135; // kWh/kWp/mês (4.5 HSP/dia)
+        
+        const perdaBase = Math.min(meses * 2.5, 30);
+        const perdaAjustada = perdaBase * reg.fator;
+        const perdaKwh = geracaoMensalKwh * (perdaAjustada / 100);
+        const perdaReais = perdaKwh * kwh;
+        const perdaAnual = perdaReais * 12;
+
+        // Perda acumulada desde a última limpeza
+        let acumulado = 0;
+        for (let i = 1; i <= meses; i++) {
+            const pb = Math.min(i * 2.5, 30) * reg.fator;
+            const pk = geracaoMensalKwh * (pb / 100);
+            acumulado += pk * kwh;
+        }
+
+        // Exibe
+        document.getElementById('resPerdaMensal').textContent = fmtMoeda(perdaReais);
+        document.getElementById('resPerdaAnual').textContent = fmtMoeda(perdaAnual);
+        document.getElementById('resPerdaPerc').textContent = perdaAjustada.toFixed(1).replace('.',',') + '%';
+        document.getElementById('resPerdaKwh').textContent = perdaKwh.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' kWh';
+        document.getElementById('resUF').textContent = uf;
+        document.getElementById('resFator').textContent = reg.fator.toFixed(1) + 'x — ' + reg.classe + ' (mediana: ' + reg.mediana + 'mm/ano)';
+        document.getElementById('resAcumulado').textContent = fmtMoeda(acumulado);
+
+        // Diagnóstico
+        let diag = '';
+        if (perdaAjustada <= 5)      diag = '<strong>🔵 Diagnóstico:</strong> Perda baixa. A manutenção preventiva mantém sua usina no máximo.';
+        else if (perdaAjustada <= 10) diag = '<strong>🟢 Diagnóstico:</strong> Perda moderada. Uma limpeza agora recupera a maior parte da eficiência.';
+        else if (perdaAjustada <= 20) diag = '<strong>🟡 Diagnóstico:</strong> Perda alta. Recomendamos limpeza o quanto antes. Você já está perdendo ' + fmtMoeda(perdaReais) + '/mês.';
+        else                          diag = '<strong>🔴 Diagnóstico:</strong> Perda crítica! Mais de ' + perdaAjustada.toFixed(0) + '% de captação perdida. Contate-nos para recuperação urgente.';
+        document.getElementById('diagnostico').innerHTML = '<p style="color:#e0e0e0; margin:0;">' + diag + '</p>';
+
+        // Mostra resultados
+        document.getElementById('resultados').style.display = 'block';
+        document.getElementById('resultados').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Gráfico
+        desenharGrafico(geracaoMensalKwh, reg.fator, kwh);
+    }
+
+    // =============================================================
+    // GRÁFICO
+    // =============================================================
+    function desenharGrafico(geracaoMensal, fator, tarifa) {
+        const ctx = document.getElementById('graficoPerda').getContext('2d');
+        if (chart) chart.destroy();
+
+        const labels = [];
+        const perdas = [];
+        const acumulados = [];
+        let acc = 0;
+
+        for (let i = 1; i <= 12; i++) {
+            labels.push(i + ' mês' + (i > 1 ? 'es' : ''));
+            const pb = Math.min(i * 2.5, 30) * fator;
+            const pk = geracaoMensal * (pb / 100);
+            const pr = pk * tarifa;
+            perdas.push(pr);
+            acc += pr;
+            acumulados.push(acc);
+        }
+
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Perda Mensal (R$)',
+                        data: perdas,
+                        backgroundColor: 'rgba(241,143,1,0.7)',
+                        borderColor: 'rgba(241,143,1,1)',
+                        borderWidth: 1,
+                        order: 2
+                    },
+                    {
+                        label: 'Perda Acumulada (R$)',
+                        data: acumulados,
+                        type: 'line',
+                        borderColor: '#4ecdc4',
+                        backgroundColor: 'rgba(78,205,196,0.1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        fill: true,
+                        order: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#e0e0e0' } },
+                    tooltip: {
+                        callbacks: {
+                            label: function(ctx) {
+                                return ctx.dataset.label + ': ' + fmtMoeda(ctx.raw);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#999', callback: function(v) { return 'R$ ' + v.toFixed(0); } },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#999' },
+                        grid: { color: 'rgba(255,255,255,0.05)' }
+                    }
+                }
+            }
+        });
+    }
+    </script>
+
+    <!-- ═══════════ COOKIE BANNER ═══════════ -->
+    <div id="cookie-banner" style="position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; border-top:1px solid #2a2a2a; padding:16px 24px; z-index:9999; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+        <p style="margin:0; font-size:0.85rem; color:#999;">
+            🍪 Este site usa cookies para melhorar sua experiência. Ao continuar, você concorda com nossa 
+            <a href="https://edusidegum.github.io/menu/politicadeprivacidade.html" style="color:#d4a853;">Política de Privacidade</a>.
+        </p>
+        <button onclick="this.parentElement.style.display='none'; localStorage.setItem('cookieConsent','true');" style="background:#d4a853; color:#0a0a0a; border:none; padding:8px 20px; border-radius:8px; font-weight:600; cursor:pointer;">Aceitar</button>
+    </div>
+    <script>
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

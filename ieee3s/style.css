@@ -1,0 +1,634 @@
+/* ============================================================
+   SNDLimp — Limpeza Especializada em Placas Solares
+   Tema Escuro · Cor Primária: #F5A623 (Âmbar)
+   Última atualização: 2026-06-09
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap');
+
+/* ===== VARIÁVEIS ===== */
+:root {
+    --primary: #F5A623;
+    --primary-glow: #FFB84D;
+    --dark: #0d0d0d;
+    --card-bg: #1a1a1a;
+    --white: #FFFFFF;
+    --text-light: #d6d6d6;
+}
+
+/* ===== RESET ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-light);
+    background-color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: var(--white);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ═══════════════════════════════════════
+   TOPBAR FIXA
+   ═══════════════════════════════════════ */
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+    padding: 5px 5%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+}
+
+.sticky-header .topbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    justify-self: start;
+}
+
+.sticky-header .topbar-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.sticky-header .topbar-logo-sub {
+    font-size: 0.65rem;
+    color: #aaa;
+    display: block;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+}
+
+/* ── Menu Dropdown ── */
+.menu-dropdown {
+    position: relative;
+    justify-self: center;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 10px 14px;
+    transition: color 0.3s ease;
+}
+.menu-toggle:hover {
+    color: var(--primary);
+}
+
+.menu-lista {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 6px;
+    background: #1e1e1e;
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    border-radius: 8px;
+    list-style: none;
+    min-width: 190px;
+    z-index: 1001;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    padding: 0;
+}
+
+.menu-lista li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.menu-lista li:last-child {
+    border-bottom: none;
+}
+
+.menu-lista a {
+    display: block;
+    padding: 11px 16px;
+    color: #d6d6d6;
+    text-decoration: none;
+    font-size: 0.85rem;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+}
+.menu-lista a:hover {
+    background: rgba(245, 166, 35, 0.12);
+    color: var(--primary);
+}
+
+.menu-dropdown:focus-within .menu-lista,
+.menu-dropdown:hover .menu-lista {
+    display: block;
+}
+
+/* ── Botão WhatsApp TopBar ── */
+.sticky-header .btn-cta {
+    background: #0a3d14;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 50px;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(13, 77, 26, 0.4);
+    justify-self: end;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.sticky-header .btn-cta:hover {
+    background: #072e0f;
+}
+
+.header-spacer {
+    min-height: 40px;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════ */
+
+.hero {
+    background: linear-gradient(180deg, #0a0a0a 0%, #111 100%);
+    padding: 60px 20px 50px;
+    text-align: center;
+    border-bottom: 2px solid rgba(245, 166, 35, 0.2);
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+.hero h1 em {
+    color: var(--primary);
+    font-style: normal;
+}
+
+.hero-sub {
+    font-size: 1.05rem;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* ── Card de Destaque ── */
+.destaque-card {
+    display: inline-block;
+    background: var(--card-bg);
+    border: 2px solid rgba(245, 166, 35, 0.3);
+    border-radius: 16px;
+    padding: 20px 30px;
+    margin: 15px 0 20px;
+    text-align: center;
+}
+
+.destaque-card .valor {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 2.5rem;
+    color: var(--primary);
+    display: block;
+}
+
+.destaque-card .label {
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+/* ── Botão WhatsApp Hero ── */
+.btn-cta-hero {
+    display: inline-block;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-cta-hero:hover {
+    background: #1fb950;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45);
+}
+
+/* ═══════════════════════════════════════
+   SEÇÕES
+   ═══════════════════════════════════════ */
+
+.section {
+    padding: 40px 0;
+}
+
+.section-dark {
+    background: #111;
+}
+
+.section h2 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.section h2 em {
+    color: var(--primary);
+    font-style: normal;
+}
+
+.section p {
+    margin-bottom: 16px;
+    color: #bbb;
+    line-height: 1.7;
+}
+
+/* ── Imagens ── */
+.img-full {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 14px;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid rgba(245, 166, 35, 0.25);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Antes e Depois ── */
+.antes-depois-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.antes-depois-grid img {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid rgba(245, 166, 35, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.antes-depois-grid .caption {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* ── Benefícios ── */
+.beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.beneficio-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(245, 166, 35, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.beneficio-card .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.beneficio-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--primary);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.beneficio-card p {
+    font-size: 0.78rem;
+    color: #999;
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════
+   BOTÕES
+   ═══════════════════════════════════════ */
+
+.btn-amarelo {
+    display: inline-block;
+    background: var(--primary);
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.3);
+    transition: all 0.3s ease;
+}
+.btn-amarelo:hover {
+    background: var(--primary-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(245, 166, 35, 0.45);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+
+footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(245, 166, 35, 0.2);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+footer h3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+footer p {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+footer .footer-whats {
+    display: inline-block;
+    margin-top: 16px;
+}
+
+footer .copyright {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: #2c2c2c;
+}
+
+/* ═══════════════════════════════════════
+   MOBILE (max-width: 600px)
+   ═══════════════════════════════════════ */
+
+@media (max-width: 600px) {
+    .sticky-header {
+        padding: 6px 3%;
+        min-height: auto;
+        grid-template-columns: auto 1fr auto;
+        gap: 6px;
+    }
+    .sticky-header .topbar-logo-text {
+        font-size: 0.9rem;
+    }
+    .sticky-header .topbar-logo-sub {
+        display: none;
+    }
+    .menu-toggle {
+        font-size: 0.82rem;
+        padding: 6px 10px;
+    }
+    .sticky-header .btn-cta {
+        font-size: 0.68rem;
+        padding: 6px 12px;
+    }
+    .header-spacer {
+        min-height: 50px;
+    }
+
+    .hero h1 {
+        font-size: 1.4rem;
+    }
+
+    .destaque-card .valor {
+        font-size: 1.8rem;
+    }
+
+    .beneficios-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .antes-depois-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ── Cards da Galeria (usados também no Antes/Depois) ── */
+.galeria-card {
+    background: var(--card-bg);
+    border: 2px solid rgba(245, 166, 35, 0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.25s, border-color 0.25s;
+}
+.galeria-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(245, 166, 35, 0.5);
+}
+.galeria-card img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    object-fit: cover;
+    display: block;
+}
+.galeria-legenda {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #aaa;
+    font-weight: 600;
+}
+        /* ═══════════ TOPBAR FIXA (Padrão SNDLimp) ═══════════ */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000;
+            background: rgba(26, 26, 26, 0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(245, 166, 35, 0.25);
+            padding: 5px 5%;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 8px;
+            min-height: 40px;
+        }
+        .sticky-header .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            justify-self: start;
+        }
+        .sticky-header .topbar-logo-text {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #F5A623;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .sticky-header .topbar-logo-sub {
+            font-size: 0.65rem;
+            color: #aaa;
+            display: block;
+            letter-spacing: 0;
+            text-transform: none;
+            font-weight: 400;
+        }
+        .menu-dropdown { position: relative; justify-self: center; }
+        .menu-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 10px 14px;
+            transition: color 0.3s ease;
+        }
+        .menu-toggle:hover { color: #F5A623; }
+        .menu-lista {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+            background: #1e1e1e;
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 8px;
+            list-style: none;
+            min-width: 190px;
+            z-index: 10001;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            padding: 0;
+        }
+        .menu-lista li { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .menu-lista li:last-child { border-bottom: none; }
+        .menu-lista a {
+            display: block;
+            padding: 11px 16px;
+            color: #d6d6d6;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .menu-lista a:hover { background: rgba(245, 166, 35, 0.12); color: #F5A623; }
+        .menu-dropdown:focus-within .menu-lista,
+        .menu-dropdown:hover .menu-lista { display: block; }
+        .sticky-header .btn-cta {
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 8px 18px;
+            border-radius: 50px;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.4);
+            justify-self: end;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+        .sticky-header .btn-cta:hover { background: #1fb950; }
+        .header-spacer { min-height: 40px; }
+
+        @media (max-width: 600px) {
+            .sticky-header {
+                padding: 6px 3%;
+                min-height: auto;
+                grid-template-columns: auto 1fr auto;
+                gap: 6px;
+            }
+            .sticky-header .topbar-logo-text { font-size: 0.9rem; }
+            .sticky-header .topbar-logo-sub { display: none; }
+            .menu-toggle { font-size: 0.82rem; padding: 6px 10px; }
+            .sticky-header .btn-cta { font-size: 0.68rem; padding: 6px 12px; }
+            .header-spacer { min-height: 50px; }
+        }
+
+/* Atualização no style.css — substituir .img-half */
+.img-half {
+  width: 100%;            /* ocupa toda a largura do contêiner (+30% relativo a imagem com margens) */
+  max-width: 100%;        /* não ultrapassa o contêiner pai */
+  height: auto;           /* preserva proporção natural */
+  max-height: 35vh;       /* altura reduzida ~30% (antes 50vh) */
+  display: block;
+  margin: 0 auto;         /* centraliza horizontalmente */
+  object-fit: contain;    /* evita distorção */
+}

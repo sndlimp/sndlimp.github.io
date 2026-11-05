@@ -1,0 +1,1177 @@
+SARAH NUNES BATISTA MARQUES 
+SISTEMA AUTOMATIZADO DE LIMPEZA DE 
+PLACA SOLAR 
+LAVRAS – MG 
+2024 
+SARAH NUNES BATISTA MARQUES 
+SISTEMA AUTOMATIZADO DE LIMPEZA DE PLACA SOLAR 
+Trabalho de Conclusão de Curso apresentado 
+ao 
+Departamento 
+de 
+Automática 
+da 
+Universidade Federal de Lavras, como parte das 
+exigências do Curso de Engenharia de Controle 
+e Automação, para a obtenção do título de 
+Bacharel. 
+D.Sc Fábio Domingues de Jesus 
+Orientador 
+D.Sc João Carlos Giacomin 
+Coorientador 
+LAVRAS – MG 
+2024 
+SARAH NUNES BATISTA MARQUES 
+SISTEMA AUTAMATIZADO DE LIMPEZA DE PLACA SOLAR 
+AUTOMATED SOLAR PLATE CLEANING SYSTEM. 
+Trabalho de Conclusão de Curso apresentado 
+ao 
+Departamento 
+de 
+Automática 
+da 
+Universidade Federal de Lavras, como parte das 
+exigências do Curso de Engenharia de Controle 
+e Automação, para a obtenção do título de 
+Bacharel. 
+APROVADO em 25 de outubro de 2024  
+D.Sc Vinícius Miranda Pacheco - UFLA 
+Eng. Igor Pontes – Formando UFLA 2024 
+Prof.D.Sc. Fábio Domingues de Jesus  
+Orientador 
+Prof.D.Sc João Carlos Giacomin 
+Coorientador 
+LAVRAS – MG 
+2024 
+Dedico à toda a comunidade acadêmica e à 
+sociedade por custear a minha formação em 
+uma Universidade pública.
+AGRADECIMENTOS 
+Agradeço com todo amor e carinho todas as pessoas que fizeram parte da minha 
+graduação, e tornaram esse momento possível. 
+Em primeiro lugar gostaria de agradecer a meus pais, Maria Cristina Nunes Batista e 
+Carlos Alberto Marques, que são o meu alicerce e me apoiaram do início ao fim para que eu 
+chegasse aqui. A confiança, dedicação, conselhos, encorajamento e críticas foram essenciais 
+para minha formação. Como sempre meu pai disse: “Sucesso vem antes de trabalho apenas no 
+dicionário”. 
+Gostaria também de dedicar esse momento as minhas tias Bernardete e Walkyria, aos 
+meus primos Lucas, Raissa, Fábio, Liziane e Melissa, que foram peças fundamentais em todo 
+processo e estiveram comigo nos momentos bons e ruins. A entrega que vocês tiveram comigo 
+foram essenciais para eu conseguir seguir firme e concluir a graduação. 
+Aos meus primos mais novos Bethina, Bento, Benício e Paulo, crianças amadas que 
+fizeram minha alegria quando eu mais precisava, sem terem a noção do quão importantes são 
+na minha vida e nessa jornada. 
+Agradecimento também a Regina que foi uma grande amiga em todos esses anos de 
+faculdade. Muito Obrigada Re! 
+A minha companheira de casa e vida, Amanda Carolina Silva, sem você também jamais 
+teria chegado até aqui. Muito obrigada pelo amor e dedicação que você teve comigo até hoje, 
+sem você não estaria vivendo esse momento. Muito obrigada vida. 
+Um agradecimento especial as minhas amigas do Paraná, Júlia e Ana Beatriz que me 
+conhecem há 13 anos e estiveram presentes nessa jornada. Com toda distância física vocês me 
+apoiaram e acreditaram em mim independente de qualquer coisa.  
+Aos meus amigos Caroline Maltoni, Giovanna Simioni e Bruno Luís Delphino, que 
+acompanharam todos os desafios que tive desde o cursinho até o momento atual, vocês foram 
+fundamentais, “Do cursinho pra vida”, meu quarteto favorito. 
+Os meus amigos de Lavras, que foram muito importantes e que dividiram comigo essa 
+graduação, com toda certeza vocês fizeram com que a faculdade fosse mais leve. Então o 
+agradecimento ao Geovane, Igor, Renato, Mateus, Júlia Sousa, Larissa, Victória e Artur, que 
+são meus amigos além do curso. 
+Gostaria de agradecer também meus amigos de curso Tamara, Grazy, Beatriz, Nayani, 
+Júlia Stacy, Igor Pontes. Vocês foram muito importantes nessa graduação, ninguém mais que 
+vocês para entender o que é fazer engenharia de controle e automação, vocês tornaram tudo 
+mais leve e me ajudaram muito. 
+Agradeço ao meu orientador Fábio Domingues e ao meu coorientador João Carlos 
+Giacomin, pela confiança e por toda ajuda prestada para que eu conseguisse entregar esse 
+trabalho. 
+Agradecimento para alguns professores do corpo docente que me ajudaram 
+tecnicamente nesse trabalho também, Dimitri e Silvia.  
+Agradecer a Robótica Júnior e ao NEPAR e aos membros, que foram entidades de 
+extensão que foram fundamentais na minha formação. 
+Por fim, a todos que de alguma forma contribuíram para a realização deste trabalho, meu 
+mais sincero agradecimento. 
+Obrigada a todos! 
+RESUMO 
+Neste trabalho, foi abordado um sistema automático de limpeza de placa fotovoltaica 
+solar, com o foco em manter a eficiência de captação de luz solar pela placa. O acúmulo de 
+sujeira na superfície das placas solares reduz significativamente sua eficiência energética, 
+resultando em perdas na captação de energia e, consequentemente, perdas econômicas. 
+O sistema proposto visa solucionar essa perda de eficiência das placas solares. O 
+protótipo utiliza um sistema de limpeza composto por uma bomba de irrigação com aspersores, 
+conectados a um trilho de deslize horizontal acionado por um motor de passo NEMA17. Esse 
+tipo de atuador é denominado Linear Mini V, utilizado em impressoras 3D Reprap. Além disso, 
+o sistema está fixado em uma estrutura de alumínio, inclinada em aproximadamente 27°, com 
+um vidro para simular a placa solar em telhados. 
+O controle do sistema foi implementado com um controlador ESP32 WROOM 32, que 
+aciona a bomba e a válvula solenoide por meio de módulos relés. O controle do trilho foi feito 
+utilizando um driver TB6600 e duas chaves de fim de curso CNC, uma em cada extremidade 
+do trilho, para garantir um controle mais preciso do movimento do módulo. 
+O sistema de limpeza utilizando os aspersores demonstrou eficiência, pois a pressão da 
+água ao atingir o vidro remove toda a sujeira presente na superfície. O curso do trilho atendeu 
+às necessidades propostas, com o sistema podendo ser acionado tanto de forma manual quanto 
+automática. 
+Os modos de operação são controlados via aplicativo. No modo automático, o sistema 
+é ativado por um botão e funciona por tempo determinado. No modo manual, há três botões: o 
+primeiro seleciona o modo manual, e o segundo e terceiro ligam e/ou desligam o sistema. Neste 
+modo, o sistema permanece ligado até que o botão de desligar seja acionado. Desse modo o 
+sistema de limpeza pode ser comandado a distância, evitando o deslocamento de pessoas para 
+fazer o serviço. Com isso, evita a ocorrência de acidentes, visto que instalação de coletores de 
+energia solar é normalmente é realizada em áreas de difícil acesso. “Intervalos de limpeza 
+frequentes são recomendados para painéis solares em regiões áridas para evitar a degradação 
+do desempenho, e o uso de sistemas automatizados pode reduzir os custos operacionais 
+associados à limpeza manual.” (Gerland, Gnann, Plötz, 2019) 
+Com isso, a proposta do trabalho é otimizar a captação solar das células fotovoltaicas 
+por meio de uma limpeza mais eficiente, sem danificar as placas. O sistema demonstrou ser 
+viável na redução de custos operacionais e no aumento da produção de energia. Além disso, o 
+projeto considera aspectos de sustentabilidade, minimizando o uso de água e energia elétrica no 
+processo de limpeza. 
+Palavras-chave: Células fotovoltaicas; Automação limpeza de placas fotovoltaicas; 
+Integração do sistema de limpeza; placa solar. 
+ 
+ 
+SUMÁRIO 
+ 
+1 INTRODUÇÃO..............................................................................................9  
+2 REFERENCIAL TEÓRICO...........................................................................10 
+2.1 História das placas fotovoltaicas.....................................................................10 
+2.2 Inovação e Evolução tecnológica em placas Fotovoltaicas............................11 
+2.3 Fotovoltaicas no Futuro..................................................................................13 
+2.4 Limpeza de Placas Fotovoltaicas....................................................................21 
+3 MATERIAIS E MÉTODOS...........................................................................14 
+3.1 Materiais.........................................................................................................14 
+3.1.1 Equipamento Mecânico..................................................................................15 
+3.1.2 ESP32 WROOM-32.......................................................................................16 
+3.1.3 Driver para Motor de Passo TB6600..............................................................18 
+3.1.4 Micro Diaphragm pump (bomba de irrigação) e Aspersores.........................21 
+3.1.5 Válvula Solenoide…………………………………………..........................23 
+3.1.6 Chave de Fim de Curso para Impressora 3D RepRap e CNC........................24 
+3.1.7 Módulo Relé 5V Metaltex..............................................................................25 
+3.1.8 Estrutura de Alumínio....................................................................................26 
+3.1.9 Fontes de alimentação....................................................................................29 
+3.1.10  Plataforma Arduino IDE................................................................................30 
+3.1.11  Blynk..............................................................................................................30 
+3.1.11  Custo dos componentes..................................................................................31 
+3.2 Métodos..........................................................................................................32 
+3.2.1 Análise dos requisitos para o funcionamento do protótipo............................32 
+3.2.2 Configuração da Válvula Solenoide com o Módulo Relé, Fonte de Alimentação  
+e ESP 32.........................................................................................................34 
+3.2.3 Configuração da Bomba com Módulo Relé, Fonte de Alimentação e ESP 
+32....................................................................................................................34 
+3.2.4 Configuração do Driver TB660 e o Motor de Passo com Fonte de Alimentação  
+e ESP 32.........................................................................................................35 
+3.2.5 Integração de todo o sistema com a conexão via WiFi aplicativo Blynk para 
+acionamento...................................................................................................35 
+ 
+3.2.6 Explicação do código.....................................................................................36 
+ 
+4 RESULTADOS..............................................................................................43 
+5 CONSIDERAÇÕES FINAIS.........................................................................46 
+5.1 Conclusão.......................................................................................................46 
+5.2 Recomendações para Trabalhos Futuros........................................................46 
+6 REFERÊNCIAS.............................................................................................48 
+9 
+1 INTRODUÇÃO 
+A utilização de energia sustentável   vem crescendo cada vez mais e tentar achar 
+alternativas aos combustíveis fosseis tem alavancado ainda mais o uso de energias 
+fotovoltaicas. As placas solares, transformam a luz solar em eletricidade, são fundamentais 
+para o funcionamento desses sistemas. Entretanto, as eficiências enérgicas das placas 
+fotovoltaicas podem ser reduzidas se houver acumulo de sujeira, poeira, fezes de animais e 
+entre outros, que podem se acumular na superfície das placas. Segundo estudos, as sujeiras 
+acumuladas nas placas solares podem diminuir em 20% a eficiência, isso dependendo das 
+condições ambientais e a região as quais esse sistema esta localizado. (Kimber , Mitchell, 
+Nogradi, Wenger, 2006). 
+Desse modo a limpeza periódica das placas solares é essencial para garantir a maior 
+eficiência do sistema. Formas de limpeza tradicionais, tradicionalmente envolvem a 
+intervenção manual, mostra diversas desvantagens, como: consumo elevado de água, altos 
+custos operacionais e alto risco aos trabalhadores responsáveis pela limpeza. Além disso, a 
+limpeza manual pode ser inviável em áreas de difícil acesso ou em instalações de grande porte. 
+Com esses desafios citados anteriormente, o trabalho propõe-se exatamente uma 
+solução para contornar esses desafios. Com o desenvolvimento de um sistema automatizado 
+de limpeza de placas solares, com a capacidade de operar de forma eficiente e autônoma, não 
+havendo a necessidade de intervenção humana ou minimizando. O sistema projetado tem como 
+proposta utilizar recursos limitados de água, funcionando com energia mínima, e ser maleável 
+e adaptável a diferentes tipos de instalações de placas solares. A pesquisa envolve uma análise 
+dos principais componentes do sistema, que serão tratados de forma especifica e individual 
+mais à frente, além da construção de um protótipo robusto e funcional para testes em condições 
+reais. 
+O tema tratado neste trabalho se justifica pela necessidade de uma solução inovadora 
+que não apenas garanta a manutenção, mas também a eficiência dos sistemas solares, com isso 
+também sejam economicamente viáveis e ambientalmente sustentáveis. Nos próximos 
+capítulos, serão expostos detalhadamente o processo de desenvolvimento do projeto, testes e 
+a conclusão obtida com o protótipo concluído. 
+Desse modo será trazido de uma forma mais didática possível a construção desse e 
+projeto, os desafios ocorridos no processo, os benefícios e o funcionamento prático do 
+protótipo e sua solução.
+10 
+2 REFERENCIAL TEÓRICO 
+Neste capítulo, será abordado o Referencial Teórico, que se fundamenta em teses 
+e conceitos provenientes de teses e artigos para a compreensão dos temas a serem 
+explorados, tais como placas fotovoltaicas e automação, entre outros. 
+2.1 História das placas fotovoltaicas 
+O físico francês Alexander Edmond Becquerel, em 1839 observou que placas 
+metálicas, de platina ou prata, quando mergulhadas em um eletrólito e expostas à luz 
+produziam uma pequena diferença de potencial, este fenômeno foi denominado de efeito 
+fotovoltaico. Esse primeiro experimento deu o ponta pé inicial sobre a compreensão 
+científica sobre a conversão de luz em eletricidade, que só foi aplicada praticamente mais 
+a frente na história. 
+Com a descoberta de que o selênio produzia eletricidade quando exposto a luz 
+em 1876, por Willoughby Smith e William Grylls Adams, esse avanço alavancou o 
+desenvolvimento primeira célula fotovoltaica usando uma fina camada de ouro sobre 
+selênio, se deu em 1883 por Charles Fritts. A célula de selênio tinha uma eficiência muito 
+baixa na conversão da energia, e que esta só foi melhorada ao longo do século XX. 
+A tecnologia fotovoltaica tornou-se outra forma no século XX, em especial com 
+o desenvolvimento das primeiras células solares de silício, desenvolvida em 1941 pelo 
+pesquisador Russell Ohl. Em 1954 foi descoberto pelos pesquisadores Calvin Fuller 
+(químico), Gerald Pearson (físico) e Daryl Chapin (engenheiro), a primeira célula 
+fotovoltaica usando silício com eficiência de 6%, gerando 5mW potência elétrica. Com 
+esse avanço foi possível o desenvolvimento das placas solares, permitindo sua aplicação 
+em projetos comerciais e científicos.  
+Na época da Guerra Fria, especificamente em 1960, as células solares começaram 
+a ser usadas em aplicações espaciais, devido a capacidade de fornecer energia mais 
+confiável no espaço, isso fez com que ocorresse mais pesquisa e desenvolvimento na 
+área. A crise do petróleo entre 1970 a 1980, fez as energias alternativas tomassem espaço 
+global, levando uma maior comercialização das placas solares e a avanços tecnológicos 
+significativos que resultaram na redução de custos e na melhoria da eficiência das células 
+fotovoltaicas. 
+11 
+Após as descobertas citadas anteriormente em 2004 foram produzidas cerca de 
+bilhões de células com eficiência de 24,7% alcançando a capacidade instalada mundial 
+de energia solar superior a 8,2 GW em 2008, cerca de 57% da capacidade. Em 2007 
+pesquisadores da Universidade de Delaware, Estados Unidos, conseguiram bater o 
+recorde de eficiência energética das células solares cristalinas, atingindo um rendimento 
+de 42,8% de conversão sob condições normais de iluminação. As células solares 
+cristalinas são o tipo mais tradicional de célula fotovoltaica, sendo fabricadas de silício. 
+A pesquisa sobre o assunto ainda está em pauta e tem como objetivo alcançar ate 2040 
+uma elevação de 26%. 
+Atualmente, em 2024, alguns institutos de pesquisa têm conseguido eficiência de 
+conversão um pouco acima de 30%, utilizando tecnologias avançadas, como células 
+solares de multijunção e materiais emergentes como o perovskita. Essas tecnologias 
+buscam superar as limitações das células fotovoltaicas convencionais de silício, cuja 
+eficiência típica está entre 15% e 22%. O aumento da eficiência é crucial para melhorar 
+a viabilidade econômica da energia solar e tornar seu uso mais competitivo em 
+comparação com outras fontes de energia. 
+2.2 Inovação e Evolução tecnológica em placas fotovoltaicas  
+Entre 1990 e 2004, os principais avanços na tecnologia fotovoltaica incluíram o 
+aumento gradual da eficiência das células solares de silício, o surgimento de filmes finos 
+como uma alternativa promissora, a significativa redução de custos de produção e a 
+criação de políticas de incentivo que impulsionaram o uso da energia solar. Embora as 
+eficiências ainda fossem relativamente baixas em comparação com as tecnologias 
+modernas, esses avanços pavimentaram o caminho para o crescimento acelerado da 
+energia solar nos anos subsequentes. 
+Um outro avanço importante foi a integração das placas fotovoltaicas com 
+sistema de armazenamento de energia, o que permite atualmente o uso de energia solar 
+para uso durante a noite e dias nublados. Isso mostrou que a viabilidade de energia solar 
+em larga escala era possível e contribuiu para a sua adoção pelo mundo todo. “A 
+implementação de estratégias avançadas de controle para conversores pode melhorar 
+significativamente a eficiência e a estabilidade dos sistemas de energia renovável, 
+especialmente em aplicações como a conversão de energia solar.” (Bacha, Munteanu, 
+Bratcu, 2014). 
+12 
+As Figuras 1 e 2 mostram como esse crescimento de capacidade e instalação de 
+placas fotovoltaicas teve um crescimento relevante. Segundo a Global Market Outlook a 
+capacidade global de energia solar instalada por continente em GW, do período de 2002 
+a 2021, foi vertiginoso. Já no Brasil a Anel em um estudo em 2022, trouxe uma análise 
+sobre a potência instalada em todo Brasil em MW, o crescimento foi analisado de 2012 
+até 2022, e o aumento foi muito relevante, mostrando que o Brasil está em um cenário 
+global de importância. 
+Figura 1 – Aumento vertiginoso Capacidade global de energia solar instalada 
+2002-2021 (em GW) 
+Fonte: Global Market Outlook for solar power 2022-2026 
+Figura 2 – Evolução no Brasil Solar fotovoltaica em potência instalada (MW) 
+Fonte: Aneel/Absolar, 2022 
+13 
+2.3 Fotovoltaicas no Futuro 
+O futuro da tecnologia fotovoltaica promete avanços contínuos, com tendências 
+que apontam para o desenvolvimento de novos materiais e técnicas que poderão 
+aumentar ainda mais a eficiência e reduzir os custos. A integração das placas solares em 
+infraestruturas modernas, como edifícios inteligentes e veículos elétricos, já está em 
+andamento e deverá se expandir nos próximos anos. Além disso, a energia solar 
+desempenhará um papel cada vez mais importante na matriz energética global, 
+especialmente em um contexto de combate às mudanças climáticas. “A tecnologia 
+fotovoltaica (PV) evoluiu rapidamente, com melhorias contínuas nos materiais e nos 
+processos de fabricação, aumentando a eficiência e reduzindo os custos. Maximizar a 
+eficiência da conversão de energia é fundamental para tornar os sistemas solares 
+fotovoltaicos mais competitivos em relação às fontes de energia tradicionais.” 
+(Santbergen, Ransome, Alsema, 2010) 
+2.4 Limpeza de Placas Fotovoltaicas 
+Para garantir que a placa fotovoltaica tenha a máxima eficiência na geração de 
+energia solar é necessário ter uma limpeza regular. Isto deve, pois, os painéis solares 
+podem acumular poeira, sujeira e folhas que reduzem a quantidade de luz solar que atinge 
+a células fotovoltaicas, diminuindo a produção de energia elétrica. 
+A importância da limpeza das placas fotovoltaicas evita a perda de eficiência, em 
+5% a 20% da captação de energia solar. Com isso, há métodos de limpeza que garantem 
+a integridade física das placas, dentre eles: limpeza manual com água e sabão neutro, 
+limpeza automática com sistema de aspersão, limpeza a seco com escovas ou panos, uso 
+de drones para a limpeza. “Soluções inovadoras para resfriamento e limpeza de painéis 
+fotovoltaicos (PV) são essenciais para manter o desempenho ideal em ambientes 
+severos.” (Boretti, 2020) 
+A frequência de limpeza depende de alguns fatores, como: localização 
+geográfica, clima, inclinação dos painéis, vegetação próxima e entre outros. Em áreas 
+urbanas e/ou industriais necessitam de uma limpeza mais frequente, mensal ou bimestral, 
+já em outros casos a limpeza pode ocorre semestralmente. “A acumulação de poeira nos 
+painéis fotovoltaicos pode reduzir significativamente sua eficiência, tornando-se uma 
+questão crítica em regiões propensas a altos níveis de poeira.” (Zaihidee, Mekhilef, 
+Seyedmahmoudian, Horan, 2016) 
+14 
+O impacto ambiental que a limpeza de painéis solares pode trazer deve ser levado 
+em consideração, já que, a utilização da água em áreas que são escassas nesse recurso, 
+devem ser otimizadas. Além disso, a escolha de produtos de limpeza deve levar em conta 
+a necessidade de evitar substâncias químicas agressivas que possam contaminar o solo 
+ou os sistemas de drenagem. 
+Diante do exposto, concluímos que o trabalho proposto é importante para o 
+progresso da engenharia, visto que o uso de painéis solares está em franco 
+desenvolvimento no mundo. No próximo capítulo, vamos tratar dos matérias e métodos 
+utilizados neste trabalho. 
+3 MATERIAIS E MÉTODOS 
+Nessa seção, serão abordados os materiais e métodos utilizados para o desenvolvimento 
+do protótipo. A escolha adequada dos componentes e a definição de procedimentos de métodos 
+foram fundamentais para garantir a eficácia do funcionamento do protótipo. Os materiais foram 
+definidos para atender o que foi proposto, buscando um custo e funcionalidade ideais, enquanto 
+os métodos foram estruturados para assegurar a realização de testes precisos e a avaliação do 
+desempenho do protótipo. Nas próximas subsecções, será descrito detalhadamente os principais 
+materiais empregados e as etapas metodológicas adotadas durante o desenvolvimento do projeto. 
+3.1 Materiais 
+Os principais materiais utilizados nesse trabalho foram: motor, um sistema de acionamento 
+do motor, unidade de controle, bomba de água, válvula solenoide, aspersores, chave de fim de 
+curso, módulos relés, fontes de alimentação, estrutura, software de programação e software de 
+interface. 
+3.1.1 Equipamento Mecânico 
+Para compreender integralmente o funcionamento do projeto, é essencial ter 
+conhecimento dos elementos que o compõem. Cada peça desempenha um papel 
+fundamental no processo em seu funcionamento, desde a alimentação do protótipo até o 
+funcionamento integral. Portanto, explorar os principais componentes é fundamental para 
+uma compreensão abrangente de como o sistema funciona e qual é a sua funcionalidade. 
+Neste trabalho, foi utilizado o Atuador Linear Mini V, que tem a função de 
+15 
+converter o movimento rotativo do motor em um movimento linear. Refere-se ao um 
+sistema compacto e preciso, geralmente baseado em rolamentos V, são componentes 
+mecânicos projetados para operar em sistema de trilhos ou guias para movimentos 
+lineares, e trilhos lineares, garantindo um movimento suave e preciso com baixa folga. 
+Além disso o Módulo de HPV4 é um tipo de módulo ou placa de controle que opera o 
+motor de passo, ele oferece a interface eletrônica entre o motor e o controlador. O motor 
+de passo NEMA17HS3401S, bipolar, é comum em dispositivos de automação, o número 
+17 refere-se ao tamanho do motor, com uma flange de montagem de 42x42mm. O motor 
+de passo é um tipo de motor elétrico que se move em passos discretos, permitindo um 
+controle preciso de posição. A corrente nominal máxima consumida pelo motor de passo 
+é de 1,3 amperes, essa especificação tem a importância de referenciar a potência e o 
+torque que o motor pode fornecer. O componente mecânico está exposto na Figura 3. 
+O motor de passo em vez de um motor de corrente continua pois neste sistema de 
+limpeza porque ele oferece controle preciso de posição, facilidade de repetição de movimentos, 
+estabilidade em baixas velocidades e uma implementação de controle relativamente simples, 
+especialmente quando combinado com um driver como o TB6600. Tudo isso é essencial para 
+garantir que o sistema de limpeza opere de forma eficiente e confiável, sem a necessidade de 
+controles ou sensores adicionais. 
+Figura 3 – RapMan 3D Printer 
+Fonte: AliExpress (2024). 
+16 
+3.1.2 ESP32 WROOM-32 
+A placa de controladora do projeto é o ESP32 WROOM -32, conforme mostrado 
+na Figura 4, é um dos componentes mais importantes, e desempenha um papel 
+fundamental que dificilmente poderá ser substituído. A placa é responsável por 
+coordenar e gerenciar os movimentos dos motores e atuadores do sistema, no caso 
+específico coordena o driver do motor, os relés que tem conetividade com a bomba e a 
+válvula solenoide e com as duas chaves de fim de curso. 
+Além dos componentes citados na Seção 3.1.1, a placa também é responsável 
+pela conectividade com o aplicativo que controla o sistema como um todo, o tópico explicando a 
+funcionalidade do aplicativo vai citado adiante.  
+O ES32 WROOM-32 é um módulo de microcontrolador bem popular, é utilizada 
+principalmente em aplicações de IoT (Internet das coisas), automação, controle de 
+dispositivos e projetos eletrônicos, deve-se pela a capacidade de processamento que esse 
+módulo tem, conectividade eficiente. 
+As principais características desse módulo são: 
+• Microcontrolador Dual-Core: tem dois núcleos de processamento, o que 
+permite realizar tarefas simultâneas com uma maior eficiência. Sua 
+frequência de operação pode atingir 240 Mhz, com 600 DMIPS (milhões 
+de instruções por segundo, oferece um desempenho grande para uma 
+ampla gama de aplicações. 
+• Conectividade Wi-fi (802.11 b/g/n) e Bluetooth (BLE- Bluetooth Low 
+Energy e Clássico): o ESP32 pode se conectar a redes sem fio, sendo 
+crucial para o projeto em questão, já que se comunica com a internet ou 
+com outros dispositivos. Já a conexão feita via Bluetooth, permite a 
+conexão com dispositivos moveis e periféricos de forma eficiente em 
+relação a energia, mas esse tipo de conexão não vai ser utilizada no 
+projeto. 
+• Memória: a memória RAM é de 520 KB de SRAM, que é utilizado para 
+o funcionamento do sistema e armazenamento temporário dos dados. Há 
+também a memoria Flash, vem com 4MB de memória embutida, usada 
+para armazenar o firmware e outros dados não voláteis. 
+• Múltiplas Interfaces de I/O: GPIOs (General Purpose Input/Output) no O 
+17 
+ESP32 tem diversos pinos de entrada/saída digital (GPIO) que podem ser 
+usados para interagir com sensores, atuadores, LEDs, botões, entre outros, 
+no projeto em questão irão interagir com os relés, chaves de fim de curso, 
+driver do motor de passo. Suporta ADC (Conversor Analógico-Digital) 
+com até 18 canais e DAC (Conversor Digital-Analógico) em dois canais. 
+Geração de sinais PWM (modulação por largura de pulso) para controle 
+de motores e LEDs. SPI, I2C, UART, Interfaces de comunicação com 
+dispositivos periféricos (sensores, displays, módulos externos). E para 
+finalizar o Touch que suporta entradas capacitivas (touch), permitindo o 
+uso de sensores de toque sem contato físico direto. 
+Os benefícios de se utilizar o módulo ESP32 WROOM-32 é a segurança pois 
+suporta criptografia AES (Advanced Encryption Standard), SHA (Secure Hash 
+Algorithm) e RSA (Rivest-Shamir-Adleman), além de SSL/TLS (Secure Sockets 
+Layer/ Transport Layer Security) para garantir a segurança das comunicações e 
+armazenamento de dados. 
+Em relação ao desenvolvimento e programação o ESP32 é programável em 
+diversas linguagens, como C\C++, que foi a linguagem de programação escolhida ao o 
+projeto. O ambiente de desenvolvimento utilizado para a programação foi o Arduino IDE. 
+Além disso, SDK oficial da Espressif, o ESP-IDF (Espressif IoT Development 
+Framework), oferece mais controle e flexibilidade para desenvolvedores avançados. 
+É importante frisar que existem diversos modelos de placas e a escolha de qual 
+modelo utilizar deve ser feita pensando no tipo de projeto esta se realizando.  
+Figura 4 - Placa ESP32 WROOM-32 
+Fonte: Robocore (2024). 
+18 
+3.1.3 Driver para Motor de Passo TB6600 
+O Driver TB6600 é um controlador muito utilizado para motores de passo em 
+projetos de automação, para sistemas que exigem o controle de movimento, conforme 
+mostrado na Figura 6 e Figura 7. Ele tem função de ponte entre o microcontrolador 
+(ESP32 WROOM-32) e o motor de passo (NEMA17HS3401S), permitindo o controle 
+adequado do movimento do motor. 
+As características desse dispositivo são: 
+• Controle de motor de passo bipolar NEMA17HS3401S: é projetado para 
+controlar motores de passo bipolares, que possuem dois enrolamentos de 
+fios, tendo a capacidade de rotacionar no sentido horário e anti-horário 
+com precisão. Esse dispositivo é adequado para motores de passo de duas 
+fases e 4 fios, com uma corrente de saída que pode ser ajustada até 4 
+Amperes, o que permite-se controlar motores maiores com um maior 
+torque. 
+• Controle de Microstepping: o driver pode dividir os passos naturais do 
+motor em frações menores, resultando em um movimento mais suaves e 
+precisos. O dispositivo suporta vários níveis de de microstepping, isso é 
+definido por DIP (microinterruptores) integrado ao driver na parte lateral 
+ao qual se seleciona o microstepping necessário. Quanto maior o valor do 
+microstepping, mais suave será o movimento, mas exigirá mais pulsos de 
+controle. 
+• Entrada de sinal TTL: Funciona com sinais TTL de 5V ou 3.3V, o que 
+facilita a interface com microcontroladores populares, no caso do projeto 
+o ESP32 WROOM-32. Os sinais de controle principais são: Pulso (PUL) 
+Indica quando o motor deve dar um passo, Direção (DIR): Define a 
+direção de rotação do motor e Enable (EN): Habilita ou desabilita o motor. 
+• Ajuste de Corrente: possui o ajuste de corrente máxima que motor pode 
+consumir. Isso evita superaquecimento, prolongar a vida útil do motor e 
+garantir o torque correto. A corrente pode ser ajustada com switches DIP 
+(microinterruptores) no próprio driver, e geralmente varia de 0.5A até 
+4.0A. 
+19 
+• Proteções Internas: há várias proteções internas, como: Proteção contra 
+sobrecorrente evita danos ao motor e driver em caso se sobrecarga da 
+corrente; Proteção contra superaquecimento desligamento automático do 
+driver quando é atingido uma temperatura crítica; Proteção contra curto
+circuito situação de curto circuito nos terminais do motor e/ou na 
+alimentação, interrompendo o funcionamento. 
+• Alimentação: o TB6600 necessita de uma alimentação externa de 9 Volts 
+a 42 Volts. 
+No projeto utilizamos uma fonte de 12 Volts, o que permite controlar o motor de 
+passos que operam em tensões mais altas, alcançando o torque suficiente para tarefas 
+pesadas. Quanto maior for a tensão de alimentação externa, maior a velocidade e o torque 
+que o motor pode atingir. 
+Os benefícios de se utilizar o driver para Motor de Passo TB6600: compatibilidade 
+com diversos microcontroladores, no caso do projeto o ESP32 WROOM-32 é compatível. 
+Além de a proteções integradas, definir os microsteppings, alta capacidade de corrente, 
+como citado anteriormente. 
+Em relação aos terminais e suas funções temos: 
+• +PUL / -PUL (Pulso): Controla os passos do motor. Cada pulso recebido 
+nesses terminais faz o motor dar um passo. A cada mudança de estado (sinal 
+HIGH para LOW ou vice-versa) no terminal PUL, o motor de passo avança 
+um passo. A frequência dos pulsos determina a velocidade do motor (quanto 
+mais rápido os pulsos são enviados, mais rápido o motor gira). +PUL é o 
+terminal positivo do sinal de pulso, e -PUL é o terminal de referência 
+(negativo/terra). 
+• +DIR / -DIR (Direção): Define a direção de rotação do motor. O estado lógico 
+deste sinal (HIGH ou LOW) determina o sentido de rotação do motor de passo 
+(horário ou anti-horário). O +DIR é o terminal positivo do sinal de direção, e -DIR é o terminal de referência (negativo/terra). Se o terminal DIR está em 
+HIGH, o motor gira em uma direção, e se está em LOW, o motor gira na 
+direção oposta. 
+• +ENA / -ENA (Enable): Habilita ou desabilita o driver. Quando o sinal ENA 
+está ativo (geralmente LOW), o driver é habilitado e permite o controle do 
+motor de passo. Se desativado (geralmente HIGH), o driver "desliga" o motor, 
+20 
+impedindo que ele receba sinais de controle e, geralmente, removendo o torque 
+do motor. +ENA é o terminal positivo do sinal de habilitação, e -ENA é o 
+terminal de referência (negativo/terra). 
+Em relação as Microchaves laterais e suas funções temos: 
+• Configuração de corrente (DIP switches 1, 2, 3): Os primeiros três 
+interruptores definem a corrente máxima que será fornecida ao motor. A 
+corrente deve ser ajustada de acordo com as especificações do motor de 
+passo utilizado, para evitar superaquecimento ou perda de torque. 
+• Configuração de microstepping (DIP switches 4, 5, 6): permitem aumentar 
+a resolução de passos do motor. Um motor de passo normalmente avança 
+em passos completos, mas o microstepping permite dividir esses passos 
+em frações menores (como 1/2, 1/4, 1/8 de passo), resultando em 
+movimentos mais suaves e precisos. 
+A Figura 3 (Cur=Corrente; Sub=subdivisão; NG=Negativo; SW=Switches) 
+apresenta duas tabelas das possíveis combinações dos switches do TB6600: 
+Figura 5 – Combinações dos switches do TB6600 
+Fonte: MarioStore (2024). 
+21 
+Figura 6 – Driver para Motor de Passo TB6600 
+Fonte: Robocore (2024). 
+Figura 7 – Switches Driver para Motor de Passo TB6600 
+Fonte: Dfrobot (2024). 
+3.1.4 Micro Diaphragm pump (bomba de irrigação) e Aspersores 
+A Micro Bomba de Diafragma (ou Micro Diaphragm Pump) é muito utilizada na 
+irrigação, é um tipo de bomba de pequeno porte, mostrada na Figura 8. Seu 
+funcionamento baseia-se em um diafragma flexível que se movimenta para gerar a 
+sucção e o bombeamento de fluido. Seu funcionamento como dito anteriormente utiliza 
+de um diafragma flexível, feito de borracha ou silicone, que faz o movimento de cima 
+para baixo, ou para a frente pra trás, dentro de uma camara. Com isso se cria ressão 
+negativa (vácuo parcial), o que faz com que o fluido seja puxado para dentro da câmara 
+através de uma válvula unidirecional. Quando o diafragma se movimenta ele pressuriza 
+o fluido, que é forçado a sair da câmara através de outra válvula unidirecional, 
+conduzindo o líquido para fora. 
+22 
+A Micro Bomba de Diafragma foi uma solução para o projeto mais eficiente e 
+confiável para aplicação em questão. A capacidade e operar com baixos níveis de energia, 
+operando com 12V, fluxo máximo, pressão máxima, bombear líquidos com precisão e 
+resistir à contaminação faz dela uma escolha excelente para projetos que requerem 
+automação e precisão no manuseio de líquidos. 
+Para o projeto a escolha desta bomba foi por conta do custo e benefício que o 
+componente trás. Isso se deve pelo fato de que há uma alta pressão de 0.8Mpa, para o que 
+o protótipo se propõe, retirar os resíduos do vidro com eficácia, ter um baixo consumo 
+enérgico e sua versatilidade de integração ao projeto. 
+Figura 8 - Micro Diaphragm pump (bomba de irrigação) 
+Fonte: AliExpress (2024). 
+Aspersores reguláveis são dispositivos usados em diversos sistemas que dispersam 
+água em diferentes direções e quantidades, com a vantagem de permitir o ajuste do raio, do 
+alcance e do ângulo de pulverização, Figura 9. Esses ajustes são feitos manualmente ou 
+através de mecanismos embutidos, tornando os aspersores mais versáteis e eficientes para 
+irrigar áreas de tamanhos variados. 
+As vantagens de utilizar aspersores: 
+• Eficiência Hídrica: Permitem uma limpeza mais precisa, evitando o 
+desperdício de água em áreas que não necessitam de limpeza. 
+• Flexibilidade: Podem ser ajustados para diferentes necessidades, tornando-os 
+adequados para áreas pequenas ou grandes. 
+• Redução de Custo: Otimizam o uso de água, o que pode resultar em economia 
+23 
+a longo prazo. 
+Os aspersores são do tipo cônicos e de pulverização, para conseguir alcançar maior 
+e/ou menor raio. Foram utilizados 3 aspersores reguláveis para atingir todo a superfície do 
+vidro, e isso foi parcialmente satisfatório, já que não atingiu toda a região do vidro, a parte 
+do vidro perto do trilho não foi atingida, mas a pesar disso a região atingida teve um resultado 
+esperado. 
+Figura 9 - Aspersores 
+Fonte: AliExpress (2024). 
+3.1.5 Válvula Solenoide 
+A válvula solenoide é um dispositivo eletromecânico utilizado para o controle o 
+fluxo de líquidos, é amplamente aplicada em diversos sistemas, controle de água e outras 
+aplicações industriais, mostrado na Figura 10. O funcionando baseia-se através de um 
+solenoide (um eletroímã) que, quando energizado, abre ou fecha o fluxo. Essa válvula de 
+controle de 1/2 polegada para água ou ar, com tensões de funcionamento variadas (12V, 
+24V, 220V), no caso do projeto foi utilizada uma tensão de 12 V. 
+A válvula solenoide normalmente fechada (NF) significa que, quando a válvula 
+não está energizada, ela permanece fechada, bloqueando o fluxo de água. Esse tipo de 
+operação é comum em sistemas que requerem controle de fluxo automático, como 
+24 
+irrigação. Assim, a válvula só libera água quando recebe um sinal elétrico. 
+Em relação ao tamanho da conexão de ½ polegadas, refere-se ao diâmetro da 
+conexão da válvula com a tubulação. Este é um tamanho comum para sistemas de água, 
+compatível com muitos tipos de tubos e conectores. Esse tamanho é ideal para sistemas 
+de pequeno e médio porte, onde se deseja controlar o fluxo de água. 
+As especificações técnicas da válvula são as seguintes: 
+• Pressão de Operação: Variando de 0,02 MPa a até 1,0 Mpa 
+(aproximadamente 10 bar). 
+• Material do Corpo: feitas de materiais duráveis como latão, aço 
+inoxidável ou plásticos de engenharia (como o ABS), para resistir à 
+corrosão e ao desgaste. 
+• Temperatura de Operação: A maioria das válvulas solenoides para água 
+pode operar em uma faixa de temperatura de 0°C a 80°C. 
+O controle automatizado de abertura e fechamento da válvula foi feito através de 
+um módulo relé, a utilização desse módulo foi necessário para ligar e/ou desligar a 
+bomba no momento correto de rodagem do sistema, o módulo relé é conectado a placa 
+ESP32 WROOM-32 faz a ativação da válvula por tempo e lógica que o protótipo 
+funciona, essa parte lógica será tratada mais a frente. 
+Figura 10 – Válvula Solenoide 
+Fonte: Mercado Livre (2024). 
+25 
+3.1.6 Chave de Fim de Curso para Impressora 3D RepRap e CNC 
+A chave de fim de fim de curso e um interruptor mecânico ou sensor que envia um sinal 
+elétrico ao controlador, no caso do projeto esse sinal é enviado para o ESP 32 WROOM-32, 
+quando o eixo atinge um determinado ponto final ou início, o curso de movimento do motor 
+muda direção, mostrado na Figura 11.  
+No projeto foram utilizadas duas chaves de fim de curso, uma no início do eixo e a outra 
+no final do eixo, ou seja, nas extremidades. Quando a máquina CNC está se movendo e o carro 
+(ou cabeçote, estrutura fixa no trilho para a fixação de peça) atinge o fim do curso, uma peça 
+móvel pressiona a chave. Após ser pressionado, o interruptor é acionado, enviando um sinal 
+elétrico para o ESP 32 WROOM-32 mudar o curso e/ou parar o movimento, indicando que o 
+final do curso foi atingindo. 
+Figura 11 – Chave Fim de Curso Impressora para 3D RepRap e CNC 
+Fonte: Eletrogate (2024). 
+3.1.7 Módulo Relé 5V Metaltex 
+O módulo relé de 5V é um componente eletrônico utilizado para controlar 
+dispositivos de alta potência, mostrado na Figura 12. No projeto, foram utilizados dois 
+módulos para acionar a válvula solenóide e a microbomba de diafragma, a partir de sinais 
+de baixa potência gerados pelo microcontrolador ESP32 WROOM-32. O relé funciona 
+como um interruptor controlado eletricamente, permitindo o acionamento de cargas 
+externas por meio de um circuito de controle de baixa tensão.  
+O acoplamento ótico, também conhecido como optoisolador, é uma técnica que 
+utiliza luz para transmitir sinais entre dois circuitos elétricos, mantendo-os fisicamente 
+isolados. A principal vantagem de usar o acoplamento ótico em um módulo relé é o 
+26 
+isolamento elétrico que ele proporciona. Proporcionando a proteção do microcontrolador, 
+isolamento elétrico, redução de interferência e maior segurança. 
+O relé eletromecânico contem um eletroímã, que quando energizado, faz com que 
+os contatos do relé se fechem ou se abram, controlando assim o circuito de alta potência. 
+O módulo possui três terminais, que são:  
+• COM (Comum): O terminal comum que é conectado ao dispositivo que 
+será controlado (válvula solenoide e Micro Bomba de Diafragma). 
+• NA (Normally Open - Normalmente Aberto): Neste terminal, a conexão 
+com o terminal COM só é feita quando o relé está energizado (acionado). 
+• NF (Normally Closed - Normalmente Fechado): Neste terminal, a conexão 
+com o terminal COM é mantida enquanto o relé está desativado. 
+O módulo relé é acionado por uma tensão de 5V, que é suficiente para energizar o 
+eletroímã no relé. Ele é controlado por uma porta digital de um microcontrolador, ESP 32 
+WROOM-32. O acionamento ocorre quando o microcontrolador envia um sinal lógico 
+baixo para o pino de controle do módulo. 
+Como está sendo utilizado um módulo relé da Metaltex, há alguns benefícios que 
+inclui um optoacoplador, que isola eletricamente o circuito de controle de baixa tensão 
+(como o Arduino) do circuito de alta potência. Isso aumenta a segurança e evita que ruídos 
+ou falhas no circuito de alta tensão danifiquem o microcontrolador. Além disso há um 
+díodo de proteção incluído para proteger o circuito contra tensões reversas geradas pela 
+bobina do relé ao desligar, o que poderia danificar o ESP 32 WROOM-32. 
+O módulo relé conectado com o controlador, ESP 32 WROOM-32, funciona da 
+seguinte forma o relé é controlado por um sinal digital enviado pelo controlador. A 
+alimentação do módulo geralmente é fornecida pelo pino de 5V do microcontrolador. Os 
+pinos principais dó módulo são: 
+• VCC: Alimentação de 5V. 
+• GND: Terra. 
+• IN (Sinal de controle): Entrada do sinal de controle que aciona o relé. Um 
+nível lógico alto (5V) ou baixo (0V) pode ser usado para controlar o relé, 
+dependendo da configuração do módulo. 
+O Módulo Relé 5V da Metaltex é uma solução eficiente e segura para controlar 
+dispositivos de alta potência utilizando sinais de baixa tensão de microcontroladores. Ele 
+oferece versatilidade em projetos de automação, proteção contra interferências e facilidade 
+27 
+de uso, sendo amplamente utilizado em diversos projetos de eletrônica, automação e 
+robótica. 
+Figura 12 – Módulo Relé 5V Metaltex 
+Fonte: Robocore (2024). 
+3.1.8 Estrutura de Alumínio 
+A estrutura é composta por alumínio, parafusos e vidro, tendo uma inclinação de 
+aproximadamente 27°, para simular a inclinação ideal de painéis solares. “A eficiência 
+dos coletores solares depende fortemente de fatores como o ângulo de incidência, a 
+limpeza da superfície e as condições ambientais, tornando a manutenção regular um 
+aspecto fundamental para otimizar os sistemas de energia solar” (Duffie, Beckman, 2013), 
+mostrado nas Figuras 13, 14,15,16,17 e 18. Acoplado a essa estrutura está Atuador Linear 
+Mini V para Reprap 3D Printer, chaves de fim de curso, aspersores e mangueira que 
+conecta os aspersores a bomba.  
+A estrutura teve que ser projetada e enviada para um serralheiro para ser feita, já 
+que não existe uma estrutura como essa no mercado. O vidro é para simular o painel solar, 
+a estrutura de alumínio que está acoplado a mesa de deslize do Atuador Linear Mini V 
+para Reprap 3D Printer tem os aspersores fixados de forma mais eficiente possível para 
+alcançar toda a superfície do vidro. Além disso na parte final do vidro há uma canaleta, 
+com inclinação, para água ter vazão quando o sistema estiver em operação. E para 
+finalizar há as chaves de fim de curso fixadas na parte traseira da estrutura, a qual a mesa 
+de deslize do atuador consegue encostar e mudar o comando de direção. 
+28 
+Figura 13 – Estrutura parte superior 
+Fonte: Do autor (2024). 
+Figura 14 – Estrutura parte lateral esquerda 
+Fonte: Do autor (2024). 
+Figura 15 – Estrutura parte frontal 
+29 
+Fonte: Do autor (2024). 
+Figura 16 – Estrutura parte lateral direita 
+Fonte: Do autor (2024). 
+Figura 17 – Estrutura parte traseira 
+Fonte: Do autor (2024). 
+Figura 18 – Estrutura em funcionamento  
+Fonte: Do autor (2024). 
+30 
+3.1.9 Fontes de alimentação 
+As fontes de alimentação usadas foram quatro, mostrado na Figura 19: 
+• Fonte chaveada de 5V e 3A com conector micro USB para alimentar o 
+ESP 32 WROOM-32. 
+• Fonte tipo colmeia ou caixa metálica de 12V e 6.2A para alimentar o 
+Driver TB6600. 
+• Fonte de 12V e 3A para alimentar a válvula solenoide. 
+• Fonte de 12 V e 6A para alimentar a bomba de irrigação 
+Figura 19 – Fontes de Alimentação 
+Fonte: Do autor (2024). 
+3.1.10  Plataforma Arduino IDE 
+A Arduino IDE (Integrated Development Environment) é o ambiente de 
+desenvolvimento integrado usado para programar placas controladoras, no caso o ESP 32 
+WROOM-32, mostrado na Figura 20. Ele permite escrever, compilar e carregar (upload) o código 
+diretamente nas placas de maneira simples e acessível, sendo uma das ferramentas mais populares 
+para quem desenvolve projetos de eletrônica e programação. 
+A IDE oferece um editor de código simples e intuitivo, onde você escreve seus sketches 
+(nome dado aos programas no ESP 32 WROOM-32). Ele suporta linguagens C e C++, com 
+funções simplificadas para interação direta com o hardware ESP 32 WROOM-32. 
+31 
+A IDE tem suporte para inúmeras bibliotecas que facilitam a programação de dispositivos 
+complexos. Essas bibliotecas são coleções de códigos pré-escritos que podem ser incluídos no 
+projeto, evitando a necessidade de programar tudo do zero. As bibliotecas adicionadas na IDE 
+foram: Blynk, Esp32 e ESP_FlexyStepper. A programação realizada na plataforma IDE será 
+apresentada mais adiante. 
+Figura 20 – Arduino IDE 
+Fonte: Site oficial do Arduino IDE (2023). 
+3.1.11  Blynk 
+O Blynk é uma plataforma de Internet das Coisas (IoT) que permite criar interfaces gráficas 
+para controlar e monitorar dispositivos conectados de forma remota, como placas Arduino, ESP32, 
+Raspberry Pi e outros microcontroladores., no projeto foi utilizado a placa ESP 32 WROOM-32.  A 
+plataforma Blynk facilita o desenvolvimento de aplicativos móveis (para Android e iOS) que interagem 
+com hardware, permitindo controlar dispositivos por meio de um smartphone ou tablet, sem a 
+necessidade de programar uma interface do zero. 
+32  
+ 
+3.1.12 Custo dos componentes 
+ 
+Custo dos Componentes 
+Índice Componente Preço 
+1 Atuador Linear Mini V para Reprap 3D 
+Printer1.3A, Módulo HPV4 com 42 Motor, Motor 
+de Passo, NEMA17, 1.3A 
+R$317,70 
+2 Pulverizador de mangueira de jardim, rega, bocais 
+ajustáveis, bomba de resfriamento nebulosa, kit de 
+irrigação para fazendas ao ar livre, laranja, 4mm, 
+7mm, 30-5m 
+R$294,28 
+3 Jumper’s - Femea/Femea, Macho/Femea, 
+Macho/Macho 
+R$15,80 
+4 2 Módulo Chave Fim de Curso para Impressora 3D 
+RepRap e CNC 
+R$28,70 
+5 ESP32 - WiFi + Bluetooth R$46,90 
+6 Fonte Chaveada 5V 3A com Conector micro USB R$31,90 
+7 Cabo USB Micro B 80cm R$9,90 
+8 Driver para Motor de Passo TB6600 R$99,00 
+9 2 Módulo Relé 5V - Relé Metaltex R$19,80 
+10 Fonte Caixa Metálica, MS75-12-12V 6.2A R$84,40 
+11 Válvula Solenoide 12v 220v 24v 1/2 Água Ar Nf 
+Irrigação 1 2 
+R$42,90 
+12 10 Conector P4 Macho + 10 P4 Fêmea Borne Fita 
+Led Cftv 
+R$18,30 
+13 10 Metros Cabo Flat 2 Vias 22awg - Preto e 
+Vermelho 
+R$32,00 
+14 Mangueira Branca R$20,00 
+15 Conector e adaptores R$65,00 
+16 Caixa de passagem elétrica R$75,00 
+17 Fonte de 12V e 3A R$18,00 
+18 Estrutura Metálica R$240,00 
+19 Protoboard 750 Pontos - Compatível com ESP32 
+NodeMCU 
+R$30,72 
+ 
+Valor total R$ 1.490,30 
+ 
+33 
+3.2 Métodos 
+3.2.1 Análise dos requisitos para o funcionamento do protótipo 
+O objetivo do protótipo é testar a limpeza de um vidro, simulando um painel 
+solar, automatizado. Os painéis solares comerciais tem dimensões de aproximadamente 
+1,65m X 1m e ficam com uma inclinação de 23° a 30°, a inclinação depende da região 
+onde será instalado o painel. Visando alcançar uma eficiência e economia de recursos, o 
+projeto teve de ser construído com materiais e componentes mais acessíveis, já que, um 
+dos pilares do projeto é a sustentabilidade. 
+Inicialmente foram definidas a parte mecânica e elétrica do protótipo. O trilho 
+com o motor de passo, que foi um dos componentes principais, havia duas opções, 
+montar o trilho acoplado com o motor ou comprar atuador linear mini V para Reprap 3D 
+Printer, a segunda opção foi a mais viável, pois saiu com um custo mais baixo e era a 
+mais confiável. Foi adquirido um trilho com o tamanho de 30 cm, para visualizar melhor 
+o funcionamento do protótipo. 
+Após definir o atuador linear mini V para Reprap 3D Printer foi necessário decidir 
+qual driver seria necessário para controlar o motor de passo, o driver mais adequado para 
+atuação do motor era o driver TB6600, já que após várias pesquisas o driver era utilizado 
+para o tipo de atuador já definido, linear mini V para Reprap 3D Printer, já que há 
+capacidade de corrente, controle de microstepping, proteções integrada e tensão de 
+alimentação de 9V a 42 V para um torque ideal. O tempo de percurso do motor são de 
+35 segundos para limpeza do vidro completa, o tempo foi definido por vários testes de 
+velocidade do motor, feitos no código para compreender e decidir qual o tempo e 
+velocidade que iria atender, possivelmente, a limpeza do vidro, já que não poderia ser 
+definido totalmente, pois precisaria fazer o teste juntamente com a bomba e os 
+aspersores, que serão tratados nos próximos parágrafos. 
+Com requisitos decididos anteriormente, foi possível decidir o próximo 
+componente que foi os aspersores. O aspersor tem saída cônica da água atingindo melhor 
+a superfície da placa, dito no capítulo anterior. Além disso o tempo de percurso do motor 
+estava em 35 em segundos, com o teste com os aspersores foi possível finalizar essa 
+decisão da velocidade do motor. 
+Com requisitos decididos anteriormente, foi possível decidir o próximo 
+componente que foi a bomba. Com isso, a bomba deveria ter uma pressão que atendesse 
+34 
+a atuação dos aspersores de forma mais eficiente, a bomba é de 60 watts de potência, 
+voltagem de 12 V, fluxo de água de 4Litros/minuto e força de 0,75 MPa, atendendo os 
+requisitos ditos anteriormente.  
+Definindo a bomba e os aspersores, foi decido que necessitava de uma válvula 
+solenoide para evitar gotejamento nos aspersores. Com isso a válvula Solenoide 12V, ½ 
+Água, NF Irrigação ½ polegadas se mostrou a ideal para o projeto. Já que a vazão de 
+entrada da bomba é igual a vazão de saída da válvula solenoide, sendo condizendo ao 
+que o projeto precisava. 
+Desse modo se viu necessário a aquisição de dois módulos relés para o 
+acionamento da bomba e da válvula solenoide. Com os módulos relés pode-se definir o 
+acionamento dos dois atuadores da forma correta através do tempo, a partir da 
+programação interna do controlador, que ainda não havia sido decidido, já os modelos 
+relés serão conectados diretamente no controlador. 
+Foram levantados alguns pontos sobre qual placa de controle deveria ser 
+utilizada, levando em consideração algumas questões como a eficiência, confiabilidade 
+e custo, se mostrou a melhor escolha o ESP 32 WROOM-32. Havia outras opções como 
+o Arduíno integrado ao módulo de conexão WiFi, ESP8266, porém este módulo não 
+demostrou muita confiabilidade após algumas pesquisas, já que, a uma desconexão 
+constante entre o módulo e o sistema. Além da opção anterior havia o Raspberry Pi, mas 
+por uma questão de custo alto esse componente foi descartado, já que o projeto visa ter 
+um custo acessível. 
+O próximo foi definir as fontes de alimentação, foram utilizadas quatro fontes. A 
+primeira fonte foi para alimentação da válvula solenoide, a fonte é de 12Volts e 3 
+amperes. A segunda fonte foi para alimentação da bomba, a fonte é de 12Volts e 5 
+amperes. A terceira fonte, tipo colmeia, foi para alimentação do driver, a fonte é de 
+12Volts e 6.2 amperes. A quarta fonte foi para alimentação do controlador ESP 32 
+WROOM-32, a fonte é de 5Volts e 3 amperes. 
+Após definido os componentes principais do projeto, foi necessário pensar em 
+uma estrutura que simulasse uma placa solar e fixação dos componentes. Como não 
+existe uma estrutura que atendesse os requisitos necessários para aplicação, a ideia da 
+estrutura foi levada ao um serralheiro que fez a estrutura. Os materiais da estrutura foram 
+peças de alumínio, parafusos para a ficção da estrutura e do atuador linear mini V para 
+35 
+Reprap 3D Printer, e vidro para simular o painel solar. A inclinação da estrutura foi 
+pensada para padrões de inclinação de placas solares comercias, que é entre 23° a 30°, a 
+inclinação na estrutura é de 27°. 
+Para finalizar foi decidido os tubos e conectores da parte hidráulica do sistema, 
+teve de ser adquirido adaptadores de conexão para a válvula solenoide, conector da 
+mangueira com a torneira, mangueiras para conectar a torneira na válvula solenoide, 
+bomba e aspersores. Além disso necessário jumpers para conectar o driver, relés, chaves 
+de fim de curso, motor no controlador ESP 32 WROOM-32. E para concluir foi cabo flat 
+de 2 vias 22awg preto e vermelho e bornes macho e fêmea, para fazer as conexões das 
+fontes com o driver, bomba e válvula solenoide. Esquemático de circuito mostrado na 
+Figura 21. 
+Figura 21 – Circuito eletrônico esquemático 
+Fonte: Do autor (2024). 
+36 
+3.2.2 Configuração da Válvula Solenoide com o Módulo Relé, Fonte de Alimentação e 
+ESP 32 
+A opção de construção do projeto foi por partes, após isso foi integrado todas as 
+partes em uma só, de início foi feita a integração entre o módulo relé, válvula solenoide, 
+fonte de alimentação e ESP 32 WROOM-32. Primeiramente foi conectado a fonte de 
+12V ao módulo relé. Após isso foi conectado nas saídas do relé ao ESP32. Com isso foi 
+realizado a programação para testar se o circuito estava montado de modo correto. Após 
+o teste, foi possível concluir que o circuito estava montado corretamente. 
+3.2.3 Configuração da Bomba com Módulo Relé, Fonte de Alimentação e ESP 32 
+Após o primeiro teste foi feita a integração entre o módulo relé, bomba, fonte de 
+alimentação e ESP 32 WROOM-32. Primeiramente, foi conectado a fonte 12 V as 
+entradas do módulo relé. Após isso foi conectado nas saídas do relé ao ESP32. Com 
+isso foi realizado a programação para testar se o circuito estava montado de modo 
+correto. Após o teste, foi possível concluir que o circuito estava montado corretamente. 
+3.2.4 Configuração do Driver TB660 e o Motor de Passo com Fonte de Alimentação e 
+ESP 32 
+Continuando as integrações a próxima foi entre o driver TB6600, motor de 
+passo, fonte de alimentação, ESP 32 WROOM-32. Primeiramente, foi conectado a 
+fonte 12V nas entradas do módulo driver. Após isso foi conectado nas saídas do driver 
++PUL, +DIR, +ENA, -PUL, -DIR e -ENA ao ESP32 e para finalizar as saídas +A, -A, 
++B e -B foram conectadas no motor de passo. Com isso foi realizado a programação 
+para testar se o circuito estava montado de modo correto. Após o teste, foi possível 
+concluir que o circuito estava montado corretamente. Importante ressaltar que os 
+switches no driver foram configurados para 1 Micro Step Pulse/ver (ON ON OFF) e a 
+corrente de 1.0 amperes (ON OFF ON). 
+37 
+3.2.5 Integração de todo o sistema com a conexão via WiFi aplicativo Blynk para 
+acionamento 
+Com todas as partes funcionando separadamente se iniciou a fase de 
+funcionamento integrado, ao qual foi realizado de início o código para o funcionamento 
+automático. Baseia-se na realização o movimento do motor para frente, até bater no fim 
+de curso, e para trás, até bater no fim de curso, com a bomba de água ligada e a válvula 
+solenoide aberta durante todo o percurso, após isso há um delay de 5 segundos para a 
+ação se repetir.  
+Desse modo, com a lógica automática, foi mais facilitado realizar a lógica para 
+o modo manual. O modo manual funciona basicamente da mesma forma de modo 
+automático, porém sem o delay de 5 segundos. Assim que é acionado o sistema fica 
+funcionando sem parar até ter um comando de parada. Importante ressaltar que, quando 
+há um comando de parada no modo manual o sistema só para quando bater em alguma 
+chave de fim de curso, ou no início ou do final. 
+O código inteiro foi montado em funções as quais acionam uma parte do 
+sistema. Temos as funções: 
+• void moverAteInicio(), utilizado para mover o motor para o início do 
+trilho. 
+• moverAteFim(),utilizado para mover o motor para o final do trilho. 
+• moverAteFimManual(), utilizado para mover o motor para o final do 
+trilho no modo manual, não há uma espera de 5 segundos. 
+• void ligarBomba(void), utilizado para o relé ligar a bomba. 
+• void desligarBomba(void), utilizado para o relé desligar a bomba. 
+• void abrirValvula(void), utilizado para o relé abrir a válvula. 
+• void fecharValvula(void), utilizado para o relé fechar a válvula. 
+Essas funções são chamadas dentro dos módulos: 
+• modo automático (void automatico(void)), utilizado para o acionamento 
+do sistema do modo automático. 
+• modo manual (void manual(void)), utilizado para o acionamento do 
+sistema do modo manual. 
+aos quais vão realizar os ciclos já descritos anteriormente. 
+Em relação aos comandos foi utilizado o Blynk para fazer um aplicativo que se 
+conecta ao ESP 32 WROOM-32, e com isso se conectar ao sistema. Como sistema é via 
+38 
+WiFi, utilizado a rede residencial para ser feita a integração, porém a rede pode ser 
+alterada caso o sistema mude de local, só tem que modificar no código o nome da rede 
+WiFi e a senha da rede. 
+O aplicativo realizado no Blynk há 4 botões, sendo eles:  
+• Modo Automático (ON e OFF), utilizado para ativar o modo automático 
+do sistema remotamente.  
+• Modo Manual (ON e OFF), utilizado para selecionar o modo manual do 
+sistema remotamente.  
+• Ligar Manual (ON e OFF), utilizado para ativar o modo manual do 
+sistema remotamente. 
+• Desligar Manual (ON e OFF), utilizado para desativar o modo manual 
+do sistema remotamente. 
+Esses botões se conectam com sistema através de um código especial para o 
+Blynk, ou seja, o código já realizado é integrado com código para atuação dos botões no 
+Blynk para que o sistema funcione. 
+3.2.6 Explicação do código 
+Código final completo do projeto: Código Final TCC escrito.txt  
+https://drive.google.com/file/d/15Y_xA9VYKshw5T1pT5rcnnvQYTeo1Y9w/v
+iew?usp=sharing  
+As cinco primeiras linhas código estão definidos a comunicação com o Blynk, 
+as quais há a definição do template da plataforma, "TMPL270v6w5QF", seguido pela 
+definição do nome do projeto, “TCC”, o token de acesso do autor, 
+"4gUE8ChBsKLKcpMK3D-mVzB5aDvQFWy7", definição serial do Blynk. 
+As linhas 7 a 10 do código estão definidas as bibliotecas necessárias para o 
+funcionamento do sistema.   
+• <WiFi.h>, biblioteca necessária para conexão do ESP32 a rede Wifi. 
+•  <WiFiClient.h>, biblioteca é usada para estabelecer e gerenciar 
+conexões de rede no ESP32 em modo cliente permitindo que o ESP32 se 
+conecte a servidores ou a outros dispositivos que ofereçam serviços na 
+rede como o Blynk.  
+• <BlynkSimpleEsp32.h>, integrar o ESP32 com a plataforma Blynk, 
+permitindo o controle e monitoramento remoto de dispositivos por meio 
+39 
+de um aplicativo de smartphone ou interface web. 
+• <ESP_FlexyStepper.h>, para controlar motores de passo (stepper 
+motors) de maneira precisa e flexível no ESP32. 
+As linhas 12 a 19 do código estão definidas as portas de conexão do ESP32 
+WROOM 32. O driver TB6600 está conectado na porta 33, 25 e 13 do controlador, sendo 
+pulso, direção e enable respectivamente. Já na porta 26 e 27 está conectado os relés, da 
+bomba e da válvula respectivamente. Para concluir está conectado nas portas 18 e 5, as 
+chaves de fim de curso, início e fim respectivamente. 
+As linhas 21 a 23 do código estão definidas o as variáveis modoAutomatico e 
+modoManual, inicialmente como booleano falso. 
+As linhas 25 a 31 do código estão a configuração do WiFi com o Bynk, sendo 
+“char auth[] = "4gUE8ChBsKLKcpMK3D-mVzB5aDvQFWy7";” o token, “char ssid[] 
+= "Apto101";”, o nome da rede WiFi, “char pass[] = "amandasarah";”, a senha da rede 
+local. Além disso na linha 30 é instância de um controlador de motor de passo, criada a 
+partir da classe ESP_FlexyStepper, que é definida na biblioteca ESP_FlexyStepper.h. 
+Este objeto será usado para interagir com o motor de passo, configurando seus 
+parâmetros, como velocidade, aceleração, e realizando o controle de movimentos. 
+Figura 22 – Código final Arduino IDE linha 1 a 31 
+Fonte: Do autor (2024). 
+40 
+As linhas 32 a 55 do código estão o serial begin do ESP32 configurado 
+em 
+115200, taxa de transmissão bits por segundo. Na linha 36 há configuração inicial do 
+motor de passo. Já da linha 38 a 46 há a configuração dos relés e entradas como saídas. 
+O que ocorre nas linhas 48 a 50 é a configuração de velocidade e aceleração do motor de 
+passo. Para concluir da linha 52 a 53 há a inicialização do Blynk. 
+Figura 23 – Código final Arduino IDE linha 32 a 55 
+Fonte: Do autor (2024). 
+As linhas 56 a 80 do código estão o loop para o Blynk continuar rodando. Após 
+isso, da linha 59 a 62 execução do modo automático caso ativado, seguido nas linhas 64 
+a 69 a execução do modo manual caso ativado. Já das linhas 71 a 80 há a função para o 
+controle automático. 
+41 
+Figura 24 – Código final Arduino IDE linha 56 a 80 
+Fonte: Do autor (2024). 
+As linhas 82 a 103 do código se encontra a função de mover para o início o trilho, 
+essa função servirá para o modo automático e manual. Depois segue a função mover para 
+o fim do trilho, essa função é para modo automático a penas. 
+Figura 25 – Código final Arduino IDE linha 82 a 103 
+Fonte: Do autor (2024). 
+42 
+As linhas 105 a 124 do código se encontra a função de mover para o fim do 
+trilho, essa função servirá a penas para o modo manual. Depois segue função para o 
+controle automático com delay, esse delay de 5 segundos foi a penas para demonstração 
+do sistema quando tiver funcionando. 
+Figura 26 – Código final Arduino IDE linha 105 a 124 
+Fonte: Do autor (2024). 
+As linhas 126 a 139 do código se encontra a funções de ligar a bomba, desligar 
+a bomba, abrir válvula e fechar válvula. 
+Figura 27 – Código final Arduino IDE linha 126 a 139 
+Fonte: Do autor (2024). 
+43 
+As linhas 141 a 152 do código se encontra o comando para ativar o modo 
+automático no Blynk, as condições que há nesse botão V1 ocorre se o botão está no 
+booleano igual 1, tornando o modo automático verdadeiro e modo manual falso, modo 
+automático fica ativado. Com modo automático falso, o modo automático fica 
+desativado. A variável param.asInt() é utilizada no contexto do Blynk, que permite a 
+criação de interfaces gráficas para dispositivos embarcados como o ESP32. Esse método 
+converte o valor recebido de um widget Blynk (como um botão, slider, ou outro 
+componente) em um número inteiro (int). A variável V1 botão está declarada dentro do 
+próprio Blynk por isso ela só é referenciada no código. 
+Figura 28 – Código final Arduino IDE linha 141 a 152 
+Fonte: Do autor (2024). 
+As linhas 154 a 183 do código se encontra o comando para ativar o modo manual 
+no Blynk, as condições que há nesse botão V2 ocorre se o botão está no booleano igual 
+a 1, tornando o modo manual verdadeiro e modo automático falso, modo automático fica 
+ativado. Com modo manual falso, o modo manual fica desativado. Já o botão V3 é o 
+comando para ligar o modo manual se o botão V2 estiver verdadeiro e o botão V1 for 
+falso. Para concluir o código botão V4 é o comando para desligar o modo manual se o 
+botão V2 estiver verdadeiro e o botão V1 for falso. A variável V2,V3 e V4 dos botões 
+estão declaradas dentro do próprio Blynk por isso elas só são referenciadas no código. A 
+necessidade de ter o botão V3 e V4 é para facilitar o comendo de parada imediato, para 
+não correr riscos de sobreposição de comando. 
+44 
+Figura 29 – Código final Arduino IDE linha 154 a 183 
+Fonte: Do autor (2024). 
+Figura 30 – Interface Blynk/ Aplicativo 
+45 
+Fonte: Do autor (2024). 
+4 RESULTADOS 
+O teste realizado com o funcionamento do protótipo teve alguns pontos que 
+necessitam de melhorias. Um dos pontos é a disposição dos aspersores na estrutura, há a 
+necessidade de adicionar mais um aspersor para que a água chegue próximo a faixa de 
+vidro que esta perto do trilho, de início pensou-se na cautela de a água não molhar o 
+trilho, evitando o risco da queima do componente. Além disso, a estrutura que é fixado 
+os aspersores precisa ter uma altura maior em relação ao vidro, isso tem como objetivo 
+evitar muito os respingos que está ocorrendo na montagem atual da estrutura. 
+A integração total do sistema, Atuador Linear Mini V para Reprap 3D Printer 
+com o driver TB6600, os relés com a bomba e a válvula solenoide, os fins de curso, tudo 
+integrado e controlado pelo ESP 32 WROOM-32, se mostrou satisfatório com a ideia 
+inicial do projeto, funcionando de forma coerente e integrada, a automação está 
+funcionando como o esperado. Além disso a integração com o sistema eletrônico com o 
+Blynk, demostrou a facilidade no controle do sistema, tendo um resultado satisfatório 
+também, pois como dito nos capítulos anteriores a intervenção humana na limpeza é 
+evitada, e por isso a segurança foi satisfeita. 
+Analisando cada parte do protótipo separadamente a integração da válvula 
+solenoide e bomba e aspersores, com os relés e o controlador ESP32 WROOM-32, teve 
+um funcionamento melhor que o esperado. A razão dessa conclusão foi pelo fato de que 
+a pressão que a água, que chega nos aspersores retira qualquer sujeira que contenha no 
+vidro, e quando for aplicado no painel solar a limpeza será completa. Contudo, como 
+dito no primeiro paragrafo desse capítulo, há uma faixa que não uma limpeza completa 
+por conta da disposição dos aspersores e a altura da estrutura em relação vidro. 
+Em relação ao Atuador Linear Mini V para Reprap 3D Printer integrado ao driver 
+TB6600 e os fins de curso e controlado pelo ESP32 WROOM-32, teve um resultado de 
+movimento ideal. O movimento teve uma velocidade para o intuito do protótipo, 
+respeitando as condições impostas para a movimentação, não ocorrendo 
+impossibilidades durante o processo. 
+Para concluir, a integração da eletrónica, programação e o Blynk, mostrou 
+eficiência de se fazer uma interface para controle do protótipo. O aplicativo não trouxe 
+problemas para o funcionamento do sistema, mas mostrou a eficiência que uma interface 
+46 
+remota pode trazer para controle de projetos de automação. 
+Em relação ao ponto de vista ecológico, a utilização da água com os aspersores 
+reduziu entre 30% a 50%, essa faixa vai variar de acordo com o modo que sistema está 
+operando, automático ou manual. Em relação a energia há um gasto menor com o uso de 
+microcontrolador e os atuadores tendo tensão de alimentação de 12 V, e são acionados 
+pela programação interna do controlador, otimizou o uso da energia elétrica. Os 
+resultados do que foi dito nesse parágrafo está exposto logo a seguir. 
+Gastos do equipamento: 
+• Gasto de água: 
+O tempo 35 segundos para 1 ciclo do sistema, sendo que o trilho tem 30 
+centímetros, bomba utiliza 4L/min, sendo que 1 minuto tem 60 segundos, com isso 
+chegamos ao resultado de 2,33 litros de gasto de água.  
+Tamanho de painel solar comercial 2 metros X 1 metro, se utilizarmos 1 metro 
+de largura da placa, temos o seguinte resultado para o gasto de água será de 116,66 
+segundos 7,77 litros para um ciclo. 
+• Gasto de energia: 
+Válvula Solenoide: 0,114 A 
+Bomba de água: 0,708 A 
+Driver TB6600: 0,057A 
+Figura 31 – Circuito eletrônico físico 
+Fonte: Do autor (2024). 
+47 
+5 CONSIDERAÇÕES FINAIS 
+5.2 Conclusão 
+Após a conclusão desse trabalho ficou claro que um sistema de limpeza 
+automático se demonstrou ser uma solução eficiente para a limpeza de acúmulo de 
+sujeira, aplicado em placas solares aumentaria significativamente a eficiência de 
+captação das células solares, aumentando assim a eficiência energética. Com a 
+implementação de um protótipo composto por um sistema de irrigação com aspersores, 
+um trilho deslizante operado por um motor de passo NEMA17 e controlado por um ESP 
+32 WROOM 32, foi possível obter uma reposta satisfatório ao que era a proposta inicial 
+do projeto. 
+Os testes realizados confirmaram a viabilidade do sistema tanto no modo 
+automático, controlado por tempo, quanto no modo manual, controlado por botões via 
+aplicativo. O uso das chaves de fim de curso garantiu precisão no controle de movimento 
+do trilho, enquanto o acionamento da bomba e da válvula solenoide foi bem-sucedido 
+com o uso de módulos relés. 
+O sistema também levou em consideração aspectos de sustentabilidade, 
+minimizando o consumo de água e energia elétrica durante o processo de limpeza. A 
+estrutura em alumínio com inclinação aproximada de 27° simulou de maneira realista a 
+inclinação das placas solares em telhados, contribuindo para a praticidade do protótipo. 
+Desse modo, projeto apresentou uma solução prática e economicamente viável 
+para o a limpeza de placas fotovoltaicas devido ao acúmulo de sujeira. Com a 
+automatização do processo de limpeza, espera-se que o sistema seja capaz de reduzir 
+custos operacionais e aumentar a produção de energia a longo prazo, promovendo o uso 
+sustentável da energia solar e, consequentemente, contribuindo para uma maior 
+eficiência no setor energético. 
+5.3 Recomendações para Trabalhos Futuros  
+Para o aprimoramento futuro do protótipo poderia realizar um método mais eficaz 
+de limpeza. Como a utilização de uma espoja integrada a estrutura e um bombeamento 
+de produto juntamente com a água para retirada maior de resíduos do painel solar. 
+Além disso aprimorar o controle do protótipo em relação ao controle, o 
+48 
+acionamento ser mais específico, levando em consideração o acionamento com o tempo 
+e o mês que tem mais ou menos incidência solar, para ter um acionamento mais 
+direcionado a região ao qual o painel solar esta instalado. Desse modo vai melhorar a 
+automação do protótipo, e assim a eficácia do sistema como um todo. 
+Verificar outros métodos que traga um custo benefício melhor ao protótipo. 
+Buscando sempre a eficiência enérgica não a penas do painel solar, mas também no 
+sistema do protótipo. Sempre importante a busca por outros métodos para otimizar o 
+sistema. O reuso da água é um dos pontos que podem ser trabalhados na melhoria do 
+protótipo. 
+Para finalizar, o uso de sensores de infravermelho para verificar se há, células 
+queimadas, partes do painel com sujeira e inviabilidade da célula solar por alguma 
+questão. Isso trará um aprimoramento da automação do protótipo e uma limpeza mais 
+eficiente. 
+49 
+REFERÊNCIAS 
+Bacha, S., Munteanu, I., & Bratcu, A. I. (2014). Power electronic converters modeling and control: with 
+case studies. Springer Science & Business Media. 
+Boretti, A. (2020). Challenges in solar power generation in deserts. Energy Reports, 6, 822-829. 
+Duffie, J. A., & Beckman, W. A. (2013). Solar engineering of thermal processes (4th ed.). John Wiley 
+& Sons. 
+Gerland, B., Gnann, T., & Plötz, P. (2019). Optimal positioning and cleaning of solar panels in arid 
+environments. Journal of Renewable and Sustainable Energy, 11(5), 053301. 
+Kaldellis, J. K., & Zafirakis, D. (2011). The wind energy revolution: A short review of a long history. 
+Renewable Energy, 36(7), 1887-1901. 
+Mazumder, S. K. (Ed.). (2021). Wirelessly powered systems and networks. Springer Nature. 
+Patel, M. R. (1999). Wind and solar power systems: design, analysis, and operation. CRC Press. 
+Santbergen, R., Ransome, S., & Alsema, E. (2010). Solar photovoltaic energy conversion. Advances in 
+Renewable Energies and Power Technologies, 1, 103-150. 
+Skoplaki, E., & Palyvos, J. A. (2009). On the temperature dependence of photovoltaic module electrical 
+performance: A review of efficiency/power correlations. Solar Energy, 83(5), 614-624. 
+Zaihidee, F. M., Mekhilef, S., Seyedmahmoudian, M., & Horan, B. (2016). Dust as an unalterable 
+deteriorative factor affecting PV panel’s efficiency: Why it matters? Renewable and Sustainable Energy 
+Reviews, 65, 1267-1278. 
+50 
+Referências das Figuras: 
+Figura 1:  
+Womenenergize: 
+https://www.womenenergize.org/wp-content/uploads/2022/05/solar-2.pdf 
+ABSOLAR:https://www.absolar.org.br/wp-content/uploads/2022/09/2022.03.09
+InfograficoABSOLAR-no-41.pdf  
+Global Market Outlook for Solar Power 2023–2027 
+Figura 2:  
+Womenenergize: https://www.womenenergize.org/wp-content/uploads/2022/05/solar-2.pdf  
+ABSOLAR:https://www.absolar.org.br/wp-content/uploads/2022/09/2022.03.09
+InfograficoABSOLAR-no-41.pdf  
+Global Market Outlook for Solar Power 2023–2027 
+Figura 
+3: 
+https://pt.aliexpress.com/item/4000158747713.html?spm=a2g0o.order_list.order_list_main.5.
+5666caa4J5AQiA&gatewayAdapt=glo2bra 
+Figura 4: https://www.robocore.net/wifi/esp32-wifi-bluetooth 
+Figura 
+5: 
+https://www.marinostore.com/automacao/driver-para-motor-de-passo
+tb6600?srsltid=AfmBOoqlRPJT_MYkB5iWmV3e105zl5sGX03J8TWGLh8WFBtBmbfEvB8
+T 
+Figura 6: https://www.robocore.net/driver-motor/driver-para-motor-de-passo-tb6600 
+Figura 7: https://www.dfrobot.com/product-1547.html 
+Figura 
+8: 
+https://pt.aliexpress.com/item/1005006604200009.html?spm=a2g0o.order_detail.order_detail
+_item.3.5c2c4c7f8WTrer&gatewayAdapt=glo2bra 
+Figura 
+9: 
+https://pt.aliexpress.com/item/1005006604200009.html?spm=a2g0o.order_detail.order_detail
+_item.3.5c2c4c7f8WTrer&gatewayAdapt=glo2bra 
+11: 
+Figura 10: https://produto.mercadolivre.com.br/MLB-3524058205-valvula-solenoide-12v
+220v-24v-12-agua-ar-nf-irrigaco-1-2-_JM 
+Figura 
+https://www.eletrogate.com/modulo-chave-fim-de-curso-para-impressora-3d
+reprap-e-cnc-jumper
+70cm?utm_source=Site&utm_medium=GoogleMerchant&utm_campaign=GoogleMerchant&
+utm_source=google&utm_medium=cpc&utm_campaign=[MC4]_[G]_[PMax]_Categorias&ut
+m_content=&utm_term=&gad_source=1&gclid=Cj0KCQjwsoe5BhDiARIsAOXVoUv0sJCB
+dUbQpYkPBgbmtVcUJIhJCI3bdyUjuZD7tKeXu3js-oADofcaAmUZEALw_wcB 
+51 
+Figura 12: https://www.robocore.net/atuador-rele/modulo-rele 
+Figura 20: https://www.arduino.cc/en/software 
