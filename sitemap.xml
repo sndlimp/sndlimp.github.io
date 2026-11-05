@@ -1,67 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://sndlimp.com.br/</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/economia.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/servicos.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/folder_comercial.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/galeria.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/faq.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/metodoieee3s.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/fontesdevalidacao.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/novidade.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sndlimp.com.br/compartilhado/politicadeprivacidade.html</loc>
-    <lastmod>2026-11-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <!-- ═══ CIDADES — colar após confirmar nomes exatos ═══ -->
-  <!-- <url><loc>https://sndlimp.com.br/cidades/NOME.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url> -->
-  <!-- ═══ BLOG — colar após confirmar nomes exatos ═══ -->
-  <!-- <url><loc>https://sndlimp.com.br/blog/NOME.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url> -->
+
+  <url><loc>https://sndlimp.com.br/</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+
+  <url><loc>https://sndlimp.com.br/economia.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sndlimp.com.br/servicos.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <url><loc>https://sndlimp.com.br/folder_comercial.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/galeria.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/faq.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/novidade.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/metodoieee3s.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/fontesdevalidacao.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+
+  <url><loc>https://sndlimp.com.br/compartilhado/politicadeprivacidade.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- ═══ CIDADES (23) ═══ -->
+  <url><loc>https://sndlimp.com.br/cidades/ararica.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/campo-bom.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/canoas.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/colinas.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/dois-irmaos.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/estancia-velha.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/esteio.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/imigrante.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/ivoti.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/lajeado.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/marata.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/montenegro.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/nova-hartz.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/nova-santa-rita.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/novo-hamburgo.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/poco-das-antas.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/portao.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/salvador-do-sul.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/sao-leopoldo.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/sapiranga.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/sapucaia-do-sul.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/teutonia.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sndlimp.com.br/cidades/westfalia.html</loc><lastmod>2026-11-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ═══ BLOG (8 posts) ═══ -->
+  <url><loc>https://sndlimp.com.br/blog/costa-2021-soiling-brasil-validacao.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/fla-2024-sistema-automatizado-limpeza-solar.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/ilse-2018-soiling-previsao-limpeza-efetiva.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/kimber-2006-soiling-model-benchmark.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/nmet-1991-2020-precipitacao-brasil-soiling.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/perdas-evitaveis-ufsc-limpeza-brasil.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://sndlimp.com.br/blog/soiling-losses-iea-pvps.html</loc><lastmod>2026-11-05</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
 </urlset>
