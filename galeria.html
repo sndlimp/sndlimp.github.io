@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos — Antes e Depois | SNDLimp</title>
+    <meta name="description" content="Veja a galeria de fotos real de limpeza de placas solares da SNDLimp. Antes e depois de serviços no Vale do Sinos, Vale do Taquari e região.">
+    <meta name="keywords" content="galeria de fotos, antes e depois, limpeza de placas solares, Vale do Sinos, Vale do Taquari, Novo Hamburgo, São Leopoldo">
+    <meta name="author" content="SNDLimp — Samuel & Eduardo Sidegum">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0d0d0d">
+    <meta name="geo.region" content="BR-RS">
+    <meta name="geo.placename" content="Vale do Sinos, Vale do Taquari, Rio Grande do Sul, Brasil">
+    <meta name="geo.position" content="-29.4333;-51.4167">
+    <meta name="ICBM" content="-29.4333, -51.4167">
+    <meta name="DC.coverage" content="Vale do Sinos, Vale do Taquari, Rio Grande do Sul, Brasil">
+    <meta name="DC.description" content="Galeria de fotos com resultados reais de limpeza de placas solares realizados pela SNDLimp.">
+    <link rel="canonical" href="https://edusidegum.github.io/sndlimp/galeria.html">
+    <meta property="og:title" content="Galeria de Fotos — Antes e Depois | SNDLimp">
+    <meta property="og:description" content="Confira os resultados reais de limpeza de placas solares realizados pela SNDLimp no Vale do Sinos e Vale do Taquari.">
+    <meta property="og:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.webp">
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://edusidegum.github.io/sndlimp/galeria.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+    <title>Galeria de Fotos — SNDLimp</title>
+
+    <link rel="canonical" href="https://edusidegum.github.io/sndlimp/galeria.html">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Open Sans', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #d6d6d6;
+            background-color: #0d0d0d;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        h2 em { color: #F5A623; font-style: normal; }
+
+        /* ═══════════ TOPBAR ═══════════ */
+        .sticky-header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 10000;
+            background: rgba(26,26,26,0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(245,166,35,0.25);
+            padding: 5px 5%;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center; gap: 8px; min-height: 40px;
+        }
+        .sticky-header .topbar-brand {
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none; justify-self: start;
+        }
+        .sticky-header .topbar-logo-text {
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800; font-size: 1.1rem;
+            color: #F5A623; letter-spacing: 1px; white-space: nowrap;
+        }
+        .sticky-header .topbar-logo-sub {
+            font-size: 0.65rem; color: #aaa; display: block;
+            letter-spacing: 0; text-transform: none; font-weight: 400;
+        }
+        .menu-dropdown { position: relative; justify-self: center; }
+        .menu-toggle {
+            background: none; border: none; color: #fff;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 1rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; cursor: pointer; padding: 10px 14px;
+            transition: color 0.3s ease;
+        }
+        .menu-toggle:hover { color: #F5A623; }
+        .menu-lista {
+            display: none; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); margin-top: 6px;
+            background: #1e1e1e;
+            border: 1px solid rgba(245,166,35,0.3);
+            border-radius: 8px; list-style: none; min-width: 190px;
+            z-index: 10001; overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.6); padding: 0;
+        }
+        .menu-lista li { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .menu-lista li:last-child { border-bottom: none; }
+        .menu-lista a {
+            display: block; padding: 11px 16px; color: #d6d6d6;
+            text-decoration: none; font-size: 0.85rem; text-align: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .menu-lista a:hover { background: rgba(245,166,35,0.12); color: #F5A623; }
+        .menu-dropdown:focus-within .menu-lista,
+        .menu-dropdown:hover .menu-lista { display: block; }
+        .sticky-header .btn-cta {
+            background: #25D366; color: #fff; text-decoration: none;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-size: 0.8rem; font-weight: 700; padding: 8px 18px;
+            border-radius: 50px; white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(37,211,102,0.4);
+            justify-self: end; flex-shrink: 0; transition: all 0.3s ease;
+        }
+        .sticky-header .btn-cta:hover { background: #1fb950; }
+        .header-spacer { min-height: 40px; }
+
+        /* ═══════════ GALERIA ═══════════ */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .galeria-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(245,166,35,0.2);
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .galeria-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(245,166,35,0.5);
+        }
+        .galeria-card img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            display: block;
+        }
+        .galeria-card video {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            display: block;
+            background: #000;
+        }
+        .galeria-legenda {
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: #aaa;
+            font-weight: 600;
+        }
+        .galeria-separador {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px 0 10px;
+            color: #F5A623;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ═══════════ LIGHTBOX ═══════════ */
+        #lightbox {
+            display: none;
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.94);
+            z-index: 99999;
+            align-items: center; justify-content: center;
+            cursor: pointer;
+        }
+        #lightbox img {
+            max-width: 92vw; max-height: 88vh;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            border: 1px solid rgba(245,166,35,0.3);
+        }
+        #lightbox span {
+            position: absolute; top: 20px; right: 30px;
+            color: #fff; font-size: 2rem; cursor: pointer;
+        }
+
+        /* ═══════════ BOTÃO ═══════════ */
+        .btn-amarelo {
+            display: inline-block;
+            background: #F5A623; color: #000;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800; font-size: 0.95rem;
+            text-transform: uppercase; text-decoration: none;
+            padding: 14px 32px; border-radius: 50px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(245,166,35,0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-amarelo:hover {
+            background: #FFB84D; transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(245,166,35,0.45);
+        }
+        .text-center { text-align: center; }
+        .mt-20 { margin-top: 20px; }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid rgba(245,166,35,0.2);
+            padding: 40px 20px; text-align: center;
+        }
+        footer h3 { color: #F5A623; margin-bottom: 10px; font-size: 1.2rem; }
+        footer p { color: #888; font-size: 0.85rem; margin-bottom: 6px; }
+        footer .footer-whats {
+            display: inline-block; margin-top: 16px;
+        }
+        footer .copyright {
+            margin-top: 20px; font-size: 0.7rem; color: #555;
+        }
+        .btn-cta-hero {
+            display: inline-block;
+            background: #25D366; color: #fff;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            font-weight: 800; font-size: 1rem;
+            text-transform: uppercase; text-decoration: none;
+            padding: 14px 32px; border-radius: 50px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-cta-hero:hover {
+            background: #1fb950; transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(37,211,102,0.45);
+        }
+
+        /* ═══════════ RESPONSIVO ═══════════ */
+        @media (max-width: 600px) {
+            .sticky-header {
+                padding: 6px 3%; min-height: auto;
+                grid-template-columns: auto 1fr auto; gap: 6px;
+            }
+            .sticky-header .topbar-logo-text { font-size: 0.9rem; }
+            .sticky-header .topbar-logo-sub { display: none; }
+            .menu-toggle { font-size: 0.82rem; padding: 6px 10px; }
+            .sticky-header .btn-cta { font-size: 0.68rem; padding: 6px 12px; }
+            .header-spacer { min-height: 50px; }
+            .galeria-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════ TOPBAR ═══════════ -->
+<header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+    <a href="https://edusidegum.github.io/sndlimp/" aria-label="Página inicial SNDLimp" class="topbar-brand">
+        <span class="topbar-logo-text">☀ SNDLimp<span class="topbar-logo-sub">Limpeza Técnica de Placas Solares</span></span>
+    </a>
+
+    <nav class="menu-dropdown" aria-label="Menu de navegação">
+        <button class="menu-toggle" aria-label="Abrir menu">☰ Menu</button>
+        <ul class="menu-lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="folder_comercial.html">Nossa Proposta</a></li>
+            <li><a href="galeria.html" style="color:#F5A623;">Galeria de Fotos</a></li>
+            <li><a href="economia.html">Simulador</a></li>
+
+        </ul>
+    </nav>
+
+    <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Quero%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta" target="_blank" rel="noopener" aria-label="Quero Orçamento no WhatsApp">
+        💬 Quero Orçamento para limpeza de Placas
+    </a>
+</header>
+
+<div class="header-spacer"></div>
+
+<!-- ═══════════ GALERIA ═══════════ -->
+<section class="section">
+    <div class="container">
+        <h2>📸 <em>Galeria</em> de Serviços</h2>
+        <p style="text-align:center; color:#aaa; margin-bottom:10px;">Clique nas fotos para ampliar</p>
+
+        <div class="galeria-grid">
+
+            <!-- ═══ SERVIÇOS ANTERIORES ═══ -->
+            <div class="galeria-separador">📷 Serviços Realizados</div>
+
+            <div class="galeria-card" onclick="openLightbox('img/servico1.webp')">
+                <img src="img/servico1.webp" alt="Serviço 1" loading="lazy">
+                 <!-- ═══ Legendas apagadas                 <div class="galeria-legenda">📷 Serviço #1</div>    ═══ -->
+
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico2.webp')">
+                <img src="img/servico2.webp" alt="Serviço 2" loading="lazy">
+                 <!-- ═══ Legendas apagadas      <div class="galeria-legenda">📷 Serviço #2</div>      ═══ -->
+
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico5.webp')">
+                <img src="img/servico5.webp" alt="Serviço 5" loading="lazy">
+                     <!-- ═══ Legendas apagadas       <div class="galeria-legenda">📷 Serviço #5</div>       ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico8.webp')">
+                <img src="img/servico8.webp" alt="Serviço 8" loading="lazy">
+                 <!-- ═══ Legendas apagadas    <div class="galeria-legenda">📷 Serviço #8</div>       ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico6.webp')">
+                <img src="img/servico6.webp" alt="Serviço 6" loading="lazy">
+                 <!-- ═══ Legendas apagadas    <div class="galeria-legenda">📷 Serviço #6</div>     ═══ -->          
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico10.webp')">
+                <img src="img/servico10.webp" alt="Serviço 10" loading="lazy">
+              <!-- ═══ Legendas apagadas     <div class="galeria-legenda">📷 Serviço #10</div>      ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/servico12.webp')">
+                <img src="img/servico12.webp" alt="Serviço 12" loading="lazy">
+             <!-- ═══ Legendas apagadas     <div class="galeria-legenda">📷 Serviço #12</div>      ═══ -->
+            </div>
+
+            <!-- ═══ LIMPEZAS RECENTES ═══ -->
+            <div class="galeria-separador">📷 Limpezas Recentes</div>
+
+            <div class="galeria-card" onclick="openLightbox('img/limpeza5.webp')">
+                <img src="img/limpeza5.webp" alt="Limpeza 5" loading="lazy">
+                <!-- ═══ Legendas apagadas     <div class="galeria-legenda">📷 Limpeza #5</div   ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/limpeza6.webp')">
+                <img src="img/limpeza6.webp" alt="Limpeza 6" loading="lazy">
+               <!-- ═══ Legendas apagadas      <div class="galeria-legenda">📷 Limpeza #6</div>     ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/limpeza7.webp')">
+                <img src="img/limpeza7.webp" alt="Limpeza 7" loading="lazy">
+             <!-- ═══ Legendas apagadas        <div class="galeria-legenda">📷 Limpeza #7</div>      ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/limpeza8.webp')">
+                <img src="img/limpeza8.webp" alt="Limpeza 8" loading="lazy">
+             <!-- ═══ Legendas apagadas        <div class="galeria-legenda">📷 Limpeza #8</div>       ═══ -->
+            </div>
+            <div class="galeria-card" onclick="openLightbox('img/limpeza11.webp')">
+                <img src="img/limpeza11.webp" alt="Limpeza 11" loading="lazy">
+              <!-- ═══ Legendas apagadas       <div class="galeria-legenda">📷 Limpeza #11</div>        ═══ -->
+            </div>
+
+            <!-- ═══ VÍDEOS ═══ -->
+            <div class="galeria-separador">🎬 Vídeos</div>
+
+            <div class="galeria-card">
+                <video controls playsinline poster="img/servico3.webp">
+                    <source src="img/servico3.mp4" type="video/mp4">
+                </video>
+                   <!-- ═══ Legendas apagadas     <div class="galeria-legenda">🎬 Vídeo Serviço #3</div>        ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/servico4.webp">
+                    <source src="img/servico4.mp4" type="video/mp4">  
+                </video>
+                   <!-- ═══ Legendas apagadas     <div class="galeria-legenda">🎬 Vídeo Serviço #4</div>      ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/servico7.webp">
+                    <source src="img/servico7.mp4" type="video/mp4">    
+                </video>
+                  <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Serviço #7</div>   ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/servico9.webp">
+                    <source src="img/servico9.mp4" type="video/mp4">
+                </video>
+                  <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Serviço #9</div>   ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/servico11.webp">
+                    <source src="img/servico11.mp4" type="video/mp4">
+                </video>
+                <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Serviço #11</div>  ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza5.webp">
+                    <source src="img/limpeza2.mp4" type="video/mp4">
+                </video>
+               <!-- ═══ Legendas apagadas       <div class="galeria-legenda">🎬 Vídeo Limpeza #2</div>  ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza6.webp">
+                    <source src="img/limpeza3.mp4" type="video/mp4">
+                </video>
+              <!-- ═══ Legendas apagadas        <div class="galeria-legenda">🎬 Vídeo Limpeza #3</div>  ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza7.webp">
+                    <source src="img/limpeza4.mp4" type="video/mp4">
+                </video>
+              <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Limpeza #4</div> ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza8.webp">
+                    <source src="img/limpeza9.mp4" type="video/mp4">
+                </video>
+             <!-- ═══ Legendas apagadas       <div class="galeria-legenda">🎬 Vídeo Limpeza #9</div> ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza11.webp">
+                    <source src="img/limpeza10.mp4" type="video/mp4">
+                </video>
+              <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Limpeza #10</div> ═══ -->
+            </div>
+            <div class="galeria-card">
+                <video controls playsinline poster="img/limpeza5.webp">
+                    <source src="img/limpeza12.mp4" type="video/mp4">
+                </video>
+              <!-- ═══ Legendas apagadas      <div class="galeria-legenda">🎬 Vídeo Limpeza #12</div> ═══ -->
+            </div>
+
+        </div>
+
+        <div class="text-center mt-20">
+            <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Quero%20agendar%20uma%20limpeza%20das%20minhas%20placas." class="btn-amarelo" target="_blank" rel="noopener">
+                📅 Agendar Limpeza Agora
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div id="lightbox" onclick="closeLightbox()">
+    <span>&times;</span>
+    <img id="lightbox-img" src="" alt="Imagem ampliada">
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+    <div class="container">
+        <h3>☀ SNDLimp</h3>
+        <p><strong>Limpeza Especializada em Placas Solares</strong></p>
+        <p>📞 Samuel Sidegum: (51) 99603-3200</p>
+        <p>📞 Eduardo Sidegum: (51) 99966-3200</p>
+        <p>📍 Atendimento em Poço das Antas e região</p>
+
+        <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta-hero footer-whats" target="_blank" rel="noopener">
+            💬 Solicite Orçamento
+        </a>
+
+        <p class="copyright">&copy; 2026 SNDLimp — Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    function openLightbox(src) {
+        document.getElementById('lightbox-img').src = src;
+        document.getElementById('lightbox').style.display = 'flex';
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
+</body>
+</html>

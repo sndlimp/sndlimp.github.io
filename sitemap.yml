@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://edusidegum.github.io/sndlimp/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/sndlimp/economia.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/sndlimp/servicos.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://edusidegum.github.io/sndlimp/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/ararica.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/campo-bom.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/dois-irmaos.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/estancia-velha.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/esteio.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/ivoti.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/montenegro.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/marata.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/nova-hartz.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/novo-hamburgo.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/poco-das-antas.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/portao.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/sao-leopoldo.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/sapiranga.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/sapucaia-do-sul.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://edusidegum.github.io/sndlimp/cidades/teutonia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <url>
+    <loc>https://edusidegum.github.io/sndlimp/assets/doc/politica.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+</urlset>

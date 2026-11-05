@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>SNDLimp — Serviços de Limpeza Especializada em Placas Solares</title>
+
+    <!-- SEO On-Page Prioritário para Google Search Console & Mobile Android -->
+    <meta name="description" content="SNDLimp — Limpeza especializada em placas solares e módulos fotovoltaicos no Vale do Sinos, RS. Atendimento em Novo Hamburgo, São Leopoldo, Campo Bom, Sapiranga e região. Recupere a eficiência energética do seu sistema solar.">
+    <meta name="keywords" content="limpeza de placas solares, limpeza de painel solar, lavagem de módulos fotovoltaicos, eficiência placa solar, manutenção preventiva solar, Vale do Sinos, Novo Hamburgo, São Leopoldo, Campo Bom, Sapiranga, Estância Velha, Portão, Rio Grande do Sul">
+    <meta name="author" content="SNDLimp — Samuel & Eduardo Sidegum">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="theme-color" content="#0d0d0d">
+
+    <!-- Canonical e Hreflang -->
+    <link rel="canonical" href="https://edusidegum.github.io/sndlimp/servicosnd.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://edusidegum.github.io/sndlimp/servicosnd.html">
+    <link rel="alternate" hreflang="x-default" href="https://edusidegum.github.io/sndlimp/servicosnd.html">
+
+    <!-- Geolocalização Técnica (Base Vale do Sinos / RS) -->
+    <meta name="geo.region" content="BR-RS">
+    <meta name="geo.placename" content="Vale do Sinos, Rio Grande do Sul, Brasil">
+    <meta name="geo.position" content="-29.6783;-51.1306">
+    <meta name="ICBM" content="-29.6783, -51.1306">
+
+    <!-- Open Graph / Redes Sociais / WhatsApp Cards -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SNDLimp — Serviços de Limpeza Especializada em Placas Solares">
+    <meta property="og:description" content="Placa suja não gera energia. Placa limpa é dinheiro no bolso! Higienização técnica fotovoltaica no Vale do Sinos.">
+    <meta property="og:url" content="https://edusidegum.github.io/sndlimp/servicosnd.html">
+    <meta property="og:site_name" content="SNDLimp">
+    <meta property="og:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.webp">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SNDLimp — Limpeza Especializada em Placas Solares">
+    <meta name="twitter:description" content="Recupere a eficiência dos seus módulos fotovoltaicos com higienização técnica e segura no Vale do Sinos.">
+    <meta name="twitter:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.webp">
+
+    <!-- Favicon e Preloads Críticos para Core Web Vitals (LCP) -->
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="img/Escova1.webp" as="image" type="image/webp" fetchpriority="high">
+
+    <style>
+        :root {
+            --bg-deep: #0a0c10;
+            --bg-card: #131720;
+            --bg-card-hover: #1b212f;
+            --primary: #f59e0b;
+            --primary-glow: rgba(245, 158, 11, 0.35);
+            --secondary: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(245, 158, 11, 0.25);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --success: #10b981;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Efeito de Iluminação Dinâmica ao longo de 15s */
+        @keyframes sunAwakening {
+            0% {
+                background-color: #050608;
+                background-image: 
+                    radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.03) 0%, transparent 60%),
+                    radial-gradient(circle at 10% 50%, rgba(56, 189, 248, 0.02) 0%, transparent 40%);
+            }
+            50% {
+                background-color: #0a0d14;
+                background-image: 
+                    radial-gradient(circle at 50% -10%, rgba(245, 158, 11, 0.18) 0%, transparent 70%),
+                    radial-gradient(circle at 80% 60%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+            }
+            100% {
+                background-color: #0d111a;
+                background-image: 
+                    radial-gradient(circle at 50% -5%, rgba(245, 158, 11, 0.30) 0%, transparent 75%),
+                    radial-gradient(circle at 90% 40%, rgba(56, 189, 248, 0.12) 0%, transparent 60%),
+                    radial-gradient(circle at 10% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+            }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Helvetica, Arial, sans-serif;
+            color: var(--text-main);
+            background-color: #050608;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            animation: sunAwakening 15s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            background-attachment: fixed;
+        }
+
+        /* Camada Parallax Suave */
+        .parallax-wrapper {
+            position: relative;
+            z-index: 1;
+            perspective: 1000px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Barra Superior Enxuta (Sem Menu Dispersivo) */
+        .top-bar {
+            background: rgba(10, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 0;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--success);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Hero Parallax */
+        .hero {
+            position: relative;
+            padding: 60px 0 45px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 18px;
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+        }
+
+        /* Banner de Destaque / Conexão com Economia */
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(19, 23, 32, 0.8) 100%);
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin: 0 auto 40px;
+            max-width: 950px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(245, 158, 11, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .highlight-card {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .highlight-text h3 {
+            color: #ffffff;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+        }
+
+        .highlight-text p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .btn-calc-hero {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-align: center;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+            transition: all 0.2s;
+        }
+
+        .btn-calc-hero:hover {
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Blocos de Conteúdo Estilo Cartão Dark */
+        .content-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s;
+        }
+
+        .content-card:hover {
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        .section-title {
+            font-size: 1.55rem;
+            color: #ffffff;
+            margin-bottom: 22px;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 48px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .service-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 22px;
+            transition: all 0.2s ease;
+        }
+
+        .service-box:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .service-box h4 {
+            color: #38bdf8;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .service-box p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 12px;
+        }
+
+        .service-box ul {
+            padding-left: 20px;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .service-box ul li {
+            margin-bottom: 8px;
+        }
+
+        .service-box strong {
+            color: #ffffff;
+        }
+
+        /* FAQ Otimizado para Voice Search e AIO */
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 18px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question span {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            padding-left: 26px;
+            line-height: 1.7;
+        }
+
+        .faq-answer strong {
+            color: #ffffff;
+        }
+
+        .faq-cta-inline {
+            display: inline-block;
+            margin-top: 10px;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            padding: 6px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            transition: all 0.2s;
+        }
+
+        .faq-cta-inline:hover {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        /* Grid de Cidades Solicitadas */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .city-link {
+            display: block;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-card);
+            padding: 12px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 0.88rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .city-link:hover {
+            background: var(--primary);
+            color: #000000;
+            font-weight: 700;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Rodapé Enxuto com Botão Voltar */
+        footer {
+            background: #06070a;
+            border-top: 1px solid rgba(245, 158, 11, 0.2);
+            padding: 40px 0;
+            margin-top: 60px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .footer-brand {
+            color: var(--text-muted);
+        }
+
+        .footer-brand strong {
+            color: #ffffff;
+        }
+    </style>
+
+    <!-- Marcação Estruturada Schema.org JSON-LD para E-E-A-T, GEO e AIO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://edusidegum.github.io/sndlimp/#localbusiness",
+          "name": "SNDLimp — Limpeza Especializada em Placas Solares",
+          "url": "https://edusidegum.github.io/sndlimp/sndlimp.html",
+          "telephone": "+55-51-99999-9999",
+          "priceRange": "$$",
+          "image": "https://edusidegum.github.io/sndlimp/img/Escova1.webp",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Novo Hamburgo",
+            "addressRegion": "RS",
+            "addressCountry": "BR"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -29.6783,
+            "longitude": -51.1306
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Araricá" },
+            { "@type": "City", "name": "Campo Bom" },
+            { "@type": "City", "name": "Dois Irmãos" },
+            { "@type": "City", "name": "Estância Velha" },
+            { "@type": "City", "name": "Esteio" },
+            { "@type": "City", "name": "Ivoti" },
+            { "@type": "City", "name": "Montenegro" },
+            { "@type": "City", "name": "Maratá" },
+            { "@type": "City", "name": "Nova Hartz" },
+            { "@type": "City", "name": "Novo Hamburgo" },
+            { "@type": "City", "name": "Poço das Antas" },
+            { "@type": "City", "name": "Portão" },
+            { "@type": "City", "name": "São Leopoldo" },
+            { "@type": "City", "name": "Sapiranga" },
+            { "@type": "City", "name": "Teutônia" },
+            { "@type": "City", "name": "Sapucaia do Sul" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Higienização Solar SNDLimp",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Limpeza Técnica de Placas e Painéis Solares",
+                  "description": "Lavagem fotovoltaica especializada com escovas telescópicas rotativas e água desmineralizada."
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Manutenção Preventiva de Usinas Solares e Módulos Fotovoltaicos",
+                  "description": "Higienização técnica residencial, comercial e usinas em telhado ou solo conforme NR-35."
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://edusidegum.github.io/sndlimp/sndlimp.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Serviços",
+              "item": "https://edusidegum.github.io/sndlimp/servicosnd.html"
+            }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Posso lavar placa solar com lava jato?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Não. A pressão do lava jato danifica a película protetora antirreflexo do vidro e pode causar microfissuras internas nas células fotovoltaicas, além de romper a vedação dos conectores elétricos."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Lavar placa solar dá choque? Tem que desligar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim, painéis solares continuam gerando corrente contínua perigosa sob luz solar. Por segurança operacional e conformidade com NR-10 e NR-35, a lavagem exige desligamento técnico dos inversores e uso de EPIs isolantes adequados."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como calcular a perda de eficiência da placa solar?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A perda de eficiência por sujidade (soiling) é calculada comparando a geração mensal histórica em kWh do mesmo período sob irradiação similar. Placas sujas reduzem significativamente a geração esperada."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual é a frequência recomendada para limpeza de usina ou módulos solares?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A manutenção preventiva fotovoltaica deve ser realizada a cada 6 meses, ou a cada 3 a 4 meses em regiões com poeira intensa, tráfego ou fuligem industrial no Vale dos Sinos."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+    <div class="parallax-wrapper">
+        <!-- Top Bar Enxuta -->
+        <header class="top-bar">
+            <div class="container top-bar-content">
+                <a href="sndlimp.html" class="brand">SND<span>Limp</span></a>
+                <a href="https://wa.me/5551999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares" class="btn-whatsapp" target="_blank" rel="noopener">
+                    WhatsApp Orçamento
+                </a>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-badges">
+                    <span class="badge">Atendimento Vale dos Sinos</span>
+                    <span class="badge">Normas NR-35 e NR-10</span>
+                    <span class="badge">Recuperação de Eficiência</span>
+                </div>
+                <h1>Limpeza Técnica de <span>Placas Solares</span> e Usinas Fotovoltaicas</h1>
+                <p>Higienização profissional, manutenção preventiva e remoção de sujidade para módulos residenciais, comerciais e industriais no Rio Grande do Sul.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- Card de Destaque Financeiro -->
+            <div class="highlight-card">
+                <div class="highlight-text">
+                    <h3>Placa suja não gera energia. Placa limpa é dinheiro no bolso!</h3>
+                    <p>Poeira, pólen e fuligem bloqueiam os fótons e diminuem expressivamente o rendimento do seu investimento solar.</p>
+                </div>
+                <a href="economia.html" class="btn-calc-hero">Calcular Minha Perda</a>
+            </div>
+
+            <!-- Bloco 1: Métodos Técnicos & Segurança -->
+            <article class="content-card">
+                <h2 class="section-title">Métodos Técnicos de Lavagem e Manutenção Preventiva</h2>
+                
+                <div class="grid-2">
+                    <div class="service-box">
+                        <h4>Escova Giratória Telescópica e Água Tratada</h4>
+                        <p>O processo técnico SNDLimp preserva a garantia de fábrica dos módulos:</p>
+                        <ul>
+                            <li><strong>Cerdas Especiais Macias:</strong> Sem risco ao vidro temperado e à camada antirreflexo.</li>
+                            <li><strong>Sem Lavadora de Alta Pressão:</strong> Evita microfissuras e desprendimento de vedações MC4.</li>
+                            <li><strong>Enxágue Cuidadoso:</strong> Evita manchas de calcário que voltam a sombrear as células fotovoltaicas.</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-box">
+                        <h4>Segurança Elétrica e Choque Térmico</h4>
+                        <p>Procedimento realizado com rigor normativo:</p>
+                        <ul>
+                            <li><strong>Risco de Choque Elétrico:</strong> Operação com desligamento preventivo do sistema e calçados/EPIs isolantes homologados.</li>
+                            <li><strong>Sem Choque Térmico:</strong> Lavagem executada com os módulos desaquecidos (início da manhã ou final da tarde).</li>
+                            <li><strong>Trabalho em Altura (NR-35):</strong> Equipe treinada com ancoragem e linhas de vida para telhados e galpões.</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Bloco 2: FAQ Estruturado (AIO / Voice Search) -->
+            <article class="content-card">
+                <h2 class="section-title">Perguntas Frequentes sobre Limpeza de Painéis Solares</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P.</span> Posso lavar placa solar com lava jato ou lavadora de alta pressão?
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Não.</strong> O jato de alta pressão causa choque mecânico pontual, desgasta o tratamento químico antirreflexo do vidro e pode forçar água para dentro da caixa de junção dos módulos, anulando a garantia do fabricante.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P.</span> Lavar placa solar dá choque? Para lavar tem que desligar?
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Sim, existe risco severo de choque elétrico.</strong> Módulos solares continuam sob tensão de circuito aberto enquanto houver claridade. Por isso, desliga-se o sistema nos disjuntores e chaves seccionadoras antes de iniciar a higienização.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P.</span> De quanto em quanto tempo deve ser feita a higienização?
+                    </div>
+                    <div class="faq-answer">
+                        A recomendação padrão dos fabricantes (WEG, Canadian, Jinko e outros) é realizar a manutenção preventiva a cada <strong>6 meses</strong>. Em áreas próximas a indústrias calçadistas, trânsito pesado de veículos ou estradas de terra no Vale dos Sinos, intervalos de 3 a 4 meses são ideais.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P.</span> Como calcular a perda de eficiência da placa solar?
+                    </div>
+                    <div class="faq-answer">
+                        Basta avaliar o histórico de geração no app do seu inversor: se a irradiação solar do mês foi semelhante ao ano anterior, mas os kWh produzidos caíram sem sombreamento novo de árvores ou prédios, a causa direta é o acúmulo de sujidade.<br>
+                        <a href="economia.html" class="faq-cta-inline">Projete aqui a economia recuperada no seu sistema &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>P.</span> Vale a pena usar vassoura comum ou detergente de cozinha?
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Nunca use detergentes comuns ou vassouras duras.</strong> Sabão convencional deixa película química pegajosa que atrai mais fuligem, e cerdas duras causam micro-arranhões definitivos. A higienização técnica deve ser executada com equipamentos específicos para vidros fotovoltaicos.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Bloco 3: Silo GEO de Cidades Atendidas (Padrão cidades/<cidade>.html) -->
+            <article class="content-card">
+                <h2 class="section-title">Cidades Atendidas no Vale dos Sinos e Região</h2>
+                <p style="color: var(--text-muted); margin-bottom: 12px;">
+                    Selecione a sua cidade para conferir o atendimento local especializado da SNDLimp:
+                </p>
+
+                <div class="cities-grid">
+                    <a href="cidades/ararica.html" class="city-link">Araricá</a>
+                    <a href="cidades/campo-bom.html" class="city-link">Campo Bom</a>
+                    <a href="cidades/dois-irmaos.html" class="city-link">Dois Irmãos</a>
+                    <a href="cidades/estancia-velha.html" class="city-link">Estância Velha</a>
+                    <a href="cidades/esteio.html" class="city-link">Esteio</a>
+                    <a href="cidades/ivoti.html" class="city-link">Ivoti</a>
+                    <a href="cidades/montenegro.html" class="city-link">Montenegro</a>
+                    <a href="cidades/marata.html" class="city-link">Maratá</a>
+                    <a href="cidades/nova-hartz.html" class="city-link">Nova Hartz</a>
+                    <a href="cidades/novo-hamburgo.html" class="city-link">Novo Hamburgo</a>
+                    <a href="cidades/poco-das-antas.html" class="city-link">Poço das Antas</a>
+                    <a href="cidades/portao.html" class="city-link">Portão</a>
+                    <a href="cidades/sao-leopoldo.html" class="city-link">São Leopoldo</a>
+                    <a href="cidades/sapiranga.html" class="city-link">Sapiranga</a>
+                    <a href="cidades/teutonia.html" class="city-link">Teutônia</a>
+                    <a href="cidades/sapucaia-do-sul.html" class="city-link">Sapucaia do Sul</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Footer Simplificado (Somente Botão Voltar e Copyright) -->
+        <footer>
+            <div class="container footer-content">
+                <div>
+                    <a href="sndlimp.html" class="btn-back">
+                        &larr; Voltar para a Página Principal
+                    </a>
+                </div>
+                <div class="footer-brand">
+                    <p>&copy; 2026 <strong>SNDLimp</strong> — Limpeza Especializada em Placas Solares</p>
+                    <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Atendimento Vale dos Sinos • Base em Novo Hamburgo / RS</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Inclusão do ecossistema de scripts com defer -->
+    <script defer src="assets/css/js/bloco-incluir.js"></script>
+
+    <!-- Controle de Inatividade de 30 Segundos (Redirecionamento Condicional Seguro) -->
+    <script>
+        (function() {
+            var timeoutDuration = 30000; // 30 segundos
+            var redirectUrl = "economia.html";
+            var userInteracted = false;
+            var redirectTimer = null;
+
+            function startTimer() {
+                redirectTimer = setTimeout(function() {
+                    // Executa o redirect apenas se o usuário NÃO clicou ou navegou ativamente
+                    if (!userInteracted) {
+                        window.location.href = redirectUrl;
+                    }
+                }, timeoutDuration);
+            }
+
+            // Cancela o redirecionamento se houver clique voluntário na página
+            function handleUserClick() {
+                userInteracted = true;
+                if (redirectTimer) {
+                    clearTimeout(redirectTimer);
+                }
+            }
+
+            document.addEventListener('click', handleUserClick, { passive: true });
+            startTimer();
+        })();
+    </script>
+</body>
+</html>

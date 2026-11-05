@@ -1,0 +1,160 @@
+{
+  "hero": {
+    "eyebrow": [
+      "☀ Limpeza Técnica de Placas Solares",
+      "⚡ Manutenção Profissional de Painéis Fotovoltaicos",
+      "🔆 Recuperação de Eficiência Solar"
+    ],
+    "sub": [
+      "Poeira, fuligem industrial e excrementos reduzem drasticamente a captação. A <strong style=\"color:var(--sol);\">SNDLimp</strong> resolve isso com equipamentos adequados — sem riscos ao seu sistema.",
+      "Em {cidade}, a poluição urbana e industrial acelera a sujidade dos painéis. A <strong style=\"color:var(--sol);\">SNDLimp</strong> recupera sua geração com limpeza técnica profissional.",
+      "Placa solar suja gera menos, e você paga a conta. A <strong style=\"color:var(--sol);\">SNDLimp</strong> devolve a eficiência perdida com processo profissional e equipamentos adequados."
+    ],
+    "eyebrow_section": [
+      "conheça o prejuízo",
+      "veja a diferença",
+      "entenda o impacto"
+    ]
+  },
+
+  "sections": {
+    "prejuizo": {
+      "heading": [
+        "📉 O <em>prejuízo</em> escondido na sua laje",
+        "📊 Quanto você <em>perde</em> com placa suja?",
+        "💸 O custo <em>invisível</em> da sujeira"
+      ],
+      "sub": [
+        "A diferença entre uma placa limpa e uma suja pode chegar a <strong style=\"color:var(--sol);\">25% de perda</strong> e esse rombo cresce todo mês na sua conta.",
+        "Dados do setor solar mostram que uma placa com crosta de fuligem perde em média <strong style=\"color:var(--sol);\">25% de eficiência</strong>. Em um sistema de 10 placas, o prejuízo passa de R$ 500 por ano.",
+        "A sujeira acumulada não aparece como erro no monitoramento — aparece como <strong style=\"color:var(--sol);\">geração abaixo do esperado</strong>. É o dinheiro que você deixou de economizar sem saber."
+      ],
+      "cards": [
+        "<div class=\"stats-row\"><div class=\"card\"><div class=\"stat-num\">até 25%</div><div class=\"stat-label\">perda de eficiência</div></div><div class=\"card\"><div class=\"stat-num\">até R$50</div><div class=\"stat-label\">perda mensal/placa</div></div><div class=\"card\"><div class=\"stat-num\">2 limpezas/ano</div><div class=\"stat-label\">ciclo recomendado</div></div></div><p style=\"text-align:center;color:var(--texto2);font-size:0.88rem;margin-top:20px;\">Fonte: WEG, Portal Solar, STEMIS — dados 2025-2026.</p>",
+        "<div class=\"stats-row\"><div class=\"card\"><div class=\"stat-num\">25%</div><div class=\"stat-label\">perda média documentada</div></div><div class=\"card\"><div class=\"stat-num\">até R$500/ano</div><div class=\"stat-label\">prejuízo em 10 placas</div></div><div class=\"card\"><div class=\"stat-num\">2x/ano</div><div class=\"stat-label\">frequência ideal</div></div></div><p style=\"text-align:center;color:var(--texto2);font-size:0.88rem;margin-top:20px;\">Referência: WEG e Portal Solar — condições típicas brasileiras.</p>",
+        "<div class=\"stats-row\"><div class=\"card\"><div class=\"stat-num\">até -25%</div><div class=\"stat-label\">queda na captação</div></div><div class=\"card\"><div class=\"stat-num\">R$300-600</div><div class=\"stat-label\">perda anual estimada</div></div><div class=\"card\"><div class=\"stat-num\">a cada 6 meses</div><div class=\"stat-label\">limpeza recomendada</div></div></div><p style=\"text-align:center;color:var(--texto2);font-size:0.88rem;margin-top:20px;\">Estudos WEG e STEMIS — dados de operação 2025-2026.</p>"
+      ]
+    },
+
+    "problema": {
+      "heading": [
+        "😤 Por que a placa <em>perde força</em>?",
+        "❓ O que está <em>sujando</em> seus painéis?",
+        "🔍 As causas da <em>perda</em> de eficiência"
+      ],
+      "sub": [
+        "Poeira fina, fuligem industrial, fezes de aves e poluição urbana formam uma camada opaca que bloqueia a luz solar. A chuva não remove crostas ressecadas — só limpeza técnica devolve a transparência original.",
+        "O acúmulo de sujeira nos módulos não é só estético: excrementos de aves criam barreira física, a poluição seca forma película oleosa, e os resíduos orgânicos retêm umidade que acelera o crescimento de musgo e algas.",
+        "A natureza e a cidade trabalham juntas contra seus painéis: pólen no ar, fuligem de escapamentos, poeira de construções vizinhas e fezes de aves. Esses elementos combinados formam uma crosta que reduz a incidência de luz sobre as células."
+      ],
+      "cards": [
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🏭</div><h3>Polução urbana</h3><p>Fuligem de veículos e indústrias forma película oleosa que gruda no vidro.</p></div><div class=\"card\"><div class=\"card-icon\">🐦</div><h3>Fezes de aves</h3><p>Crostas ressecadas que a água pura não dissolve sem ação química.</p></div><div class=\"card\"><div class=\"card-icon\">🌿</div><h3>Musgo e algas</h3><p>Material orgânico acumulado retém umidade e acelera a sujidade.</p></div><div class=\"card\"><div class=\"card-icon\">🌫️</div><h3>Poluição seca</h3><p>Partículas finas em suspensão aderem ao vidro e retêm fuligem nova.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🚗</div><h3>Tráfego intenso</h3><p>Veículos pesados nas BRs 116, 386 e RSs regionais emitem fuligem fina que viaja quilômetros.</p></div><div class=\"card\"><div class=\"card-icon\">🏗️</div><h3>Construção civil</h3><p>Obras geram poeira de cimento e areia que se deposita nos telhados vizinhos.</p></div><div class=\"card\"><div class=\"card-icon\">🐔</div><h3>Pássaros</h3><p>Fezes de pombos e outras aves formam crostas que bloqueiam a luz permanentemente.</p></div><div class=\"card\"><div class=\"card-icon\">🌾</div><h3>Agropecuária</h3><p>Poeira de lavouras, pólen e queimadas sazonais aumentam a carga de sujeira no ar.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🔬</div><h3>Partículas PM2.5</h3><p>Poluição fina penetra na microestrutura do vidro e acumula com o tempo.</p></div><div class=\"card\"><div class=\"card-icon\">💧</div><h3>Umidade + sujeira</h3><p>A combinação forma crosta que a chuva não remove — só ação mecânica.</p></div><div class=\"card\"><div class=\"card-icon\">🦎</div><h3>Lagartos e insetos</h3><p>Resíduos orgânicos debaixo dos painéis atraem mais sujeira e retêm calor.</p></div><div class=\"card\"><div class=\"card-icon\">☁️</div><h3>Nevoa seca</h3><p>Partículas suspensas na nevoa aderem ao vidro e formam camada aderente.</p></div></div>"
+      ]
+    },
+
+    "solucao": {
+      "heading": [
+        "🔧 A <em>solução</em> SNDLimp",
+        "🛠️ Como <em>recuperamos</em> sua geração",
+        "✅ Nosso <em>método</em> de limpeza"
+      ],
+      "sub": [
+        "Não é água e pano. É processo técnico com equipamentos adequados para devolver a eficiência original dos seus painéis sem danificar o vidro.",
+        "Usamos detergente biodegradável pH neutro, água deionizada e escovas de poliuretano. Cada detalhe pensado para limpar sem danificar o tratamento antirreflexo.",
+        "A limpeza profissional vai além da estética: remove depósitos que a chuva não dissolve e protege o vidro antirreflexo contra microdanos acumulativos."
+      ],
+      "cards": [
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🧪</div><h3>Detergente biodegradável</h3><p>pH neutro específico para vidro fotovoltaico. Não danifica o tratamento antirreflexo.</p></div><div class=\"card\"><div class=\"card-icon\">💧</div><h3>Água deionizada</h3><p>Sem minerais que mancham ou deixam resíduos sobre os módulos após a secagem.</p></div><div class=\"card\"><div class=\"card-icon\">🪥</div><h3>Escovas de poliuretano</h3><p>Cerdas macias que não retêm partículas abrasivas. Sem risco de micro riscos.</p></div><div class=\"card\"><div class=\"card-icon\">📋</div><h3>Relatório antes/depois</h3><p>Registro fotográfico do serviço com evidência da eficiência recuperada.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🧴</div><h3>Produto profissional</h3><p>Detergente alcalino suave que dissolve crostas orgânicas sem agredir o vidro.</p></div><div class=\"card\"><div class=\"card-icon\">🚿</div><h3>Água purificada</h3><p>Sistema de deionização portátil. Água pura que não deixa mancha ao secar.</p></div><div class=\"card\"><div class=\"card-icon\">🧽</div><h3>Escova rotativa</h3><p>Pressão controlada com cerdas de silicone que se adaptam ao perfil do painel.</p></div><div class=\"card\"><div class=\"card-icon\">📸</div><h3>Evidência visual</h3><p>Fotografamos cada módulo antes e depois. Você vê o resultado concreto.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🧹</div><h3>Remoção de crostas</h3><p>Dissolvemos depósitos mineralizados com detergente específico e ação mecânica.</p></div><div class=\"card\"><div class=\"card-icon\">💦</div><h3>Enxágue completo</h3><p>Água deionizada em abundância para remover todo resíduo de detergente.</p></div><div class=\"card\"><div class=\"card-icon\">✓</div><h3>Inspeção final</h3><p>Verificamos se não há manchas, streaks ou áreas não limpas em cada módulo.</p></div><div class=\"card\"><div class=\"card-icon\">📊</div><h3>Relatório técnico</h3><p>Entregamos documento com fotos e observações sobre o estado do sistema.</p></div></div>"
+      ]
+    },
+
+    "processo": {
+      "heading": [
+        "📋 Como <em>fazemos</em>",
+        "📌 Etapas do <em>serviço</em>",
+        "🔢 Nosso <em>fluxo</em> de trabalho"
+      ],
+      "sub": [
+        "Processo em etapas, sem improviso. Cada passo pensado para maximizar o resultado sem danificar seu equipamento.",
+        "Seguimos um fluxo padronizado que garante consistência em cada serviço, independente do tamanho do sistema.",
+        "Procedimento replicável e controlado. Do diagnóstico ao relatório final, cada etapa tem critério de qualidade."
+      ],
+      "cards": [
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🔍</div><h3>1. Inspeção</h3><p>Diagnóstico visual do estado das placas, identificação de pontos críticos e hot spots.</p></div><div class=\"card\"><div class=\"card-icon\">🧽</div><h3>2. Limpeza técnica</h3><p>Aplicação controlada de detergente + água deionizada com escovas específicas.</p></div><div class=\"card\"><div class=\"card-icon\">📸</div><h3>3. Verificação</h3><p>Enxágue completo, secagem natural e registro fotográfico do resultado.</p></div><div class=\"card\"><div class=\"card-icon\">📊</div><h3>4. Relatório</h3><p>Entrega de relatório com fotos antes/depois para comprovação do serviço.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">📋</div><h3>1. Diagnóstico</h3><p>Avaliamos cada módulo, nível de sujidade, condição do vidro e da estrutura.</p></div><div class=\"card\"><div class=\"card-icon\">💧</div><h3>2. Pré-umedecimento</h3><p>Aplicamos água para amolecer crostas antes da lavagem principal.</p></div><div class=\"card\"><div class=\"card-icon\">🧼</div><h3>3. Lavagem</h3><p>Detergente biodegradável + escovação com pressão e movimentos padronizados.</p></div><div class=\"card\"><div class=\"card-icon\">📱</div><h3>4. Entrega digital</h3><p>Relatório com fotos enviado por WhatsApp ao final do serviço.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">✅</div><h3>1. Vistoria</h3><p>Checagem visual da quantidade de painéis, acesso e condições do telhado.</p></div><div class=\"card\"><div class=\"card-icon\">🧴</div><h3>2. Aplicação</h3><p>Detergente biodegradável diluído na proporção correta para cada tipo de sujeira.</p></div><div class=\"card\"><div class=\"card-icon\">🔄</div><h3>3. Escovação</h3><p>Movimentos longitudinais com escova de poliuretano, sem pressionar as bordas.</p></div><div class=\"card\"><div class=\"card-icon\">📷</div><h3>4. Registro</h3><p>Fotos antes/depois de cada fileira para comprovação do serviço realizado.</p></div></div>"
+      ]
+    },
+
+    "diferenciais": {
+      "heading": [
+        "✅ Por que a <em>SNDLimp</em>?",
+        "⭐ Nossos <em>diferenciais</em>",
+        "🎯 Por que <em>contratar</em> a SNDLimp"
+      ],
+      "sub": [
+        "Microempresa com padrão profissional. O que nos diferencia não é promessa — é processo e equipamento adequado.",
+        "Não usamos materiais domésticos nem improvisamos. Cada serviço é feito com equipamentos adequados e produtos específicos para o vidro fotovoltaico.",
+        "Atendimento personalizado no Vale do Sinos e Vale do Taquari. Conhecemos a região, o clima local e os desafios específicos de cada cidade."
+      ],
+      "cards": [
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🛡️</div><h3>Sem danos ao vidro</h3><p>Escovas específicas + pressão controlada. <strong>Não risca, não mancha, não trinca.</strong></p></div><div class=\"card\"><div class=\"card-icon\">🌱</div><h3>Produtos biodegradáveis</h3><p>Detergente pH neutro que não agride o meio ambiente nem sua lavoura.</p></div><div class=\"card\"><div class=\"card-icon\">👨‍🔧</div><h3>Equipamentos adequados</h3><p>Água deionizada, escovas de poliuretano, técnica de pressão controlada.</p></div><div class=\"card\"><div class=\"card-icon\">📞</div><h3>Atendimento local</h3><p>Vale do Sinos e Vale do Taquari. Resposta rápida sem taxa de deslocamento abusiva.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🧪</div><h3>Produto certo</h3><p>Detergente profissional com pH neutro. Não danifica a camada antirreflexo do vidro solar.</p></div><div class=\"card\"><div class=\"card-icon\">💧</div><h3>Água tratada</h3><p>Deionização remove sais minerais que mancham o vidro após a secagem ao sol.</p></div><div class=\"card\"><div class=\"card-icon\">🪥</div><h3>Escova correta</h3><p>Cerdas macias de poliuretano que não retêm areia nem partículas abrasivas.</p></div><div class=\"card\"><div class=\"card-icon\">📱</div><h3>Relatório digital</h3><p>Fotos antes/depois enviadas por WhatsApp. Você acompanha o resultado.</p></div></div>",
+        "<div class=\"grid-2\"><div class=\"card\"><div class=\"card-icon\">🔒</div><h3>Segurança primeiro</h3><p>Uso de EPIs, cinto de segurança e procedimentos de trabalho em altura.</p></div><div class=\"card\"><div class=\"card-icon\">🌿</div><h3>Sem química agressiva</h3><p>Produtos biodegradáveis que não contaminam calhas, solo ou cisternas.</p></div><div class=\"card\"><div class=\"card-icon\">📋</div><h3>Processo documentado</h3><p>Cada serviço segue checklist. Nada é feito no improviso.</p></div><div class=\"card\"><div class=\"card-icon\">🤝</div><h3>Compromisso</h3><p>Se não ficar satisfatório, refazemos sem custo. Garantia de resultado.</p></div></div>"
+      ]
+    },
+
+    "depoimento": {
+      "texto": [
+        "<section class=\"section reveal\"><div class=\"container\"><h2 class=\"section-title\">🗣️ Quem <em>contratou</em>, aprova</h2><div style=\"max-width:600px;margin:0 auto;text-align:center;background:var(--carbon);border:1px solid rgba(255,255,255,0.04);border-radius:var(--radius-lg);padding:36px 28px;\"><p style=\"font-size:1.05rem;color:var(--texto);line-height:1.6;font-style:italic;\">\"Achei que meus painéis estavam normais. Depois da limpeza, a geração subiu 22% no monitoramento do inversor. Serviço rápido e profissional.\"</p><p style=\"margin-top:16px;color:var(--sol);font-weight:600;\">— Cliente atendido em {cidade}</p></div></div></section>",
+        "<section class=\"section section-dark reveal\"><div class=\"container\"><h2 class=\"section-title\">💬 O que <em>dizem</em> sobre nós</h2><div style=\"max-width:600px;margin:0 auto;text-align:center;background:var(--carbon);border:1px solid rgba(255,255,255,0.04);border-radius:var(--radius-lg);padding:36px 28px;\"><p style=\"font-size:1.05rem;color:var(--texto);line-height:1.6;font-style:italic;\">\"Desconfiava se valia a pena. O resultado surpreendeu: a eficiência voltou ao normal e o investimento se pagou em semanas.\"</p><p style=\"margin-top:16px;color:var(--sol);font-weight:600;\">— Cliente em {cidade}</p></div></div></section>",
+        "<section class=\"section reveal\"><div class=\"container\"><h2 class=\"section-title\">⭐ <em>Resultado</em> real</h2><div style=\"max-width:600px;margin:0 auto;text-align:center;background:var(--carbon);border:1px solid rgba(255,255,255,0.04);border-radius:var(--radius-lg);padding:36px 28px;\"><p style=\"font-size:1.05rem;color:var(--texto);line-height:1.6;font-style:italic;\">\"A equipe foi pontual, usou equipamento adequado e ainda explicou o estado das placas antes de começar. Recomendo sem reservas.\"</p><p style=\"margin-top:16px;color:var(--sol);font-weight:600;\">— Cliente em {cidade}</p></div></div></section>"
+      ]
+    },
+
+    "cta": {
+      "sub": [
+        "Sem compromisso. Sem taxa de visita. Diagnóstico gratuito para entender o estado dos seus painéis em {cidade}.",
+        "Agende uma visita técnica sem custo. Avaliamos o estado dos seus painéis em {cidade} e apresentamos as opções de limpeza.",
+        "Solicite um orçamento sem compromisso. Atendemos em {cidade} com responsabilidade e resultados comprovados."
+      ],
+      "botao": [
+        "💬 Falar no WhatsApp",
+        "📱 Solicitar Orçamento",
+        "💬 Quero Agendar"
+      ],
+      "heading": [
+        "⚡ Agende sua <em>limpeza</em>",
+        "📅 Marque uma <em>vistoria</em>",
+        "🔆 Solicite seu <em>orçamento</em>"
+      ]
+    }
+  },
+
+  "pattern_variant_map": {
+    "A": {
+      "hero_eyebrow": 0, "hero_sub": 0,
+      "prejuizo": 0, "problema": 0, "solucao": 0,
+      "processo": 0, "diferenciais": 0, "depoimento": 0, "cta": 0
+    },
+    "B": {
+      "hero_eyebrow": 1, "hero_sub": 1,
+      "prejuizo": 1, "problema": 1, "solucao": 1,
+      "processo": 1, "diferenciais": 1, "depoimento": 1, "cta": 1
+    },
+    "C": {
+      "hero_eyebrow": 2, "hero_sub": 2,
+      "prejuizo": 2, "problema": 2, "solucao": 2,
+      "processo": 2, "diferenciais": 2, "depoimento": 2, "cta": 2
+    },
+    "D": {
+      "hero_eyebrow": 0, "hero_sub": 1,
+      "prejuizo": 0, "problema": 1, "solucao": 2,
+      "processo": 0, "diferenciais": 1, "depoimento": 2, "cta": 0
+    }
+  }
+}

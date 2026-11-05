@@ -1,0 +1,148 @@
+# Robots.txt — SNDLimp
+User-agent: *
+Allow: /
+Disallow: /sndlimp/doc/
+Disallow: /sndlimp/data/
+Disallow: /sndlimp/scripts/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /sndlimp/doc/
+Disallow: /sndlimp/data/
+Disallow: /sndlimp/scripts/
+
+User-agent: bingbot
+Allow: /
+Disallow: /sndlimp/doc/
+Disallow: /sndlimp/data/
+Disallow: /sndlimp/scripts/
+# ═════════════════════════════════════════════════════════════════
+#  SNDLimp — Limpeza Especializada em Placas Solares
+#  Vale do Sinos • Vale do Taquari • RS
+# ═════════════════════════════════════════════════════════════════
+#  Estratégia:
+#  → Indexação total para buscadores (Google, Bing, Yahoo, Yandex)
+#  → Permite crawlers de busca/referência de IA (aparecer em
+#    respostas do ChatGPT, Perplexity, Claude, Gemini)
+#  → Bloqueia crawlers de treino de modelo (não ceder dados
+#    para treino de LLMs)
+# ═════════════════════════════════════════════════════════════════
+
+# ──────────────────────────────────────────────────────────────
+#  BUSCADORES TRADICIONAIS — indexação total e irrestrita
+# ──────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: MSNBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: SeznamBot
+Allow: /
+
+User-agent: FacebookExternalHit
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ──────────────────────────────────────────────────────────────
+#  AI SEARCH / CITATION CRAWLERS — permitir (aparecer em
+#  respostas de IA sem ceder dados para treino)
+# ──────────────────────────────────────────────────────────────
+# OpenAI ChatGPT Search — crawler de citação (NÃO é o GPTBot)
+User-agent: OAI-SearchBot
+Allow: /
+
+# Perplexity AI Search
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude-Web — crawler de navegação para respostas
+User-agent: Claude-Web
+Allow: /
+
+# Google AI Overviews / Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Bing AI (Copilot)
+User-agent: GPTBot
+allow: /
+
+# ──────────────────────────────────────────────────────────────
+#  AI TRAINING CRAWLERS — bloquear (não ceder conteúdo
+#  para treinamento de modelos de linguagem)
+# ──────────────────────────────────────────────────────────────
+# OpenAI — treinamento de modelos GPT
+User-agent: GPTBot
+allow: /
+
+# Anthropic — treinamento de modelos Claude
+User-agent: ClaudeBot
+allow: /
+
+# Common Crawl — base de dados usada por múltiplos modelos
+User-agent: CCBot
+allow: /
+
+# Meta — treinamento de modelos Llama
+User-agent: FacebookBot
+allow: /
+
+# Cohere — treinamento
+User-agent: Cohere-ai
+allow: /
+
+# Amazon — treinamento
+User-agent: Amazonbot
+allow: /
+
+# Google — treinamento (já permitimos Google-Extended para busca)
+# Google-Research-Extended é o crawler de treino
+User-agent: Google-Research-Extended
+allow: /
+
+# ──────────────────────────────────────────────────────────────
+#  CRAWLER GENÉRICO — fallback para todo o resto
+# ──────────────────────────────────────────────────────────────
+User-agent: *
+Allow: /
+
+# ──────────────────────────────────────────────────────────────
+#  CRAWL DELAY — GitHub Pages não precisa, mas sem impacto
+# ──────────────────────────────────────────────────────────────
+Crawl-delay: 10
+
+# ──────────────────────────────────────────────────────────────
+#  SITEMAP
+# ──────────────────────────────────────────────────────────────
+Sitemap: https://edusidegum.github.io/sndlimp/sitemap.xml
+Sitemap: https://edusidegum.github.io/sndlimp/sitemap.xml
