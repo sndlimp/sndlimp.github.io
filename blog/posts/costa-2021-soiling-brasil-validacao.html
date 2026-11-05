@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Costa et al. (2021) monitorou perdas por soiling em Belo Horizonte, Porto Alegre e Brotas de Macaúbas. Estudo valida modelo de perda para clima brasileiro com dados de campo.">
+<meta name="robots" content="index, follow">
+<link rel="author" href="https://edusidegum.github.io/edusidegum/sobre.html">
+<meta name="author" content="e-Sid Tech">
+<meta name="generator" content="e-Sid Tech — Engenharia de Soluções Digitais">
+<meta name="theme-color" content="#0d0d0d">
+<meta property="og:title" content="Costa et al. (2021): Validação Brasileira de Perdas por Soiling em Painéis Solares | SNDLimp">
+<meta property="og:description" content="Estudo mediu perdas reais por sujidade em três zonas climáticas brasileiras. Dados validam a taxa ajustada de 2,5%/mês utilizada no método IEEE3S para a região Sul.">
+<meta property="og:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.webp">
+<meta property="og:url" content="https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Costa et al. (2021): Validação Brasileira de Perdas por Soiling">
+<meta name="twitter:description" content="Estudo mediu perdas reais por sujidade em três zonas climáticas brasileiras com dados de campo.">
+<meta name="twitter:image" content="https://edusidegum.github.io/sndlimp/img/Escova1.webp">
+<title>Costa et al. (2021): Validação Brasileira de Perdas por Soiling | SNDLimp</title>
+<link rel="canonical" href="https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html">
+<link rel="stylesheet" href="../../assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html#article",
+      "headline": "Costa et al. (2021): Validação Brasileira das Perdas por Soiling em Painéis Solares",
+      "description": "Estudo monitorou perdas por sujidade em Belo Horizonte (MG), Porto Alegre (RS) e Brotas de Macaúbas (BA) durante 12 meses. Resultados validam a taxa de perda ajustada para o clima brasileiro.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Eduardo Sidegum",
+        "url": "https://edusidegum.github.io/edusidegum/"
+      },
+      "publisher": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+      "about": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+      "mainEntityOfPage": "https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html",
+      "proficiencyLevel": "Intermediate",
+      "timeRequired": "PT6M",
+      "citation": [
+        { "@type": "ScholarlyArticle", "name": "Costa, S. S., Kazmerski, L. L., & Diniz, A. A. C. (2021). Impact of soiling on Si and CdTe PV modules: Case study in different Brazil climate zones. Energy Conversion and Management: X, 10, 100084.", "url": "https://doi.org/10.1016/j.ecmx.2021.100084" }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html#webpage",
+      "url": "https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html",
+      "isPartOf": { "@id": "https://edusidegum.github.io/sndlimp/#website" },
+      "about": { "@id": "https://edusidegum.github.io/sndlimp/blog/posts/costa-2021-soiling-brasil-validacao.html#article" },
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{background:radial-gradient(ellipse 800px 400px at 50% -100px,rgba(245,166,35,0.08),transparent 70%),#0D0D0D;color:#F0F0F0;font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;height:auto;}
+:root{--sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;--noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;--cinza:#999;--texto:#F0F0F0;--texto2:#AAAAAA;--radius:12px;--maxw:1100px;}
+.sticky-header{position:fixed;top:0;left:0;width:100%;z-index:10000;background:rgba(13,13,13,0.88);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(245,166,35,0.15);padding:6px 5%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;min-height:44px;}
+.site-footer{position:relative;z-index:1;background:linear-gradient(0deg,#080808 0%,#1A1A1A 100%);border-top:1px solid rgba(245,166,35,0.12);padding:48px 20px;text-align:center;}
+.site-footer h3{color:#F5A623;margin-bottom:12px;font-size:1.3rem;}
+.site-footer p{color:#AAAAAA;font-size:0.85rem;margin-bottom:6px;line-height:1.6;}
+.site-footer .copyright{margin-top:24px;font-size:0.7rem;color:#555;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+<a href="https://edusidegum.github.io/sndlimp/index.html" aria-label="Página inicial SNDLimp" class="topbar-brand" style="display:flex;align-items:center;gap:8px;text-decoration:none;justify-self:start;">
+<span style="color:var(--texto);font-weight:800;font-size:1rem;">☀ SNDLimp<span style="font-size:0.65rem;color:var(--sol);display:block;font-weight:400;">Limpeza Técnica de Placas Solares</span></span>
+</a>
+<nav class="menu-dropdown" aria-label="Menu de navegação" style="justify-self:center;">
+<button class="menu-toggle" aria-label="Abrir menu" id="menuToggle" style="background:none;border:none;color:#fff;font-size:0.85rem;cursor:pointer;display:none;">☰ Menu</button>
+<ul class="menu-lista" id="menuLista" style="list-style:none;display:flex;gap:20px;margin:0;padding:0;">
+<li><a href="https://edusidegum.github.io/sndlimp/index.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Início</a></li>
+<li><a href="../../folder_comercial.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Nossa Proposta</a></li>
+<li><a href="../../galeria.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Galeria</a></li>
+<li><a href="../../economia.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Simulador</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<article itemscope itemtype="https://schema.org/TechArticle" style="max-width:720px;margin:100px auto 40px;padding:0 20px;">
+
+<header style="margin-bottom:40px;">
+<p style="color:#F5A623;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">
+📄 Blog Técnico — 22 jul 2026
+</p>
+<h1 itemprop="headline" style="font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.2;margin-bottom:16px;">
+Costa et al. (2021): Validação Brasileira de Perdas por Soiling em Climas Tropical, Subtropical e Semiárido
+</h1>
+<p itemprop="description" style="color:#AAAAAA;font-size:1.05rem;line-height:1.5;">
+Estudo publicado no periódico <em style="color:#fff;">Energy Conversion and Management: X</em> monitorou perdas por sujidade em painéis fotovoltaicos em <strong style="color:#F5A623;">Belo Horizonte (MG)</strong>, <strong style="color:#F5A623;">Porto Alegre (RS)</strong> e <strong style="color:#F5A623;">Brotas de Macaúbas (BA)</strong> durante 12 meses. Os resultados de campo validam a taxa ajustada de perda aplicada ao clima brasileiro.
+</p>
+<address itemprop="author" itemscope itemtype="https://schema.org/Person" style="font-style:normal;color:#AAAAAA;font-size:0.85rem;margin-top:12px;">
+Por <span itemprop="name">Eduardo Sidegum</span> — <time itemprop="datePublished" datetime="2026-07-22">22 jul 2026</time>
+</address>
+</header>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">O que o estudo investigou?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+O trabalho de Costa, Kazmerski e Diniz (2021) investigou as taxas de perda por soiling em módulos fotovoltaicos de silício (Si) e telureto de cádmio (CdTe) em três zonas climáticas brasileiras:
+</p>
+<ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+<li><strong style="color:#fff;">Belo Horizonte (MG)</strong> — 19.92°S, 43.99°O — Clima tropical de altitude (Equatorial Tropical)</li>
+<li><strong style="color:#fff;">Porto Alegre (RS)</strong> — 30.05°S, 51.17°O — Clima subtropical úmido (Humid-Subtropical)</li>
+<li><strong style="color:#fff;">Brotas de Macaúbas (BA)</strong> — 12.00°S, 42.63°O — Clima semiárido</li>
+</ul>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Cada localidade representa um regime pluviométrico e de poluição distintos, permitindo comparar o comportamento do soiling em condições representativas de grande parte do território nacional.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="https://doi.org/10.1016/j.ecmx.2021.100084" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">Costa et al. (2021) — ScienceDirect</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Quais foram os principais resultados?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+O estudo confirmou que as perdas por soiling variam significativamente entre as regiões, mas seguem padrões previsíveis quando correlacionadas com dados de precipitação e umidade relativa. Os resultados de campo em <strong style="color:#F5A623;">Porto Alegre</strong> — clima subtropical úmido, similar ao do Vale do Sinos e Vale do Taquari — mostraram valores de perda consistentes com a taxa de <strong style="color:#F5A623;">~2,5% ao mês</strong> adotada pelo método IEEE3S.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Em <strong style="color:#F5A623;">Brotas de Macaúbas</strong> (semiárido), as perdas foram significativamente maiores, confirmando que a taxa de 2,5%/mês é conservadora para regiões de baixa pluviosidade — ou seja, subestima a perda real, o que é uma decisão técnica proposital para não superestimar o prejuízo do cliente.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+O estudo também comparou tecnologias de módulos (Si vs CdTe) e concluiu que a taxa de soiling é mais influenciada pelo ambiente local do que pela tecnologia da célula — ou seja, a limpeza periódica beneficia igualmente qualquer tipo de painel fotovoltaico.
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Por que este estudo é relevante para proprietários de sistemas solares?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+Os dados de Costa et al. (2021) fornecem a <strong style="color:#F5A623;">primeira validação brasileira abrangente</strong> para modelos de perda por soiling. Antes deste estudo, a maioria das referências era internacional (Kimber, Mejia, Ilse), e sua aplicação direta ao clima brasileiro dependia de extrapolações.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Com a publicação de 2021, o mercado brasileiro de energia solar passou a contar com dados de campo nacionais que confirmam:
+</p>
+<ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+<li>As perdas por sujidade são <strong style="color:#fff;">reais e mensuráveis</strong> em qualquer clima brasileiro</li>
+<li>A <strong style="color:#fff;">taxa de 2,5%/mês</strong> é consistente com medições de campo no Sul do Brasil</li>
+<li>A limpeza periódica recupera a geração independentemente da tecnologia do módulo</li>
+</ul>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="https://www.osti.gov/pages/biblio/1798287" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">Costa et al. (2021) — OSTI.gov</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Como este estudo se conecta com o método IEEE3S?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+O método <strong style="color:#F5A623;">IEEE3S</strong>, utilizado pela SNDLimp para diagnóstico de eficiência fotovoltaica, adota a taxa de <strong style="color:#F5A623;">2,5% ao mês</strong> como perda de referência por sujidade. Este número não foi escolhido arbitrariamente:
+</p>
+<ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+<li>Parte do benchmark Kimber (<strong style="color:#fff;">4,5%/mês</strong> — perda bruta sem limpeza)</li>
+<li>Aplica desconto de <strong style="color:#fff;">44%</strong> considerando a precipitação média brasileira</li>
+<li>É <strong style="color:#fff;">validado por Costa et al. (2021)</strong> para o clima subtropical úmido do Sul do Brasil</li>
+<li>É <strong style="color:#fff;">conservador</strong> para regiões semiáridas (subestima a perda, não superestima)</li>
+</ul>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Isso significa que, quando a SNDLimp estima uma perda de X% para um sistema em Novo Hamburgo ou São Leopoldo, esse número tem lastro em três camadas de evidência: benchmark internacional + ajuste pluviométrico nacional + validação de campo regional.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="../../metodoieee3s.html" style="color:#F5A623;text-decoration:underline;">SNDLimp — Metodologia IEEE3S</a>
+</p>
+</section>
+
+<section style="margin-top:40px;padding:24px;background:#252525;border-left:4px solid #F5A623;border-radius:0 12px 12px 0;">
+<h2 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;">💡 Resumo técnico</h2>
+<p style="color:#AAAAAA;font-size:0.9rem;line-height:1.5;">
+Costa et al. (2021) monitorou perdas por soiling em três zonas climáticas brasileiras — Belo Horizonte, Porto Alegre e Brotas de Macaúbas. Os dados de campo confirmam que a taxa de <strong style="color:#F5A623;">~2,5%/mês</strong> é consistente com o clima subtropical do Sul do Brasil, e que as perdas independem da tecnologia do módulo (Si ou CdTe). O estudo valida o ajuste brasileiro do modelo Kimber utilizado no método IEEE3S.
+</p>
+</section>
+
+<div style="margin-top:40px;text-align:center;">
+<p style="color:#888;font-size:0.85rem;">Publicado em 22 jul 2026 • Categoria: Validação Científica — Brasil</p>
+</div>
+
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="container" style="text-align:center;max-width:1100px;margin:0 auto;">
+<h3>☀ SNDLimp</h3>
+<p><strong>Limpeza Especializada em Placas Solares</strong></p>
+<p>📞 Samuel Sidegum: (51) 99603-3200</p>
+<p>📞 Eduardo Sidegum: (51) 99966-3200</p>
+<p>📍 Atendimento Vale do Sinos e Vale do Taquari</p>
+<p class="copyright" style="margin-top:24px;font-size:0.7rem;color:#555;">© 2026 SNDLimp. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle=document.getElementById('menuToggle'),lista=document.getElementById('menuLista');
+  if(toggle&&lista){
+    if(window.innerWidth<=640){toggle.style.display='block';lista.style.display='none';}
+    toggle.addEventListener('click',function(e){e.stopPropagation();lista.style.display=lista.style.display==='block'?'none':'block';});
+    document.addEventListener('click',function(e){if(!toggle.contains(e.target)&&!lista.contains(e.target))lista.style.display='none';});
+    window.addEventListener('resize',function(){if(window.innerWidth>640){lista.style.display='flex';toggle.style.display='none';}else{toggle.style.display='block';if(!lista.classList.contains('show'))lista.style.display='none';}});
+  }
+});
+</script>
+<script src="https://edusidegum.github.io/menu/scripts/bloco-incluir.js" defer></script>
+<script>
+function openLightbox(src) {
+document.getElementById('lightbox-img').src = src;
+document.getElementById('lightbox').style.display = 'flex';
+document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+document.getElementById('lightbox').style.display = 'none';
+document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
+

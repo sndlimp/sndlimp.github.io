@@ -1,0 +1,22 @@
+{
+  "@type": "LocalBusiness",
+  "@id": "https://edusidegum.github.io/sndlimp/#business",
+  "name": "SNDLimp",
+  "telephone": "+555196033200",
+  "url": "https://edusidegum.github.io/sndlimp/",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Novo Hamburgo",
+    "addressRegion": "RS",
+    "addressCountry": "BR"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Novo Hamburgo"},
+    {"@type": "AdministrativeArea", "name": "Vale do Sinos"},
+    {"@type": "AdministrativeArea", "name": "Vale do Taquari"}
+  ],
+  "founder": [
+    {"@type": "Person", "name": "Samuel Sidegum"},
+    {"@type": "Person", "name": "Eduardo Sidegum"}
+  ]
+}

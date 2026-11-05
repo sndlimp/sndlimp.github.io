@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TCC de Sarah Nunes Batista Marques (UFLA 2024) desenvolveu protótipo funcional de sistema automatizado para limpeza de placas solares com ESP32, motor NEMA17 e bomba 4L/min. Consumo de 2,33L de água por ciclo.">
+  <meta name="robots" content="index, follow">
+  <link rel="author" href="https://edusidegum.github.io/edusidegum/sobre.html">
+  <meta name="author" content="e-Sid Tech">
+  <meta name="generator" content="e-Sid Tech — Engenharia de Soluções Digitais">
+  <title>UFLA 2024: Sistema Automatizado de Limpeza de Placa Solar | SNDLimp</title>
+  <link rel="canonical" href="https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html">
+
+  <!-- ═══ SEO Tradicional, Open Graph e Twitter Cards ═══ -->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="UFLA 2024: Sistema Automatizado de Limpeza de Placa Solar | SNDLimp">
+  <meta property="og:description" content="TCC de Sarah Nunes Batista Marques (UFLA 2024) desenvolveu protótipo funcional de sistema automatizado para limpeza de placas solares com ESP32, motor NEMA17 e bomba 4L/min.">
+  <meta property="og:url" content="https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html">
+  <meta property="og:site_name" content="SNDLimp">
+  <meta property="article:publisher" content="https://edusidegum.github.io/sndlimp/">
+  <meta property="article:author" content="https://edusidegum.github.io/edusidegum/">
+  <meta property="article:section" content="Inovação e Tecnologia">
+  <meta property="article:published_time" content="2026-07-22T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-07-22T00:00:00+00:00">
+  <meta property="og:image" content="https://edusidegum.github.io/sndlimp/assets/img/blog/ufla-2024-sistema-automatizado-limpeza-solar.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UFLA 2024: Sistema Automatizado de Limpeza de Placa Solar | SNDLimp">
+  <meta name="twitter:description" content="TCC da UFLA desenvolveu protótipo funcional de sistema automatizado para limpeza de placas solares com ESP32.">
+  <meta name="twitter:image" content="https://edusidegum.github.io/sndlimp/assets/img/blog/ufla-2024-sistema-automatizado-limpeza-solar.jpg">
+
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <!-- ═══ JSON-LD: TechArticle + Service + LocalBusiness ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html#article",
+        "headline": "UFLA 2024: Sistema Automatizado de Limpeza de Placa Solar — TCC Sarah Marques",
+        "description": "Trabalho de Conclusão de Curso de Sarah Nunes Batista Marques (UFLA 2024) desenvolveu protótipo funcional de sistema automatizado para limpeza de placas fotovoltaicas utilizando ESP32, motor NEMA17 e bomba de irrigação de 4L/min, com consumo de 2,33 litros de água por ciclo.",
+        "datePublished": "2026-07-22",
+        "dateModified": "2026-07-22",
+        "author": {
+          "@type": "Person",
+          "name": "Eduardo Sidegum",
+          "url": "https://edusidegum.github.io/edusidegum/"
+        },
+        "publisher": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+        "about": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+        "mainEntityOfPage": "https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html",
+        "proficiencyLevel": "Intermediate",
+        "timeRequired": "PT7M",
+        "citation": [
+          {
+            "@type": "Thesis",
+            "name": "Marques, S. N. B. (2024). Sistema Automatizado de Limpeza de Placa Solar. Trabalho de Conclusão de Curso (Bacharelado em Engenharia de Controle e Automação) — Universidade Federal de Lavras, MG.",
+            "url": "https://raw.githubusercontent.com/edusidegum/sndlimp/refs/heads/main/ieee3s/201820502_SARAH_TRABALHO_FINAL.txt"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html#webpage",
+        "url": "https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html",
+        "isPartOf": { "@id": "https://edusidegum.github.io/sndlimp/#website" },
+        "about": { "@id": "https://edusidegum.github.io/sndlimp/blog/posts/ufla-2024-sistema-automatizado-limpeza-solar.html#article" },
+        "inLanguage": "pt-BR"
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { 
+      background: radial-gradient(ellipse 800px 400px at 50% -100px, rgba(245, 166, 35, 0.08), transparent 70%), #0D0D0D; 
+      color: #F0F0F0; 
+      font-family: 'Inter', system-ui, -apple-system, sans-serif; 
+      line-height: 1.6; 
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; height: auto; }
+    :root {
+      --sol: #F5A623;
+      --sol-vivo: #FF8C00;
+      --brasa: #E84C0E;
+      --noite: #0D0D0D;
+      --carbon: #1A1A1A;
+      --carbon2: #252525;
+      --carbon3: #303030;
+      --cinza: #999;
+      --texto: #F0F0F0;
+      --texto2: #AAAAAA;
+      --verde-ok: #4CAF50;
+      --radius: 12px;
+      --maxw: 1100px;
+      --transition: 0.3s ease;
+    }
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10000;
+      background: rgba(13, 13, 13, 0.88);
+      backdrop-filter: blur(14px) saturate(1.2);
+      -webkit-backdrop-filter: blur(14px) saturate(1.2);
+      border-bottom: 1px solid rgba(245, 166, 35, 0.15);
+      padding: 6px 5%;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      min-height: 44px;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .site-footer {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(0deg, #080808 0%, #1A1A1A 100%);
+      border-top: 1px solid rgba(245, 166, 35, 0.12);
+      padding: 48px 20px;
+      text-align: center;
+    }
+    .site-footer h3 { color: #F5A623; margin-bottom: 12px; font-size: 1.3rem; }
+    .site-footer p { color: #AAAAAA; font-size: 0.85rem; margin-bottom: 6px; line-height: 1.6; }
+    .site-footer .copyright { margin-top: 24px; font-size: 0.7rem; color: #555; }
+    .espec-tabela { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.82rem; }
+    .espec-tabela th { background: #252525; color: #F5A623; padding: 8px 6px; text-align: left; border: 1px solid #333; font-weight: 600; }
+    .espec-tabela td { padding: 6px; border: 1px solid #333; color: #AAAAAA; }
+    .espec-tabela tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .espec-tabela .rot { color: #fff; font-weight: 500; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+    <a href="https://edusidegum.github.io/sndlimp/index.html" aria-label="Página inicial SNDLimp" class="topbar-brand" style="display:flex;align-items:center;gap:8px;text-decoration:none;justify-self:start;">
+      <span style="color:var(--texto);font-weight:800;font-size:1rem;">☀ SNDLimp<span style="font-size:0.65rem;color:var(--sol);display:block;font-weight:400;">Limpeza Técnica de Placas Solares</span></span>
+    </a>
+    <nav class="menu-dropdown" aria-label="Menu de navegação" style="justify-self:center;">
+      <button class="menu-toggle" aria-label="Abrir menu" id="menuToggle" style="background:none;border:none;color:#fff;font-size:0.85rem;cursor:pointer;display:none;">☰ Menu</button>
+      <ul class="menu-lista" id="menuLista" style="list-style:none;display:flex;gap:20px;margin:0;padding:0;">
+        <li><a href="https://edusidegum.github.io/sndlimp/index.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Início</a></li>
+        <li><a href="../../folder_comercial.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Nossa Proposta</a></li>
+        <li><a href="../../galeria.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Galeria</a></li>
+        <li><a href="../../economia.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Simulador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article itemscope itemtype="https://schema.org/TechArticle" 
+             style="max-width:720px;margin:100px auto 40px;padding:0 20px;">
+
+      <!-- Cabeçalho do post -->
+      <header style="margin-bottom:40px;">
+        <p style="color:#F5A623;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">
+          📄 Blog Técnico — 22 jul 2026
+        </p>
+        <h1 itemprop="headline" style="font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.2;margin-bottom:16px;">
+          UFLA 2024: Protótipo Funcional de Sistema Automatizado para Limpeza de Placas Solares
+        </h1>
+        <p itemprop="description" style="color:#AAAAAA;font-size:1.05rem;line-height:1.5;">
+          O Trabalho de Conclusão de Curso de <strong style="color:#F5A623;">Sarah Nunes Batista Marques</strong>, apresentado ao Departamento de Automática da <strong style="color:#F5A623;">Universidade Federal de Lavras (UFLA)</strong> em 2024, desenvolveu um protótipo funcional de sistema automatizado de limpeza para placas fotovoltaicas utilizando microcontrolador ESP32, motor de passo NEMA17 e bomba de irrigação de 4L/min.
+        </p>
+        <address itemprop="author" itemscope itemtype="https://schema.org/Person"
+                 style="font-style:normal;color:#AAAAAA;font-size:0.85rem;margin-top:12px;">
+          Por <span itemprop="name">Eduardo Sidegum</span> — 
+          <time itemprop="datePublished" datetime="2026-07-22">22 jul 2026</time>
+        </address>
+      </header>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">O que o trabalho desenvolveu?</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          O TCC propôs um sistema automatizado para limpeza de placas fotovoltaicas com o objetivo de <strong style="color:#F5A623;">otimizar a captação solar</strong> das células por meio de uma limpeza mais eficiente, sem danificar as placas. O protótipo foi construído em escala reduzida utilizando um vidro inclinado a aproximadamente <strong style="color:#fff;">27°</strong> para simular o painel solar em telhados.
+        </p>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+          Orientado pelo Prof. Dr. Fábio Domingues de Jesus e coorientado pelo Prof. Dr. João Carlos Giacomin, o sistema foi aprovado em 25 de outubro de 2024 com banca composta pelo Dr. Vinícius Miranda Pacheco e pelo Eng. Igor Pontes.
+        </p>
+        <p style="font-size:0.82rem;color:#888;margin-top:8px;">
+          Fonte: <a href="https://raw.githubusercontent.com/edusidegum/sndlimp/refs/heads/main/ieee3s/201820502_SARAH_TRABALHO_FINAL.txt" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">Marques (2024) — Texto completo do TCC</a>
+        </p>
+      </section>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Quais componentes foram utilizados?</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          O protótipo integrou os seguintes componentes principais:
+        </p>
+
+        <div style="overflow-x:auto;">
+          <table class="espec-tabela">
+            <thead>
+              <tr><th>Componente</th><th>Especificação</th><th>Função</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="rot">Microcontrolador</td><td>ESP32 WROOM-32</td><td>Controle geral, conectividade WiFi e interface com app Blynk</td></tr>
+              <tr><td class="rot">Atuador linear</td><td>Mini V para Reprap 3D Printer</td><td>Movimento horizontal da estrutura de limpeza</td></tr>
+              <tr><td class="rot">Motor de passo</td><td>NEMA17HS3401S</td><td>Acionamento do atuador linear</td></tr>
+              <tr><td class="rot">Driver</td><td>TB6600</td><td>Controle do motor de passo</td></tr>
+              <tr><td class="rot">Bomba de irrigação</td><td>60W, 4L/min, 0,75 MPa</td><td>Pressurização da água para os aspersores</td></tr>
+              <tr><td class="rot">Aspersores</td><td>3 unidades reguláveis</td><td>Pulverização de água sobre a superfície do vidro</td></tr>
+              <tr><td class="rot">Válvula solenoide</td><td>12V, 1/2 polegada NF</td><td>Controle de fluxo de água, evita gotejamento</td></tr>
+              <tr><td class="rot">Chaves fim de curso</td><td>2 unidades CNC</td><td>Detecção das extremidades do trilho para inversão de movimento</td></tr>
+              <tr><td class="rot">Módulos relé</td><td>2 canais</td><td>Acionamento da bomba e válvula solenoide</td></tr>
+              <tr><td class="rot">Fontes</td><td>5V/3A (ESP32) + 12V (bomba/válvula)</td><td>Alimentação dos componentes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Como o sistema funciona?</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          O sistema opera em dois modos:
+        </p>
+        <ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+          <li><strong style="color:#fff;">Modo automático</strong>: o motor movimenta a estrutura para frente até bater no fim de curso e para trás até o outro extremo, com a bomba ligada e a válvula aberta durante todo o percurso. Ao final de cada ciclo completo, há uma pausa de 5 segundos antes da repetição.</li>
+          <li><strong style="color:#fff;">Modo manual</strong>: mesmo movimento, porém sem o delay de 5 segundos — o sistema opera continuamente até receber comando de parada via aplicativo.</li>
+        </ul>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+          O controle é feito remotamente através do aplicativo <strong style="color:#F5A623;">Blynk</strong>, conectado ao ESP32 via WiFi, permitindo acionar, parar e alternar entre os modos de operação sem intervenção física no equipamento.
+        </p>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+          Cada ciclo de limpeza tem duração de aproximadamente <strong style="color:#F5A623;">35 segundos</strong> para percorrer o trilho de 30 cm, consumindo cerca de <strong style="color:#F5A623;">2,33 litros de água</strong> por ciclo.
+        </p>
+      </section>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Quais foram os resultados obtidos?</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          O protótipo demonstrou:
+        </p>
+        <ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+          <li><strong style="color:#F5A623;">Funcionamento coerente e integrado</strong> de todos os subsistemas — atuador, bomba, válvula, sensores e controle remoto</li>
+          <li><strong style="color:#F5A623;">Eficiência na remoção de sujeira</strong> nas áreas atingidas pelos aspersores, com a pressão da água removendo resíduos da superfície do vidro</li>
+          <li><strong style="color:#F5A623;">Facilidade de controle remoto</strong> via aplicativo Blynk, eliminando a necessidade de intervenção humana direta durante a limpeza</li>
+          <li><strong style="color:#F5A623;">Consumo hídrico reduzido</strong>: 2,33 litros por ciclo de limpeza para uma área de aproximadamente 0,3 m² de vidro</li>
+        </ul>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+          A autora identificou pontos de melhoria: a disposição dos aspersores precisa ser ajustada para cobrir toda a superfície do painel (uma faixa próxima ao trilho não foi totalmente atingida), e a estrutura de fixação dos aspersores precisa de altura adicional para reduzir respingos.
+        </p>
+      </section>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Qual a relevância para o mercado de limpeza de painéis solares?</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          O trabalho de Sarah Marques é relevante por três motivos:
+        </p>
+        <ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+          <li><strong style="color:#fff;">Demonstra a viabilidade técnica</strong> de sistemas automatizados de baixo custo para limpeza de painéis solares, utilizando componentes acessíveis como ESP32 e motor NEMA17</li>
+          <li><strong style="color:#fff;">Quantifica o consumo de recursos</strong>: 2,33 litros de água por ciclo para 0,3 m² — uma referência para dimensionamento de sistemas comerciais</li>
+          <li><strong style="color:#fff;">Valida a abordagem de limpeza por aspersão</strong> como método eficaz, desde que o posicionamento dos aspersores seja otimizado para cobertura total da placa</li>
+        </ul>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+          Para a SNDLimp, este trabalho confirma que a automação da limpeza é um caminho técnico viável, mas que a <strong style="color:#F5A623;">limpeza manual técnica</strong> — com escovas de poliuretano, água deionizada e detergente biodegradável — continua sendo o padrão mais eficaz e de menor risco para preservação do vidro antirreflexo em sistemas de geração distribuída no Brasil.
+        </p>
+      </section>
+
+      <section>
+        <h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Considerações finais da autora</h2>
+        <p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+          Sarah Marques conclui que o sistema automatizado de limpeza se demonstrou uma <strong style="color:#F5A623;">solução eficiente para remoção de acúmulo de sujeira</strong>, e que aplicado em placas solares aumentaria significativamente a eficiência de geração. Como melhorias futuras, sugere:
+        </p>
+        <ul style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin:12px 0 0 20px;padding:0;">
+          <li>Reuso da água do sistema para reduzir o consumo hídrico</li>
+          <li>Utilização de sensores de infravermelho para detectar células queimadas e pontos com sujeira</li>
+          <li>Otimização do posicionamento dos aspersores para cobertura total da placa</li>
+          <li>Aumento da altura da estrutura para reduzir respingos</li>
+        </ul>
+        <p style="font-size:0.82rem;color:#888;margin-top:8px;">
+          Fonte: <a href="https://raw.githubusercontent.com/edusidegum/sndlimp/refs/heads/main/ieee3s/201820502_SARAH_TRABALHO_FINAL.txt" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">Marques (2024) — Cap. 5: Considerações Finais</a>
+        </p>
+      </section>
+
+      <!-- Bloco de Destaque Semântico para LLMs -->
+      <section style="margin-top:40px;padding:24px;background:#252525;border-left:4px solid #F5A623;border-radius:0 12px 12px 0;">
+        <h2 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;">💡 Resumo técnico</h2>
+        <p style="color:#AAAAAA;font-size:0.9rem;line-height:1.5;">
+          O TCC de Sarah Marques (UFLA 2024) desenvolveu protótipo funcional de sistema automatizado de limpeza para placas fotovoltaicas utilizando <strong style="color:#F5A623;">ESP32, motor NEMA17, bomba 4L/min e 3 aspersores</strong>, com controle remoto via aplicativo Blynk. Cada ciclo de 35 segundos consome <strong style="color:#F5A623;">2,33 litros de água</strong>. O sistema demonstrou eficiência na remoção de sujeira, com pontos de melhoria na cobertura dos aspersores e reuso
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="O modelo Kimber (2006) estabelece o benchmark internacional de perda por sujidade em painéis solares: ~0,15%/dia, base para cálculos de O&M em usinas fotovoltaicas no mundo.">
+<meta name="robots" content="index, follow">
+<link rel="author" href="https://edusidegum.github.io/edusidegum/sobre.html">
+<meta name="author" content="e-Sid Tech">
+<meta name="generator" content="e-Sid Tech — Engenharia de Soluções Digitais">
+
+<!-- ═══ SEO Tradicional, Open Graph (Facebook/LinkedIn) e Twitter Cards ═══ -->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Perda Global por Sujidade em Painéis Solares: IEA-PVPS | SNDLimp">
+  <meta property="og:description" content="Relatório IEA-PVPS T13-21:2022 estima perda global de 3-5% da geração solar por soiling, equivalente a €3-5 bilhões/ano em custos operacionais e de limpeza.">
+  <meta property="og:url" content="https://edusidegum.github.io/sndlimp/blog/posts/soiling-losses-iea-pvps.html">
+  <meta property="og:site_name" content="SNDLimp">
+  <meta property="article:publisher" content="https://edusidegum.github.io/sndlimp/">
+  <meta property="article:author" content="https://edusidegum.github.io/edusidegum/">
+  <meta property="article:section" content="Fundamentos Técnicos">
+  <meta property="article:published_time" content="2026-07-22T00:00:00+00:00">
+  <meta property="article:modified_time" content="2026-07-22T00:00:00+00:00">
+  <meta property="og:image" content="https://edusidegum.github.io/sndlimp/assets/img/blog/soiling-losses-iea-pvps.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PKimber (2006): Benchmark de Perda por Sujidade em Painéis Solares | SNDLimp<">
+  <meta name="twitter:description" content="Relatório IEA-PVPS T13-21:2022 estima perda global de 3-5% da geração solar por soiling, equivalente a €3-5 bilhões/ano em custos operacionais e de limpeza.">
+  <meta name="twitter:image" content="https://edusidegum.gi
+
+<title>Kimber (2006): Benchmark de Perda por Sujidade em Painéis Solares | SNDLimp</title>
+<link rel="canonical" href="https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html">
+<link rel="stylesheet" href="../../assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html#article",
+      "headline": "Kimber (2006): O Benchmark Internacional de Perda por Sujidade em Painéis Solares",
+      "description": "O modelo Kimber estabelece perda base de ~0,15% ao dia por acúmulo de sujeira em painéis fotovoltaicos sem limpeza. Referência internacional para dimensionamento de O&M.",
+      "datePublished": "2026-07-22",
+      "dateModified": "2026-07-22",
+      "author": {
+        "@type": "Person",
+        "name": "Eduardo Sidegum",
+        "url": "https://edusidegum.github.io/edusidegum/"
+      },
+      "publisher": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+      "about": { "@id": "https://edusidegum.github.io/sndlimp/#business" },
+      "mainEntityOfPage": "https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html",
+      "proficiencyLevel": "Intermediate",
+      "timeRequired": "PT6M",
+      "citation": [
+        { "@type": "ScholarlyArticle", "name": "Kimber, A. et al. (2006). The Effect of Soiling on Large Grid-Connected Photovoltaic Systems in California and the Southwest Region of the United States. IEEE 4th WCPEC.", "url": "https://doi.org/10.1109/WCPEC.2006.279690" },
+        { "@type": "Report", "name": "PV Performance Modeling Collaborative — Kimber Soiling Model", "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/shading-soiling-and-reflection-losses/soiling-losses/kimber-soiling-model/" }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html#webpage",
+      "url": "https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html",
+      "isPartOf": { "@id": "https://edusidegum.github.io/sndlimp/#website" },
+      "about": { "@id": "https://edusidegum.github.io/sndlimp/blog/posts/kimber-2006-soiling-model-benchmark.html#article" },
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{background:radial-gradient(ellipse 800px 400px at 50% -100px,rgba(245,166,35,0.08),transparent 70%),#0D0D0D;color:#F0F0F0;font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}a{color:inherit;text-decoration:none;}img{max-width:100%;display:block;height:auto;}
+:root{--sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;--noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;--cinza:#999;--texto:#F0F0F0;--texto2:#AAAAAA;--radius:12px;--maxw:1100px;}
+.sticky-header{position:fixed;top:0;left:0;width:100%;z-index:10000;background:rgba(13,13,13,0.88);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(245,166,35,0.15);padding:6px 5%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;min-height:44px;}
+.site-footer{position:relative;z-index:1;background:linear-gradient(0deg,#080808 0%,#1A1A1A 100%);border-top:1px solid rgba(245,166,35,0.12);padding:48px 20px;text-align:center;}
+.site-footer h3{color:#F5A623;margin-bottom:12px;font-size:1.3rem;}
+.site-footer p{color:#AAAAAA;font-size:0.85rem;margin-bottom:6px;line-height:1.6;}
+.site-footer .copyright{margin-top:24px;font-size:0.7rem;color:#555;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="sticky-header" role="banner" aria-label="Barra de navegação principal">
+<a href="https://edusidegum.github.io/sndlimp/index.html" aria-label="Página inicial SNDLimp" class="topbar-brand" style="display:flex;align-items:center;gap:8px;text-decoration:none;justify-self:start;">
+<span style="color:var(--texto);font-weight:800;font-size:1rem;">☀ SNDLimp<span style="font-size:0.65rem;color:var(--sol);display:block;font-weight:400;">Limpeza Técnica de Placas Solares</span></span>
+</a>
+<nav class="menu-dropdown" aria-label="Menu de navegação" style="justify-self:center;">
+<button class="menu-toggle" aria-label="Abrir menu" id="menuToggle" style="background:none;border:none;color:#fff;font-size:0.85rem;cursor:pointer;display:none;">☰ Menu</button>
+<ul class="menu-lista" id="menuLista" style="list-style:none;display:flex;gap:20px;margin:0;padding:0;">
+<li><a href="https://edusidegum.github.io/sndlimp/index.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Início</a></li>
+<li><a href="../../folder_comercial.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Nossa Proposta</a></li>
+<li><a href="../../galeria.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Galeria</a></li>
+<li><a href="../../economia.html" style="color:#AAAAAA;font-size:0.8rem;font-weight:500;transition:color 0.2s;">Simulador</a></li>
+</ul>
+</nav>
+</header>
+
+<main>
+<article itemscope itemtype="https://schema.org/TechArticle" style="max-width:720px;margin:100px auto 40px;padding:0 20px;">
+
+<header style="margin-bottom:40px;">
+<p style="color:#F5A623;font-size:0.8rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;">
+📄 Blog Técnico — 22 jul 2026
+</p>
+<h1 itemprop="headline" style="font-size:clamp(22px,3vw,36px);font-weight:900;line-height:1.2;margin-bottom:16px;">
+Kimber (2006): O Benchmark Internacional de Perda por Sujidade em Painéis Solares
+</h1>
+<p itemprop="description" style="color:#AAAAAA;font-size:1.05rem;line-height:1.5;">
+O modelo Kimber estabelece a taxa de referência global de <strong style="color:#F5A623;">~0,15% de perda por dia</strong> em painéis fotovoltaicos sem limpeza — equivalente a <strong style="color:#F5A623;">~4,5% ao mês</strong>. Este dado é a âncora científica de modelos de soiling no mundo todo, incluindo o utilizado no Brasil pelo método IEEE3S.
+</p>
+<address itemprop="author" itemscope itemtype="https://schema.org/Person" style="font-style:normal;color:#AAAAAA;font-size:0.85rem;margin-top:12px;">
+Por <span itemprop="name">Eduardo Sidegum</span> — <time itemprop="datePublished" datetime="2026-07-22">22 jul 2026</time>
+</address>
+</header>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">O que é o modelo Kimber?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+O modelo Kimber é um método empírico para estimar perdas por soiling em sistemas fotovoltaicos, desenvolvido por Adrianne Kimber e colaboradores da SunPower Corporation e publicado em 2006 no IEEE 4th World Conference on Photovoltaic Energy Conversion. O estudo analisou dados de campo de grandes usinas na Califórnia e no sudoeste dos Estados Unidos.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+O princípio do modelo é simples: a sujeira <strong style="color:#F5A623;">acumula a uma taxa constante</strong> ao longo do tempo, e eventos de chuza acima de um limiar crítico removem parcialmente esse acúmulo. A taxa base identificada foi de aproximadamente <strong style="color:#F5A623;">0,15% de perda de eficiência por dia</strong> sem intervenção de limpeza ou chuva efetiva.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="https://doi.org/10.1109/WCPEC.2006.279690" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">Kimber et al. (2006) — IEEE Xplore</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Qual a taxa de perda calculada?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+A taxa de aproximadamente <strong style="color:#F5A623;">0,15% por dia</strong> significa que, em 30 dias sem chuva ou limpeza, a perda acumulada chega a cerca de <strong style="color:#F5A623;">4,5%</strong>. Em 90 dias, ultrapassa <strong style="color:#F5A623;">12%</strong>. Esses valores são consistentes com medições de campo posteriores em diferentes regiões do mundo.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+O modelo também introduziu o conceito de <strong style="color:#fff;">precipitação efetiva</strong>: apenas eventos de chuva acima de um determinado limiar (tipicamente > 3 mm acumulados) são capazes de remover a camada de sujeira aderida. Chuvas leves e garoa podem até piorar o quadro ao redistribuir a sujeira sem removê-la.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/shading-soiling-and-reflection-losses/soiling-losses/kimber-soiling-model/" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">PVPMC — Kimber Soiling Model</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Por que este dado é referência global?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+O modelo Kimber foi incorporado a bibliotecas de simulação fotovoltaica amplamente utilizadas, como a <strong style="color:#F5A623;">pvlib python</strong> (biblioteca de código aberto do Sandia National Laboratories). A implementação está documentada na seção "Kimber Soiling Model" do guia PV Performance Modeling Collaborative.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Isto significa que quando um engenheiro solar dimensiona a perda esperada por sujidade em um projeto, o número de partida é o Kimber — calibrado por duas décadas de validação cruzada com dados de campo na América do Norte, Europa, Ásia e Brasil.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Referência: <a href="https://pvlib-python.readthedocs.io/en/latest/gallery/soiling/plot_greensboro_kimber_soiling.html" target="_blank" rel="noopener" style="color:#F5A623;text-decoration:underline;">pvlib — Kimber Soiling Model Implementation</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Como se aplica ao Brasil?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+No Brasil, o método <strong style="color:#F5A623;">IEEE3S</strong> adota a taxa Kimber como <strong style="color:#fff;">âncora internacional</strong> e aplica um fator de ajuste de <strong style="color:#F5A623;">44%</strong> sobre a taxa bruta de 4,5%/mês, resultando em <strong style="color:#F5A623;">2,5%/mês</strong> como taxa conservadora para o território nacional. O desconto considera o efeito de limpeza natural pela precipitação média brasileira, que é superior à dos desertos americanos onde Kimber foi originalmente calibrado.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+Este ajuste foi validado por Costa et al. (2021) em medições de campo em Porto Alegre, que confirmaram que a taxa ajustada de 2,5%/mês representa bem o cenário real de perda por sujidade no Sul do Brasil.
+</p>
+<p style="font-size:0.82rem;color:#888;margin-top:8px;">
+Fonte: <a href="../../metodoieee3s.html" style="color:#F5A623;text-decoration:underline;">SNDLimp — Metodologia IEEE3S</a>
+</p>
+</section>
+
+<section>
+<h2 style="font-size:clamp(18px,2vw,24px);font-weight:800;color:#fff;margin:36px 0 12px;">Qual a implicação prática?</h2>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;">
+A taxa Kimber demonstra que a limpeza periódica não é opcional — é requisito técnico para manter a geração próxima ao nominal. Em regiões semiáridas do Brasil, onde a precipitação efetiva é baixa, a perda real sem limpeza pode se aproximar da taxa bruta de 4,5%/mês, acumulando prejuízos significativos ao longo de um ano.
+</p>
+<p style="color:#AAAAAA;font-size:0.95rem;line-height:1.7;margin-top:12px;">
+O custo da limpeza técnica é marginal comparado à receita recuperada — em sistemas típicos de 10 kWp, a limpeza semestral recupera milhares de reais em geração perdida por ano.
+</p>
+</section>
+
+<section style="margin-top:40px;padding:24px;background:#252525;border-left:4px solid #F5A623;border-radius:0 12px 12px 0;">
+<h2 style="font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px;">💡 Resumo técnico</h2>
+<p style="color:#AAAAAA;font-size:0.9rem;line-height:1.5;">
+O modelo Kimber estabelece o benchmark internacional de <strong style="color:#F5A623;">~0,15%/dia</strong> de perda por soiling (~4,5%/mês). Incorporado à biblioteca pvlib do Sandia Labs, é a referência padrão para simulação de perdas em projetos fotovoltaicos. No Brasil, o método IEEE3S ajusta este valor para <strong style="color:#F5A623;">2,5%/mês</strong>, calibrado por medições de campo nacionais.
+</p>
+</section>
+
+<div style="margin-top:40px;text-align:center;">
+<p style="color:#888;font-size:0.85rem;">Publicado em 22 jul 2026 • Categoria: Modelos e Benchmarks Internacionais</p>
+</div>
+
+</article>
+</main>
+
+<footer class="site-footer">
+<div class="container" style="text-align:center;max-width:1100px;margin:0 auto;">
+<h3>☀ SNDLimp</h3>
+<p><strong>Limpeza Especializada em Placas Solares</strong></p>
+<p>📞 Samuel Sidegum: (51) 99603-3200</p>
+<p>📞 Eduardo Sidegum: (51) 99966-3200</p>
+<p>📍 Atendimento Vale do Sinos e Vale do Taquari</p>
+<p class="copyright" style="margin-top:24px;font-size:0.7rem;color:#555;">© 2026 SNDLimp. Todos os direitos reservados.</p>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var toggle=document.getElementById('menuToggle'),lista=document.getElementById('menuLista');
+  if(toggle&&lista){
+    if(window.innerWidth<=640){toggle.style.display='block';lista.style.display='none';}
+    toggle.addEventListener('click',function(e){e.stopPropagation();lista.style.display=lista.style.display==='block'?'none':'block';});
+    document.addEventListener('click',function(e){if(!toggle.contains(e.target)&&!lista.contains(e.target))lista.style.display='none';});
+    window.addEventListener('resize',function(){if(window.innerWidth>640){lista.style.display='flex';toggle.style.display='none';}else{toggle.style.display='block';if(!lista.classList.contains('show'))lista.style.display='none';}});
+  }
+});
+</script>
+<script src="https://edusidegum.github.io/menu/scripts/bloco-incluir.js" defer></script>
+<script>
+function openLightbox(src) {
+document.getElementById('lightbox-img').src = src;
+document.getElementById('lightbox').style.display = 'flex';
+document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+document.getElementById('lightbox').style.display = 'none';
+document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Página não encontrada</title>
+
+    <!-- Segurança -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- SEO: 404 nunca indexa; follow mantém rastreio dos links internos -->
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="Página não encontrada. Volte ao início">
+    <meta name="theme-color" content="#e91e63">
+
+    <!-- Autor e contexto do projeto -->
+    <meta name="author" content="e-Sid - EduSidegum">
+    <meta name="llm-description" content="Página de erro 404">
+
+    <!-- Navegação/rodapé compartilhados. Fallback: conteúdo principal é auto-suficiente sem JS. -->
+    <script src="https://edusidegum.github.io/demo/all/bloco-incluir-demo.js" defer></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { color-scheme: light; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: #c2185b;
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 0 0 8px 0;
+            z-index: 10;
+        }
+        .skip-link:focus { left: 0; }
+        :focus-visible { outline: 2px solid #c2185b; outline-offset: 2px; }
+        #nav-shared { min-height: 60px; }
+        main { flex: 1; }
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 20px;
+            text-align: center;
+        }
+        .code {
+            font-size: clamp(5rem, 18vw, 9rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            color: #c2185b;
+            margin-bottom: 16px;
+            user-select: none;
+        }
+        h1 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 8px; font-weight: 700; }
+        .subtitle { font-size: 1rem; color: #666; margin-bottom: 32px; }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #e91e63;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover, .btn-primary:focus-visible { background: #c2185b; }
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 28px;
+            background: transparent;
+            color: #333;
+            text-decoration: none;
+            border: 1.5px solid #ccc;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-secondary:hover, .btn-secondary:focus-visible { border-color: #999; color: #000; }
+        .links { font-size: 0.9rem; color: #555; }
+        .links a { color: #c2185b; text-decoration: underline; }
+        .links a:hover { text-decoration: none; }
+        #footer-shared { min-height: 40px; }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <nav id="nav-shared"></nav>
+
+    <main id="conteudo">
+        <div class="container">
+            <p class="code" aria-hidden="true">404</p>
+            <h1>Página não encontrada</h1>
+            <p class="subtitle">O endereço acessado não existe, foi movido ou removido.</p>
+            <div class="actions">
+                <a href="index.html" class="btn-primary">Voltar para o início</a>
+                <a href="https://www.instagram.com/cachacawille/" class="btn-secondary" target="_blank" rel="noopener noreferrer">Ir para o Instagram →</a>
+            </div>
+            <p class="links">
+                Site desenvolvido por <e/> e-Sid Solutions</a> ·
+                <a href="sitemap.xml">Sitemap</a>
+            </p>
+        </div>
+    </main>
+
+    <footer id="footer-shared"></footer>
+</body>
+</html>
