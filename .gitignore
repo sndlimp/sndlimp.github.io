@@ -1,5 +1,10 @@
+# Artefatos de sessao de correcao
+_fix-sndlimp*.ps1
+_fix_backup_*/
+_fix_backup_v*/
+_fix_log_*.txt
+_eol_backup_*/
 
-# backups locais e artefatos de sessao
-_backup_*/
+# Backups e artefatos de sessao
+_backup_loteD/
 *.bak
-_src/

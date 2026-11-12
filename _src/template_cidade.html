@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var opacity=0.33+(0.55*(1-Math.abs(progress-0.5)*2));sol.style.opacity=Math.max(0.22,Math.min(0.77,opacity));
   });
   var reveals=document.querySelectorAll('.reveal');var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting)entry.target.classList.add('show');});},{threshold:0.15});reveals.forEach(function(el){observer.observe(el);});
-  if(!localStorage.getItem('sndlimp_cookies_aceitos')){var bar=document.createElement('div');bar.className='cookie-bar show';bar.innerHTML='🍪 Este site usa cookies para melhorar sua experiência e analisar o tráfego. Ao continuar navegando, você concorda com nossa <a href="https://sndlimp.com.br/compartilhado/politicadeprivacidade.html" target="_blank">Política de Privacidade</a><button onclick="this.parentElement.classList.remove(\'show\');localStorage.setItem(\'sndlimp_cookies_aceitos\',\'1\');">Aceitar</button>';document.body.appendChild(bar);}
+  
 });
 </script>
 </body>

@@ -5,8 +5,9 @@
 (function() {
   const BASE = 'https://sndlimp.com.br/';
 
-  function injetar(arquivo, seletorAlvo, posicao) {
-    return fetch(BASE + arquivo + '?v=' + Date.now())
+  function injetar(arquivo, seletorAlvo, posicao, nocache) {
+    var url = BASE + arquivo + (nocache ? '?v=' + Date.now() : '');
+    return fetch(url)
       .then(r => r.text())
       .then(html => {
         const alvo = document.querySelector(seletorAlvo);
@@ -16,10 +17,10 @@
   }
 
   // Banner de cookies
-  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend');  
+  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend', false);  
 
   // GA4 / GTM
-  injetar('compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend');
+  injetar('compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend', false);
 
   // Proteção contra cópia (condicional)
   if (document.querySelector('meta[name="protecao-copia"]')) {
@@ -34,6 +35,12 @@
       var banner = document.getElementById('cookie-banner');
       if (banner) banner.style.display = 'none';
       localStorage.setItem('lgpd_cookies_aceitos', '1');
+    }
+    if (e.target.id === 'gerenciar-cookies') {
+      e.preventDefault();
+      var b = document.getElementById('cookie-banner');
+      if (b) b.style.display = 'flex';
+      localStorage.removeItem('lgpd_cookies_aceitos');
     }
   });
 
@@ -61,7 +68,8 @@
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
 
 div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
-div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por <e/> e-Sid Solutions M.E.</a>';
+div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por e-Sid Solutions M.E.</a>';
+div.innerHTML += ' · <a href="#" id="gerenciar-cookies" style="color:#888;text-decoration:none;">Gerenciar cookies</a>';
     
     footer.appendChild(div);
   });
