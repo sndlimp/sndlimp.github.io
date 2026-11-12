@@ -1,9 +1,41 @@
 {
   "patterns": {
-    "A": ["prejuizo","problema","solucao","processo","diferenciais","depoimento","cta"],
-    "B": ["problema","prejuizo","processo","solucao","diferenciais","depoimento","cta"],
-    "C": ["solucao","problema","prejuizo","diferenciais","processo","depoimento","cta"],
-    "D": ["depoimento","problema","solucao","prejuizo","processo","diferenciais","cta"]
+    "A": [
+      "prejuizo",
+      "problema",
+      "solucao",
+      "processo",
+      "diferenciais",
+      "depoimento",
+      "cta"
+    ],
+    "B": [
+      "problema",
+      "prejuizo",
+      "processo",
+      "solucao",
+      "diferenciais",
+      "depoimento",
+      "cta"
+    ],
+    "C": [
+      "solucao",
+      "problema",
+      "prejuizo",
+      "diferenciais",
+      "processo",
+      "depoimento",
+      "cta"
+    ],
+    "D": [
+      "depoimento",
+      "problema",
+      "solucao",
+      "prejuizo",
+      "processo",
+      "diferenciais",
+      "cta"
+    ]
   },
   "h1_patterns": {
     "A": "Você instalou placas fotovoltaicas em **{cidade}** para economizar… certo?",
@@ -226,6 +258,50 @@
       "title": "Limpeza de Placas Solares em Maratá | SNDLimp",
       "context": "Maratá encanta pelo turismo rural e pela colonização alemã preservada. A umidade típica do vale e a proximidade com o rio Caí aceleram a formação de algas e musgos nos painéis solares.",
       "bairros": "Centro, Linha Maratá, Linha São Jacó, Linha Temerária, Rincão dos Amados"
+    },
+    {
+      "slug": "lajeado",
+      "name": "Lajeado",
+      "pattern": "D",
+      "h1_variant": "D",
+      "eyebrow": 3,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Lajeado/RS. Polo industrial do Vale do Taquari: recupere a eficiência perdida com fuligem e poeira urbana.",
+      "title": "Limpeza de Placas Solares em Lajeado | SNDLimp",
+      "context": "Lajeado, principal polo industrial e comercial do Vale do Taquari, combina parque fabril diversificado com intensa circulação rodoviária na BR-386. A fuligem industrial e o material particulado depositam-se sobre os painéis, reduzindo a captação solar progressivamente.",
+      "bairros": "Centro, Floresta, Moinhos, São Cristóvão, Hidráulica, Olarias, Conventos, Santo Antônio, Campestre, Jardim do Cedro, Morro do Espelho, São José"
+    },
+    {
+      "slug": "montenegro",
+      "name": "Montenegro",
+      "pattern": "C",
+      "h1_variant": "C",
+      "eyebrow": 2,
+      "meta_desc": "SNDLimp — limpeza profissional de painéis solares em Montenegro/RS. Polo petroquímico do Vale do Caí: remova fuligem e resíduos industriais e recupere a geração.",
+      "title": "Limpeza de Placas Solares em Montenegro | SNDLimp",
+      "context": "Montenegro, polo petroquímico e industrial do Vale do Caí, tem na refinaria e no complexo químico a principal fonte de material particulado atmosférico da região. Esse tipo de sujidade adere ao vidro dos painéis com mais força que poeira comum.",
+      "bairros": "Centro, Aeroclube, Bela Vista, Cinco de Maio, Estação, Santa Rita, Imigração, Timbaúva, Zootecnia, Municipal, Rui Barbosa, São João, Senai, Germano Henke"
+    },
+    {
+      "slug": "poco-das-antas",
+      "name": "Poço das Antas",
+      "pattern": "A",
+      "h1_variant": "A",
+      "eyebrow": 0,
+      "meta_desc": "SNDLimp — limpeza especializada de placas solares em Poço das Antas/RS. Cidade serrana do Vale do Taquari com alta umidade: limpeza com água deionizada.",
+      "title": "Limpeza de Placas Solares em Poço das Antas | SNDLimp",
+      "context": "Poço das Antas é município serrano do Vale do Taquari, com relevo acidentado e vegetação densa. A umidade elevada da região favorece a fixação de resíduos orgânicos e o crescimento de biofilme sobre o vidro dos painéis solares.",
+      "bairros": "Centro, Linha Brasil, Linha Nova, Picada Taquari, Alto Poço das Antas, Bela Vista, Boa Esperança"
+    },
+    {
+      "slug": "salvador-do-sul",
+      "name": "Salvador do Sul",
+      "pattern": "B",
+      "h1_variant": "B",
+      "eyebrow": 1,
+      "meta_desc": "SNDLimp — limpeza técnica de placas solares em Salvador do Sul/RS. Poeira agrícola e resíduos orgânicos: recupere até 25% de eficiência dos painéis.",
+      "title": "Limpeza de Placas Solares em Salvador do Sul | SNDLimp",
+      "context": "Salvador do Sul, no Vale do Taquari, tem economia fortemente agrícola, com produção de morango, uva e cultivos diversos. A poeira agrícola carregada pelo vento deposita-se sobre os painéis e exige limpeza com produto compatível.",
+      "bairros": "Centro, Linha Bonita, Linha Brasil, Picada Horst, Morro da Cruz, Boa Vista, São José"
     }
   ]
 }

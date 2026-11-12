@@ -54,18 +54,19 @@
       "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
       "@id": "https://sndlimp.com.br/#business",
       "name": "SNDLimp",
-      "legalName": "Samuel Sidegum MEI",
+      "legalName": "SAMUEL SCHNEIDER SIDEGUM - ME",
       "url": "https://sndlimp.com.br/",
       "logo": {
         "@type": "ImageObject",
         "@id": "https://sndlimp.com.br/#logo",
-        "url": "https://sndlimp.com.br/img/logosnd.webp",
-        "contentUrl": "https://sndlimp.com.br/img/logosnd.webp",
+        "url": "https://sndlimp.com.br/img/logosnd.png",
+        "contentUrl": "https://sndlimp.com.br/img/logosnd.png",
+        "width": 1364,
+        "height": 1364,
         "caption": "SNDLimp"
       },
       "image": "https://sndlimp.com.br/img/Escova1.webp",
       "telephone": "+5551996033200",
-      "email": "sndlimp@gmail.com",
       "founder": {
         "@type": "Person",
         "@id": "https://sndlimp.com.br/#founder",
@@ -95,7 +96,8 @@
         "closes": "17:00"
       },
       "sameAs": [
-        "https://www.instagram.com/sndlimp/"
+        "https://www.instagram.com/sndlimp/",
+        "https://www.facebook.com/profile.php?id=61594563630084"
       ]
     },
     {
@@ -114,25 +116,33 @@
       "description": "Simule em segundos a perda financeira causada pela sujeira nas placas solares.",
       "inLanguage": "pt-BR",
       "isPartOf": { "@id": "https://sndlimp.com.br/#website" },
-      "about": { "@id": "https://sndlimp.com.br/#business" },
-      "breadcrumb": { "@id": "https://sndlimp.com.br/#breadcrumb" }
+      "about": { "@id": "https://sndlimp.com.br/#business" }
     },
     {
-      "@type": "BreadcrumbList",
-      "@id": "https://sndlimp.com.br/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Início",
-          "item": "https://sndlimp.com.br/"
-        }
+      "@type": "WebApplication",
+      "@id": "https://sndlimp.com.br/#calculadora",
+      "name": "Calculadora de Perda Solar SNDLimp",
+      "url": "https://sndlimp.com.br/",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Calculadora de eficiência fotovoltaica",
+      "operatingSystem": "Web",
+      "browserRequirements": "JavaScript habilitado",
+      "inLanguage": "pt-BR",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+      "description": "Estime quanto a sujeira acumulada está reduzindo a geração da sua usina solar e o impacto financeiro por placa e por mês, com base em premissas públicas de perda (25% a 30%).",
+      "provider": { "@id": "https://sndlimp.com.br/#business" },
+      "featureList": [
+        "Cálculo de perda mensal por placa",
+        "Projeção anual de perda",
+        "Estimativa de geração perdida em kWh",
+        "Curva de degradação por mês sem limpeza"
       ]
     }
   ]
 }
 </script>
-  <style>
+<style>
     :root {
         --sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;
         --noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;
@@ -330,13 +340,13 @@
 <div class="header-spacer"></div>
 
 <!-- ═══════════ HERO ═══════════ -->
-<div class="hero">
+<div class="hero" id="proposta">
     <div class="hero-eyebrow">☀ Diagnóstico de Eficiência Fotovoltaica</div>
     <h1>Análise de Perdas de<br><span>Produção em Usinas Solares</span></h1>
     <p class="hero-sub">Descubra em segundos quanto dinheiro a sujeira acumulada está retirando da sua geração — e do seu bolso.</p>
 </div>
 
-<div class="container">
+<div class="container" id="simulador">
 
     <!-- ═══ IDENTIFICAÇÃO ═══ -->
     <div class="card">
