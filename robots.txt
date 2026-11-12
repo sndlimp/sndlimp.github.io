@@ -1,11 +1,14 @@
-# Robots.txt — SNDLimp
+# Robots.txt - SNDLimp
 # Dominio: https://sndlimp.com.br
 # Politica: indexacao total para buscadores e crawlers de citacao de IA;
 # bloqueio de crawlers de treinamento de modelos.
+# /assets/doc/ e /_src/ sao internos: bloqueados mesmo para buscadores.
 
-# ── BUSCADORES TRADICIONAIS ──────────────────────────────────
+# --- BUSCADORES TRADICIONAIS ---
 User-agent: Googlebot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: Googlebot-Image
 Allow: /
@@ -15,12 +18,18 @@ Allow: /
 
 User-agent: Bingbot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: Yandex
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: Baiduspider
 Allow: /
@@ -30,21 +39,29 @@ Allow: /
 
 User-agent: Applebot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: FacebookExternalHit
 Allow: /
 
-# ── IA — CRAWLERS DE CITACAO (permitir) ──────────────────────
+# --- IA - CRAWLERS DE CITACAO (permitir) ---
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
-# ── IA — CRAWLERS DE TREINAMENTO (bloquear) ──────────────────
+# --- IA - CRAWLERS DE TREINAMENTO (bloquear) ---
 User-agent: GPTBot
 Disallow: /
 
@@ -69,9 +86,10 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-# ── FALLBACK ─────────────────────────────────────────────────
+# --- FALLBACK ---
 User-agent: *
 Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
 
-# ── SITEMAP ──────────────────────────────────────────────────
 Sitemap: https://sndlimp.com.br/sitemap.xml

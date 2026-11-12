@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Manutenção — sndlimp.com.br</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Referência interna de manutenção do projeto sndlimp.com.br. Documento não indexável.">
+<style>
+:root{--fg:#1f2328;--muted:#59636e;--bg:#ffffff;--bg2:#f6f8fa;--bd:#d1d9e0;--acc:#0969da;--warn:#9a6700;--err:#cf222e;--ok:#1a7f37;--code:#eff1f3}
+*{box-sizing:border-box}
+body{margin:0;padding:2rem 1.25rem;background:var(--bg);color:var(--fg);font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:980px;margin:0 auto}
+h1{font-size:1.9rem;border-bottom:1px solid var(--bd);padding-bottom:.5rem;margin-bottom:.25rem}
+h2{font-size:1.35rem;margin-top:2.5rem;border-bottom:1px solid var(--bd);padding-bottom:.35rem}
+h3{font-size:1.05rem;margin-top:1.75rem;color:var(--muted)}
+p,li{color:var(--fg)}
+.banner{background:#fff8c5;border:1px solid #d4a72c;border-radius:6px;padding:.75rem 1rem;margin:1rem 0;font-size:.9rem;color:var(--warn)}
+code{background:var(--code);border-radius:4px;padding:.15em .4em;font:.875em/1.5 ui-monospace,Consolas,monospace}
+pre{background:var(--bg2);border:1px solid var(--bd);border-radius:6px;padding:.9rem 1rem;overflow-x:auto;font:.85rem/1.5 ui-monospace,Consolas,monospace}
+pre code{background:none;padding:0}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+th,td{border:1px solid var(--bd);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:var(--bg2);font-weight:600}
+ul,ol{padding-left:1.4rem}
+li{margin:.25rem 0}
+.k-ok{color:var(--ok);font-weight:600}
+.k-err{color:var(--err);font-weight:600}
+.k-warn{color:var(--warn);font-weight:600}
+.tag{display:inline-block;font:.75rem/1 ui-monospace,monospace;background:var(--bg2);border:1px solid var(--bd);border-radius:4px;padding:.2rem .4rem;color:var(--muted)}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--bd);font-size:.85rem;color:var(--muted)}
+a{color:var(--acc)}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Manual de Manutenção — sndlimp.com.br</h1>
+<p><span class="tag">noindex/nofollow</span> <span class="tag">referência interna</span> Documento operacional do projeto. <strong>Não é indexável</strong> e não deve ser linkado publicamente.</p>
+
+<div class="banner">
+<strong>Aviso:</strong> arquivo protegido por <code>noindex, nofollow</code>. O GitHub Pages não permite headers HTTP customizados (<code>X-Robots-Tag</code>, <code>X-Content-Type-Options: nosniff</code>). A barreira efetiva é o <code>robots.txt</code> com <code>Disallow: /assets/doc/</code> + a meta tag.
+</div>
+
+<h2>1. Visão geral</h2>
+<table>
+<tr><th>Item</th><th>Valor</th></tr>
+<tr><td>Domínio de produção</td><td><code>https://sndlimp.com.br</code></td></tr>
+<tr><td>Hospedagem</td><td>GitHub Pages (estático)</td></tr>
+<tr><td>Repositório</td><td><code>sndlimp/sndlimp.github.io</code></td></tr>
+<tr><td>Branch de trabalho</td><td><code>publish</code> → <code>origin/main</code></td></tr>
+<tr><td>Stack</td><td>HTML semântico, CSS isolado, JS mínimo, WebP, JSON-LD</td></tr>
+<tr><td>Deploy</td><td><code>git push origin HEAD:main</code> (GitHub Pages rebuild ~60&nbsp;s)</td></tr>
+</table>
+
+<h2>2. Estrutura de arquivos</h2>
+<pre><code>sndlimp/
+├── index.html                  # landing principal
+├── economia.html  faq.html  galeria.html  servicos.html
+├── fontesdevalidacao.html  metodoieee3s.html  novidade.html
+├── privacidade.html            # LGPD
+├── FolderSamuel_2025.html
+├── robots.txt                  # crawl rules
+├── sitemap.xml
+│
+├── _src/
+│   └── template_cidade.html    # template do gerador de cidades
+│
+├── scripts/
+│   ├── bloco-includes.js       # injeção de header/footer (compartilhado)
+│   ├── bloco-incluir.js        # variante
+│   ├── bloco-protecao.js
+│   ├── chart.umd.min.js
+│   ├── cidades-data.json
+│   ├── variants.json
+│   └── gerar-cidades.ps1       # gerador
+│
+├── assets/
+│   ├── css/                    # estilos
+│   ├── js/
+│   │   └── politica.html       # página política (CSS/JS próprio)
+│   └── doc/
+│       └── manual_sndlimp.html # ESTE documento (noindex)
+│
+├── blog/
+│   └── business.json           # JSON-LD LocalBusiness
+│
+├── cidades/                    # HTMLs gerados (não editar manualmente)
+�   ├── esteio.html
+│   └── ... (21 cidades)
+│
+├── compartilhado/
+│   └── politicadeprivacidade.html
+│
+├── ieee3s/
+│   ├── fontesieee3s_Pagina4.html
+│   ├── fontesieee3s_Pagina5.html
+│   └── vendas.html
+│
+└── img/
+    ├── robots.webp
+    └── rendimentoplacas.webp</code></pre>
+
+<h3>Papel de cada pasta</h3>
+<table>
+<tr><th>Pasta</th><th>Conteúdo</th><th>Editável?</th></tr>
+<tr><td><code>_src/</code></td><td>template mestre do gerador de cidades</td><td class="k-warn">Sim — reflete em novas gerações</td></tr>
+<tr><td><code>scripts/</code></td><td>JS compartilhado + gerador</td><td class="k-warn">Sim — cuidado, afeta todo o site</td></tr>
+<tr><td><code>cidades/</code></td><td>HTMLs gerados</td><td class="k-err">Não — regerar via script</td></tr>
+<tr><td><code>assets/css/</code></td><td>estilos globais</td><td>Sim</td></tr>
+<tr><td><code>assets/doc/</code></td><td>documentação interna</td><td>Sim — <code>noindex</code></td></tr>
+<tr><td><code>img/</code></td><td>assets visuais WebP</td><td>Sim</td></tr>
+<tr><td><code>blog/</code></td><td>JSON-LD do blog</td><td>Sim</td></tr>
+</table>
+
+<h2>3. Fluxo de deploy</h2>
+<h3>3.1 Fluxo normal</h3>
+<pre><code>git status
+git diff
+git add -A
+git commit -m "tipo(escopo): descricao"
+git push origin HEAD:main
+Start-Sleep -Seconds 60
+# validar em producao (secao 7)</code></pre>
+
+<h3>3.2 Rollback</h3>
+<pre><code>git revert &lt;hash&gt;
+git push origin HEAD:main</code></pre>
+
+<h2>4. Gerador de cidades</h2>
+<table>
+<tr><th>Entrada</th><th>Saída</th></tr>
+<tr><td><code>scripts/cidades-data.json</code></td><td><code>cidades/&lt;nome&gt;.html</code> (1 por cidade)</td></tr>
+<tr><td><code>scripts/variants.json</code></td><td>variações de conteúdo</td></tr>
+<tr><td><code>_src/template_cidade.html</code></td><td>template mestre</td></tr>
+</table>
+<pre><code>cd scripts
+.\gerar-cidades.ps1</code></pre>
+<p>Após gerar: conferir <code>sitemap.xml</code> (novas cidades entram em <code>/cidades/</code>) e validar 1 amostra em produção.</p>
+
+<h2>5. Blog</h2>
+<ul>
+<li><code>blog/business.json</code> — JSON-LD <code>LocalBusiness</code>, referenciado pelo <code>@id</code> <code>https://sndlimp.com.br/#business</code>.</li>
+<li>Posts HTML: histórico anterior em <code>/blog/</code>; o JSON-LD é inline por página, <code>business.json</code> é referência canônica.</li>
+<li>Ao alterar <code>@id</code> ou <code>url</code>, revisar todas as páginas do blog.</li>
+</ul>
+
+<h2>6. Sitemap e robots.txt</h2>
+<h3>6.1 O que entra no sitemap</h3>
+<table>
+<tr><th>Entra</th><th>Não entra</th></tr>
+<tr><td>páginas públicas (<code>index</code>, <code>servicos</code>, <code>faq</code>, <code>galeria</code>, <code>economia</code>, <code>metodoieee3s</code>, <code>fontesdevalidacao</code>, <code>novidade</code>, <code>privacidade</code>)</td><td><code>/assets/doc/</code>, <code>/scripts/</code>, <code>/_src/</code>, <code>/blog/business.json</code></td></tr>
+<tr><td><code>/cidades/*.html</code> (todas as geradas)</td><td><code>ieee3s/Pagina4</code>, <code>Pagina5</code> (paginação; canonical consolida em <code>fontesdevalidacao.html</code>)</td></tr>
+</table>
+
+<h3>6.2 robots.txt</h3>
+<pre><code>User-agent: *
+Allow: /
+Disallow: /assets/doc/
+Disallow: /_src/
+Disallow: /scripts/
+
+Sitemap: https://sndlimp.com.br/sitemap.xml</code></pre>
+
+<h2>7. Checklist pós-publicação</h2>
+<table>
+<tr><th>#</th><th>Verificação</th><th>Como</th></tr>
+<tr><td>1</td><td><code>canonical</code> correto por página</td><td><code>Select-String 'rel="canonical"'</code></td></tr>
+<tr><td>2</td><td><code>og:image</code> e <code>og:url</code> absolutos em <code>sndlimp.com.br</code></td><td>idem</td></tr>
+<tr><td>3</td><td>Zero <code>edusidegum.github.io</code> em arquivos públicos</td><td>varredura recursiva</td></tr>
+<tr><td>4</td><td>Assets críticos respondem HTTP 200</td><td><code>Invoke-WebRequest -Method HEAD</code></td></tr>
+<tr><td>5</td><td><code>sitemap.xml</code> atualizado com novas páginas</td><td>abrir URL</td></tr>
+<tr><td>6</td><td>Google Search Console: <em>Inspeção de URL</em></td><td>manual</td></tr>
+</table>
+
+<h2>8. Dívida técnica conhecida</h2>
+<table>
+<tr><th>#</th><th>Item</th><th>Status</th></tr>
+<tr><td>1</td><td><code>_src/template_cidade.html</code> L17 e L93 → links para o site pessoal do Edu</td><td class="k-ok">Legítimo, HTTP 200 — não é dívida</td></tr>
+<tr><td>2</td><td>Cache social de <code>og:image</code></td><td class="k-warn">Externo: Facebook/LinkedIn Debugger</td></tr>
+<tr><td>3</td><td><code>nosniff</code> em <code>/assets/doc/</code></td><td class="k-warn">GitHub Pages não permite header customizado</td></tr>
+<tr><td>4</td><td>Cidades antigas com URLs legadas</td><td class="k-ok">Resolvido: 21/21 já usam <code>/scripts/bloco-includes.js</code></td></tr>
+</table>
+
+<h2>9. Comandos PowerShell</h2>
+
+<h3>9.1 Operação diária</h3>
+<pre><code>git status --short
+git diff
+git add -A
+git commit -F mensagem.txt
+git push origin HEAD:main</code></pre>
+
+<h3>9.2 Diagnóstico — line endings e integridade</h3>
+<pre><code>$p = "D:\GitHub_clone\sndlimp\_src\template_cidade.html"
+$b = [System.IO.File]::ReadAllBytes($p)
+$t = [System.Text.Encoding]::UTF8.GetString($b)
+"CRLF: " + ([regex]::Matches($t,"`r`n")).Count
+"LF  : " + ([regex]::Matches($t,"(?&lt;!`r)`n")).Count</code></pre>
+
+<h3>9.3 Correção em lote (replace seguro)</h3>
+<pre><code>function Substituir-Seguro {
+    param($Path, $De, $Para)
+    $t = [System.Text.Encoding]::UTF8.GetString([System.IO.File]::ReadAllBytes($Path))
+    $n = ([regex]::Matches($t,[regex]::Escape($De))).Count
+    if ($n -ne 1) { throw "ocorrencias=$n em $Path" }
+    $t = $t.Replace($De,$Para)
+    [System.IO.File]::WriteAllText($Path,$t,(New-Object System.Text.UTF8Encoding($false)))
+}</code></pre>
+
+<h3>9.4 Integridade: disco vs HEAD vs produção</h3>
+<pre><code>git diff HEAD --name-only          # deve ser vazio
+git rev-list --left-right --count HEAD...origin/main
+
+try {
+  $r = Invoke-WebRequest -Uri 'https://sndlimp.com.br/scripts/bloco-includes.js' -UseBasicParsing -Method GET
+  "HTTP {0} len={1}" -f $r.StatusCode, $r.RawContentLength
+} catch { "FALHA: " + $_.Exception.Response.StatusCode.value__ }</code></pre>
+
+<h3>9.5 Varredura de domínio legado</h3>
+<pre><code>Get-ChildItem $root -Recurse -Include *.html,*.json,*.xml |
+  Where-Object { $_.FullName -notmatch '\\\.git\\|\\_backup|\\node_modules\\' } |
+  Select-String -Pattern 'edusidegum\.github\.io'</code></pre>
+
+<h3>9.6 Buscar arquivo em qualquer commit</h3>
+<pre><code>git log --all --oneline -- "caminho/arquivo.html"
+git cat-file blob &lt;hash-borrado&gt; &gt; arquivo_recuperado.html</code></pre>
+
+<h2>10. Histórico de decisões</h2>
+<table>
+<tr><th>#</th><th>Commit</th><th>Decisão</th></tr>
+<tr><td>1</td><td><code>acd49b2</code></td><td>Restaura BOM no gerador, adiciona <code>_src/</code> ao <code>.gitignore</code></td></tr>
+<tr><td>2</td><td><code>6851cac</code></td><td>Reconstrói <code>robots.txt</code> a partir do blob 20af5d9</td></tr>
+<tr><td>3</td><td><code>2e93be5</code></td><td>Migração de domínio em 6 arquivos (vendas, Pagina4, Pagina5, business.json, politica, template)</td></tr>
+<tr><td>4</td><td><code>1252eb3</code></td><td>Fecha migração: <code>_src</code> L3 → <code>/scripts/</code>; <code>politica</code> L18 → <code>/img/robots.webp</code></td></tr>
+</table>
+
+<h2>11. Contato</h2>
+<p>Responsável técnico: <strong>Edu Sidegum</strong>. Suporte da plataforma de IA: <code>duvidas@adapta.org</code>.</p>
+
+<footer>
+Manual de manutenção — <code>sndlimp.com.br</code> · Arquivo interno, <strong>noindex, nofollow</strong>. Última revisão: novembro 2026.
+</footer>
+
+</main>
+</body>
+</html>
