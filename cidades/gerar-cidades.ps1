@@ -1,4 +1,4 @@
-﻿# gerar-cidades.ps1 — v3 com variantes de conteúdo
+# gerar-cidades.ps1 — v3 com variantes de conteúdo
 # Lê: cidades-data.json + variants.json + template_cidade.html
 # Gera: cidades/{slug}.html com conteúdo > 35% diferente entre páginas
 
@@ -7,7 +7,7 @@ if (-not $scriptDir) { $scriptDir = Get-Location }
 
 $dataPath     = Join-Path $scriptDir "cidades-data.json"
 $variantsPath = Join-Path $scriptDir "variants.json"
-$templatePath = Join-Path $scriptDir "template_cidade.html"
+$templatePath = Join-Path (Split-Path $scriptDir -Parent) "_src\template_cidade.html"
 $outputDir    = Join-Path $scriptDir "..\cidades"
 
 # Validação
