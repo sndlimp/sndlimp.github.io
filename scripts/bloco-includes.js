@@ -17,7 +17,7 @@
   }
 
   // Banner de cookies
-  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend', false);  
+  injetar('compartilhado/bloco-cookies.html', 'body', 'beforeend', false);
 
   // GA4 / GTM
   injetar('compartilhado/bloco-ga4-gtm.html', 'head', 'beforeend', false);
@@ -35,6 +35,31 @@
       var banner = document.getElementById('cookie-banner');
       if (banner) banner.style.display = 'none';
       localStorage.setItem('lgpd_cookies_aceitos', '1');
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted',
+          functionality_storage: 'denied',
+          security_storage: 'granted'
+        });
+      }
+    }
+    if (e.target.id === 'btn-recusar-cookies') {
+      var bannerRec = document.getElementById('cookie-banner');
+      if (bannerRec) bannerRec.style.display = 'none';
+      localStorage.setItem('lgpd_cookies_aceitos', '0');
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          functionality_storage: 'denied',
+          security_storage: 'granted'
+        });
+      }
     }
     if (e.target.id === 'gerenciar-cookies') {
       e.preventDefault();
@@ -44,10 +69,11 @@
     }
   });
 
-  // ═══ VERIFICA SE JÁ ACEITOU (polling até o banner existir) ═══
+  // ═══ VERIFICA SE JÁ ESCOLHEU (polling até o banner existir) ═══
   function esconderSeAceito() {
     var banner = document.getElementById('cookie-banner');
-    if (banner && localStorage.getItem('lgpd_cookies_aceitos') === '1') {
+    var escolha = localStorage.getItem('lgpd_cookies_aceitos');
+    if (banner && (escolha === '1' || escolha === '0')) {
       banner.style.display = 'none';
       return true;
     }
@@ -67,10 +93,10 @@
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
 
-div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
-div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por e-Sid Solutions M.E.</a>';
-div.innerHTML += ' · <a href="#" id="gerenciar-cookies" style="color:#888;text-decoration:none;">Gerenciar cookies</a>';
-    
+    div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+    div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por e-Sid Solutions M.E.</a>';
+    div.innerHTML += ' · <a href="#" id="gerenciar-cookies" style="color:#888;text-decoration:none;">Gerenciar cookies</a>';
+
     footer.appendChild(div);
   });
 

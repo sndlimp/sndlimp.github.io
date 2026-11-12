@@ -1,4 +1,4 @@
-﻿# gerar-cidades.ps1 — v3 com variantes de conteúdo
+# gerar-cidades.ps1 — v3 com variantes de conteúdo
 # Lê: cidades-data.json + variants.json + template_cidade.html
 # Gera: cidades/{slug}.html com conteúdo > 35% diferente entre páginas
 
@@ -6,8 +6,8 @@ $scriptDir = $PSScriptRoot
 if (-not $scriptDir) { $scriptDir = Get-Location }
 
 $dataPath     = Join-Path $scriptDir "cidades-data.json"
-$variantsPath = Join-Path $scriptDir "variants.json"
-$templatePath = Join-Path (Split-Path $scriptDir -Parent) "_src\template_cidade.html"
+$variantsPath = Join-Path (Split-Path $scriptDir -Parent) "scripts\variants.json"
+$templatePath = Join-Path (Split-Path $scriptDir -Parent) "scripts\template_cidade.html"
 $outputDir    = Join-Path $scriptDir "..\cidades"
 
 # Validação
@@ -28,6 +28,8 @@ $valeMap = @{
   "ivoti"="Sinos";"sapucaia-do-sul"="Sinos";"nova-hartz"="Sinos";"nova-santa-rita"="Sinos"
   "portao"="Sinos";"ararica"="Sinos"
   "teutonia"="Taquari";"colinas"="Taquari";"imigrante"="Taquari";"westfalia"="Taquari";"marata"="Taquari"
+  "lajeado"="Taquari";"poco-das-antas"="Taquari";"salvador-do-sul"="Taquari"
+  "montenegro"="Caí"
 }
 $geoMap = @{
   "novo-hamburgo"="-29.6875;-51.1328";"sao-leopoldo"="-29.7611;-51.1475"
@@ -40,6 +42,8 @@ $geoMap = @{
   "teutonia"="-29.4489;-51.8069";"colinas"="-29.3819;-51.8736"
   "imigrante"="-29.3553;-51.7775";"westfalia"="-29.4194;-51.7992"
   "marata"="-29.4508;-51.8311"
+  "lajeado"="-29.4669;-51.9614";"montenegro"="-29.6886;-51.4611"
+  "poco-das-antas"="-29.4458;-51.6769";"salvador-do-sul"="-29.4378;-51.5108"
 }
 
 $h1Variants = @{
@@ -146,3 +150,8 @@ foreach ($city in $data.cities) {
 }
 
 Write-Host "`n✅ $total páginas geradas com conteúdo diferenciado em: $outputDir" -ForegroundColor Cyan
+
+
+
+
+

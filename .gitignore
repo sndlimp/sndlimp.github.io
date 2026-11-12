@@ -1,10 +1,24 @@
 # Artefatos de sessao de correcao
-_fix-sndlimp*.ps1
+_fix-sndlimp*
 _fix_backup_*/
-_fix_backup_v*/
 _fix_log_*.txt
 _eol_backup_*/
+_fix-economia.ps1
 
 # Backups e artefatos de sessao
+_backup_*/
+_backup_*
 _backup_loteD/
 *.bak
+*.backup-*
+index_a0f3da0.bak
+sitemap_a0f3da0.bak
+
+# Junction legado (removido em 12/11/2026)
+_src
+
+# Ambiente
+node_modules/
+.vscode/
+.DS_Store
+Thumbs.db
