@@ -1,4 +1,4 @@
-# gerar-cidades.ps1 — v3 com variantes de conteúdo
+﻿# gerar-cidades.ps1 — v3 com variantes de conteúdo
 # Lê: cidades-data.json + variants.json + template_cidade.html
 # Gera: cidades/{slug}.html com conteúdo > 35% diferente entre páginas
 
