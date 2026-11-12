@@ -1,9 +1,9 @@
 // ══════════ INCLUIR DINÂMICO ═══════════
-// Salve em: https://sndlimp.github.io/scripts/bloco-incluir.js
-// Adicione no HTML: <script src="https://sndlimp.github.io/scripts/bloco-incluir.js" defer></script>
+// Salve em: https://sndlimp.com.br/scripts/bloco-incluir.js
+// Adicione no HTML: <script src="https://sndlimp.com.br/scripts/bloco-incluir.js" defer></script>
 
 (function() {
-  const BASE = 'https://sndlimp.github.io/';
+  const BASE = 'https://sndlimp.com.br/';
 
   function injetar(arquivo, seletorAlvo, posicao) {
     return fetch(BASE + arquivo + '?v=' + Date.now())
@@ -61,7 +61,7 @@
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
 
 div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
-div.innerHTML += '<br><a href="https://edusidegum.github.io/edusidegum/" style="color:#888;text-decoration:none;">Desenvolvido por <e/> e-Sid Solutions M.E.</a>';
+div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por <e/> e-Sid Solutions M.E.</a>';
     
     footer.appendChild(div);
   });

@@ -1,0 +1,4 @@
+
+# backups locais e artefatos de sessao
+_backup_*/
+*.bak
