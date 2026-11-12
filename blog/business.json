@@ -1,9 +1,9 @@
 {
   "@type": "LocalBusiness",
-  "@id": "https://edusidegum.github.io/sndlimp/#business",
+  "@id": "https://sndlimp.com.br/#business",
   "name": "SNDLimp",
   "telephone": "+555196033200",
-  "url": "https://edusidegum.github.io/sndlimp/",
+  "url": "https://sndlimp.com.br/",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Novo Hamburgo",
