@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TEMPLATE — SNDLimp | PÁGINA GENÉRICA (Article / Product / FAQ)
+     Arquivo interno, NÃO INDEXÁVEL. Uso: copiar como base para página nova.
+     ANTES DE PUBLICAR trocar todas as ocorrências de:
+       1) meta robots → "index, follow, max-snippet:-1, max-image-preview:large"
+       2) googlebot / bingbot → mesmo valor acima
+       3) {{PLACEHOLDERS}} → valores reais
+       4) Remover este bloco de comentário
+     ═══════════════════════════════════════════════════════════════════════ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{TITULO}} | SNDLimp</title>
+<meta name="description" content="{{DESCRICAO_150_160_CHARS_COM_KEYWORD}}">
+<meta name="keywords" content="{{KW1}}, {{KW2}}, {{KW3}}, {{KW4}}, {{KW5}}">
+
+<!-- ── ROBOTS (INTERNO: não indexar) ──────────────────────────────────── -->
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="bingbot" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+
+<!-- ── AUTORIA / E-E-A-T ──────────────────────────────────────────────── -->
+<meta name="author" content="{{NOME_AUTOR}}">
+<meta name="generator" content="e-Sid Tech — Engenharia de Soluções Digitais">
+<link rel="author" href="https://sndlimp.com.br/sobresndlimp.html">
+
+<!-- ── TEMA ───────────────────────────────────────────────────────────── -->
+<meta name="theme-color" content="#0d0d0d">
+
+<!-- ── OPEN GRAPH ─────────────────────────────────────────────────────── -->
+<meta property="og:title"       content="{{TITULO}} | SNDLimp">
+<meta property="og:description" content="{{DESCRICAO_150_160_CHARS_COM_KEYWORD}}">
+<meta property="og:url"         content="https://sndlimp.com.br/{{SLUG}}.html">
+<meta property="og:image"       content="https://sndlimp.com.br/img/{{IMAGEM_OG}}.webp">
+<meta property="og:image:type"  content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="SNDLimp">
+<meta property="og:locale"      content="pt_BR">
+
+<!-- ── TWITTER / X ────────────────────────────────────────────────────── -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="{{TITULO}} | SNDLimp">
+<meta name="twitter:description" content="{{DESCRICAO_150_160_CHARS_COM_KEYWORD}}">
+<meta name="twitter:image"       content="https://sndlimp.com.br/img/{{IMAGEM_OG}}.webp">
+
+<!-- ── CANONICAL / HREFLANG ───────────────────────────────────────────── -->
+<link rel="canonical" href="https://sndlimp.com.br/{{SLUG}}.html">
+<link rel="alternate" hreflang="pt-BR"    href="https://sndlimp.com.br/{{SLUG}}.html">
+<link rel="alternate" hreflang="x-default" href="https://sndlimp.com.br/{{SLUG}}.html">
+
+<!-- ── ÍCONE / PRELOAD DE PERFORMANCE ─────────────────────────────────── -->
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/{{IMAGEM_LCP}}.webp" as="image" type="image/webp" fetchpriority="high">
+
+<!-- ── CSS ────────────────────────────────────────────────────────────── -->
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Condensed:wght@400;600;700;900&display=swap">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     JSON-LD — @graph consolidado (SEO + AEO + GEO)
+     Tipos fixos: LocalBusiness (referência), WebSite, WebPage
+     Tipo variável: {{TIPO_PRIMARIO}} = Article | Product | FAQPage
+     ══════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://sndlimp.com.br/#business",
+      "name": "SNDLimp — Limpeza Técnica de Placas Solares",
+      "telephone": "+5551996033200",
+      "url": "https://sndlimp.com.br/",
+      "image": "https://sndlimp.com.br/img/Escova1.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{CIDADE_ATUACAO}}",
+        "addressRegion": "RS",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Vale do Sinos"},
+        {"@type": "AdministrativeArea", "name": "Rio Grande do Sul"}
+      ],
+      "priceRange": "$$",
+      "description": "Limpeza especializada em placas solares. Equipamentos adequados, água deionizada, produtos biodegradáveis.",
+      "founder": [
+        {"@type": "Person", "name": "Samuel Sidegum"},
+        {"@type": "Person", "name": "Eduardo Sidegum"}
+      ],
+      "sameAs": ["https://www.instagram.com/sndlimp/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sndlimp.com.br/#website",
+      "url": "https://sndlimp.com.br/",
+      "name": "SNDLimp",
+      "publisher": {"@id": "https://sndlimp.com.br/#business"},
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://sndlimp.com.br/{{SLUG}}.html#webpage",
+      "url": "https://sndlimp.com.br/{{SLUG}}.html",
+      "name": "{{TITULO}} | SNDLimp",
+      "description": "{{DESCRICAO_150_160_CHARS_COM_KEYWORD}}",
+      "isPartOf": {"@id": "https://sndlimp.com.br/#website"},
+      "about":    {"@id": "https://sndlimp.com.br/#business"},
+      "inLanguage": "pt-BR",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://sndlimp.com.br/img/{{IMAGEM_OG}}.webp",
+        "width": 1200,
+        "height": 630
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Início",           "item": "https://sndlimp.com.br/"},
+          {"@type": "ListItem", "position": 2, "name": "{{CRUMB_NIVEL_2}}", "item": "https://sndlimp.com.br/{{CRUMB_NIVEL_2_URL}}.html"},
+          {"@type": "ListItem", "position": 3, "name": "{{TITULO}}",        "item": "https://sndlimp.com.br/{{SLUG}}.html"}
+        ]
+      },
+      "datePublished": "{{DATA_PUBLICACAO_ISO}}",
+      "dateModified":  "{{DATA_MODIFICACAO_ISO}}",
+      "author": {
+        "@type": "Person",
+        "@id": "https://sndlimp.com.br/sobresndlimp.html#author",
+        "name": "{{NOME_AUTOR}}",
+        "url": "https://sndlimp.com.br/sobresndlimp.html"
+      },
+      "reviewedBy": {"@id": "https://sndlimp.com.br/#business"}
+    },
+    {{BLOCO_TIPO_PRIMARIO}}
+  ]
+}
+</script>
+
+<style>
+/* CSS padrão SNDLimp — idêntico ao das páginas públicas */
+:root{--sol:#F5A623;--sol-vivo:#FF8C00;--brasa:#E84C0E;--noite:#0D0D0D;--carbon:#1A1A1A;--carbon2:#252525;--carbon3:#303030;--cinza:#999;--texto:#F0F0F0;--texto2:#AAAAAA;--verde-ok:#4CAF50;--radius:12px;--radius-lg:20px;--maxw:1100px;--transition:0.3s ease;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:radial-gradient(ellipse 800px 400px at 50% -100px,rgba(245,166,35,0.08),transparent 70%),var(--noite);color:var(--texto);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;height:auto;}
+/* (restante do CSS de ararica.html — sticky-header, hero, cards, etc.) */
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     AVISO INTERNO — REMOVER ANTES DE PUBLICAR
+     Este arquivo é template. Se publicado acidentalmente com noindex,
+     não indexará. Revisar meta robots + todos os {{PLACEHOLDERS}}.
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<!-- HEADER: injetado por /scripts/bloco-includes.js -->
+<div class="header-spacer"></div>
+
+<main>
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <span class="hero-eyebrow">{{EYEBROW}}</span>
+    <h1>{{H1_UNICO_COM_KEYWORD}}</h1>
+    <p class="hero-sub">{{SUBTITULO_150_CHARS}}</p>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>{{H2_SECAO_1}}</h2>
+      <p>{{PARAGRAFO_1}}</p>
+
+      <h2>{{H2_SECAO_2}}</h2>
+      <p>{{PARAGRAFO_2}}</p>
+
+      <h3>{{H3_SECAO_2_SUB}}</h3>
+      <p>{{PARAGRAFO_3}}</p>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER: injetado por /scripts/bloco-includes.js -->
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     BLOCO {{BLOCO_TIPO_PRIMARIO}} — colar UM dos JSON abaixo em seu lugar
+     (no head, campo {{BLOCO_TIPO_PRIMARIO}})
+     ══════════════════════════════════════════════════════════════════════ -->
+
+<!--
+──── OPÇÃO 1 — ARTICLE (para conteúdo editorial, blog, guias) ────────────
+{
+  "@type": "Article",
+  "@id": "https://sndlimp.com.br/{{SLUG}}.html#article",
+  "headline": "{{TITULO}}",
+  "description": "{{DESCRICAO_150_160_CHARS_COM_KEYWORD}}",
+  "image": "https://sndlimp.com.br/img/{{IMAGEM_OG}}.webp",
+  "author": {"@id": "https://sndlimp.com.br/sobresndlimp.html#author"},
+  "publisher": {"@id": "https://sndlimp.com.br/#business"},
+  "datePublished": "{{DATA_PUBLICACAO_ISO}}",
+  "dateModified":  "{{DATA_MODIFICACAO_ISO}}",
+  "mainEntityOfPage": {"@id": "https://sndlimp.com.br/{{SLUG}}.html#webpage"},
+  "inLanguage": "pt-BR"
+}
+-->
+
+<!--
+──── OPÇÃO 2 — PRODUCT (para catálogo, serviço, oferta) ──────────────────
+{
+  "@type": "Product",
+  "@id": "https://sndlimp.com.br/{{SLUG}}.html#product",
+  "name": "{{NOME_PRODUTO}}",
+  "description": "{{DESCRICAO_PRODUTO}}",
+  "image": "https://sndlimp.com.br/img/{{IMAGEM_OG}}.webp",
+  "brand": {
+    "@type": "Brand",
+    "name": "SNDLimp",
+    "url": "https://sndlimp.com.br/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://sndlimp.com.br/{{SLUG}}.html",
+    "priceCurrency": "BRL",
+    "price": "{{PRECO_NUMERICO}}",
+    "priceValidUntil": "{{DATA_VALIDADE_ISO}}",
+    "availability": "https://schema.org/InStock",
+    "seller": {"@id": "https://sndlimp.com.br/#business"}
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{NOTA_4_5}}",
+    "reviewCount": "{{NUM_AVALIACOES}}"
+  }
+}
+-->
+
+<!--
+──── OPÇÃO 3 — FAQPage (para perguntas frequentes) ──────────────────────
+{
+  "@type": "FAQPage",
+  "@id": "https://sndlimp.com.br/{{SLUG}}.html#faq",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{PERGUNTA_1}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{RESPOSTA_1}}"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "{{PERGUNTA_2}}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{RESPOSTA_2}}"
+      }
+    }
+  ]
+}
+-->
+
+<script src="https://sndlimp.com.br/scripts/bloco-includes.js" defer></script>
+</body>
+</html>
