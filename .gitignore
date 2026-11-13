@@ -27,3 +27,5 @@ Thumbs.db
 *.stub_*
 # Backups com sufixo de data
 *.bak*
+
+_backup/
