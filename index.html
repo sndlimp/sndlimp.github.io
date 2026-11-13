@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Limpeza de Painéis Solares — SNDLimp</title>
-  <meta name="description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta name="description" content="Calcule a energia não gerada estimada pela sujeira nas placas solares, com premissas públicas de perda de 25% a 30%. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
   <meta name="keywords" content="limpeza de placas solares, calculadora de perdas, eficiência fotovoltaica, Vale do Sinos, Vale do Taquari, manutenção solar, SNDLimp">
   <meta name="author" content="edusidegum W">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -17,7 +17,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Calculadora de Perdas Solares — SNDLimp">
-  <meta property="og:description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta property="og:description" content="Calcule a energia não gerada estimada pela sujeira nas placas solares, com premissas públicas de perda de 25% a 30%. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
   <meta property="og:url" content="https://sndlimp.com.br/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SNDLimp">
@@ -31,7 +31,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Calculadora de Perdas Solares — SNDLimp">
-  <meta name="twitter:description" content="Simule em segundos a perda financeira causada pela sujeira nas placas solares. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
+  <meta name="twitter:description" content="Calcule a energia não gerada estimada pela sujeira nas placas solares, com premissas públicas de perda de 25% a 30%. Baseado em estudos IEA-PVPS, CBENS e UFSC. Diagnóstico gratuito.">
   <meta name="twitter:image" content="https://sndlimp.com.br/img/Escova1.webp">
 
   <!-- Favicon -->
@@ -113,7 +113,7 @@
       "@id": "https://sndlimp.com.br/#webpage",
       "url": "https://sndlimp.com.br/",
       "name": "Calculadora de Perdas Solares — SNDLimp",
-      "description": "Simule em segundos a perda financeira causada pela sujeira nas placas solares.",
+      "description": "Calcule a energia não gerada estimada pela sujeira nas placas solares, com premissas públicas de perda de 25% a 30%.",
       "inLanguage": "pt-BR",
       "isPartOf": { "@id": "https://sndlimp.com.br/#website" },
       "about": { "@id": "https://sndlimp.com.br/#business" }
@@ -121,7 +121,7 @@
     {
       "@type": "WebApplication",
       "@id": "https://sndlimp.com.br/#calculadora",
-      "name": "Calculadora de Perda Solar SNDLimp",
+      "name": "Calculadora de Energia Não Gerada SNDLimp",
       "url": "https://sndlimp.com.br/",
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Calculadora de eficiência fotovoltaica",
@@ -130,13 +130,13 @@
       "inLanguage": "pt-BR",
       "isAccessibleForFree": true,
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
-      "description": "Estime quanto a sujeira acumulada está reduzindo a geração da sua usina solar e o impacto financeiro por placa e por mês, com base em premissas públicas de perda (25% a 30%).",
+      "description": "Estime a energia não gerada estimada pela sujeira em cada placa por mês, com base em premissas públicas de perda de 25% a 30%.",
       "provider": { "@id": "https://sndlimp.com.br/#business" },
       "featureList": [
         "Cálculo de perda mensal por placa",
         "Projeção anual de perda",
         "Estimativa de geração perdida em kWh",
-        "Curva de degradação por mês sem limpeza"
+        "Projeção mensal de perda por modelo de premissas"
       ]
     }
   ]
@@ -450,7 +450,7 @@
         <div class="card-label">
             Fontes de Pesquisa
             <span class="card-label-line"></span>
-            <a href="metodoieee3s.html" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sol);font-weight:600;text-decoration:none;">Saiba mais</a>
+            <a href="metodo-sndlimp.html" style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sol);font-weight:600;text-decoration:none;">Saiba mais</a>
         </div>
 
         <div class="fonte-item">
@@ -475,11 +475,11 @@
 
         <div class="fonte-item">
             <div class="fonte-num">Fonte 03</div>
-            <div class="fonte-titulo">UFSC / Canal Solar (2023) — Impacto da Sujeira e Poluição em Sistemas Solares Urbanos</div>
-            <div class="fonte-desc">Pesquisa conduzida pela Universidade Federal de Santa Catarina analisando sistemas fotovoltaicos em operação no Brasil. Os resultados demonstraram aumento de até 25% na potência registrada pelos inversores imediatamente após limpeza profissional, evidenciando o impacto direto da manutenção periódica na receita do produtor.</div>
-            <a class="fonte-link" href="https://canalsolar.com.br/sujidade-em-modulos-calculo-prevencao-futuro/" target="_blank" rel="noopener">
+            <div class="fonte-titulo">UFSC / PPGES (2024) — Impacto da Sujidade em Sistemas Fotovoltaicos em Operação</div>
+            <div class="fonte-desc">Tese de mestrado de Letícia Recco Tramontin, Programa de Pós-Graduação em Energia e Sustentabilidade da UFSC (campus Araranguá), 2024. Analisou sistemas fotovoltaicos em operação no Brasil e registrou melhoria da ordem de 25% na curva de potência dos inversores após a limpeza dos módulos, evidenciando o impacto direto da manutenção periódica na receita do produtor. Reportagem secundária: Canal Solar.</div>
+            <a class="fonte-link" href="https://tede.ufsc.br/teses/PGES0072-D.pdf" target="_blank" rel="noopener">
                 <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                canalsolar.com.br — Artigo completo
+                tede.ufsc.br — Tese completa (PDF)
             </a>
         </div>
     </div>
@@ -503,7 +503,6 @@
         <a href="https://wa.me/555196033200?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20limpeza%20de%20placas%20solares." class="btn-cta-hero footer-whats" target="_blank" rel="noopener">
             💬 Solicite Orçamento
         </a>
-
         <p class="copyright">&copy; 2026 SNDLimp — Todos os direitos reservados.</p>
     </div>
 </footer>

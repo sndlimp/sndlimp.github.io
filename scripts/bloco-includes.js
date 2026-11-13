@@ -93,8 +93,8 @@
     var div = document.createElement('div');
     div.style.cssText = 'text-align:center;margin-top:12px;font-size:0.7rem;color:#888;';
 
-    div.innerHTML  = '<a href="' + BASE + 'compartilhado/politicadeprivacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
-    div.innerHTML += '<br><a href="https://sndlimp.com.br/" style="color:#888;text-decoration:none;">Desenvolvido por e-Sid Solutions M.E.</a>';
+    div.innerHTML  = '<a href="https://sndlimp.com.br/privacidade.html" style="color:#888;text-decoration:none;">Política de Privacidade</a>';
+    div.innerHTML += '<br><a href="https://edusidegum.com.br" target="_blank" rel="noopener" style="color:#888;text-decoration:none;">Desenvolvido por e-Sid Solutions M.E.</a>';
     div.innerHTML += ' · <a href="#" id="gerenciar-cookies" style="color:#888;text-decoration:none;">Gerenciar cookies</a>';
 
     footer.appendChild(div);

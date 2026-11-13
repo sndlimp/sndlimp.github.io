@@ -22,3 +22,8 @@ node_modules/
 .vscode/
 .DS_Store
 Thumbs.db
+# Artefatos .stub (nao versionar)
+*.stub
+*.stub_*
+# Backups com sufixo de data
+*.bak*
