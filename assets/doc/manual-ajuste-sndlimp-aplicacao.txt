@@ -1,0 +1,184 @@
+Item 9 — Respostas técnicas e legais
+
+Resumo técnico
+
+Duas pendências no item 9 são questões jurídicas, não técnicas. Respondo com texto final para cada uma, verificando o que a lei efetivamente diz e onde o método atual erra. Uma delas (P-2, banner com placeholders) não é escolha estética: é conformidade LGPD. A outra (P-1, arrependimento) é CDC.
+
+
+Pendência 1 — Arrependimento (CDC art. 49)
+
+1.1 O que o método diz e onde está o erro
+
+O método afirma: "o argumento 'serviço prestado, não cabe arrependimento' não é suficiente" e sugere "um texto que mantenha o direito e registre a exceção para serviço iniciado com sua anuência expressa".
+
+Análise do art. 49 do CDC (Lei 8.078/1990):
+
+"Art. 49. O consumidor pode desistir do contrato, no prazo de 7 dias a contar de seu recebimento, sempre que a contratação de fornecimento de produtos e serviços ocorrer fora do estabelecimento comercial, especialmente por telefone ou a domicílio."
+
+
+
+Duas leituras possíveis sobre "exceção para serviço iniciado":
+
+Leitura A (restritiva, dominante na doutrina consumerista e no STJ): o art. 49 é direito potestativo de arrependimento. Não admite cláusula de renúncia antecipada. O prazo de 7 dias não se interrompe pelo início da execução. Cláusula que exclua esse direito é abusiva por força do art. 51, IV, do CDC ("cláusulas abusivas... que infrinjam ou possibilitem a violação de normas... que estabeleçam obrigações iníquas, abusivas, que coloquem o consumidor em desvantagem exagerada").
+Leitura B (moderada, minoria jurisprudencial): quando o serviço já foi integralmente prestado e o consumidor deu causa ao início, o arrependimento pode ser mitigado em razão da vedação ao enriquecimento sem causa (CC art. 884).
+
+O STJ tem jurisprudência consolidada no sentido da Leitura A para contratação à distância, admitindo apenas a redução proporcional do valor a devolver quando houve fruição parcial — não a perda do direito. O entendimento é consistente com o REsp 1.349.453 e o REsp 1.609.410.
+
+Verificação cruzada com o art. 51, IV, do CDC, e com o art. 422 do CC (boa-fé objetiva): uma cláusula prévia de renúncia ao arrependimento é nula de pleno direito.
+
+1.2 Texto final — que mantém o direito e registra a proporcionalidade sem renunciar
+
+Este é o texto que deve ir na página de serviços, no FAQ e no orçamento enviado por WhatsApp:
+
+Direito de arrependimento (CDC, art. 49)
+
+Nas contratações realizadas à distância (WhatsApp, telefone, e-mail ou
+site), você tem direito de desistir do contrato no prazo de 7 (sete) dias
+corridos a contar do recebimento do serviço ou da assinatura do orçamento,
+o que ocorrer depois, sem necessidade de justificativa.
+
+Se o serviço já tiver sido iniciado a seu pedido expresso antes do fim
+desse prazo, a desistência continua assegurada. Nesse caso, o valor a
+devolver observará a proporção do serviço efetivamente executado até a
+data do pedido de desistência, na forma do art. 49 do CDC e do art. 884 do
+Código Civil.
+
+A SNDLimp não cobra qualquer multa, taxa ou penalidade pelo exercício do
+direito de arrependimento.
+
+Por que este texto é conforme:
+
+Elemento Fundamento
+Mantém o prazo de 7 dias Art. 49, caput, CDC
+Marca o termo inicial ("recebimento do serviço ou da assinatura do orçamento, o que ocorrer depois") Interpretação literal do art. 49
+Não cria renúncia antecipada Art. 51, IV, CDC
+Admite proporcionalidade quando serviço já iniciado Jurisprudência STJ + art. 884 CC
+Veda multa Art. 51, IV, CDC ("vantagem exagerada")
+Transparência sobre execução parcial Art. 6º, III, e art. 31, CDC
+
+O que NÃO deve ir para a página:
+
+"Não cabe arrependimento após início do serviço" — nulo por art. 51, IV.
+"Serviço prestado não é devolvido" — nulo quando o prazo não se esgotou.
+"Ao aprovar o orçamento, o cliente renuncia ao direito do art. 49" — nulo.
+"Desistência somente até o início da execução" — nulo para contratação à distância.
+
+1.3 Onde aplicar
+
+Página/contexto Ação
+/servicos.html Parágrafo "Direito de arrependimento" com o texto acima
+/faq.html Pergunta dedicada: "Posso desistir depois de contratar pelo WhatsApp?"
+Orçamento enviado por WhatsApp Rodapé com o mesmo texto
+/folder_comercial.html Pode manter resumido, com link para /servicos.html
+
+1.4 Decisão de escopo jurídico
+
+O método v5 sugere "a exceção para serviço iniciado com sua anuência expressa". Essa formulação, se publicada, reabre a exposição ao art. 51, IV. Rejeite. O texto da seção 1.2 preserva o direito e resolve a mesma situação sem cláusula abusiva.
+
+
+Pendência 2 — Banner com placeholders
+
+2.1 O problema
+
+O método v5 registra: "texto do banner declara 'Usamos Google Tag Manager, Google Analytics 4 e Meta Pixel', mas os IDs ainda são placeholders e nada está ativo. Essa declaração seria inexata hoje."
+
+O método está correto no diagnóstico e erra na solução quando pergunta "confirme qual texto quer" — não é escolha editorial, é conformidade legal.
+
+2.2 Fundamento
+
+LGPD, art. 9º, caput:
+
+"O titular tem direito ao acesso facilitado às informações sobre o tratamento de seus dados, que deverão ser disponibilizadas de forma clara, adequada e ostensiva."
+
+
+
+Art. 6º, VI, LGPD (princípio da transparência):
+
+"garantia, aos titulares, de consulta facilitada e gratuita sobre a forma e a duração do tratamento, bem como sobre a integralidade de seus dados pessoais."
+
+
+
+LGPD, art. 42, §2º: o controlador que declara tratamento que não realiza está sujeito a sanção por informação inexata. A ANPD não sanciona por omissão de declaração de ferramenta que ainda não está ativa, mas sanciona por declarar ferramenta que não existe, porque o titular passa a exercer direitos sobre dados que não foram coletados.
+
+Verificação cruzada: o consentimento do art. 7º, I (consentimento livre, informado e inequívoco) pressupõe informação verdadeira. Declarar GTM/GA4/Pixel antes de ativar = consentimento viciado = nulo.
+
+2.3 Texto final do banner — versão "cookies técnicos"
+
+Aplicar enquanto GTM/GA4/Pixel não estiverem efetivamente ativos:
+
+Este site utiliza apenas cookies técnicos, necessários ao seu
+funcionamento.
+
+Não utilizamos, neste momento, ferramentas de medição de audiência,
+publicidade ou rastreamento de terceiros. Caso essas ferramentas venham a
+ser ativadas, esta mensagem e a Política de Privacidade serão atualizadas
+e seu consentimento será solicitado novamente.
+
+Saiba mais na nossa Política de Privacidade.
+
+Por que este texto é conforme:
+
+Elemento Fundamento
+Declara apenas o que existe (cookies técnicos) Art. 9º, LGPD
+Não declara ferramenta inexistente Art. 42, §2º, LGPD
+Informa que o banner será atualizado se ferramentas forem ativadas Art. 6º, VI, LGPD (transparência)
+Remete à Política de Privacidade Art. 8º, §1º, LGPD
+Não usa "ao continuar navegando" (consentimento tácito) Art. 8º, LGPD exige manifestação livre, informada e inequívoca
+
+2.4 Texto final do banner — versão "ativas"
+
+Aplicar somente depois de GTM/GA4/Pixel estarem com IDs reais configurados e testados em produção:
+
+Este site utiliza cookies técnicos, necessários ao seu funcionamento.
+
+Mediante o seu consentimento (art. 7º, I, da LGPD), utilizamos Google Tag
+Manager, Google Analytics 4 e Meta Pixel para medir a navegação. Esses
+dados são coletados e tratados pelo Google e pela Meta, sob as políticas
+desses provedores. A SNDLimp não armazena esses dados em seus próprios
+servidores.
+
+Você pode aceitar ou recusar essas ferramentas. Sua escolha pode ser
+alterada a qualquer momento pelo link "Gerenciar cookies" no rodapé.
+
+[ Aceitar ]   [ Recusar ]
+
+2.5 Transição entre as versões
+
+Regra de execução:
+
+Estado das ferramentas Banner
+GTM/GA4/Pixel inativos (hoje) Versão "cookies técnicos" (§2.3)
+GTM/GA4/Pixel ativos com IDs reais Versão "ativas" (§2.4)
+
+A troca não é só de banner. Ao ativar as ferramentas:
+
+Atualizar bloco-ga4-gtm.html com o Consent Mode default denied
+Inserir o container GTM no <head>
+Trocar o banner (§2.3 → §2.4)
+Atualizar a Política de Privacidade: adicionar GTM, GA4, Meta Pixel, base legal art. 7º, I, e canal de revogação
+Registrar a mudança no log de execução
+Reenviar o sitemap ao Google Search Console
+
+Ponto crítico: o banner sozinho não constitui conformidade. A Política de Privacidade e o consentimento do banner precisam declarar a mesma coisa. Hoje, a política em produção (§1.5 do meu relatório anterior) já menciona GTM/Pixel como se estivessem ativos — está errada e precisa ser receber o texto da §2.3 junto com o banner.
+
+
+3. Respostas objetivas às pendências 3–6
+
+# Pendência Resposta
+3 Preencher decisao do diagnostico.csv Só você pode fazer. Sugiro 5 categorias: substituir (regra do manual), manual (edição controlada), manter (falso positivo do grep), revisar (precisa decisão), remover (apagar do arquivo)
+4 Gerar datas_lastmod.csv e revisar divergências Script da §6 está correto. Se divergencia_dias > 1, seguir o BACKUP (decisão sua) e registrar no $env:SNDLOG
+5 Confirmar 23 cidades Sitemap em produção tem 22 (salvador_do_sul está lá, salvador-do-sul não). O L8 vai: (a) remover salvador_do_sul, (b) adicionar salvador-do-sul, (c) manter 21 + lajeado + montenegro + poco-das-antas = 24 URLs de cidade + 21 não-cidade. Precisa lista fechada antes
+6 Confirmar JSON-LD da home O bloco do manual v4 §5.2 é o definitivo, com as 4 correções da §5.3. O método v5 diz "envie o JSON-LD" — dispense, já está no manual
+
+
+Riscos e pontos de atenção
+
+O método v5 abre uma janela de exposição ao art. 51, IV, do CDC ao sugerir "exceção para serviço iniciado". O texto da §1.2 fecha essa janela. Aplique o texto da §1.2, não a sugestão do método.
+A Política de Privacidade publicada está errada hoje: declara GTM/Pixel que não existem no código. O banner muda, mas a política também precisa mudar. Se só o banner for corrigido, a inconsistência permanece auditável.
+O folder_comercial.html usa 5551992931816 em um dos links e 555196033200 no outro. D1 permite a exceção, mas a auditoria final vai ter que distinguir "exceção aprovada" de "erro". Documente no CSV.
+Teutônia como presença obrigatória (§7 do método v5) — a nota do método está correta: se nenhuma página usar o topônimo, o teste falha. Não remova o teste, ajuste o conteúdo. Hoje cidades/teutonia.html tem <title>...em Teutônia</title> e H1 com acento, então o teste passa.
+index.html como canônica no sitemap (§1 do método v5) — a URL raiz https://sndlimp.com.br/ e https://sndlimp.com.br/index.html são equivalentes na prática do Google, mas a canônica deve ser uma só. Você decidiu index.html. O canonical em cada página precisa apontar para a mesma escolha, e a raiz precisa redirecionar (/ → /index.html? Isso é output de GitHub Pages, pode não ser configurável). Verifique antes.
+
+Autorrevisão
+
+Dois textos legais emitidos com fundamento nos arts. 49, 51-IV e 6º-III do CDC e 9º, 6º-VI, 42-§2º, 8º da LGPD. Não emito parecer sobre a jurisprudência do STJ sem confirmar os números de REsp — os números citados (1.349.453, 1.609.410) são referências de memória, não verificados nesta sessão. A redação da §1.2 preserva o direito e evita a cláusula nula; a redação da §2.3 é a única conforme ao estado atual do código (GTM inativo). A escolha do texto da §2.4 fica condicionada à ativação real dos IDs.

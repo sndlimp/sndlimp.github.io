@@ -1,0 +1,583 @@
+
+
+Resumo técnico
+
+Método em 8 lotes, do menos ao mais arriscado, com script de biblioteca comum e verificação de contagem obrigatória. Cada lote simula por padrão; grava apenas com -Apply. Falha ao primeiro erro. Commit por lote com mensagem que cita a seção do manual.
+
+
+1. Pré-condições bloqueantes
+
+cd D:\GitHub_clone\sndlimp
+
+# 1.1 working tree limpa
+git status --porcelain
+# deve sair vazio. Se não, commit ou stash antes.
+
+# 1.2 branch a partir de main atualizado
+git checkout main
+git pull origin main
+git checkout -b revisao-manual-v4
+
+# 1.3 backup fora do git
+$ts = Get-Date -Format 'yyyyMMdd_HHmmss'
+robocopy . "D:\_backup_v4_$ts" /E /XD .git /NFL /NDL /NJH /NJS
+
+# 1.4 pasta de backup de datas existe
+Test-Path E:\GitHub_Backup\sndlimp
+# deve retornar True
+
+
+2. Fase B — Diagnóstico (diagnostico.csv)
+
+Script único, sem edição. Gera o CSV que serve de fonte única para os lotes.
+
+# diagnostico.ps1 — gera diagnostico.csv. Não edita nada.
+$ErrorActionPreference = 'Stop'
+$out = 'diagnostico.csv'
+$categorias = [ordered]@{
+  'D1-whatsapp-ficticio'  = '5551999999999'
+  'D1-whatsapp-oficial'   = 'wa.me/555196033200'
+  'D1-whatsapp-folder'    = '5551992931816'
+  'D3-perda-alta'         = 'até -25%'
+  'D3-perda-alta2'        = 'até 25%'
+  'D3-perda-alta3'        = '25% a 35%'
+  'D3-perda-alta4'        = 'até 50%'
+  'D4-preco-50'           = 'R$50'
+  'D4-preco-50-espaco'    = 'R$ 50'
+  'D4-preco-195'          = 'R$ 195'
+  'D4-preco-23mil'        = 'R$ 23 mil'
+  'D4-preco-300'          = 'R$300-600'
+  'D4-a-partir-de'        = 'a partir de'
+  'D6-metodo-old'         = 'metodoieee3s.html'
+  'D7-98-porcento'        = 'até 98%'
+  'D7-nao-risca'          = 'não risca'
+  'D7-roi'                = 'ROI positivo'
+  'D7-tec-aprovada'       = 'Tecnologia aprovada'
+  'D10-3a6meses'          = '3 a 6 meses'
+  'D10-a-cada-6'          = 'a cada 6 meses'
+  'D10-3a4meses'          = '3 a 4 meses'
+  'D10-padrao-fab'        = 'padrão dos fabricantes'
+  'D7-termografia'        = 'Termografia'
+  'ADENDO-B-WEG'          = 'WEG'
+  'ADENDO-B-STEMIS'       = 'STEMIS'
+  'ADENDO-B-PortalSolar'  = 'Portal Solar'
+  'D13-ao-continuar'      = 'ao continuar navegando'
+  'D14-MEI'               = '\bMEI\b'
+  'D2-poluicao'           = 'Polução'
+  'D3-teutonia-sem'       = 'Teutonia'
+  'D8-impacto-fin'        = 'impacto financeiro'
+  'D8-perda-fin'          = 'perda financeira'
+  'D11-quando-ativas'     = 'quando estiverem ativas'
+  'D11-nao-coletamos'     = 'não coletamos'
+  'D11-nenhum-dado'       = 'nenhum dado é coletado'
+  'D9-menu-antigo'        = '>Simulador<'
+  'D9-menu-antigo2'       = '>Nossa Proposta<'
+}
+
+$linhas = @()
+$arquivos = Get-ChildItem -Recurse -File -Include *.html,*.js,*.xml |
+  Where-Object { $_.FullName -notmatch '\\\.git\\|\\_backup|\\node_modules' }
+
+foreach ($cat in $categorias.Keys) {
+  $padrao = $categorias[$cat]
+  foreach ($f in $arquivos) {
+    $i = 0
+    foreach ($l in (Get-Content $f.FullName -Encoding UTF8)) {
+      $i++
+      if ($l -match $padrao) {
+        $linhas += [pscustomobject]@{
+          arquivo  = $f.FullName.Replace((Get-Location).Path + '\','')
+          linha    = $i
+          trecho   = ($l.Trim() -replace '\s+',' ').Substring(0, [Math]::Min(120, $l.Length))
+          categoria = $cat
+          decisao  = ''
+        }
+      }
+    }
+  }
+}
+
+$linhas | Export-Csv $out -NoTypeInformation -Encoding UTF8
+"diagnostico.csv: $($linhas.Count) ocorrências em $($arquivos.Count) arquivos"
+$linhas | Group-Object categoria | Select-Object Count, Name | Sort-Object -Descending Count
+
+Critério: você lê o CSV e preenche a coluna decisao para cada linha (substituir, manter, revisar). Linha sem decisão não é editada.
+
+
+3. Biblioteca comum (ajuste-lib.ps1)
+
+# ajuste-lib.ps1 — funções comuns. Não executar diretamente.
+$ErrorActionPreference = 'Stop'
+$script:Utf8 = New-Object System.Text.UTF8Encoding($false)
+$script:Log  = Join-Path $PSScriptRoot ("log_" + (Get-Date -Format 'yyyyMMdd_HHmmss') + ".txt")
+
+function Write-Log([string]$m) {
+    $l = "$(Get-Date -Format 's') $m"
+    Write-Host $l
+    Add-Content -Path $script:Log -Value $l -Encoding UTF8
+}
+
+function Assert-ArvoreLimpa {
+    if (git status --porcelain) { throw "Working tree suja. Commite ou faça stash." }
+    $b = git branch --show-current
+    if ($b -ne 'revisao-manual-v4') { throw "Branch '$b'. Esperado: revisao-manual-v4." }
+}
+
+function Invoke-Substituicao {
+    param(
+        [Parameter(Mandatory)][string]$Arquivo,
+        [Parameter(Mandatory)][string]$De,
+        [Parameter(Mandatory)][string]$Para,
+        [Parameter(Mandatory)][int]$Esperado,
+        [Parameter(Mandatory)][string]$Decisao,
+        [switch]$Apply
+    )
+    if ([string]::IsNullOrWhiteSpace($Decisao)) { throw "Sem decisão." }
+    if (-not (Test-Path $Arquivo)) { throw "Não existe: $Arquivo" }
+    $texto = [IO.File]::ReadAllText((Resolve-Path $Arquivo).Path, $script:Utf8)
+    $n = ([regex]::Matches($texto, [regex]::Escape($De))).Count
+    if ($n -ne $Esperado) { throw "$Arquivo : esperado $Esperado, encontrado $n para '$De'." }
+    Write-Log "[$Decisao] $Arquivo : $n oc. | apply=$($Apply.IsPresent)"
+    if ($Apply) {
+        [IO.File]::WriteAllText(
+            (Resolve-Path $Arquivo).Path,
+            $texto.Replace($De, $Para),
+            $script:Utf8
+        )
+    }
+}
+
+function Assert-Ausente([string]$padrao, [switch]$Palavra) {
+    $files = Get-ChildItem -Recurse -File -Include *.html,*.js,*.xml |
+        Where-Object { $_.FullName -notmatch '\\\.git\\|\\_backup' }
+    $hits = $files | Select-String -Pattern ([regex]::Escape($padrao)) -SimpleMatch
+    if ($hits) { throw "Resíduo '$padrao' em: $($hits | ForEach-Object { $_.Path } | Select-Object -Unique -join ', ')" }
+}
+
+function Assert-Presente([string]$padrao) {
+    $files = Get-ChildItem -Recurse -File -Include *.html,*.js,*.xml |
+        Where-Object { $_.FullName -notmatch '\\\.git\\|\\_backup' }
+    $hits = $files | Select-String -Pattern ([regex]::Escape($padrao)) -SimpleMatch
+    if (-not $hits) { throw "Ausente e obrigatório: '$padrao'" }
+}
+
+function Confirmar-Lote([string]$msg) {
+    git add -A
+    git commit -m $msg | Out-Null
+    Write-Log "Commit: $msg"
+}
+
+
+4. Fase C — Lotes (ordem obrigatória do manual §13.5)
+
+Lote 1 — Consent Mode (ajuste-l1-consent.ps1)
+
+# ajuste-l1-consent.ps1 — bloco-ga4-gtm.html com Consent Mode (§4, D12)
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+# Este lote é manual: editar bloco-ga4-gtm.html inserindo o bloco §4
+# ANTES do container GTM. Script gera diff para revisão.
+Write-Log "Lote 1: edição manual em bloco-ga4-gtm.html (ver §4 do manual)."
+if ($Apply) {
+    Assert-Presente 'gtag(''consent'', ''default'''
+    Assert-Presente "ad_storage: 'denied'"
+    Confirmar-Lote 'lote 1: consent mode default denied (§4 D12)'
+}
+
+Lote 2 — Banner e link de rodapé (ajuste-l2-banner.ps1)
+
+# ajuste-l2-banner.ps1 — banner (§3, D13) + Gerenciar cookies no rodapé
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+$textoBanner = 'Utilizamos cookies técnicos, necessários ao funcionamento do site. Usamos também Google Tag Manager, Google Analytics 4 e Meta Pixel, apenas para medir a navegação. Os dados de medição são tratados pelos provedores Google e Meta, conforme as políticas deles. Você pode aceitar ou recusar essas ferramentas. Consulte nossa Política de Privacidade.'
+
+Invoke-Substituicao -Arquivo 'compartilhado\bloco-cookies.html' `
+  -De 'ao continuar navegando' -Para '' `
+  -Esperado 2 -Decisao 'D13' -Apply:$Apply
+
+# Colar o texto novo do banner manualmente — o script só remove a frase proibida.
+
+if ($Apply) {
+    Assert-Ausente 'ao continuar navegando'
+    Assert-Presente 'Google Tag Manager, Google Analytics 4 e Meta Pixel'
+    Assert-Presente 'Gerenciar cookies'
+    Confirmar-Lote 'lote 2: banner §3 teto de medição (§3 D13)'
+}
+
+Lote 3 — Menu comum (ajuste-l3-menu.ps1)
+
+# ajuste-l3-menu.ps1 — menu D9 em todas as páginas com menu
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+# Este lote é manual: substituir <nav>...</nav> em cada página.
+# Verificar ao fim:
+if ($Apply) {
+    Assert-Presente 'folder_comercial.html'
+    Assert-Presente 'em_obras.html'
+    Assert-Ausente '>Simulador<'
+    Assert-Ausente '>Nossa Proposta<'
+    Confirmar-Lote 'lote 3: menu comum D9'
+}
+
+Lote 4 — WhatsApp (ajuste-l4-whatsapp.ps1)
+
+Este é o único automatizável com segurança.
+
+# ajuste-l4-whatsapp.ps1 — D1: corrige número fictício e variantes
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+# 4.1 servicos.html — número fictício
+Invoke-Substituicao -Arquivo 'servicos.html' `
+  -De '5551999999999' -Para '555196033200' `
+  -Esperado 1 -Decisao 'D1' -Apply:$Apply
+
+# 4.2 folder_comercial.html — variante errada
+Invoke-Substituicao -Arquivo 'folder_comercial.html' `
+  -De 'wa.me/555196033200' -Para 'wa.me/5551992931816' `
+  -Esperado 1 -Decisao 'D1' -Apply:$Apply
+
+# 4.3 demais arquivos: checar contagem no CSV e ajustar aqui.
+
+if ($Apply) {
+    Assert-Ausente '5551999999999'
+    Assert-Presente 'wa.me/555196033200'
+    Confirmar-Lote 'lote 4: whatsapp D1 (§2 D1)'
+}
+
+Lote 5 — Textos padronizados (ajuste-l5-textos.ps1)
+
+# ajuste-l5-textos.ps1 — substituições da seção 3 do manual
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+# Garantias (D7)
+Invoke-Substituicao -Arquivo 'index.html' `
+  -De 'não risca, não mancha e não danifica' `
+  -Para 'Utilizamos equipamentos adequados e procedimentos que preservam o painel' `
+  -Esperado 1 -Decisao 'D7' -Apply:$Apply
+
+Invoke-Substituicao -Arquivo 'index.html' `
+  -De 'eficiência restaurada em até 98% logo após limpeza' `
+  -Para 'Recuperação substancial da geração, conforme as condições de cada instalação' `
+  -Esperado 1 -Decisao 'D7' -Apply:$Apply
+
+Invoke-Substituicao -Arquivo 'faq.html' `
+  -De 'a eficiência é restaurada em até 98% do valor original' `
+  -Para 'Recuperação substancial da geração, conforme as condições de cada instalação' `
+  -Esperado 1 -Decisao 'D7' -Apply:$Apply
+
+Invoke-Substituicao -Arquivo 'faq.html' `
+  -De 'O ROI da limpeza profissional é positivo já no primeiro mês' `
+  -Para 'Retorno do investimento depende do porte da instalação e do nível de sujidade' `
+  -Esperado 1 -Decisao 'D7' -Apply:$Apply
+
+Invoke-Substituicao -Arquivo 'faq.html' `
+  -De 'a SNDLimp faz inspeção com termografia' `
+  -Para 'a SNDLimp realiza inspeção técnica' `
+  -Esperado 1 -Decisao 'D7' -Apply:$Apply
+
+# Frequência (D10)
+Invoke-Substituicao -Arquivo 'servicos.html' `
+  -De 'a cada 6 meses' -Para 'de 1 a 2 limpezas por ano' `
+  -Esperado 1 -Decisao 'D10' -Apply:$Apply
+
+if ($Apply) {
+    Assert-Ausente 'até 98%'
+    Assert-Ausente 'não risca'
+    Assert-Ausente 'ROI positivo'
+    Assert-Ausente 'Termografia'
+    Assert-Ausente 'padrão dos fabricantes'
+    Confirmar-Lote 'lote 5: textos padronizados §3 (D7 D10)'
+}
+
+Lote 6 — Rename metodologia (ajuste-l6-metodologia.ps1)
+
+# ajuste-l6-metodologia.ps1 — D6: rename + elimina URL antiga
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+if (-not (Test-Path 'metodoieee3s.html')) { throw "metodoieee3s.html não existe." }
+if (Test-Path 'metodo-sndlimp.html') { throw "metodo-sndlimp.html já existe. Abortando." }
+
+if ($Apply) {
+    # 6.1 renomear
+    git mv 'metodoieee3s.html' 'metodo-sndlimp.html'
+
+    # 6.2 corrigir title e H1
+    Invoke-Substituicao -Arquivo 'metodo-sndlimp.html' `
+      -De 'SNDLimp — Metodologia IEEE3S' `
+      -Para 'Metodologia de cálculo SNDLimp (método próprio, não norma IEEE)' `
+      -Esperado 1 -Decisao 'D6' -Apply:$Apply
+
+    Invoke-Substituicao -Arquivo 'metodo-sndlimp.html' `
+      -De 'SNDLimp Diagnóstico de Eficiência Fotovoltaica' `
+      -Para 'Metodologia de cálculo SNDLimp — método próprio, não norma IEEE' `
+      -Esperado 1 -Decisao 'D6' -Apply:$Apply
+
+    # 6.3 atualizar referências internas
+    $refs = Get-ChildItem -Recurse -File -Include *.html |
+        Where-Object { $_.FullName -notmatch '\\_backup' } |
+        Select-String -Pattern 'metodoieee3s\.html' -SimpleMatch
+    foreach ($h in $refs) {
+        $t = [IO.File]::ReadAllText($h.Path, $script:Utf8)
+        [IO.File]::WriteAllText($h.Path, $t.Replace('metodoieee3s.html','metodo-sndlimp.html'), $script:Utf8)
+    }
+
+    Assert-Ausente 'metodoieee3s.html'
+    Assert-Presente 'metodo-sndlimp.html'
+    Confirmar-Lote 'lote 6: rename metodo-sndlimp + D6'
+}
+
+Lote 7 — JSON-LD (ajuste-l7-jsonld.ps1)
+
+# ajuste-l7-jsonld.ps1 — JSON-LD §5
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+# 7.1 substituir bloco JSON-LD em index.html pelo texto literal de §5.2
+# (edição manual — o bloco completo está no manual)
+
+# 7.2 nos demais: adicionar tipo apropriado (§5.4)
+
+if ($Apply) {
+    Assert-Ausente 'perda financeira'
+    Assert-Ausente 'impacto financeiro'
+    Assert-Ausente 'Curva de degradação'
+    Assert-Presente 'Energia não gerada estimada'
+    Assert-Presente 'SAMUEL SCHNEIDER SIDEGUM - ME'
+    Assert-Presente '+5551996033200'
+    Confirmar-Lote 'lote 7: json-ld §5 d8'
+}
+
+Lote 8 — Sitemap (ajuste-l8-sitemap.ps1)
+
+# ajuste-l8-sitemap.ps1 — lastmod de criação + inclusões/exclusões
+param([switch]$Apply)
+. "$PSScriptRoot\ajuste-lib.ps1"
+Assert-ArvoreLimpa
+
+$backup = 'E:\GitHub_Backup\sndlimp'
+if (-not (Test-Path $backup)) { throw "Backup não encontrado: $backup" }
+
+function Get-CreationDate([string]$nome) {
+    $src = Join-Path $backup $nome
+    if (-not (Test-Path $src)) { return $null }
+    return (Get-Item $src).CreationTime.ToString('yyyy-MM-ddTHH:mm:sszzz')
+}
+
+if ($Apply) {
+    # 8.1 gerar sitemap.xml com lastmod de criação
+    $dom = New-Object System.Xml.XmlDocument
+    $root = $dom.CreateElement('urlset')
+    $root.SetAttribute('xmlns','http://www.sitemaps.org/schemas/sitemap/0.9')
+
+    $urls = @(
+      @{u='https://sndlimp.com.br/'; p='index.html'; f='1.0'},
+      @{u='https://sndlimp.com.br/economia.html'; p='economia.html'; f='0.9'},
+      @{u='https://sndlimp.com.br/servicos.html'; p='servicos.html'; f='0.9'},
+      @{u='https://sndlimp.com.br/folder_comercial.html'; p='folder_comercial.html'; f='0.8'},
+      @{u='https://sndlimp.com.br/galeria.html'; p='galeria.html'; f='0.8'},
+      @{u='https://sndlimp.com.br/faq.html'; p='faq.html'; f='0.7'},
+      @{u='https://sndlimp.com.br/novidade.html'; p='novidade.html'; f='0.6'},
+      @{u='https://sndlimp.com.br/metodo-sndlimp.html'; p='metodoieee3s.html'; f='0.6'},
+      @{u='https://sndlimp.com.br/fontesdevalidacao.html'; p='fontesdevalidacao.html'; f='0.6'},
+      @{u='https://sndlimp.com.br/cidades/salvador-do-sul.html'; p='cidades/salvador-do-sul.html'; f='0.8'},
+      @{u='https://sndlimp.com.br/cidades/lajeado.html'; p='cidades/lajeado.html'; f='0.8'}
+      # + as 21 demais cidades conforme diagnóstico
+    )
+
+    foreach ($x in $urls) {
+        $d = Get-CreationDate $x.p
+        if (-not $d) { Write-Log "SEM DATA: $($x.p) — omitir lastmod"; $d = $null }
+        $url = $dom.CreateElement('url')
+        $loc = $dom.CreateElement('loc'); $loc.InnerText = $x.u; $url.AppendChild($loc) | Out-Null
+        if ($d) {
+            $lm = $dom.CreateElement('lastmod'); $lm.InnerText = $d; $url.AppendChild($lm) | Out-Null
+        }
+        $ch = $dom.CreateElement('changefreq'); $ch.InnerText = 'monthly'; $url.AppendChild($ch) | Out-Null
+        $pr = $dom.CreateElement('priority'); $pr.InnerText = $x.f; $url.AppendChild($pr) | Out-Null
+        $root.AppendChild($url) | Out-Null
+    }
+
+    $dom.AppendChild($root) | Out-Null
+    $sw = New-Object System.IO.StringWriter
+    $wr = New-Object System.Xml.XmlTextWriter($sw)
+    $wr.Formatting = 'Indented'
+    $dom.WriteTo($wr)
+    $wr.Flush()
+    Set-Content 'sitemap.xml' $sw.ToString() -Encoding UTF8
+
+    Assert-Ausente 'metodoieee3s.html'
+    Assert-Ausente 'salvador_do_sul.html'
+    Assert-Ausente 'em_obras.html'
+
+    # 8.2 validar XML contra schema
+    [xml](Get-Content 'sitemap.xml' -Raw) | Out-Null
+
+    Confirmar-Lote 'lote 8: sitemap lastmod de criação §6'
+}
+
+
+5. Fase D — Verificação em massa (verificacao-massa.ps1)
+
+# verificacao-massa.ps1 — resíduos + presenças + CSS + sitemap
+$ErrorActionPreference = 'Continue'
+$falhas = @()
+
+function Buscar([string]$p) {
+    $files = Get-ChildItem -Recurse -File -Include *.html,*.js,*.xml |
+        Where-Object { $_.FullName -notmatch '\\\.git\\|\\_backup' }
+    $files | Select-String -Pattern ([regex]::Escape($p)) -SimpleMatch
+}
+
+# Resíduos (devem retornar zero)
+$residuos = @(
+  '5551999999999',
+  'R$50', 'R$ 50', 'R$ 195', 'R$ 23 mil', 'R$300-600',
+  'até -25%', 'até 25%', '25% a 35%', 'até 50%',
+  'não risca', 'até 98%', 'ROI positivo', 'Tecnologia aprovada',
+  'Termografia', '3 a 6 meses', '3 a 4 meses', 'padrão dos fabricantes',
+  'WEG', 'STEMIS', 'Portal Solar',
+  'ao continuar navegando',
+  'Teutonia',
+  'metodoieee3s.html',
+  'impacto financeiro', 'perda financeira',
+  'quando estiverem ativas', 'não coletamos', 'nenhum dado é coletado',
+  'Curva de degradação'
+)
+foreach ($p in $residuos) {
+    if (Buscar $p) { $falhas += "RESÍDUO: $p" }
+}
+
+# MEI com palavra inteira
+$mei = Get-ChildItem -Recurse -File -Include *.html |
+  Where-Object { $_.FullName -notmatch '\\_backup' } |
+  Select-String -Pattern '\bMEI\b'
+if ($mei) { $falhas += "RESÍDUO: MEI" }
+
+# Presenças (obrigatórias)
+$presencas = @(
+  'wa.me/555196033200',
+  '5551992931816',
+  'Energia não gerada estimada',
+  '60.342.691/0001-33',
+  'Gerenciar cookies',
+  'Teutônia',
+  'metodo-sndlimp.html',
+  'Recuperação substancial da geração'
+)
+foreach ($p in $presencas) {
+    if (-not (Buscar $p)) { $falhas += "AUSENTE: $p" }
+}
+
+# CSS intocado
+$css = git diff --name-only main | Where-Object { $_ -like '*.css' }
+if ($css) { $falhas += "CSS alterado: $($css -join ', ')" }
+
+# Sitemap
+try {
+    [xml]$x = Get-Content 'sitemap.xml' -Raw -Encoding UTF8
+    $lms = @($x.urlset.url | ForEach-Object { $_.lastmod } | Where-Object { $_ })
+    $fora = $lms | Where-Object { $_ -notmatch '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$' }
+    if ($fora) { $falhas += "lastmod fora do formato W3C: $($fora.Count) URL(s)" }
+    $todos = @($x.urlset.url | ForEach-Object { $_.loc })
+    if ($todos -match 'metodoieee3s') { $falhas += 'sitemap contém metodoieee3s' }
+    if ($todos -match 'salvador_do_sul') { $falhas += 'sitemap contém salvador_do_sul' }
+    if ($todos -match 'em_obras') { $falhas += 'sitemap contém em_obras' }
+} catch { $falhas += "sitemap malformado: $_" }
+
+if ($falhas.Count) {
+    $falhas | ForEach-Object { Write-Host $_ -ForegroundColor Red }
+    exit 1
+}
+Write-Host 'Fase D: OK' -ForegroundColor Green
+
+
+6. Fase E — Produção (verificacao-producao.ps1)
+
+# verificacao-producao.ps1 — após push e merge em main
+param([string]$Base = 'https://sndlimp.com.br')
+$ErrorActionPreference = 'Continue'
+
+$xml = [xml](Invoke-WebRequest "$Base/sitemap.xml" -UseBasicParsing).Content
+$erros = @()
+$ok = 0
+
+foreach ($u in $xml.urlset.url.loc) {
+    if ($u -like '*/blog*') { continue }
+    try {
+        $r = Invoke-WebRequest $u -Method Head -UseBasicParsing -TimeoutSec 15
+        if ($r.StatusCode -eq 200) { $ok++ } else { $erros += "$u -> $($r.StatusCode)" }
+    } catch { $erros += "$u -> $($_.Exception.Message)" }
+}
+
+# URL antiga deve dar 404
+try {
+    $r = Invoke-WebRequest "$Base/metodoieee3s.html" -Method Head -UseBasicParsing -TimeoutSec 10
+    $erros += "metodoieee3s.html ainda responde $($r.StatusCode) — esperado 404"
+} catch {
+    if ($_.Exception.Response.StatusCode.value__ -eq 404) { Write-Host 'metodoieee3s: 404 OK' }
+    else { $erros += "metodoieee3s.html: erro inesperado" }
+}
+
+if ($erros) { $erros | ForEach-Object { Write-Host $_ -ForegroundColor Red }; exit 1 }
+Write-Host "Produção: $ok URLs respondem 200. metodoieee3s: 404 OK." -ForegroundColor Green
+
+
+7. Testes manuais pós-produção
+
+# Teste Critério
+T1 DevTools → Network → cache limpo Zero requisição a facebook/google-analytics antes do aceite
+T2 Clicar "Recusar" → recarregar Escolha persiste; nenhuma requisição de marketing
+T3 Clicar "Aceitar" → recarregar Requisições disparam; dataLayer tem consent update
+T4 "Gerenciar cookies" no rodapé Banner reabre; escolha pode mudar
+T5 Cada botão WhatsApp Todos abrem 555196033200, exceto folder_comercial.html (5551992931816)
+T6 Menu de cada página 6 itens, todos com href, nenhum loop
+T7 Rich Results Test (home, economia, faq, metodo) JSON-LD sem erro crítico
+T8 Schema Markup Validator Idem
+T9 PageSpeed Insights LCP/INP sem regressão
+
+
+8. Sequência de execução
+
+1. diagnóstico.ps1
+2. Você preenche coluna decisao em diagnostico.csv
+3. ajuste-l1-consent.ps1            (simular)
+4. ajuste-l1-consent.ps1 -Apply     (aplicar + commit)
+5. ajuste-l2-banner.ps1 [-Apply]
+6. ajuste-l3-menu.ps1   [-Apply]
+7. ajuste-l4-whatsapp.ps1 [-Apply]
+8. ajuste-l5-textos.ps1 [-Apply]
+9. ajuste-l6-metodologia.ps1 [-Apply]
+10. ajuste-l7-jsonld.ps1 [-Apply]
+11. ajuste-l8-sitemap.ps1 [-Apply]
+12. verificacao-massa.ps1           (deve dizer OK)
+13. git push origin revisao-manual-v4
+14. git checkout main && git merge --no-ff revisao-manual-v4 && git push origin main
+15. Aguardar 2 min de deploy
+16. verificacao-producao.ps1
+17. Testes manuais T1–T9
+
+
+Riscos e pontos de atenção
+
+4 lotes (1, 2, 3, 7) exigem edição manual — o script só verifica ao final. bloco-ga4-gtm.html (Consent Mode), banner (bloco-cookies.html), menu (<nav> em cada página) e bloco JSON-LD (index.html) não são substituíveis por regex com segurança. Tentativa de automatizar introduz erro estrutural.
+Esperado obrigatório é a única defesa contra substituição global catastrófica. Se o CSV mostrar Esperado = 3, e o código tiver 4, o script aborta. Não preencher por estimativa.
+folder_comercial.html é exceção com 5551992931816. O lote 4 tem regra explícita para ele. Verificação de resíduo 555196033200 no folder_comercial.html não deve falhar se a intenção for o número oficial ali — o manual permite o segundo —, mas isso é ambiguidade que precisa ser resolvida no CSV.
+metodo-sndlimp.html herda o lastmod de metodoieee3s.html (6.3). O script faz isso via $backup. Confirmar que E:\GitHub_Backup\sndlimp\metodoieee3s.html existe.
+git mv no lote 6 deve ser executado fora do -Apply global, para evitar commit de arquivo vazio se o title não for encontrado.
+lastmod de criação é decisão sua (ADENDO E). O script 8.1 usa Get-Item $src.CreationTime do backup. Se o backup tiver sido copiado após a criação, CreationTime reflete a cópia. Ver §6.5 do manual: cruzar com git log --diff-filter=A.
+
+Autorrevisão
+
+8 lotes; 4 exigem edição manual (consent, banner, menu, jsonld). O script de diagnóstico roda no working tree (não no git grep), o que cobre arquivos untracked. Assunção não verificada: E:\GitHub_Backup\sndlimp contém metodoieee3s.html, lajeado.html e salvador-do-sul.html com datas de criação reais do repositório original — se o backup foi copiado como clone do Git, CreationTime reflete a cópia, não a criação.
