@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="protecao-copia" content="ativado">
+  
+  <title>Metodologia de cálculo SNDLimp (método próprio, não norma IEEE)</title>
+  <meta name="description" content="SNDLimp — Metodologia IEEE3S de cálculo de perdas por sujidade em usinas solares. Transparência total: entenda como diagnosticamos a eficiência do seu sistema fotovoltaico em todo o Brasil.">
+  <meta name="keywords" content="limpeza de placas solares, cálculo perda solar, eficiência fotovoltaica, diagnóstico usina solar, Vale do Sinos, Vale do Taquari, Poço das Antas, RS">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="geo.region" content="BR-RS">
+  <meta name="geo.placename" content="Vale do Sinos • Vale do Taquari • Rio Grande do Sul • Brasil">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache"> 
+  
+  <meta property="og:url" content="https://sndlimp.com.br/metodo-sndlimp.html">
+
+  <link rel="canonical" href="https://sndlimp.com.br/metodo-sndlimp.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: #e5e5e5;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    a {
+      color: #f59e0b;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .brand-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0d0d0d;
+      font-size: 22px;
+    }
+    .brand-text h1 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #fafafa;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+    .brand-text span {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #f59e0b;
+      margin-top: 2px;
+    }
+    .subtitle {
+      font-size: 0.875rem;
+      color: #a3a3a3;
+      letter-spacing: 0.03em;
+    }
+    .hero-title {
+      margin-top: 28px;
+      font-size: clamp(1.5rem, 4vw, 2.35rem);
+      font-weight: 600;
+      line-height: 1.35;
+      color: #fafafa;
+      max-width: 850px;
+    }
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    h2 {
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: #f59e0b;
+      margin-bottom: 22px;
+      line-height: 1.35;
+    }
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fafafa;
+      margin-bottom: 12px;
+    }
+    p {
+      margin-bottom: 16px;
+      color: #c4c4c4;
+    }
+    p.lead {
+      font-size: 1.08rem;
+      color: #d4d4d4;
+    }
+    .state-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      margin: 28px 0 36px;
+      padding: 18px 20px;
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.18);
+      border-radius: 14px;
+    }
+    .state-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #f59e0b;
+      padding: 4px 10px;
+      background: rgba(245, 158, 11, 0.12);
+      border-radius: 20px;
+    }
+    .state-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .state-pill {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #e5e5e5;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+    .state-pill:hover {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.35);
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245, 158, 11, 0.35);
+      background: rgba(255, 255, 255, 0.055);
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(245, 158, 11, 0.12);
+      color: #f59e0b;
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #b0b0b0;
+      margin-bottom: 0;
+    }
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+    .comparison-box {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.25s ease;
+    }
+    .comparison-box:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+      background: rgba(255, 255, 255, 0.055);
+    }
+    .comparison-box .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .tag-green {
+      background: rgba(34, 197, 94, 0.12);
+      color: #4ade80;
+    }
+    .tag-amber {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fbbf24;
+    }
+    .comparison-box ul {
+      list-style: none;
+      margin-top: 14px;
+    }
+    .comparison-box li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #c4c4c4;
+    }
+    .comparison-box li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: #f59e0b;
+      font-size: 0.75rem;
+    }
+    .formula-box {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 28px 0;
+      text-align: center;
+    }
+    .formula {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fafafa;
+      margin-bottom: 8px;
+    }
+    .formula-note {
+      font-size: 0.92rem;
+      color: #a3a3a3;
+    }
+    .bullet-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+      color: #c4c4c4;
+    }
+    .bullet-list li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: #f59e0b;
+      font-size: 0.85rem;
+    }
+    .references {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .reference {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 20px 24px;
+      transition: all 0.2s ease;
+    }
+    .reference:hover {
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+    .reference strong {
+      color: #f59e0b;
+      font-weight: 600;
+    }
+    .reference p {
+      margin-bottom: 0;
+      font-size: 0.94rem;
+      color: #b0b0b0;
+    }
+    footer {
+      padding: 36px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      font-size: 0.9rem;
+      color: #8a8a8a;
+    }
+    .highlight {
+      color: #f59e0b;
+      font-weight: 500;
+    }
+    @media (max-width: 640px) {
+      header {
+        padding: 44px 0 36px;
+      }
+      section {
+        padding: 42px 0;
+      }
+      .card, .comparison-box, .reference, .formula-box {
+        padding: 22px;
+      }
+      .state-strip {
+        padding: 14px 16px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://sndlimp.com.br/metodo-sndlimp.html#webpage",
+      "url": "https://sndlimp.com.br/metodo-sndlimp.html",
+      "name": "SNDLimp — Metodologia IEEE3S",
+      "inLanguage": "pt-BR"
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="brand">
+        <div class="brand-icon"><i class="fa-solid fa-solar-panel"></i></div>
+        <div class="brand-text">
+          <h1>SNDLimp <span>Diagnóstico de Eficiência Fotovoltaica</span></h1>
+        </div>
+      </div>
+      <p class="subtitle">Metodologia IEEE3S — Diagnóstico Transparente</p>
+      <h2 class="hero-title">Entenda como calculamos o impacto real da sujidade no seu sistema fotovoltaico em todo o Brasil</h2>
+    </div>
+  </header>
+
+  <main>
+    <section id="metodo-nacional">
+      <div class="container">
+        <h2>Nosso Método é Nacional — e isso é proposital</h2>
+        <p class="lead">Aplicamos uma <span class="highlight">única metodologia</span> a todos os estados brasileiros. Não importa se a usina está no Rio Grande do Sul, em Minas Gerais ou no Ceará: o critério é o mesmo.</p>
+        <p>Usamos uma taxa linear de <span class="highlight">2,5% ao mês</span>, independentemente da localização. Isso não é uma simplificação descuidada — é uma decisão técnica consciente, apoiada em três pilares: <strong>consistência, transparência e didática</strong>.</p>
+
+        <div class="state-strip" aria-label="Representação dos estados brasileiros atendidos">
+          <span class="state-label">Nacional</span>
+          <div class="state-pills">
+            <span class="state-pill">RS</span>
+            <span class="state-pill">SC</span>
+            <span class="state-pill">PR</span>
+            <span class="state-pill">SP</span>
+            <span class="state-pill">RJ</span>
+            <span class="state-pill">MG</span>
+            <span class="state-pill">GO</span>
+            <span class="state-pill">DF</span>
+            <span class="state-pill">BA</span>
+            <span class="state-pill">PE</span>
+            <span class="state-pill">CE</span>
+            <span class="state-pill">PA</span>
+            <span class="state-pill">AM</span>
+            <span class="state-pill">MA</span>
+            <span class="state-pill">...</span>
+          </div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <h3>Consistência</h3>
+            <p>Um número único para todo o Brasil evita que o método pareça ajustável ou arbitrário. O cliente em Porto Alegre e o cliente em Fortaleza recebem o mesmo critério — o que torna a comparação justa e a metodologia previsível.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-eye"></i></div>
+            <h3>Transparência</h3>
+            <p>Se ajustássemos a taxa para cada UF, o método perderia objetividade. Mantendo uma taxa única, qualquer cliente pode verificar o cálculo e entender o raciocínio.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Didática</h3>
+            <p>A simplicidade é intencional. Preferimos um modelo que o cliente entende e confia, a um modelo matematicamente sofisticado que ninguém consegue verificar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="precipitacao">
+      <div class="container">
+        <h2>Mas a chuva não é diferente em cada região? — Sim, e foi justamente isso que consideramos.</h2>
+        <p class="lead">Quando analisamos a precipitação média do Brasil, os estados se agrupam naturalmente em <span class="highlight">dois grandes grupos</span>. Nossa taxa de 2,5% ao mês funciona bem em ambos os cenários.</p>
+
+        <div class="comparison">
+          <div class="comparison-box">
+            <span class="tag tag-green">Grupo 1 — Precipitação moderada a alta</span>
+            <h3>Sul, Sudeste, parte do Centro-Oeste e litoral Norte</h3>
+            <p>Cobre aproximadamente <strong>2/3 da população brasileira</strong>.</p>
+            <ul>
+              <li>2,5% ao mês já considera o desconto de ~44% sobre o benchmark internacional (Kimber: 4,5%/mês) pela chuva existente.</li>
+              <li>A taxa é <strong>compatível</strong> com a realidade local.</li>
+            </ul>
+          </div>
+          <div class="comparison-box">
+            <span class="tag tag-amber">Grupo 2 — Precipitação mais baixa</span>
+            <h3>Semiárido nordestino e interior seco</h3>
+            <p>Regiões onde a chuva é escassa e a limpeza natural é menor.</p>
+            <ul>
+              <li>2,5% ao mês está <strong>aquém</strong> da taxa real dessas regiões, ou seja, estamos calculando no <strong>piso</strong>.</li>
+              <li>Para o cliente dessas regiões, isso significa que nossa estimativa é <strong>conservadora</strong> — preferimos errar para menos do que superestimar a perda.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>Em ambos os grupos, o método <strong>não prejudica o cliente</strong>. No Grupo 1, é preciso. No Grupo 2, é conservador. O único cenário onde isso poderia ser um problema é se estivéssemos <strong>superestimando perdas</strong> — e para isso, o benchmark Kimber nos garante que não estamos.</p>
+      </div>
+    </section>
+
+    <section id="benchmark">
+      <div class="container">
+        <h2>E o benchmark Kimber? — Nossa âncora internacional</h2>
+        <p>A literatura internacional, representada pelo trabalho de Kimber, indica uma perda típica de sujidade de <span class="highlight">0,15% por dia</span> — o que equivale a aproximadamente <strong>4,5% ao mês</strong> em painéis fotovoltaicos sem limpeza.</p>
+
+        <div class="formula-box">
+          <p class="formula">4,5% / mês × (1 − 44%) = 2,5% / mês</p>
+          <p class="formula-note">Desconto médio aplicado em função da precipitação e do efeito de limpeza natural pela chuva no Brasil.</p>
+        </div>
+
+        <p>Em Porto Alegre, Costa et al. (2021) mediram perdas reais por sujidade em campo — e os valores encontrados estão alinhados com a nossa taxa ajustada. Isso significa que nosso número não é teórico demais: ele foi validado por medições reais na região Sul do Brasil.</p>
+        
+        <div class="disclaimer" style="background:rgba(245,166,35,0.06);border-left:4px solid #f59e0b;border-radius:0 12px 12px 0;padding:22px 24px;margin-top:24px;font-size:14px;color:#c4c4c4;line-height:1.7;">
+    <strong style="color:#f59e0b;">Na prática, como isso funciona?</strong>
+    <br><br>
+    O índice de sujidade de 30% (acumulado em 12 meses sem limpeza) não significa que a usina gera 30% a menos. A relação não é linear. Estudos de campo — como o <strong>CBENS 2018</strong>, realizado em Gramado/RS, que registrou ganho médio de <strong>10,26%</strong> após limpeza em condições urbanas — mostram que a perda real de geração equivale a aproximadamente <strong>40% do índice de sujidade</strong>. É daí que vem o fator <strong>0,40</strong>, que resulta em <strong>12% de perda real de geração</strong> no cenário de 12 meses sem limpeza.
+    <br><br>
+    Esse fator é calibrado por referências internacionais consolidadas, como o relatório <strong>IEA-PVPS T13-21:2022</strong>, da Agência Internacional de Energia, que classifica a sujidade como o principal fator de perda de rendimento em sistemas fotovoltaicos após a irradiância.
+    <br><br>
+    <em style="color:#a3a3a3;">Na prática, a taxa real é sazonal e varia conforme o índice pluviométrico, proximidade de vias pavimentadas, atividade agrícola e poluição atmosférica local. Todos os valores exibidos em nossos diagnósticos são estimativas conservadoras.</em>
+</div>
+      
+      
+      </div>
+    </section>
+
+    <section id="media-chuva">
+      <div class="container">
+        <h2>Por que não usamos apenas a média de chuva?</h2>
+        <p class="lead">A chuva não limpa placas da mesma forma em todos os eventos. Existe uma diferença importante entre <strong>chuva efetiva</strong> e <strong>chuva inefetiva</strong>.</p>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+            <h3>Chuva leve não limpa</h3>
+            <p>Precipitações abaixo de <strong>3 mm</strong> geralmente não produzem o escoamento necessário para remover poeira, pólen e sujeira aderida à superfície do módulo.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-water"></i></div>
+            <h3>Limiar de limpeza efetiva</h3>
+            <p>Estudos indicam que a chuva passa a ter efeito de limpeza significativo a partir de aproximadamente <strong>6 mm</strong> de precipitação em um evento.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon"><i class="fa-solid fa-wind"></i></div>
+            <h3>Efeito garoa no Sul</h3>
+            <p>Garoa e chuvas finas frequentes podem até piorar a sujidade, formando uma película de poeira úmida que adere com mais força ao vidro do painel.</p>
+          </article>
+        </div>
+
+        <p>Por isso, usar simplesmente a média anual de milímetros de chuva não traduz fielmente a perda por sujidade. O método IEEE3S usa uma taxa consolidada, já ajustada pelo comportamento real da chuva em diferentes regiões do Brasil.</p>
+      </div>
+    </section>
+
+    <section id="compromisso">
+      <div class="container">
+        <h2>Nosso compromisso com você</h2>
+        <p class="lead">Nosso diagnóstico é construído para ser compreensivo, auditável e honesto. Esses são os princípios que seguimos:</p>
+        <ul class="bullet-list">
+          <li>Usar uma metodologia única e documentada para todo o Brasil, sem taxas escondidas ou ajustes por região.</li>
+          <li>Apresentar o cálculo de perdas de forma didática, para que você entenda o raciocínio por trás do número.</li>
+          <li>Ser conservadores em regiões mais secas, calculando um piso de perda em vez de superestimar o problema.</li>
+          <li>Basear nosso método em referências científicas reconhecidas internacionalmente.</li>
+          <li>Nunca usar linguagem alarmista. Acreditamos que informação clara gera decisão melhor.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="referencias">
+      <div class="container">
+        <h2>Referências científicas utilizadas</h2>
+        <div class="references">
+          <div class="reference">
+            <p><strong>Kimber, A.</strong> — PhD thesis, University of Central Queensland, 2006. Estabelece o benchmark internacional de perdas por sujidade em painéis fotovoltaicos (~0,15% ao dia).</p>
+          </div>
+          <div class="reference">
+            <p><strong>Costa et al. (2021).</strong> Medição de perdas por sujidade em sistema fotovoltaico em Porto Alegre, RS. Apresenta valores reais de degradação de desempenho por acúmulo de sujeira.</p>
+          </div>
+          <div class="reference">
+            <p><strong>Mejia et al. (2014).</strong> "Soiling Losses for Solar Photovoltaic Systems in California" — relaciona intensidade de chuva e limpeza natural dos módulos.</p>
+          </div>
+          <div class="reference">
+            <p><strong>Ilse et al. (2018).</strong> "PV Soiling Short-Term Forecasting From Low-Cost Glass Slide Measurements" — discussão sobre limiares de precipitação para limpeza efetiva de módulos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>SNDLimp © 2026 — Diagnóstico de Eficiência Fotovoltaica. Atendemos todo o Brasil via análise remota.</p>
+    </div>
+  </footer>
+<script src="https://sndlimp.com.br/scripts/bloco-incluir.js" defer></script>
+<script src="menu/scripts/bloco-protecao.js"></script>
+
+  
+</body>
+</html>
